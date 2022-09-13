@@ -12,10 +12,10 @@ sudo apt install man -y
 
 export DotFilesFolder=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
-#run custom program to generate ssh keys for github
-$DotFilesFolder/Bin/keygen.sh
-
 #and link config files to .config folder
 $DotFilesFolder/Bin/link.sh
+
+#run custom program to generate ssh keys for github
+$DotFilesFolder/Bin/keygen.sh
 
 source ~/.bashrc
