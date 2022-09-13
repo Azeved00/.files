@@ -1,0 +1,21 @@
+#shannannigans
+nvim_cd()
+{
+    if [ -d "${1}" ]; then
+        local dir="${1}"
+        shift 1
+        ( cd "${dir}" && nvim "${@}" )
+    else
+	\nvim "${@}"
+    fi
+}
+
+# Create a new directory and enter it
+function mk() {
+    mkdir -p "$@" && cd "$@"
+}
+
+# Open man page as PDF
+function manpdf() {
+   man -t "${1}" | open -f -a /Applications/Preview.app/
+}

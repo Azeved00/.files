@@ -1,0 +1,17 @@
+#shortcuts
+alias reload='source ~/.bshrc'
+
+alias mysql='mysql -u root -p'
+
+alias nvim=nvim_cd
+alias vim=nvim
+
+alias ls='ls --colo=auto'
+alias ll='ls -l'
+alias ll='ls -la'
+
+#navigation
+alias ..='cd ../'
+alias .='ls ./'
+alias ...='cd ../../'
+

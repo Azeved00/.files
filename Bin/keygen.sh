@@ -1,0 +1,1 @@
+echo "generating key"

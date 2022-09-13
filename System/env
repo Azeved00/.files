@@ -1,12 +1,13 @@
-#Make Tab autocomplete regardless of filename case
-set completion-ignore-case on
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$DOTFILES_DIR/bin"
+export EDITOR="subl -w"
+export CLICOLOR=1
+export LSCOLORS=gxfxcxdxbxegedabagacad
 
-# List all matches in case multiple possible completions are possible
-set show-all-if-ambiguous on
+# Tell grep to highlight matches
+export GREP_OPTIONS='—color=auto'
 
-# Flip through autocompletion matches with Shift-Tab.
-"\e[Z": menu-complete
+# Case-insensitive globbing (used in pathname expansion)
+shopt -s nocaseglob
 
-# Filtered history search
-"\e[A": history-search-backward
-"\e[B": history-search-forward
+ # Autocorrect typos in path names when using `cd`
+shopt -s cdspell
