@@ -109,3 +109,4 @@ let g:ale_linters = {
 \}
 
 
+--- Dont forget PlugInstall to install every plugin---
