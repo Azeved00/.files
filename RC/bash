@@ -3,7 +3,7 @@
 [[ $- != *i* ]] && return
 
 #for each sistem file source it
-for DOTFILE in $DotFilesFolder/System/{alias,env,func,prompt}; do
-	echo "$DOTFILE"
+for DOTFILE in ~/.files/System/{alias,env,func,prompt}; do
+	#echo "$DOTFILE"
 	[ -f $DOTFILE ] && source $DOTFILE
 done

@@ -1,5 +1,5 @@
 #shortcuts
-alias reload='source ~/.bshrc'
+alias reload='source ~/.bashrc'
 
 alias mysql='mysql -u root -p'
 

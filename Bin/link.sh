@@ -3,6 +3,12 @@ echo "linking config files"
 #creating symlinks to where the config files should be
 #while moving the alredy existing ones to the Backup folder
 
+if [ -d $DotFilesFolder/Backup ]; then
+	echo "already exists"
+else
+	mkdir $DotFilesFolder/Backup
+fi
+
 #bashrc 
 if [ -f ~/.bashrc ]; then
 	mv ~/.bashrc $DotFilesFolder/Backup/
