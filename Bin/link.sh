@@ -3,9 +3,7 @@ echo "linking config files"
 #creating symlinks to where the config files should be
 #while moving the alredy existing ones to the Backup folder
 
-if [ -d $DotFilesFolder/Backup ]; then
-	echo "already exists"
-else
+if ! [ -d $DotFilesFolder/Backup ]; then
 	mkdir $DotFilesFolder/Backup
 fi
 
@@ -21,12 +19,25 @@ if [ -f ~/.inputrc ]; then
 fi
 ln -s $DotFilesFolder/RC/input ~/.inputrc
 
+#gitconfig
+if [ -f ~/.gitconfig ]; then	
+	mv ~/.gitconfig $DotFilesFolder/Backup/
+fi
+ln -s $DotFilesFolder/RC/gitconfig ~/.gitconfig
+
+
+
 #nvim
-if ! [ -d ~/.config/nvim/ ]; then
+pathVim=~/.config/nvim/init.vim
+if ! [ -d ~/.config/nvim ]; then
 	mkdir -p ~/.config/nvim
 fi
 
-if  [ -f ~/.config/nvim/init.vim ]; then
-	mv ~/.config/nvim/init.vim $DotFilesFolder/Backup/nvimConfig.vim	
+if  [ -f $pathVim ]; then
+	mv $pathVim $DotFilesFolder/Backup/nvimConfig.vim
 fi
-ln -s $DotFilesFodler/Config/nvim/init.vim ~/.config/nvim/init.vim
+
+ln -s $DotFilesFolder/Config/nvim/init.vim $pathVim
+unset pathVim
+
+
