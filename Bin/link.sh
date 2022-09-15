@@ -1,5 +1,6 @@
 #!/bin/bash
 echo "linking config files"
+
 #creating symlinks to where the config files should be
 #while moving the alredy existing ones to the Backup folder
 

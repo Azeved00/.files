@@ -17,5 +17,6 @@ Have fun!
 - Configuration files are not automatically put in the .config folder
 - Add "asking" to install.sh to separate OSs and use casses and etc..
 - add a more apps since the ones here are very basic
-
+- SSH key generation is still missing
+- currently nvim config to be used in WSL, create 2 different config files one for WSL and the other for linux installations
 

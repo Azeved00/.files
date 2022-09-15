@@ -1,22 +1,38 @@
-:set number
-:set autoindent
-:set tabstop=4
-:set shiftwidth=4
-:set smarttab
-:set softtabstop=4
-:set mouse=a
+set number
+set autoindent
+set tabstop=4
+set shiftwidth=4
+set smarttab
+set softtabstop=4
+set mouse=a
+set encoding=UTF-8
+
 nnoremap <silent> <C-s> :w<CR>
 nnoremap <silent> <C-t> :terminal<CR>
-:tnoremap <Esc> <C-\><C-n>
-"nnoremap <silent> <C-w> :q<CR>
+"tnoremap <Esc> <C-\><C-n>
+nnoremap <silent> <C-w> :q<CR>
+
 " copy and paste
 set clipboard+=unnamedplus
-call plug#begin()
+let g:clipboard = {
+          \   'name': 'win32yank-wsl',
+		  \   'copy': {
+          \      '+': 'win32yank.exe -i --crlf',
+          \      '*': 'win32yank.exe -i --crlf',
+          \	   },
+		  \   'paste': {
+          \      '+': 'win32yank.exe -o --lf',
+          \      '*': 'win32yank.exe -o --lf',
+          \   },
+          \   'cache_enabled': 0,
+          \ 
+		  \}
 
+"add all plugs
+call plug#begin()
 Plug 'https://github.com/preservim/nerdtree' " NerdTree
 Plug 'https://github.com/vim-airline/vim-airline' " Status bar
 Plug 'vim-airline/vim-airline-themes'
-Plug 'https://github.com/ap/vim-css-color' " CSS Color Preview
 Plug 'https://github.com/ryanoasis/vim-devicons' " Developer Icons
 Plug 'https://github.com/tc50cal/vim-terminal' " Vim Terminal
 Plug 'airblade/vim-gitgutter' "git shannanigans
@@ -25,9 +41,12 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'romgrk/barbar.nvim'
 "Plug 'neoclide/coc.nvim'
 Plug 'https://github.com/dense-analysis/ale' "linting
+
 Plug 'mattn/emmet-vim'
+Plug 'https://github.com/ap/vim-css-color' " CSS Color Preview
 Plug 'AndrewRadev/tagalong.vim'
 Plug 'tpope/vim-surround'
+
 "Color schemes
 "Plug 'https://github.com/xiyaowong/nvim-transparent'
 Plug 'https://github.com/arcticicestudio/nord-vim'
@@ -38,7 +57,6 @@ Plug 'drewtempelmeyer/palenight.vim'
 "Plug 'mhartington/oceanic-next'
 "Plug 'https://github.com/sonph/onehalf'
 "Plug 'jackm245/nordark.nvim'
-set encoding=UTF-8
 
 call plug#end()
 
@@ -78,7 +96,7 @@ autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTr
 "tabs and stuff
 nnoremap <silent> <C-left> :BufferPrevious<CR>
 nnoremap <silent> <C-right> :BufferNext<CR>
-nnoremap <silent> <C-w> :BufferClose!<CR>
+"nnoremap <silent> <C-w> :BufferClose!<CR>
 
 " air-line settings
 let g:airline_powerline_fonts = 0
