@@ -9,8 +9,7 @@ Have fun!
 
 1. Installation is done trough install.sh @ the repo root </li>
 2. When opening neovim for the first time dont forget to use :PlugInstall to update plugins</li>
-
-
+3. install SpaceMono Nerd font (bold or regular) to have all icons 
 
 ## Things that are missing!
 
