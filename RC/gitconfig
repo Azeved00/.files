@@ -3,3 +3,7 @@
 	name = João Azevedo
 [advice]
 	addIgnoredFile = false
+[fetch]
+	prune = true
+[diff]
+	colorMoved = zebra
