@@ -127,6 +127,15 @@ endif
 let g:airline_theme='wombat'
 let g:airline#extensions#ale#enabled = 1
 
+function! AirlineInit()
+	let g:airline_section_a = airline#section#create(['mode',' ', 'branch'])
+	let g:airline_section_c = airline#section#create(['%f'])
+	let g:airline_section_y = airline#section#create([''])
+	let g:airline_section_z = airline#section#create(['ln: %l'])
+endfunction
+autocmd VimEnter * call AirlineInit()
+
+let g:airline_section_y = airline#section#create_right(['ffenc','foo'])
 "linting
 let g:ale_linters = {
     \ 'python': ['pylint'],
