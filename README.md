@@ -19,4 +19,4 @@ Have fun!
 - add a more apps since the ones here are very basic
 - SSH key generation is still missing
 - currently nvim config to be used in WSL, create 2 different config files one for WSL and the other for linux installations
-
+- automatically get win32yank tool when wsl
