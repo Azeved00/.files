@@ -1,3 +1,9 @@
+echo "welcome to Azeved00 .files installation"
+echo "What is your OS?"
+echo "Do you want GUI applications?"
+
+
+
 echo "installing software"
 sudo apt update -y
 sudo apt upgrade -y
