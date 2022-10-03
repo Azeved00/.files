@@ -6,11 +6,12 @@ set smarttab
 set softtabstop=4
 set mouse=a
 set encoding=UTF-8
+set expandtab
 
 nnoremap <silent> <C-s> :w<CR>
 nnoremap <silent> <C-t> :terminal<CR>
-"tnoremap <Esc> <C-\><C-n>
-nnoremap <silent> <C-w> :q<CR>
+tnoremap <Esc> <C-\><C-n>:BufferClose! <CR>
+"nnoremap <silent> <C-w> :q<CR>
 
 " copy and paste
 set clipboard+=unnamedplus
@@ -41,7 +42,7 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'romgrk/barbar.nvim'
 "Plug 'neoclide/coc.nvim'
 Plug 'https://github.com/dense-analysis/ale' "linting
-
+Plug 'luochen1990/rainbow'
 Plug 'mattn/emmet-vim'
 Plug 'https://github.com/ap/vim-css-color' " CSS Color Preview
 Plug 'AndrewRadev/tagalong.vim'
@@ -64,6 +65,7 @@ call plug#end()
 "set background=dark
 colorscheme palenight
 set background=dark
+let g:rainbow_active=1
 ":TransparentEnable
 "highlight Comment ctermfg=DarkGray
 "highlight Constant ctermfg=Blue
@@ -77,7 +79,7 @@ set background=dark
 "nerd tree settings
 nnoremap <silent> <C-b> :NERDTreeToggle<CR>
 nnoremap <silent> <C-a> :NERDTreeFocus<CR>
-"let g:NERDTreeShowHidden=1
+let g:NERDTreeShowHidden=1
 let g:NERDTreeIgnore=['^.git$', '^.idea$', '^.vscode$', '^.history$', '^node_modules$']
 
 "let g:NERDTreeDirArrowExpandable="^"
@@ -103,11 +105,11 @@ autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
 " :CocInstall coc-clangd
 " :CocInstall coc-snippets
 " :CocCommand snippets.edit... FOR EACH FILE TYPE
-
+let g:airline#extensions#tabline#enabled = 0 
 "tabs and stuff
 nnoremap <silent> <C-left> :BufferPrevious<CR>
 nnoremap <silent> <C-right> :BufferNext<CR>
-"nnoremap <silent> <C-w> :BufferClose!<CR>
+nnoremap <silent> <C-w> :BufferClose!<CR>
 
 " air-line settings
 let g:airline_powerline_fonts = 1
@@ -163,3 +165,6 @@ let g:user_emmet_leader_key=','
 let g:tagalong_verbose = 1
 
 "--- Dont forget PlugInstall to install every plugin---
+
+let bufferline = get(g:, 'bufferline', {})
+let bufferline.icons = v:true
