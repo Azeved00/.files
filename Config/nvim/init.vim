@@ -7,7 +7,11 @@ set softtabstop=4
 set mouse=a
 set encoding=UTF-8
 set expandtab
+set foldmethod=indent
+set nofoldenable
+set foldlevel=99
 
+nnoremap <silent> <C-f> za<CR>
 nnoremap <silent> <C-s> :w<CR>
 nnoremap <silent> <C-t> :terminal<CR>
 tnoremap <Esc> <C-\><C-n>:BufferClose! <CR>
@@ -15,19 +19,19 @@ tnoremap <Esc> <C-\><C-n>:BufferClose! <CR>
 
 " copy and paste
 set clipboard+=unnamedplus
-"let g:clipboard = {
-"          \   'name': 'win32yank-wsl',
-"		  \   'copy': {
-"          \      '+': 'win32yank.exe -i --crlf',
-"          \      '*': 'win32yank.exe -i --crlf',
-"          \	   },
-"		  \   'paste': {
-"          \      '+': 'win32yank.exe -o --lf',
-"          \      '*': 'win32yank.exe -o --lf',
-"          \   },
-"          \   'cache_enabled': 0,
-"          \ 
-"		  \}
+let g:clipboard = {
+\   'name': 'win32yank-wsl',
+\   'copy': {
+\      '+': 'win32yank.exe -i --crlf',
+\      '*': 'win32yank.exe -i --crlf',
+\	   },
+\   'paste': {
+\      '+': 'win32yank.exe -o --lf',
+\      '*': 'win32yank.exe -o --lf',
+\   },
+\   'cache_enabled': 0,
+\ 
+\}
 
 "add all plugs
 call plug#begin()
@@ -148,7 +152,7 @@ let g:ale_linters = {
 	\ 'javascript': ['eslint'],
 	\ 'typescript': ['eslint'],
 	\ 'html': ['htmlhint'],
-	\'css': ['stylelint']
+	\ 'css': ['stylelint']
 \}
 let g:ale_fixers = {
 	\ 'html': ['prettier'],
