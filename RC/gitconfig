@@ -9,3 +9,5 @@
 	colorMoved = zebra
 [core]
 	editor = nvim
+[pull]
+	rebase = false
