@@ -1,0 +1,14 @@
+# FIRST GitHub account
+Host first
+	HostName github.com
+	User git
+	AddKeysToAgent yes
+    IdentityFile ~/.ssh/first
+
+# SECOND GitHub account
+Host second
+    HostName github.com
+	User git
+	AddKeysToAgent yes
+	IdentityFile ~/.ssh/second
+
