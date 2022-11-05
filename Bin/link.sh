@@ -27,6 +27,12 @@ fi
 ln -s $DotFilesFolder/RC/gitconfig ~/.gitconfig
 
 
+#ssh config
+if [ -f ~/.ssh/config ]; then	
+	mv ~/.ssh/config $DotFilesFolder/Backup/ssh
+fi
+ln -s $DotFilesFolder/RC/ssh ~/.ssh/config
+
 
 #nvim
 pathVim=~/.config/nvim/init.vim
