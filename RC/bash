@@ -7,3 +7,5 @@ for DOTFILE in ~/.files/System/{alias,env,func,prompt}; do
 	#echo "$DOTFILE"
 	[ -f $DOTFILE ] && source $DOTFILE
 done
+
+eval $(ssh-agent)
