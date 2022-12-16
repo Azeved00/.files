@@ -13,7 +13,7 @@ set nofoldenable
 set foldlevel=99
 
 "nnoremap <silent> <C-f> za<CR>
-nnoremap <silent> <C-s> :w<CR>
+nnoremap <silent> <C-s> :s<CR>
 nnoremap <silent> <C-t> :terminal<CR>
 tnoremap <silent> <Esc> <C-\><C-n>:bdelete! <CR>
 "nnoremap <silent> <C-w> :q<CR>
@@ -55,18 +55,18 @@ Plug 'mattn/emmet-vim'
 Plug 'https://github.com/ap/vim-css-color' " CSS Color Preview
 Plug 'AndrewRadev/tagalong.vim'
 Plug 'tpope/vim-surround'
+Plug 'abdalrahman-ali/vim-remembers'
 
 "Color schemes
 "Plug 'https://github.com/xiyaowong/nvim-transparent'
-Plug 'https://github.com/arcticicestudio/nord-vim'
-Plug 'https://github.com/sainnhe/everforest'
+"Plug 'https://github.com/arcticicestudio/nord-vim'
+"Plug 'https://github.com/sainnhe/everforest'
 "Plug 'https://github.com/rakr/vim-one'
 "Plug 'https://github.com/sheerun/vim-wombat-scheme'
 Plug 'drewtempelmeyer/palenight.vim'
 "Plug 'mhartington/oceanic-next'
 "Plug 'https://github.com/sonph/onehalf'
 "Plug 'jackm245/nordark.nvim'
-
 call plug#end()
 
 "themes and colors
@@ -186,3 +186,8 @@ let g:rainbow_conf = {
         \'nerdtree': 0,
     \},
 \}
+
+let g:remembers_always_reload = 1
+let g:remembers_tmp_dir = '$HOME/.config/nvim/temp'
+let g:remembers_session_dir = '$HOME/.config/nvim/sessions'
+let g:remembers_ignore_empty_buffer = 1
