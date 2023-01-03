@@ -13,7 +13,7 @@ set nofoldenable
 set foldlevel=99
 
 "nnoremap <silent> <C-f> za<CR>
-nnoremap <silent> <C-s> :s<CR>
+nnoremap <silent> <C-s> :w<CR>
 nnoremap <silent> <C-t> :terminal<CR>
 tnoremap <silent> <Esc> <C-\><C-n>:bdelete! <CR>
 "nnoremap <silent> <C-w> :q<CR>
@@ -24,18 +24,18 @@ nnoremap <silent> <C-w> :bdelete!<CR>
 
 " copy and paste
 set clipboard+=unnamedplus
-let g:clipboard = {
-\   'name': 'win32yank-wsl',
-\   'copy': {
-\      '+': 'win32yank.exe -i --crlf',
-\      '*': 'win32yank.exe -i --crlf',
-\	   },
-\   'paste': {
-\      '+': 'win32yank.exe -o --lf', 
-\      '*': 'win32yank.exe -o --lf',
-\   },
-\   'cache_enabled': 0,
-\}
+"let g:clipboard = {
+"\   'name': 'win32yank-wsl',
+"\   'copy': {
+"\      '+': 'win32yank.exe -i --crlf',
+"\      '*': 'win32yank.exe -i --crlf',
+"\	   },
+"\   'paste': {
+"\      '+': 'win32yank.exe -o --lf', 
+"\      '*': 'win32yank.exe -o --lf',
+"\   },
+"\   'cache_enabled': 0,
+"\}
 
 "add all plugs
 call plug#begin()

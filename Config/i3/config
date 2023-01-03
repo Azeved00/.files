@@ -250,7 +250,7 @@ bindsym $mod+r mode "resize"
 # WS No. 5 has been used as example.
 # Note: You will have to launch the program from a program launcher (rofi).
 new_window 1pixel
-for_window [class="Vivaldi"] move to workspace $ws1
+for_window [class="Firefox"] move to workspace $ws1
 for_window [class="Alacritty"] move to workspace $ws2
 for_window [class="Discord"] move to workspace $ws4
 for_window [class="Spotify"] move to workspace $ws4
@@ -260,8 +260,8 @@ for_window [class="Spotify"] move to workspace $ws4
 # defined keybinding, on a certain workspace, without
 # touching program launcher. Assign Programs to respective
 # workspaces.
-bindsym $mod+b workspace 1; exec Vivaldi
-bindsym $mod+t workspace 2; exec Alacritty 
+bindsym $mod+b workspace 1; exec Firefox
+bindsym $mod+t workspace 2; exec alacritty 
 
 #Multi Monitor (Dual Monitor, extended monitor)
 #Replace HDMI2 with DVI-2, VGA-2, DP-2, DVI-2 etc. Get value by typing xrandr in the terminal.
@@ -269,4 +269,7 @@ bindsym $mod+t workspace 2; exec Alacritty
 #eDP-X is the display used in Laptops.
 #HDMI-X is display used in Desktop connected to monitor with HDMI Cable.
 #VGA-X is display used in Desktop connected to monitor with VGA Cable.
-exec --no-startup-id xrandr --output HDMI-2 --right-of HDMI-1 --auto
+bindsym $mod+m exec --no-startup-id xrandr --output eDP-1 --right-of HDMI-1 --auto
+bindsym $mod+Shift+m exec --no-startup-id xrandr --output eDP-1 --auto --output HDMI-1 --off
+workspace 2 output HDMI-1
+workspace 1 output eDP-1
