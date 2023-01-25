@@ -5,7 +5,7 @@ BACKUP=$DotFilesFolder/Backup
 
 #creating symlinks to where the config files should be
 #while moving the alredy existing ones to the Backup folder
-moveFile () {
+linkFile () {
     local FILE=$1
 
     echo "linking $FILE"
@@ -42,11 +42,12 @@ if ! [ -d $BACKUP ]; then
 fi
 
 # RC File
-moveFile "$HOME/.bashrc"      "$DotFilesFolder/RC/bash"
-moveFile "$HOME/.inputrc"     "$DotFilesFolder/RC/input"
-moveFile "$HOME/.gitconfig"   "$DotFilesFolder/RC/gitconfig"
-moveFile "$HOME/.ssh/config"  "$DotFilesFolder/RC/ssh"
+linkFile "$HOME/.bashrc"      "$DotFilesFolder/RC/bash"
+linkFile "$HOME/.inputrc"     "$DotFilesFolder/RC/input"
+linkFile "$HOME/.gitconfig"   "$DotFilesFolder/RC/gitconfig"
+linkFile "$HOME/.ssh/config"  "$DotFilesFolder/RC/ssh"
 
-moveFile "$HOME/.config/nvim/init.vim" "$DotFilesFolder/Config/nvim/init.vim"
+linkFile "$HOME/.config/nvim/init.vim" "$DotFilesFolder/Config/nvim/init.vim"
+linkFile "$HOME/.config/i3/config" "$DotFilesFolder/Config/i3/config"
 
 
