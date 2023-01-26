@@ -57,11 +57,11 @@ exec_always feh --bg-fill $HOME/Pictures/Backgrounds/download1.jpeg
 gaps inner 10
 
 #Compositor. This helps in transparency and fading.
-exec_always picom -f
+exec_always picom --config ~/.config/picom/picom.conf
 
 # Lock Screen This will yield a black lock screen, which
 # can be customized to your liking.
-bindsym $mod+x exec betterlockscreen -l
+#bindsym $mod+x exec betterlockscreen -l
 
 # Shutdown the computer
 #bindsym $mod+Shift+s exec shutdown now
