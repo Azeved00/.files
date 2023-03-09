@@ -187,7 +187,7 @@ let g:rainbow_conf = {
     \},
 \}
 
-let g:remembers_always_reload = 1
+let g:remembers_always_reload = 0
 let g:remembers_tmp_dir = '$HOME/.config/nvim/temp'
 let g:remembers_session_dir = '$HOME/.config/nvim/sessions'
 let g:remembers_ignore_empty_buffer = 1
