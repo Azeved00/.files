@@ -3,7 +3,7 @@ Host github.com
 	HostName github.com
 	User git
 	AddKeysToAgent yes
-    IdentityFile ~/.ssh/first
+    IdentityFile ~/.ssh/main
 
 # SECOND GitHub account
 Host second
