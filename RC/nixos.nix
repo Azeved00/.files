@@ -22,7 +22,7 @@
 
 
     networking = {
-        hostname = "quininha";
+        hostName = "quininha";
 
         proxy = {
             # networking.proxy.default = "http://user:password@proxy:port/";
