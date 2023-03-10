@@ -16,17 +16,25 @@
     boot.loader.grub.device = "nodev";
     boot.extraModulePackages = [ config.boot.kernelPackages.rtl88x2bu ];
 
-    # networking.hostName = "nixos"; # Define your hostname.
-    # Pick only one of the below networking options.
-    # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-    networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
 
     # Set your time zone.
     time.timeZone = "Europe/London";
 
-    # Configure network proxy if necessary
-    # networking.proxy.default = "http://user:password@proxy:port/";
-    # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+
+    networking = {
+        hostname = "quininha";
+
+        proxy = {
+            # networking.proxy.default = "http://user:password@proxy:port/";
+            # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+        };
+    
+        networkmanager.enable = true;
+
+        firewall.enable = true;
+        firewall.allowedTCPPorts = [ ];
+        firewall.allowedUDPPorts = [ ];
+    };
 
     # Select internationalisation properties.
     i18n.defaultLocale = "en_US.UTF-8";
@@ -42,20 +50,26 @@
         autorun = true;
         layout = "pt";
         desktopManager.xterm.enable = false;
+        
         displayManager = {
             lightdm.enable = true;
             defaultSession = "none+i3";
         };
+        
         windowManager = {
 	        i3.enable = true;
 	        i3.package = pkgs.i3-gaps;
         };
+
+        libinput.enable = true;
+
+        # xserver.xkbOptions = {
+        #   "eurosign:e";
+        #   "caps:escape" # map caps to escape.
+        # };
     };
   
-    # services.xserver.xkbOptions = {
-    #   "eurosign:e";
-    #   "caps:escape" # map caps to escape.
-    # };
+    
 
     # Enable CUPS to print documents.
     # services.printing.enable = true;
@@ -64,9 +78,6 @@
     sound.enable = true;
     nixpkgs.config.pulseaudio = true;
     hardware.pulseaudio.enable = true;
-
-    # Enable touchpad support (enabled default in most desktopManager).
-    # services.xserver.libinput.enable = true;
 
     # Define a user account. Don't forget to set a password with ‘passwd’.
     users.users.azevedo = {
@@ -84,8 +95,7 @@
 
     # List packages installed in system profile. To search, run:
     environment.systemPackages = with pkgs; [
- 	    #basic applications
- 	    vim 
+ 	    # basic applications
      	wget
      	neovim
      	networkmanager
@@ -112,10 +122,13 @@
         jetbrains-mono
         jdk8
     ];
-    environment.sessionVariables.TERMINAL = "alacritty";
+    environment.sessionVariables = {  
+        TERMINAL = "alacritty";
+        EDITOR = "nvim";
+    };
 
     # Enable the OpenSSH daemon.
-    # services.openssh.enable = true;
+    services.openssh.enable = true;
     
     # Some programs need SUID wrappers, can be configured further or are
     # started in user sessions.
@@ -132,12 +145,7 @@
     };
     
 
-      # Open ports in the firewall.
-      # networking.firewall.allowedTCPPorts = [ ... ];
-      # networking.firewall.allowedUDPPorts = [ ... ];
-      # Or disable the firewall altogether.
-      # networking.firewall.enable = false;
 
-      system.stateVersion = "22.11"; 
+    system.stateVersion = "22.11"; 
 }
 
