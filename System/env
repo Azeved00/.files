@@ -1,4 +1,4 @@
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$DOTFILES_DIR/bin"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$DOTFILES_DIR/bin:$PATH"
 export EDITOR="subl -w"
 export CLICOLOR=1
 export LSCOLORS=gxfxcxdxbxegedabagacad

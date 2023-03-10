@@ -41,7 +41,7 @@
     console = {
         font = "jetbrains-mono";
         # keyMap = "pt";
-        useXkbConfig = true; # use xkbOptions in tty.
+        useXkbConfig = true; 
     };
 
     # Configure keymap in X11
@@ -49,6 +49,7 @@
         enable = true;
         autorun = true;
         layout = "pt";
+        libinput.enable = true;
         desktopManager.xterm.enable = false;
         
         displayManager = {
@@ -60,16 +61,8 @@
 	        i3.enable = true;
 	        i3.package = pkgs.i3-gaps;
         };
-
-        libinput.enable = true;
-
-        # xserver.xkbOptions = {
-        #   "eurosign:e";
-        #   "caps:escape" # map caps to escape.
-        # };
     };
   
-    
 
     # Enable CUPS to print documents.
     # services.printing.enable = true;
@@ -87,11 +80,32 @@
     };
 
     nixpkgs.config.allowUnfree = true;
-    programs.steam = {
-        enable = true;
-        remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-        dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+
+    programs = {
+        
+        steam = {
+            enable = true;
+        
+            # Open ports in the firewall for Steam Remote Play
+            remotePlay.openFirewall = true;
+        
+            # Open ports in the firewall for Source Dedicated Server
+            dedicatedServer.openFirewall = true; 
+        };
+
+        # Some programs need SUID wrappers, can be configured further or are
+        # started in user sessions.
+        # mtr.enable = true;
+        # gnupg.agent = {
+        #   enable = true;
+        #   enableSSHSupport = true;
+        # };
+
+        bash = {
+            interactiveShellInit = (builtins.readFile ./bash);
+        };
     };
+
 
     # List packages installed in system profile. To search, run:
     environment.systemPackages = with pkgs; [
@@ -130,13 +144,6 @@
     # Enable the OpenSSH daemon.
     services.openssh.enable = true;
     
-    # Some programs need SUID wrappers, can be configured further or are
-    # started in user sessions.
-    # programs.mtr.enable = true;
-    # programs.gnupg.agent = {
-    #   enable = true;
-    #   enableSSHSupport = true;
-    # };
 
     nix.gc = {
         automatic = true;
@@ -144,8 +151,6 @@
         options = "--delete-older-than 30d";
     };
     
-
-
     system.stateVersion = "22.11"; 
 }
 
