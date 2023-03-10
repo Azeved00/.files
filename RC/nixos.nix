@@ -102,7 +102,7 @@
         # };
 
         bash = {
-            interactiveShellInit = (builtins.readFile ./bash);
+            # interactiveShellInit = (builtins.readFile ./bash);
         };
     };
 
