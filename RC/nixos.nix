@@ -64,6 +64,9 @@
     };
   
 
+    # Enable the OpenSSH daemon.
+    services.openssh.enable = true;
+
     # Enable CUPS to print documents.
     # services.printing.enable = true;
 
@@ -82,7 +85,6 @@
     nixpkgs.config.allowUnfree = true;
 
     programs = {
-        
         steam = {
             enable = true;
         
@@ -104,16 +106,20 @@
         bash = {
             # interactiveShellInit = (builtins.readFile ./bash);
         };
+
+        ssh = {
+            startAgent = true;
+        };
     };
 
 
     # List packages installed in system profile. To search, run:
     environment.systemPackages = with pkgs; [
  	    # basic applications
-     	wget
-     	neovim
-     	networkmanager
-     	clipmenu
+        wget
+        neovim
+        networkmanager
+        clipmenu
 	    git
 	    pavucontrol
      
@@ -141,8 +147,6 @@
         EDITOR = "nvim";
     };
 
-    # Enable the OpenSSH daemon.
-    services.openssh.enable = true;
     
 
     nix.gc = {
