@@ -1,50 +1,53 @@
-#!/bin/bash
-echo "linking config files"
+#!/bin/bash 
+echo ""
+echo "----------------------- linking config files ----------------------- "
+BACKUP=$DotFilesFolder/Backup 
 
 #creating symlinks to where the config files should be
 #while moving the alredy existing ones to the Backup folder
+linkFile () {
+    local FILE=$1
 
-if ! [ -d $DotFilesFolder/Backup ]; then
-	mkdir $DotFilesFolder/Backup
+    echo "linking $FILE"
+
+    if [[ -h $FILE || -f $FILE ]]; then
+        mv $FILE $BACKUP
+    fi
+
+    ln -s $2 $FILE
+}
+
+# check if the folder exists
+# if it exists move it to the back up
+# and soft link each of
+# this needs to be redone
+moveFolder () {
+    mkdir -p $1
+
+    echo "linking directory $1"
+    if [ -d $1 ]; then 
+        mv -f $1 $BACKUP
+    fi
+
+    #link each file in the folder
+    for FILE in $2/$3/* ; do
+	    if [ -f $FILE ]; then
+            ln -s $FILE $1
+        fi
+    done
+}
+
+if ! [ -d $BACKUP ]; then
+	mkdir $BACKUP
 fi
 
-#bashrc 
-if [ -f ~/.bashrc ]; then
-	mv ~/.bashrc $DotFilesFolder/Backup/
-fi
-ln -s $DotFilesFolder/RC/bash ~/.bashrc
+# RC File
+linkFile "$HOME/.bashrc"      "$DotFilesFolder/RC/bash"
+linkFile "$HOME/.inputrc"     "$DotFilesFolder/RC/input"
+linkFile "$HOME/.gitconfig"   "$DotFilesFolder/RC/gitconfig"
+linkFile "$HOME/.ssh/config"  "$DotFilesFolder/RC/ssh"
 
-#inputrc
-if [ -f ~/.inputrc ]; then	
-	mv ~/.inputrc $DotFilesFolder/Backup/
-fi
-ln -s $DotFilesFolder/RC/input ~/.inputrc
-
-#gitconfig
-if [ -f ~/.gitconfig ]; then	
-	mv ~/.gitconfig $DotFilesFolder/Backup/
-fi
-ln -s $DotFilesFolder/RC/gitconfig ~/.gitconfig
-
-
-#ssh config
-if [ -f ~/.ssh/config ]; then	
-	mv ~/.ssh/config $DotFilesFolder/Backup/ssh
-fi
-ln -s $DotFilesFolder/RC/ssh ~/.ssh/config
-
-
-#nvim
-pathVim=~/.config/nvim/init.vim
-if ! [ -d ~/.config/nvim ]; then
-	mkdir -p ~/.config/nvim
-fi
-
-if  [ -f $pathVim ]; then
-	mv $pathVim $DotFilesFolder/Backup/nvimConfig.vim
-fi
-
-ln -s $DotFilesFolder/Config/nvim/init.vim $pathVim
-unset pathVim
+linkFile "$HOME/.config/nvim/init.vim" "$DotFilesFolder/Config/nvim/init.vim"
+linkFile "$HOME/.config/i3/config" "$DotFilesFolder/Config/i3/config"
 
 

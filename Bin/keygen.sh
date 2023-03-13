@@ -1,4 +1,5 @@
-echo "generating key"
+echo ""
+echo "------------------- generating key ------------------"
 
 #here i still need to do some work
 # like get how many keys i want to generate
