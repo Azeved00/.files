@@ -12,3 +12,9 @@ Host second
 	AddKeysToAgent yes
 	IdentityFile ~/.ssh/second
 
+# Gitlab account
+Host gitlab
+    HostName gitedu.alunos.dcc.fc.up.pt
+    User git
+    AddKeysToAgent yes
+    IdentityFile ~/.ssh/gitlab
