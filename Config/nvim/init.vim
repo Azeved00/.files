@@ -43,7 +43,7 @@ Plug 'mattn/emmet-vim'
 Plug 'https://github.com/ap/vim-css-color' " CSS Color Preview
 Plug 'AndrewRadev/tagalong.vim'
 Plug 'tpope/vim-surround'
-Plug 'abdalrahman-ali/vim-remembers'
+"Plug 'abdalrahman-ali/vim-remembers'
 
 "Color schemes
 "Plug 'https://github.com/xiyaowong/nvim-transparent'
@@ -176,8 +176,3 @@ let g:rainbow_conf = {
         \'nerdtree': 0,
     \},
 \}
-
-let g:remembers_always_reload = 0
-let g:remembers_tmp_dir = '$HOME/.config/nvim/temp'
-let g:remembers_session_dir = '$HOME/.config/nvim/sessions'
-let g:remembers_ignore_empty_buffer = 1
