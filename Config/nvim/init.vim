@@ -24,18 +24,6 @@ nnoremap <silent> <C-w> :bdelete!<CR>
 
 " copy and paste
 set clipboard+=unnamedplus
-"let g:clipboard = {
-"\   'name': 'win32yank-wsl',
-"\   'copy': {
-"\      '+': 'win32yank.exe -i --crlf',
-"\      '*': 'win32yank.exe -i --crlf',
-"\	   },
-"\   'paste': {
-"\      '+': 'win32yank.exe -o --lf', 
-"\      '*': 'win32yank.exe -o --lf',
-"\   },
-"\   'cache_enabled': 0,
-"\}
 
 "add all plugs
 call plug#begin()
@@ -63,6 +51,8 @@ Plug 'abdalrahman-ali/vim-remembers'
 "Plug 'https://github.com/sainnhe/everforest'
 "Plug 'https://github.com/rakr/vim-one'
 "Plug 'https://github.com/sheerun/vim-wombat-scheme'
+Plug 'folke/tokyonight.nvim'
+Plug 'rebelot/kanagawa.nvim'
 Plug 'drewtempelmeyer/palenight.vim'
 "Plug 'mhartington/oceanic-next'
 "Plug 'https://github.com/sonph/onehalf'
