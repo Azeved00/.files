@@ -7,9 +7,11 @@ BACKUP=$DotFilesFolder/Backup
 #while moving the alredy existing ones to the Backup folder
 linkFile () {
     local FILE=$1
+    local DIR=$(dirname $FILE)
 
     echo "linking $FILE"
 
+    mkdir -p $DIR
     if [[ -h $FILE || -f $FILE ]]; then
         mv $FILE $BACKUP
     fi
