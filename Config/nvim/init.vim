@@ -61,7 +61,7 @@ call plug#end()
 
 "themes and colors
 "set background=dark
-colorscheme palenight
+colorscheme kanagawa-wave
 set background=dark
 let g:rainbow_active=1
 ":TransparentEnable
