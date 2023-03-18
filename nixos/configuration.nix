@@ -122,7 +122,8 @@
         clipmenu
 	    git
 	    pavucontrol
-     
+        killall
+
      	#display applications
      	rofi
      	i3
@@ -141,14 +142,21 @@
         spotify
 
         # others
-        jetbrains-mono
         jdk8
     ];
     environment.sessionVariables = {  
         TERMINAL = "alacritty";
         EDITOR = "nvim";
     };
+    
+    fonts = {
+        enableDefaultFonts = true;
+        fontDir.enable = true;
 
+        fonts = with pkgs; [
+            (nerdfonts.override { fonts = ["SpaceMono" "JetBrainsMono"]; })
+        ];
+    };
 
     nix.gc = {
         automatic = true;
