@@ -137,6 +137,8 @@
 	    heroic
         steam
         jetbrains.idea-ultimate
+        zathura
+        spotify
 
         # others
         jetbrains-mono
@@ -147,7 +149,6 @@
         EDITOR = "nvim";
     };
 
-    
 
     nix.gc = {
         automatic = true;
