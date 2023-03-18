@@ -72,7 +72,6 @@
 
     # Enable sound.
     sound.enable = true;
-    nixpkgs.config.pulseaudio = true;
     hardware.pulseaudio.enable = true;
 
     # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -82,7 +81,16 @@
         extraGroups = [ "wheel" "audio" ];
     };
 
-    nixpkgs.config.allowUnfree = true;
+    nixpkgs.config = {
+        allowUnfree = true;
+        pulseaudio = true;
+        
+        packageOverrides = pkgs: rec {
+            polybar = pkgs.polybar.override {
+                i3Support = true;
+            };
+        };
+    };
 
     programs = {
         steam = {
