@@ -151,6 +151,7 @@
 
         # others
         jdk8
+        erlang
     ];
     environment.sessionVariables = {  
         TERMINAL = "alacritty";
@@ -162,7 +163,11 @@
         fontDir.enable = true;
 
         fonts = with pkgs; [
-            (nerdfonts.override { fonts = ["SpaceMono" "JetBrainsMono"]; })
+            (nerdfonts.override { fonts = [
+                "SpaceMono" 
+                "JetBrainsMono"
+                "DejaVuSansMono"
+             ]; })
         ];
     };
 
