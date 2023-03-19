@@ -30,6 +30,7 @@
         };
     
         networkmanager.enable = true;
+        networkmanager.wifi.scanRandMacAddress = false;
 
         firewall.enable = true;
         firewall.allowedTCPPorts = [ ];
