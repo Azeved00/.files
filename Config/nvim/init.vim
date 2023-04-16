@@ -144,7 +144,8 @@ let g:ale_linters = {
     \ 'javascript': ['eslint'],
     \ 'typescript': ['eslint'],
     \ 'html': ['htmlhint'],
-    \ 'css': ['stylelint']
+    \ 'css': ['stylelint'],
+    \ 'pl': ['swipl']
 \}
 let g:ale_fixers = {
     \ 'html': ['prettier'],
