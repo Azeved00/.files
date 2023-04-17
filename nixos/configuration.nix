@@ -139,6 +139,7 @@
 	    polybar
 	    picom
 	    feh
+        dunst
      
 	    # applications
 	    alacritty
@@ -149,10 +150,12 @@
         jetbrains.idea-ultimate
         zathura
         spotify
+        dolphin-emu
 
         # others
         jdk8
         erlang
+        glpk
     ];
     environment.sessionVariables = {  
         TERMINAL = "alacritty";
