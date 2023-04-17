@@ -132,6 +132,7 @@
 	    git
 	    pavucontrol
         killall
+        tree
 
      	#display applications
      	rofi
@@ -151,11 +152,13 @@
         zathura
         spotify
         dolphin-emu
+        parsec-bin
 
         # others
         jdk8
         erlang
         glpk
+        swiProlog
     ];
     environment.sessionVariables = {  
         TERMINAL = "alacritty";
