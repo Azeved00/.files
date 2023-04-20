@@ -3,7 +3,9 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, ... }:
-
+let
+    unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
+in
 {
     imports =
     [ 
@@ -135,7 +137,6 @@
         tree
 
      	#display applications
-     	rofi
      	i3
 	    polybar
 	    picom
@@ -153,6 +154,7 @@
         spotify
         dolphin-emu
         parsec-bin
+        unstable.bottles-unwrapped
 
         # others
         jdk8
