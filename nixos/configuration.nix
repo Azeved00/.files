@@ -137,11 +137,13 @@ in
         tree
 
      	#display applications
+        rofi
      	i3
 	    polybar
 	    picom
 	    feh
         dunst
+        shutter
      
 	    # applications
 	    alacritty
