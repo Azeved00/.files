@@ -156,7 +156,6 @@ in
         spotify
         dolphin-emu
         parsec-bin
-        unstable.bottles-unwrapped
 
         # others
         jdk8
@@ -167,6 +166,7 @@ in
     environment.sessionVariables = {  
         TERMINAL = "alacritty";
         EDITOR = "nvim";
+        NIX_CONF = "~/.files/nixos/nix.conf";
     };
     
     fonts = {
