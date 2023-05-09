@@ -135,6 +135,7 @@ in
 	    pavucontrol
         killall
         tree
+        htop
 
      	#display applications
         rofi
@@ -149,13 +150,16 @@ in
 	    alacritty
      	firefox
      	ranger
-	    heroic
-        steam
         jetbrains.idea-ultimate
         zathura
         spotify
+
+        # games
+        prismlauncher
+        steam
         dolphin-emu
         parsec-bin
+	    heroic
 
         # others
         jdk8
