@@ -161,11 +161,12 @@ in
         parsec-bin
 	    heroic
 
-        # others
+        # development
         jdk8
         erlang
         glpk
         swiProlog
+        cmake
     ];
     environment.sessionVariables = {  
         TERMINAL = "alacritty";
