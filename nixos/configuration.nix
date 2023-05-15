@@ -130,9 +130,9 @@ in
         wget
         neovim
         networkmanager
-        clipmenu
-	    git
-	    pavucontrol
+        xclip
+        git
+        pavucontrol
         killall
         tree
         htop
@@ -160,13 +160,11 @@ in
         dolphin-emu
         parsec-bin
 	    heroic
+        jdk8
 
         # development
-        jdk8
         erlang
         glpk
-        swiProlog
-        cmake
     ];
     environment.sessionVariables = {  
         TERMINAL = "alacritty";
