@@ -136,6 +136,8 @@ in
         killall
         tree
         htop
+        zip
+        unzip
 
      	#display applications
         rofi
