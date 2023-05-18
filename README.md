@@ -12,6 +12,6 @@ Have fun!
 ## Things that are missing!
 
 - [ ] Configuration files are not automatically put in the .config folder
-- [ ] Add "asking" to install.sh to separate OSs and use casses and etc..
-- [ ] Add a more apps since the ones here are very basic
-- [ ] SSH key generation
+- [ ] Add NixOs option
+- [ ] Add an actual linkFolder to link folders
+- [ ] Add some screenshots
