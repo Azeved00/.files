@@ -3,7 +3,9 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, ... }:
-
+let
+    unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
+in
 {
     imports =
     [ 
@@ -30,6 +32,7 @@
         };
     
         networkmanager.enable = true;
+        networkmanager.wifi.scanRandMacAddress = false;
 
         firewall.enable = true;
         firewall.allowedTCPPorts = [ ];
@@ -72,7 +75,6 @@
 
     # Enable sound.
     sound.enable = true;
-    nixpkgs.config.pulseaudio = true;
     hardware.pulseaudio.enable = true;
 
     # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -82,7 +84,16 @@
         extraGroups = [ "wheel" "audio" ];
     };
 
-    nixpkgs.config.allowUnfree = true;
+    nixpkgs.config = {
+        allowUnfree = true;
+        pulseaudio = true;
+        
+        packageOverrides = pkgs: rec {
+            polybar = pkgs.polybar.override {
+                i3Support = true;
+            };
+        };
+    };
 
     programs = {
         steam = {
@@ -119,35 +130,60 @@
         wget
         neovim
         networkmanager
-        clipmenu
-	    git
-	    pavucontrol
-     
+        xclip
+        git
+        pavucontrol
+        killall
+        tree
+        htop
+
      	#display applications
-     	rofi
+        rofi
      	i3
 	    polybar
 	    picom
 	    feh
+        dunst
+        shutter
      
 	    # applications
 	    alacritty
      	firefox
      	ranger
-	    heroic
-        steam
         jetbrains.idea-ultimate
+        zathura
+        spotify
 
-        # others
-        jetbrains-mono
+        # games
+        prismlauncher
+        steam
+        dolphin-emu
+        parsec-bin
+	    heroic
         jdk8
+
+        # development
+        erlang
+        glpk
     ];
     environment.sessionVariables = {  
         TERMINAL = "alacritty";
         EDITOR = "nvim";
+        NIX_CONF = "~/.files/nixos/nix.conf";
     };
-
     
+    fonts = {
+        enableDefaultFonts = true;
+        fontDir.enable = true;
+
+        fonts = with pkgs; [
+            (nerdfonts.override { fonts = [
+                "SpaceMono" 
+                "JetBrainsMono"
+                "DejaVuSansMono"
+             ]; })
+        ];
+    };
 
     nix.gc = {
         automatic = true;
