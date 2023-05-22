@@ -51,7 +51,7 @@ bindsym $mod+Shift+d exec --no-startup-id rofi -show run -theme Monokai
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Display Wallpaper, always.
-exec_always feh --no-fehbg --bg-fill $HOME/Pictures/Backgrounds/yellowsunset.jpg $HOME/Pictures/Backgrounds/yellowsunset.jpg
+exec_always feh --no-fehbg --bg-fill $HOME/Pictures/Backgrounds/download1.jpeg --bg-fill $HOME/Pictures/Backgrounds/download1.jpeg
 
 # Provide Gaps to Windows. Increase/Decrease as you like.
 gaps inner 10
@@ -271,7 +271,7 @@ bindsym $mod+t workspace 2; exec alacritty
 #eDP-X is the display used in Laptops.
 #HDMI-X is display used in Desktop connected to monitor with HDMI Cable.
 #VGA-X is display used in Desktop connected to monitor with VGA Cable.
-exec --no-startup-id xrandr --output DisplayPort-0 --primary --right-of HDMI-A-0 --auto
+exec --no-startup-id xrandr --output HDMI-A-0 --primary --right-of DisplayPort-0 --auto
 bindsym $mod+Shift+m exec --no-startup-id xrandr --output eDP-1 --auto --output HDMI-1 --off
-workspace 1 output DisplayPort-0
-workspace 2 output HDMI-A-0
+workspace 6 output DisplayPort-0
+workspace 1 output HDMI-A-0
