@@ -11,7 +11,5 @@ Have fun!
 
 ## Things that are missing!
 
-- [ ] Configuration files are not automatically put in the .config folder
-- [ ] Add NixOs option
-- [ ] Add an actual linkFolder to link folders
+- [ ] Link nixos configuration files and calling nixos-rebuild switch --update and other things
 - [ ] Add some screenshots
