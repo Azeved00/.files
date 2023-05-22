@@ -31,11 +31,13 @@ linkFile "$HOME/.inputrc"     "$DotFilesFolder/RC/input"
 linkFile "$HOME/.gitconfig"   "$DotFilesFolder/RC/gitconfig"
 linkFile "$HOME/.ssh/config"  "$DotFilesFolder/RC/ssh"
 
-linkFile "$HOME/.config/nvim" "$DotFilesFolder/Config/nvim"
-linkFile "$HOME/.config/polybar" "$DotFilesFolder/Config/polybar"
-linkFile "$HOME/.config/alacritty" "$DotFilesFolder/Config/alacritty"
-linkFile "$HOME/.config/rofi" "$DotFilesFolder/Config/rofi"
-linkFile "$HOME/.config/picom" "$DotFilesFolder/Config/picom"
-linkFile "$HOME/.config/i3" "$DotFilesFolder/Config/i3"
+linkFile "$HOME/.config/nvim"       "$DotFilesFolder/Config/nvim"
+linkFile "$HOME/.config/polybar"    "$DotFilesFolder/Config/polybar"
+linkFile "$HOME/.config/alacritty"  "$DotFilesFolder/Config/alacritty"
+linkFile "$HOME/.config/rofi"       "$DotFilesFolder/Config/rofi"
+linkFile "$HOME/.config/picom"      "$DotFilesFolder/Config/picom"
+linkFile "$HOME/.config/i3"         "$DotFilesFolder/Config/i3"
+
+linkFile "$HOME/Pictures/Backgrounds" "$DotFilesFolder/Assets/Pictures/Backgrounds"
 
 
