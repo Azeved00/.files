@@ -13,3 +13,8 @@ Have fun!
 
 - [ ] Link nixos configuration files and calling nixos-rebuild switch --update and other things
 - [ ] Add some screenshots
+- [ ] Add an alias upgrade that calls the update command depending on the OS it is in
+- [ ] Add music controls to i3
+- [ ] Cheat Sheet for controls would be nice (in python would be fun)
+- [ ] changing nvim config to lua
+- [ ] cleaning nixos config
