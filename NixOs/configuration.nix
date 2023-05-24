@@ -121,6 +121,11 @@ in
         ssh = {
             startAgent = true;
         };
+
+        java = {
+            enable = true;
+            package = pkgs.jdk8;
+        };
     };
 
 
@@ -155,6 +160,7 @@ in
         jetbrains.idea-ultimate
         zathura
         spotify
+        gimp
 
         # games
         prismlauncher
@@ -162,7 +168,6 @@ in
         dolphin-emu
         parsec-bin
 	    heroic
-        jdk8
 
         # development
         erlang
