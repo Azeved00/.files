@@ -16,6 +16,9 @@ if [ "$APPS" == "yes" ]; then
     "debian")
         $DotFilesFolder/Bin/packages.deb.sh
         ;;
+    "nixos")
+        #link config to its place
+        ;;
     *)
         echo "Invalid Option"
         return

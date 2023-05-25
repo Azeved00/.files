@@ -1,4 +1,3 @@
-#!/bin/bash 
 echo ""
 echo "----------------------- linking config files ----------------------- "
 BACKUP=$DotFilesFolder/Backup 
@@ -12,32 +11,15 @@ linkFile () {
     echo "linking $FILE"
 
     mkdir -p $DIR
-    if [[ -h $FILE || -f $FILE ]]; then
+    if [[ -h $FILE || -f $FILE || -d $FILE ]]; then
         mv $FILE $BACKUP
+    else
+        rm -rf $FILE
     fi
 
     ln -s $2 $FILE
 }
 
-# check if the folder exists
-# if it exists move it to the back up
-# and soft link each of
-# this needs to be redone
-moveFolder () {
-    mkdir -p $1
-
-    echo "linking directory $1"
-    if [ -d $1 ]; then 
-        mv -f $1 $BACKUP
-    fi
-
-    #link each file in the folder
-    for FILE in $2/$3/* ; do
-	    if [ -f $FILE ]; then
-            ln -s $FILE $1
-        fi
-    done
-}
 
 if ! [ -d $BACKUP ]; then
 	mkdir $BACKUP
@@ -49,7 +31,13 @@ linkFile "$HOME/.inputrc"     "$DotFilesFolder/RC/input"
 linkFile "$HOME/.gitconfig"   "$DotFilesFolder/RC/gitconfig"
 linkFile "$HOME/.ssh/config"  "$DotFilesFolder/RC/ssh"
 
-linkFile "$HOME/.config/nvim/init.vim" "$DotFilesFolder/Config/nvim/init.vim"
-linkFile "$HOME/.config/i3/config" "$DotFilesFolder/Config/i3/config"
+linkFile "$HOME/.config/nvim"       "$DotFilesFolder/Config/nvim"
+linkFile "$HOME/.config/polybar"    "$DotFilesFolder/Config/polybar"
+linkFile "$HOME/.config/alacritty"  "$DotFilesFolder/Config/alacritty"
+linkFile "$HOME/.config/rofi"       "$DotFilesFolder/Config/rofi"
+linkFile "$HOME/.config/picom"      "$DotFilesFolder/Config/picom"
+linkFile "$HOME/.config/i3"         "$DotFilesFolder/Config/i3"
+
+linkFile "$HOME/Pictures/Backgrounds" "$DotFilesFolder/Assets/Pictures/Backgrounds"
 
 

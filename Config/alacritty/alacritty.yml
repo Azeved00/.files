@@ -110,8 +110,8 @@ scrolling:
 # Font configuration
 font:
   # Normal (roman) font face
-  normal:
-    family: JetBrainsMono
+  #normal:
+  #family: JetBrainsMono
     #
     # Default:
     #   - (macOS) Menlo
