@@ -17,4 +17,4 @@ Have fun!
 - [ ] Add music controls to i3
 - [ ] Cheat Sheet for controls would be nice (in python would be fun)
 - [ ] changing nvim config to lua
-- [ ] cleaning nixos config
+- [ ] cleaning nixos config by dividing in different fields
