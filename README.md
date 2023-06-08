@@ -11,7 +11,6 @@ Have fun!
 
 ## Things that are missing!
 
-- [ ] Link nixos configuration files and calling nixos-rebuild switch --update and other things
 - [ ] Add some screenshots
 - [ ] Add an alias upgrade that calls the update command depending on the OS it is in
 - [ ] Add music controls to i3

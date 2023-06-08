@@ -39,4 +39,8 @@ $DotFilesFolder/Bin/link.sh
 #run custom program to generate ssh keys for github
 $DotFilesFolder/Bin/keygen.sh
 
+if [ "$OS" == "nixos" ]; then
+    sudo nixos-rebuild switch
+fi
+
 source ~/.bashrc
