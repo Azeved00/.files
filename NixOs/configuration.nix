@@ -176,7 +176,7 @@ in
     environment.sessionVariables = {  
         TERMINAL = "alacritty";
         EDITOR = "nvim";
-        NIX_CONF = "~/.files/nixos/nix.conf";
+        NIX_CONF = "/etc/nixos/nix.conf";
     };
     
     fonts = {
