@@ -87,9 +87,5 @@ in
         dolphin-emu
         parsec-bin
 	    heroic
-
-        # development
-        erlang
-        glpk
     ];
 }
