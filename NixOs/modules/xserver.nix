@@ -10,6 +10,7 @@
         
         displayManager = {
             lightdm.enable = true;
+            lightdm.greeters.slick.enable = true;
             defaultSession = "none+i3";
         };
         
@@ -17,5 +18,6 @@
 	        i3.enable = true;
 	        i3.package = pkgs.i3-gaps;
         };
+
     };
 }

@@ -2,7 +2,7 @@
 {
     users.users.azevedo = {
         isNormalUser = true;
-        description = "brr";
+        description = "Azevedo";
         extraGroups = [  "networkmanager" "wheel" "audio" ];
     };
 }

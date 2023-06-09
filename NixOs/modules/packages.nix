@@ -71,7 +71,8 @@ in
 	    feh
         dunst
         shutter
-     
+        playerctl
+        
 	    # applications
 	    alacritty
      	firefox

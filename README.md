@@ -16,6 +16,5 @@ Have fun!
 - [ ] Automate :PlugInstall
 - [ ] Add some screenshots
 - [ ] Add an alias upgrade that calls the update command depending on the OS it is in
-- [ ] Add music controls to i3
 - [ ] Cheat Sheet for controls would be nice (in python would be fun)
 - [ ] changing nvim config to lua

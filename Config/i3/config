@@ -23,9 +23,11 @@ exec_always feh --no-fehbg --bg-fill $HOME/Pictures/Backgrounds/download1.jpeg -
 # compositor
 exec_always picom --config ~/.config/picom/picom.conf
 # lockscreen
-exec --no-startup-id xss-lock --transfer-sleep-lock -- betterlockscreen -l --nofork
+#exec --no-startup-id xss-lock --transfer-sleep-lock -- betterlockscreen -l --nofork
 # network manager
-exec --no-startup-id nm-applet
+#exec --no-startup-id nm-applet
+# playerctl
+exec --no-startup-id playerctld daemon
 
 #----------------------------------------- Modes --------------------------------------
 # resize window (you can also use the mouse for that)
@@ -141,21 +143,22 @@ bindsym $mod+Shift+d exec --no-startup-id rofi -show run -theme Monokai
 # Suspend the system to RAM (needs swap space)
 #bindsym $mod+s exec systemctl suspend
 
-#--------- AUDIO ---------
-# Use pactl to adjust volume in PulseAudio.
-#Volume Control in ALG i3
-bindsym XF86AudioRaiseVolume exec amixer -q set Master 5%+ unmute
-bindsym XF86AudioLowerVolume exec amixer -q set Master 5%- unmute
-bindsym XF86AudioMute exec amixer -q set Master toggle
-
+#--------- SCREEN --------
 #Brightness Control in ALG i3
 bindsym XF86MonBrightnessUp exec sudo xbacklight -inc 10
 bindsym XF86MonBrightnessDown exec sudo xbacklight -dec 10
 
+#--------- AUDIO ---------
+# Use pactl to adjust volume in PulseAudio.
+#Volume Control in ALG i3
+bindsym F7 exec amixer -q set Master 5%+ unmute
+bindsym F8 exec amixer -q set Master 5%- unmute
+bindsym F6 exec amixer -q set Master toggle
 
-
-# The keybindings starting from here till the end of the document are
-# used for navigation in the window manager
+#use playerctl to control music
+bindsym F9 exec playerctl play-pause
+bindsym F10 exec playerctl previous
+bindsym F11 exec playerctl next
 
 #----- WINDOW MANAGEMENT -----
 
