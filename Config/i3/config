@@ -145,8 +145,8 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 
 # 6] change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-#bindsym $mod+w layout tabbed
+#bindsym $mod+s layout stacking
+bindsym $mod+s layout tabbed
 bindsym $mod+e layout toggle split
 
 # 7] toggle tiling / floating
@@ -233,16 +233,6 @@ mode "resize" {
 
 # 13B] Enter Resize Mode
 bindsym $mod+r mode "resize"
-
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available). Commented out due to use of polybar. If you want to
-# use i3 bars (status or blocks) this are some examples on how you can do it.
-# bar {
-        #status_command i3status
-        #tray_output primary
-        #status_command i3status -c ~/.config/i3/i3status.conf
-        #status_command i3blocks -c ~/.config/i3/i3blocks.conf
-#}
 
 
 # Launch a program on a certain workspace, from rofi (which may or may not have a keybinding)
