@@ -19,4 +19,3 @@ Have fun!
 - [ ] Add music controls to i3
 - [ ] Cheat Sheet for controls would be nice (in python would be fun)
 - [ ] changing nvim config to lua
-- [ ] Divide i3 config in modules
