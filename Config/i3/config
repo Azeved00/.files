@@ -135,7 +135,7 @@ bindsym $mod+Shift+d exec --no-startup-id rofi -show run -theme Monokai
 
 #------- COMPUTER --------
 # Shutdown the computer
-#bindsym $mod+Shift+s exec shutdown now
+bindsym F12 exec shutdown now
 
 #Reboot Machine
 #bindsym $mod+r exec systemctl reboot
