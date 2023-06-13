@@ -11,6 +11,7 @@ set expandtab
 set foldmethod=indent
 set nofoldenable
 set foldlevel=99
+set shada=
 
 "nnoremap <silent> <C-f> za<CR>
 nnoremap <silent> <C-s> :w<CR>
@@ -133,7 +134,7 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 "endfunction
 "autocmd VimEnter * call AirlineInit()
 
-let g:airline_section_y = airline#section#create_right(['ffenc','foo'])
+"let g:airline_section_y = airline#section#create_right(['ffenc','foo'])
 "linting
 let g:ale_linters = {
     \ 'python': ['pylint'],
@@ -163,8 +164,8 @@ let g:tagalong_verbose = 1
 
 "--- Dont forget PlugInstall to install every plugin---
 
-let bufferline = get(g:, 'bufferline', {})
-let bufferline.icons = v:true
+"let bufferline = get(g:, 'bufferline', {})
+"let bufferline.icons = v:true
 
 let g:rainbow_conf = {
     \'separately': {
