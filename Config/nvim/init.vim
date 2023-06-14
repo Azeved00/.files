@@ -11,6 +11,7 @@ set expandtab
 set foldmethod=indent
 set nofoldenable
 set foldlevel=99
+set viminfo=
 set shada=
 
 "nnoremap <silent> <C-f> za<CR>
