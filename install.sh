@@ -17,7 +17,7 @@ if [ "$APPS" == "yes" ]; then
         $DotFilesFolder/Bin/packages.deb.sh
         ;;
     "nixos")
-        #link config to its place
+        $DotFilesFolder/Bin/nix-link.sh
         ;;
     *)
         echo "Invalid Option"
@@ -38,5 +38,9 @@ $DotFilesFolder/Bin/link.sh
 
 #run custom program to generate ssh keys for github
 $DotFilesFolder/Bin/keygen.sh
+
+if [ "$OS" == "nixos" ]; then
+    sudo nixos-rebuild switch
+fi
 
 source ~/.bashrc
