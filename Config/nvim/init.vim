@@ -29,23 +29,24 @@ set clipboard+=unnamedplus
 
 "add all plugs
 call plug#begin()
-Plug 'https://github.com/preservim/nerdtree' " NerdTree
-Plug 'https://github.com/vim-airline/vim-airline' " Status bar
+Plug 'preservim/nerdtree' " NerdTree
+Plug 'vim-airline/vim-airline' " Status bar
 Plug 'vim-airline/vim-airline-themes'
-Plug 'https://github.com/ryanoasis/vim-devicons' " Developer Icons
-Plug 'https://github.com/tc50cal/vim-terminal' " Vim Terminal
+Plug 'ryanoasis/vim-devicons' " Developer Icons
+Plug 'tc50cal/vim-terminal' " Vim Terminal
 Plug 'airblade/vim-gitgutter' "git shannanigans
 Plug 'jiangmiao/auto-pairs'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'romgrk/barbar.nvim'
 "Plug 'neoclide/coc.nvim'
-Plug 'https://github.com/dense-analysis/ale' "linting
+Plug 'dense-analysis/ale' "linting
 Plug 'luochen1990/rainbow'
 Plug 'mattn/emmet-vim'
-Plug 'https://github.com/ap/vim-css-color' " CSS Color Preview
+Plug 'ap/vim-css-color' " CSS Color Preview
 Plug 'AndrewRadev/tagalong.vim'
 Plug 'tpope/vim-surround'
 "Plug 'abdalrahman-ali/vim-remembers'
+Plug 'nathanaelkane/vim-indent-guides'
 
 "Color schemes
 "Plug 'https://github.com/xiyaowong/nvim-transparent'
