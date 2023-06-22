@@ -3,8 +3,8 @@
     imports =
     [ 
         /etc/nixos/hardware-configuration.nix
-
-
+        
+        
         ./modules/boot.nix
         ./modules/users.nix
         ./modules/network.nix

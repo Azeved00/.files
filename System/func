@@ -21,7 +21,7 @@ function manpdf() {
 }
 
 # Initiate a project
-initProject() {
+function initProject() {
     local folder="$@"
 
     if ! [[ -n "$folder" ]]; then
@@ -52,4 +52,49 @@ initProject() {
         echo "No remote provided. Use the following command to add a remote:"
         echo "git remote add origin <remote-url>"
     fi
+}
+
+function getOS() {
+    if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+        if command -v apt-get >/dev/null 2>&1; then
+            echo "Debian-based"
+        elif command -v pacman >/dev/null 2>&1; then
+            echo "Arch-based"
+        elif [ -f "/etc/NIXOS" ]; then
+            echo "NixOS"
+        else
+            echo "Unknown Linux distribution"
+        fi
+    elif [[ "$OSTYPE" == "darwin"* ]]; then
+        echo "Mac OS"
+    elif [[ "$OSTYPE" == "cygwin" ]]; then
+        echo "Cygwin"
+    elif [[ "$OSTYPE" == "msys" ]]; then
+        echo "Windows (MSYS)"
+    elif [[ "$OSTYPE" == "win32" ]]; then
+        echo "Windows"
+    else
+        echo "Unknown"
+    fi
+}
+
+function update(){
+    local OS=$(getOS)
+    echo "$OS"
+    case $OS in
+        "Debian-based")
+            sudo apt update && sudo apt upgrade
+            ;;
+        "Arch-based")
+            echo "Running Arch-based command"
+            sudo pacman -Syu
+            ;;
+        "NixOS")
+            echo "Running NixOS command"
+            sudo nixos-rebuild switch
+            ;;
+        *)
+            echo "There is no update command for this os"
+            ;;
+    esac
 }
