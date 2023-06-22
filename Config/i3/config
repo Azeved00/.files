@@ -152,8 +152,8 @@ bindsym XF86MonBrightnessDown exec sudo xbacklight -dec 10
 #--------- AUDIO ---------
 # Use pactl to adjust volume in PulseAudio.
 #Volume Control in ALG i3
-bindsym F7 exec amixer -q set Master 5%+ unmute
-bindsym F8 exec amixer -q set Master 5%- unmute
+bindsym F7 exec amixer -q set Master 5%- unmute
+bindsym F8 exec amixer -q set Master 5%+ unmute
 bindsym F6 exec amixer -q set Master toggle
 
 #use playerctl to control music
