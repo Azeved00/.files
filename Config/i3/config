@@ -113,8 +113,11 @@ workspace 1 output HDMI-1
 
 #-------------------------------------- Key Bindings ----------------------------------
 #----- Applications ------
-#for_window [class="Firefox"] move to workspace $ws1
-#for_window [class="Alacritty"] move to workspace $ws2
+for_window [class="firefox"] move to workspace $ws1
+for_window [class="Alacritty"] move to workspace $ws2
+for_window [class="primlauncher"] move to workspace $ws4
+for_window [class="dolphin-emu"] move to workspace $ws4
+for_window [class="Minecraft*"] move to workspace $ws4
 #for_window [class="Discord"] move to workspace $ws4
 #for_window [class="Spotify"] move to workspace $ws4
 #for_window [class="^.*"] border pixel 0
@@ -123,7 +126,7 @@ workspace 1 output HDMI-1
 # defined keybinding, on a certain workspace, without
 # touching program launcher. Assign Programs to respective
 # workspaces.
-bindsym $mod+b workspace 1; exec Firefox
+bindsym $mod+b workspace 1; exec firefox
 bindsym $mod+t workspace 2; exec alacritty 
 
 
