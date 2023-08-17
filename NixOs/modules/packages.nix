@@ -88,5 +88,6 @@ in
         dolphin-emu
         parsec-bin
 	    heroic
+        appimage-run
     ];
 }
