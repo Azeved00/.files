@@ -103,8 +103,8 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 #eDP-X is the display used in Laptops.
 #HDMI-X is display used in Desktop connected to monitor with HDMI Cable.
 #VGA-X is display used in Desktop connected to monitor with VGA Cable.
-exec --no-startup-id xrandr --output HDMI-1 --primary --right-of DP-1 --auto
 exec --no-startup-id xrandr --output DP-1 --mode 1280x800
+exec --no-startup-id xrandr --output HDMI-1 --primary --right-of DP-1 --auto
 #bindsym $mod+Shift+m exec --no-startup-id xrandr --output eDP-1 --auto --output HDMI-1 --off
 workspace 6 output DP-1
 workspace 1 output HDMI-1
@@ -115,9 +115,18 @@ workspace 1 output HDMI-1
 #----- Applications ------
 for_window [class="firefox"] move to workspace $ws1
 for_window [class="Alacritty"] move to workspace $ws2
+
+#Games
 for_window [class="primlauncher"] move to workspace $ws4
 for_window [class="dolphin-emu"] move to workspace $ws4
 for_window [class="Minecraft*"] move to workspace $ws4
+for_window [class="steam"] move to workspace $ws4
+for_window [class="heroic"] move to workspace $ws4
+#riot games thingy
+for_window [class="explorer.exe"] move to workspace $ws4
+for_window [class="leagueclientux*"] move to workspace $ws4
+for_window [class="league*"] move to workspace $ws4
+
 #for_window [class="Discord"] move to workspace $ws4
 #for_window [class="Spotify"] move to workspace $ws4
 #for_window [class="^.*"] border pixel 0
