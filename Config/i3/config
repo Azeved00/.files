@@ -115,6 +115,7 @@ workspace 1 output HDMI-1
 #----- Applications ------
 for_window [class="firefox"] move to workspace $ws1
 for_window [class="Alacritty"] move to workspace $ws2
+for_window [class="Develop*"] move to workspace $ws2
 
 #Games
 for_window [class="primlauncher"] move to workspace $ws4
@@ -126,6 +127,7 @@ for_window [class="heroic"] move to workspace $ws4
 for_window [class="explorer.exe"] move to workspace $ws4
 for_window [class="leagueclientux*"] move to workspace $ws4
 for_window [class="league*"] move to workspace $ws4
+for_window [class="Poke*"] move to workspace $ws4
 
 #for_window [class="Discord"] move to workspace $ws4
 #for_window [class="Spotify"] move to workspace $ws4
@@ -148,7 +150,7 @@ bindsym $mod+Shift+d exec --no-startup-id rofi -show run -theme Monokai
 
 #------- COMPUTER --------
 # Shutdown the computer
-bindsym F12 exec shutdown now
+bindsym $mod+F12 exec shutdown now
 
 #Reboot Machine
 #bindsym $mod+r exec systemctl reboot
