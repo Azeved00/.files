@@ -35,6 +35,10 @@ in
             enable = true;
             package = pkgs.jdk8;
         };
+
+        neovim = {
+            enable = true;
+        };
     };
 
     nixpkgs.config = {
@@ -52,7 +56,6 @@ in
     environment.systemPackages = with pkgs; [
  	    #basic applications
         wget
-        neovim
         networkmanager
         xclip
         git
@@ -72,12 +75,11 @@ in
         dunst
         shutter
         playerctl
-        
+
 	    # applications
 	    alacritty
      	firefox
      	ranger
-        jetbrains.idea-ultimate
         zathura
         spotify
         gimp
