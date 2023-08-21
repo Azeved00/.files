@@ -1,16 +1,3 @@
-set number
-set relativenumber
-set autoindent
-set tabstop=4
-set shiftwidth=4
-set smarttab
-set softtabstop=4
-set mouse=a
-set encoding=UTF-8
-set expandtab
-set foldmethod=indent
-set nofoldenable
-set foldlevel=99
 set viminfo=
 set shada=
 
@@ -24,8 +11,6 @@ nnoremap <silent> <C-h> :bprevious<CR>
 nnoremap <silent> <C-l> :bnext<CR>
 nnoremap <silent> <C-w> :bdelete!<CR>
 
-" copy and paste
-set clipboard+=unnamedplus
 
 "add all plugs
 call plug#begin()
@@ -54,9 +39,7 @@ Plug 'nathanaelkane/vim-indent-guides'
 "Plug 'https://github.com/sainnhe/everforest'
 "Plug 'https://github.com/rakr/vim-one'
 "Plug 'https://github.com/sheerun/vim-wombat-scheme'
-Plug 'folke/tokyonight.nvim'
-Plug 'rebelot/kanagawa.nvim'
-Plug 'drewtempelmeyer/palenight.vim'
+
 "Plug 'mhartington/oceanic-next'
 "Plug 'https://github.com/sonph/onehalf'
 "Plug 'jackm245/nordark.nvim'
@@ -89,8 +72,8 @@ let g:NERDTreeIgnore=['^.git$', '^.idea$', '^.vscode$', '^.history$', '^node_mod
 "autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
 " Start NERDTree when Vim is started without file arguments.
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
+"autocmd StdinReadPre * let s:std_in=1
+"autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
 
 
 " Start NERDTree. If a file is specified, move the cursor to its window.
