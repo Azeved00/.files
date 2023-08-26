@@ -83,8 +83,9 @@ PS1="$YELLOW\t \W > $GREY"
                 CLICOLOR = "1";
                 LSCOLORS = "gxfxcxdxbxegedabagacad";
 
-                GREP_OPTIONS = "—color=auto";
+                GREP_OPTIONS = "-color=auto";
                 HISTCONTROL="ignoreboth";
+                TERMINAL = "alacritty";
             }; 
 
             historySize = 2000;
