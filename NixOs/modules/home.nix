@@ -65,6 +65,11 @@
             bashrcExtra = "eval $(ssh-agent)";
         };
         
+        programs.neovim = {
+            enable = true;
+            defaultEditor = true;
+        };
+
         programs.home-manager.enable = true;
    };
 }
