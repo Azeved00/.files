@@ -3,7 +3,7 @@
     home-manager.useGlobalPkgs = true;  
     home-manager.users.azevedo = { config, pkgs, ... }: {
         home.stateVersion = "23.05";
-        home.packages = [ pkgs.alacritty ];
+        home.packages = [ ];
         
         programs.git = {
             enable = true;
@@ -203,6 +203,69 @@
                 draw_bold_text_with_bright_colors = true;
                 live_config_reload = true;
                 #working_directory = "/users/azevedo/";
+            };
+        };
+
+        services.picom = {
+            enable = true;
+            backend = "xrender";
+            vSync = true;
+
+            shadow = true;
+            shadowExclude = [
+                "name = 'Notification'"
+                "class_g = 'Conky'"
+                "class_g ?= 'Notify-osd'"
+                "class_g = 'Cairo-clock'"
+                "_GTK_FRAME_EXTENTS@:c"
+            ];
+            shadowOffsets = [ 7 7 ];
+
+            fade = true;
+            fadeSteps = [0.03 0.03];
+        
+            inactiveOpacity = 1;
+            opacityRules = [
+                "100:name *= 'Picture'"
+            ];
+
+            wintypes = {
+                tooltip = { 
+                    fade = true; 
+                    shadow = true; 
+                    opacity = 0.75; 
+                    focus = true; 
+                    full-shadow = false; 
+                };
+                dock = { shadow = false; };
+                dnd = { shadow = false; };
+                popup_menu = { opacity = 0.8; };
+                dropdown_menu = { opacity = 0.8; };
+            };
+
+
+            settings = {
+                frame-opacity = 0.7;
+                inactive-opacity-override = false;
+                focus-exclude = ["class_g = 'Cairo-clock'"];
+                corner-radius = 0;
+                blur-kern = "3z3box";
+                blur-background-exclude = [
+                  "window_type = 'dock'"
+                  "window_type = 'desktop'"
+                  "_GTK_FRAME_EXTENTS@:c"
+                ];
+
+                mark-wmwin-focused = true;
+                mark-ovredir-focused = true;
+                detect-rounded-corners = true;
+                detect-client-opacity = true;
+                detect-trasient = true;
+                detect-client-leader = true;
+                use-damage = true;
+                log-level = "warn";
+                
+                refresh-rate = 0;
             };
         };
 
