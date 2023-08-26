@@ -3,7 +3,7 @@
     home-manager.useGlobalPkgs = true;  
     home-manager.users.azevedo = { config, pkgs, ... }: {
         home.stateVersion = "23.05";
-        home.packages = [ pkgs.atool pkgs.httpie ];
+        home.packages = [ ];
         
         programs.git = {
             enable = true;
@@ -62,7 +62,33 @@
                 "dotfiles"="ranger ~/.files/";
             };
 
-            bashrcExtra = "eval $(ssh-agent)";
+            profileExtra = "";
+            initExtra = ''
+eval $(ssh-agent)
+YELLOW='\[\e[1;33m\]'
+GREY='\[\e[0;37m\]'
+PS1="$YELLOW\t \W > $GREY"
+'';
+
+            bashrcExtra = "";
+
+            shellOptions = [
+                "histappend"    # append to history file, dont overwrite it
+                "checkwinsize"  # checkwindow size after each command
+                "nocaseglob"    # case insensitive globbing
+                "cdspell"       # autocorrect typos in path names in cd
+            ];
+
+            sessionVariables = {
+                CLICOLOR = "1";
+                LSCOLORS = "gxfxcxdxbxegedabagacad";
+
+                GREP_OPTIONS = "—color=auto";
+                HISTCONTROL="ignoreboth";
+            }; 
+
+            historySize = 2000;
+            historyFileSize = 10000;
         };
         
         programs.neovim = {
