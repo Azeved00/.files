@@ -56,7 +56,7 @@
                 "gs" = "git status";
                 "gp" = "git push";
                 "gf" = "git fetch && git pull && git fetch";
-                "gc" = "got commit -m";
+                "gc" = "git commit -m";
                 "gsmod" = "git submodule sync && git submodule update --init --recursive";
                 
                 "dotfiles"="ranger ~/.files/";
