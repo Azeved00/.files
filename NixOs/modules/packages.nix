@@ -70,7 +70,6 @@ in
         playerctl
 
 	    # applications
-	    alacritty
      	firefox
      	ranger
         zathura
