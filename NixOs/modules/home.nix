@@ -107,7 +107,7 @@
             };
             variables = {
                 completion-ignore-case = true;
-                show-all-if-ambiguois = true;
+                show-all-if-ambiguous = true;
             };
         };
 
