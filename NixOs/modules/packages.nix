@@ -23,10 +23,6 @@ in
         #   enableSSHSupport = true;
         # };
 
-        bash = {
-            # interactiveShellInit = (builtins.readFile ./bash);
-        };
-
         ssh = {
             startAgent = true;
         };
@@ -36,9 +32,6 @@ in
             package = pkgs.jdk8;
         };
 
-        neovim = {
-            enable = true;
-        };
     };
 
     nixpkgs.config = {
