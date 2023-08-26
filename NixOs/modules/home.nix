@@ -1,12 +1,10 @@
 {pkgs, ...}:
 {
     home-manager.useGlobalPkgs = true;  
-    home-manager.users.azevedo = { pkgs, ... }: {
+    home-manager.users.azevedo = { config, pkgs, ... }: {
         home.stateVersion = "23.05";
         home.packages = [ pkgs.atool pkgs.httpie ];
-        programs.bash.enable = true;
-
-
+        
         programs.git = {
             enable = true;
             userName  = "João Azevedo";
@@ -37,5 +35,36 @@
                 };
             };
         };
+
+        programs.bash = {
+            enable = true;
+
+            shellAliases = {
+                "reload"="source ~/.bashrc";
+
+                "mysql"="mysql -u root -p";
+            
+                "ls" = "ls --colo=auto";
+                "ll" = "ls -l";
+                "la" = "ls -la";
+
+                ".." = "cd ..";
+                "."  = "ls .";
+                "..." = "cd ../../";
+
+                "ga" = "git add";
+                "gs" = "git status";
+                "gp" = "git push";
+                "gf" = "git fetch && git pull && git fetch";
+                "gc" = "got commit -m";
+                "gsmod" = "git submodule sync && git submodule update --init --recursive";
+                
+                "dotfiles"="ranger ~/.files/";
+            };
+
+            bashrcExtra = "eval $(ssh-agent)";
+        };
+        
+        programs.home-manager.enable = true;
    };
 }
