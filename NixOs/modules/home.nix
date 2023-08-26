@@ -63,12 +63,13 @@
             };
 
             profileExtra = "";
+            
             initExtra = ''
-eval $(ssh-agent)
-YELLOW='\[\e[1;33m\]'
-GREY='\[\e[0;37m\]'
-PS1="$YELLOW\t \W > $GREY"
-'';
+                eval $(ssh-agent)
+                YELLOW='\[\e[1;33m\]'
+                GREY='\[\e[0;37m\]'
+                PS1="$YELLOW\t \W > $GREY"
+            '';
 
             bashrcExtra = "";
 
@@ -95,6 +96,19 @@ PS1="$YELLOW\t \W > $GREY"
         programs.neovim = {
             enable = true;
             defaultEditor = true;
+        };
+
+        programs.readline = {
+            enable = true;
+            bindings = {
+                "\\e[Z" = "menu-complete";
+                "\\e[A" = "history-search-backward";
+                "\\e[B" = "history-search-forward";
+            };
+            variables = {
+                completion-ignore-case = true;
+                show-all-if-ambiguois = true;
+            };
         };
 
         programs.home-manager.enable = true;
