@@ -4,7 +4,7 @@
     [ 
         /etc/nixos/hardware-configuration.nix
 
-        <home-manager/nixos>
+        #<home-manager/nixos>
         
         ./modules/boot.nix
         ./modules/users.nix
@@ -15,7 +15,6 @@
         ./modules/local.nix
         ./modules/services.nix
         ./modules/variables.nix
-        ./modules/home.nix
     ];
 
 
