@@ -9,6 +9,7 @@
         ./alacritty.nix
         ./picom.nix
         ./neovim.nix
+        ./polybar.nix
     ];
 
     home.username = "azevedo";
