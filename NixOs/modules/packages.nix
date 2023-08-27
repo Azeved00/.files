@@ -58,6 +58,7 @@ in
         htop
         zip
         unzip
+        home-manager
 
      	#display applications
         rofi
