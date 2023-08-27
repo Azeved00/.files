@@ -17,7 +17,7 @@ default_floating_border pixel 1
 
 #-------------------------------------- Starting Apps ---------------------------------
 #polybar
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec_always --no-startup-id polybar
 #background
 exec_always feh --no-fehbg --bg-fill $HOME/Pictures/Backgrounds/download1.jpeg --bg-fill $HOME/Pictures/Backgrounds/download1.jpeg
 # compositor

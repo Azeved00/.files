@@ -37,12 +37,6 @@ in
     nixpkgs.config = {
         allowUnfree = true;
         pulseaudio = true;
-        
-        packageOverrides = pkgs: rec {
-            polybar = pkgs.polybar.override {
-                i3Support = true;
-            };
-        };
     };
 
 
@@ -61,10 +55,7 @@ in
         home-manager
 
      	#display applications
-        rofi
      	i3
-	    polybar
-	    picom
 	    feh
         dunst
         shutter
