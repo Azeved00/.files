@@ -1,7 +1,7 @@
-{pkgs, ...}:
+{config, pkgs, lib, ...}:
 {
     home-manager.useGlobalPkgs = true;  
-    home-manager.users.azevedo = { config, pkgs, ... }: {
+    home-manager.users.azevedo = {
         home.stateVersion = "23.05";
         home.packages = [ ];
         
@@ -219,7 +219,6 @@
                 "class_g = 'Cairo-clock'"
                 "_GTK_FRAME_EXTENTS@:c"
             ];
-            shadowOffsets = [ 7 7 ];
 
             fade = true;
             fadeSteps = [0.03 0.03];
@@ -245,11 +244,13 @@
 
 
             settings = {
+                shadow-offset-x = -7;
+                shadow-offset-y = -7;
                 frame-opacity = 0.7;
                 inactive-opacity-override = false;
                 focus-exclude = ["class_g = 'Cairo-clock'"];
                 corner-radius = 0;
-                blur-kern = "3z3box";
+                #blur-kern = "3z3box";
                 blur-background-exclude = [
                   "window_type = 'dock'"
                   "window_type = 'desktop'"
@@ -265,7 +266,6 @@
                 use-damage = true;
                 log-level = "warn";
                 
-                refresh-rate = 0;
             };
         };
 
