@@ -15,7 +15,7 @@
     home.username = "azevedo";
     home.homeDirectory = "/home/azevedo";
     home.stateVersion = "23.05";
-    home.packages = [ ];
+    home.packages = [ pkgs.rofi ];
 
     home.file = {};
         
