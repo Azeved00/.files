@@ -1,17 +1,26 @@
 echo ""
 echo "------------------- generating key ------------------"
 
-#here i still need to do some work
-# like get how many keys i want to generate
-# the email
-# the name
-# possibly the type
-# and
+if [ -z "$SSH_AUTH_SOCK" ]; then
+    eval "$(ssh-agent -s)" 
+fi
 
-ssh-keygen -t ed25519 -C "jferazevedo@gmail.com"
+read -p "Enter your email address: " email
+read -p "Enter the desired SSH key file name (without extension): " key_filename
+
+ssh_key_file="$HOME/.ssh/${key_filename}"
 
 
-eval $(ssh-agent -s) 
-ssh-add ~/.ssh/id_ed25519
+if [ -f "$ssh_key_file" ]; then
+    echo "SSH key file '$key_filename' already exists!"
+    read -p "Do you want to proceed and overwrite? (y/n): " overwrite_response
+    if [ "$overwrite_response" != "y" ]; then
+        echo "Aborting."
+        exit 1
+    fi
+fi
 
-cat ~/.ssh/id_ed25519.pub
+ssh-keygen -t ed25519 -C "$email" -f "$ssh_key_file"
+
+ssh-add "$ssh_key_file"
+cat "${ssh_key_file}.pub"
