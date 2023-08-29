@@ -4,13 +4,18 @@
         ./git.nix
         ./bash.nix
         ./readline.nix
+        ./neovim.nix 
         ./ssh.nix
+    ] 
+    ++ (if builtins.getEnv "WSL_DISTRO_NAME" == "" 
+    	then [ 
+            ./alacritty.nix
+            ./picom.nix
+            ./polybar.nix 
+    	] 
+    	else []
+    );
 
-        ./alacritty.nix
-        ./picom.nix
-        ./neovim.nix
-        ./polybar.nix
-    ];
 
     home.username = "azevedo";
     home.homeDirectory = "/home/azevedo";
