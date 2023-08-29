@@ -4,7 +4,7 @@
         ./git.nix
         ./bash.nix
         ./readline.nix
-        ./neovim.nix 
+        ./neovim/program.nix 
         ./ssh.nix
     ] 
     ++ (if builtins.getEnv "WSL_DISTRO_NAME" == "" 
