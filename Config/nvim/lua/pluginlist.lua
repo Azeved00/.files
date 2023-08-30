@@ -4,7 +4,7 @@
 
 
 return {
-
+    "airblade/vim-gitgutter",
     {
         "rebelot/kanagawa.nvim",
         priority = 1000,
