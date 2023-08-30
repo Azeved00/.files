@@ -67,8 +67,8 @@ services.polybar = {
             border.top.size = "1%";
             border.color = "#00000000";
 
-            padding.left = 2;
-            padding.right = 2;
+            padding.left = 0;
+            padding.right = 1;
 
             module.margin.left = 1;
             module.margin.right = 1;
@@ -86,7 +86,7 @@ services.polybar = {
                 right = "temperature memory pulseaudio wlan powermenu";
             };
 
-            tray.position = "center";
+            tray.position = "none";
             tray.padding = 2;
 
             cursor.click = "pointer";
@@ -101,7 +101,7 @@ services.polybar = {
 
         "module/i3" = {
             type = "internal/i3";
-            format = "<label.state> <label-mode>";
+            format = "<label-state> <label-mode>";
             index.sort = true;
             wrapping.scroll = false;
 
@@ -117,6 +117,8 @@ services.polybar = {
                 focused = {
                     text = "%icon%";
                     background = "\${Acolors.background-alt}";
+                    underline = "\${Acolors.primary}";
+                    padding = 2;
                 };
 
                 unfocused = {
