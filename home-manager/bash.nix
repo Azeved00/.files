@@ -4,7 +4,7 @@
         enable = true;
 
         shellAliases = {
-            "reload"="source ~/.bashrc";
+            "reload"="source ${config.home.homeDirectory}/.bashrc";
 
             "mysql"="mysql -u root -p";
         
@@ -22,7 +22,7 @@
             "gc" = "git commit -m";
             "gsmod" = "git submodule sync && git submodule update --init --recursive";
             
-            "dotfiles"="ranger ~/.files/";
+            "dotfiles"="ranger ${config.home.homeDirectory}/.files/";
         };
 
         profileExtra = "";
@@ -34,7 +34,7 @@
             PS1="$YELLOW\t \W > $GREY"
         '';
 
-        bashrcExtra = "";
+        bashrcExtra = builtins.readFile "${config.home.homeDirectory}/.files/System/func";
 
         shellOptions = [
             "histappend"    # append to history file, dont overwrite it

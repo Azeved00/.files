@@ -1,10 +1,10 @@
 { config, pkgs, lib, ...}:
 {
 home.activation.installNvimConfig = ''
-    if [ -d "${config.home.homeDirectory}/.config/nvim" ]; then
-        rm ${config.home.homeDirectory}/.config/nvim
+    if [ -d "${config.xdg.configHome}/nvim" ]; then
+        rm ${config.xdg.configHome}/nvim
     fi
-    ln -s "${config.home.homeDirectory}/.files/Config/nvim" "${config.home.homeDirectory}/.config/nvim"
+    ln -s "${config.home.homeDirectory}/.files/Config/nvim" "${config.xdg.configHome}/nvim"
 '';
 
 
