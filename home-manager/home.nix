@@ -12,6 +12,7 @@
             ./alacritty.nix
             ./picom.nix
             ./polybar.nix 
+            ./rofi.nix
     	] 
     	else []
     );
