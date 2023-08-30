@@ -23,10 +23,16 @@
     home.stateVersion = "23.05";
     home.packages = [ pkgs.rofi ];
 
-    xdg.enable = true;
-    xdg.mimeApps.defaultApplications = {
-        "text/plain" = [ "neovim.desktop" ];
-        "application/pdf" = [ "zathura.desktop" ];
+    xdg = {
+        enable = true;
+        mimeApps.defaultApplications = {
+            "text/plain" = [ "neovim.desktop" ];
+            "application/pdf" = [ "zathura.desktop" ];
+        };
+        userDirs = {
+            enable = true;
+            createDirectories = false;
+        };
     };
 
     programs.home-manager.enable = true;
