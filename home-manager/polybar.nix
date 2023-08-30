@@ -9,7 +9,7 @@ xdg.configFile."launch.sh" = {
         killall -q .polybar-wrapper
 
         echo "---" | tee -a /tmp/polybar1.log /tmp/polybar2.log
-        polybar top 2>&1 | tee -a /tmp/polybar1.log & disown
+        polybar main 2>&1 | tee -a /tmp/polybar1.log & disown
     '';
     target = "polybar/launch.sh";
 };
@@ -23,6 +23,8 @@ services.polybar = {
         mpdSupport = true;
         pulseSupport = true;
     };
+    
+    script = '''';
 
     settings = {
         "Acolors" = {
@@ -45,12 +47,12 @@ services.polybar = {
 
         "global/wm" = {
             margin.top = 5;
-            margin.bottom = 5;
+            #margin.bottom = 5;
         };
 
-        "bar/top" = {
+        "bar/main" = {
             width = "100%";
-            height = 25;
+            height = 30;
             radius = 6.0;
             fixed.center = true;
 
@@ -60,26 +62,31 @@ services.polybar = {
             line.size = 3;
             line.color = "#f00";
 
-            border.size = 6;
-            border.color = "#000";
+            border.left.size = "1%";
+            border.right.size = "1%";
+            border.top.size = "1%";
+            border.color = "#00000000";
 
-            padding.left = 0;
+            padding.left = 2;
             padding.right = 2;
 
             module.margin.left = 1;
             module.margin.right = 1;
 
+
             font = [
-                "SpaceMono Nerd Font Mono:style=Bold:size=13;"
+                "SpaceMono Nerd Font Mono:style=Bold:size=13.5;"
                 "DejaVu Sans Nerd Font Mono:style=Regular;"
-                "JetBrainsMono Nerd Font Mono:style=Regular:pixelsize=12;1"
+                "JetBrainsMono Nerd Font Mono:style=Regular:pixelsize=13;1"
             ];
 
-            modules.left = "i3 xwindow";
-            modules.center = "date";
-            modules.right = "temperature memory pulseaudio wlan powermenu";
+            modules = {
+                left = "i3 xwindow";
+                center = "date";
+                right = "temperature memory pulseaudio wlan powermenu";
+            };
 
-            tray.position = "none";
+            tray.position = "center";
             tray.padding = 2;
 
             cursor.click = "pointer";
