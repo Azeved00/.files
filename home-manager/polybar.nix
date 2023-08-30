@@ -1,5 +1,19 @@
 { config, pkgs, libs, ...}:
 {
+
+xdg.configFile."launch.sh" = {
+    enable = true;
+    executable = true;
+    text = ''
+        killall -q polybar
+        killall -q .polybar-wrapper
+
+        echo "---" | tee -a /tmp/polybar1.log /tmp/polybar2.log
+        polybar top 2>&1 | tee -a /tmp/polybar1.log & disown
+    '';
+    target = "polybar/launch.sh";
+};
+
 services.polybar = {
     enable = true;
     package = pkgs.polybar.override {
@@ -9,14 +23,6 @@ services.polybar = {
         mpdSupport = true;
         pulseSupport = true;
     };
-
-    script = ''
-        killall -q polybar
-        killall -q .polybar-wrapper
-
-        echo "---" | tee -a /tmp/polybar1.log /tmp/polybar2.log
-        polybar top 2>&1 | tee -a /tmp/polybar1.log & disown
-    '';
 
     settings = {
         "Acolors" = {
