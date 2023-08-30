@@ -12,6 +12,7 @@ services.picom = {
         "class_g ?= 'Notify-osd'"
         "class_g = 'Cairo-clock'"
         "_GTK_FRAME_EXTENTS@:c"
+        "class_g = 'i3-frame'"
     ];
 
     fade = true;
@@ -38,13 +39,16 @@ services.picom = {
 
 
     settings = {
+        shadow-radius = 7;
         shadow-offset-x = -7;
         shadow-offset-y = -7;
+        
         frame-opacity = 0.7;
         inactive-opacity-override = false;
         focus-exclude = ["class_g = 'Cairo-clock'"];
+
         corner-radius = 0;
-        #blur-kern = "3z3box";
+        blur-kern = "3x3box";
         blur-background-exclude = [
           "window_type = 'dock'"
           "window_type = 'desktop'"
