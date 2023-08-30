@@ -1,7 +1,7 @@
 { config, pkgs, lib, ...}:
 {
 services.picom = {
-    enable = true;
+    enable = false;
     backend = "xrender";
     vSync = true;
 
