@@ -5,6 +5,7 @@
 
 return {
     "airblade/vim-gitgutter",
+    "HiPhish/nvim-ts-rainbow2",
     {
         "rebelot/kanagawa.nvim",
         priority = 1000,
@@ -24,7 +25,24 @@ return {
             })
         end,
     },
-    "williamboman/mason.nvim",
-    "williamboman/mason-lspconfig.nvim",
+    {
+        "nvim-treesitter/nvim-treesitter",
+        config = function ()
+            vim.opt.runtimepath:append("$XDG_DATA_HOME/nvim/treesitter")
+            require'nvim-treesitter.configs'.setup {
+                parser_install_dir = "$XDG_DATA_HOME/nvim/treesitter",
+                ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "nix" },
+
+                highlight = {
+                    enable = true,
+                },
+                rainbow = {
+                    enable = true,
+                    query = 'rainbow-parens',
+                    strategy = require('ts-rainbow').strategy.global,
+                },
+            }
+        end
+    },
     "neovim/nvim-lspconfig",
 }
