@@ -1,8 +1,8 @@
-
 local o = vim.o
 local g = vim.g
 
 vim.cmd [[
+    syntax on
     set nowrap
     set nobackup
     set nowritebackup
@@ -12,6 +12,7 @@ vim.cmd [[
 
 g.mapleader = ' '
 g.maplocalleader = ' '
+g.rainbow_active = 1
 o.encoding = 'UTF-8'
 
 o.clipboard = 'unnamedplus'

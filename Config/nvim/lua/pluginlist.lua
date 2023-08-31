@@ -5,7 +5,7 @@ local v = vim
 
 return {
     "airblade/vim-gitgutter",
-    "HiPhish/nvim-ts-rainbow2",
+    "luochen1990/rainbow",
 
     {
         "rebelot/kanagawa.nvim",
