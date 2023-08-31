@@ -8,12 +8,5 @@ require'nvim-treesitter.configs'.setup {
         enable = true,
         additional_vim_regex_highlighting = false,
     },
-
-    rainbow = {
-        enable = true,
-        query = 'rainbow-parens',
-        strategy = require 'ts-rainbow.strategy.global',
-        max_file_lines = 3000
-   },
 }
-
+vim.api.nvim_set_hl(0, "@punctuation.bracket", { link = "" })
