@@ -26,24 +26,24 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
 -- mason
-require("mason").setup()
-require("mason-lspconfig").setup_handlers({
+--require("mason").setup()
+--require("mason-lspconfig").setup_handlers({
 
-    function(server_name)
-        require("lspconfig")[server_name].setup {
-            on_attach = on_attach,
-            capabilities = capabilities
-        }
-    end,
+--  function(server_name)
+--        require("lspconfig")[server_name].setup {
+--            on_attach = on_attach,
+--            capabilities = capabilities
+--        }
+--    end,
 
-    ["lua_ls"] = function()
-        require('lspconfig').lua_ls.setup {
-            on_attach = on_attach,
-            capabilities = capabilities,
-            Lua = {
-              workspace = { checkThirdParty = false },
-              telemetry = { enable = false },
-            },
-        }
-    end
-})
+--    ["lua_ls"] = function()
+--        require('lspconfig').lua_ls.setup {
+--            on_attach = on_attach,
+--            capabilities = capabilities,
+--            Lua = {
+ --             workspace = { checkThirdParty = false },
+ --             telemetry = { enable = false },
+--            },
+--        }
+--    end
+--})
