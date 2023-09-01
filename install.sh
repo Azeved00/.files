@@ -1,46 +1,54 @@
+
 echo "----------------------- welcome to Azeved00 .files installation -----------------------"
-export DotFilesFolder=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+DotFilesFolder=$HOME/.fihes
+BACKUP=$DotFilesFolder/Backup 
 
-read -p "What is your OS?" OS
-read -p "Do you want GUI applications?" APPS
-
-if [ "$APPS" == "yes" ]; then
-    echo "installing software"
-    case "$OS" in
-    "arch")
-        $DotFilesFolder/Bin/packages.arc.sh
-        ;;
-    "windows")
-        $DotFilesFolder/Bin/packages.win.sh
-        ;;
-    "debian")
-        $DotFilesFolder/Bin/packages.deb.sh
-        ;;
-    "nixos")
-        $DotFilesFolder/Bin/nix-link.sh
-        ;;
-    *)
-        echo "Invalid Option"
-        return
-        ;;
-    esac
-
-    #installing plug
-    sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-
+if ! [ -d $BACKUP ]; then
+	mkdir $BACKUP
 fi
-	   
-	   
 
-#link config files to .config folder
-$DotFilesFolder/Bin/link.sh
+#creating symlinks to where the config files should be
+#while moving the alredy existing ones to the Backup folder
+linkFile () {
+    local FILE=$1
+    local DIR=$(dirname $FILE)
 
-#run custom program to generate ssh keys for github
-$DotFilesFolder/Bin/keygen.sh
+    echo "linking $FILE"
 
-if [ "$OS" == "nixos" ]; then
+    mkdir -p $DIR
+    if [[ -h $FILE || -f $FILE || -d $FILE ]]; then
+        mv $FILE $BACKUP
+    else
+        rm -rf $FILE
+    fi
+
+    ln -s $2 $FILE
+}
+
+
+#check if nix is installed
+if command --version nix >/dev/null 2>/1; then
+    echo "Nix is installed"
+else
+    echo "Nix is Not installed, Installing"
+    sh <(curl -L https://nixos.org/nix/install) --daemon
+fi
+
+nix-env --upgrade
+
+nix-shell -p git --command git clone git@github.com:Azeved00/.files $DotFilesFolder
+
+if [ -f "/etc/NIXOS" ]; then
+    linkFile  "/etc/nixos" "$DotFilesFolder/NixOs"
     sudo nixos-rebuild switch
 fi
+
+#install home-manager
+nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
+nix-channel --update
+linkFile "$HOME/.config/home-manager" "$DotFilesFolder/home-manager"
+home-manager switch
+
+$DotFilesFolder/Bin/keygen.sh
 
 source ~/.bashrc
