@@ -4,7 +4,7 @@
         ./git.nix
         ./bash.nix
         ./readline.nix
-        ./neovim.nix 
+        ./neovim/program.nix 
         ./ssh.nix
     ] 
     ++ (if builtins.getEnv "WSL_DISTRO_NAME" == "" 
@@ -22,9 +22,7 @@
     home.homeDirectory = "/home/azevedo";
     home.stateVersion = "23.05";
     home.packages = [ 
-        #some language servers
-        pkgs.ccls
-        pkgs.lua-language-server
+
     ];
 
     xdg = {
