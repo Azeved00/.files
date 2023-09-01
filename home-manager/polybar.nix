@@ -1,4 +1,4 @@
-{ config, pkgs, libs, ...}:
+{ pkgs, ...}:
 {
 
 xdg.configFile."launch.sh" = {
@@ -42,12 +42,12 @@ services.polybar = {
             #compositing.background = "xor"; # or screen
             #compositing.foreground = "source";
             #compositing.border = "over";
-            #pseudo.transparancy = false
+            pseudo.transparancy = true;
         };
 
         "global/wm" = {
             margin.top = 5;
-            #margin.bottom = 5;
+            margin.bottom = 5;
         };
 
         "bar/main" = {
@@ -68,7 +68,7 @@ services.polybar = {
             border.color = "#00000000";
 
             padding.left = 0;
-            padding.right = 1;
+            padding.right = 2;
 
             module.margin.left = 1;
             module.margin.right = 1;
