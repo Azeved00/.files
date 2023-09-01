@@ -42,6 +42,7 @@ in
 
     environment.systemPackages = with pkgs; [
  	    #basic applications
+        gcc
         wget
         networkmanager
         xclip
