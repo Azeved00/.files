@@ -13,6 +13,7 @@
             ./picom.nix
             ./polybar.nix 
             ./rofi.nix
+            ./i3.nix
     	] 
     	else []
     );
