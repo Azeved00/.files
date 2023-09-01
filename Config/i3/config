@@ -113,21 +113,21 @@ workspace 1 output HDMI-1
 
 #-------------------------------------- Key Bindings ----------------------------------
 #----- Applications ------
-for_window [class="firefox"] move to workspace $ws1
-for_window [class="Alacritty"] move to workspace $ws2
-for_window [class="Develop*"] move to workspace $ws2
+assign [class="firefox"] 1
+assign [class="Alacritty"] 2
+assign [class="Develop*"] 2
 
 #Games
-for_window [class="primlauncher"] move to workspace $ws4
-for_window [class="dolphin-emu"] move to workspace $ws4
-for_window [class="Minecraft*"] move to workspace $ws4
-for_window [class="steam"] move to workspace $ws4
-for_window [class="heroic"] move to workspace $ws4
+assign [class="primlauncher"]4
+assign [class="dolphin-emu"] 4
+assign [class="Minecraft*"] 4
+assign [class="steam"] 4
+assign [class="heroic"] 4
 #riot games thingy
-for_window [class="explorer.exe"] move to workspace $ws4
-for_window [class="leagueclientux*"] move to workspace $ws4
-for_window [class="league*"] move to workspace $ws4
-for_window [class="Poke*"] move to workspace $ws4
+assign [class="explorer.exe"] 4
+assign [class="leagueclientux*"] 4
+assign [class="league*"] 4
+assign [class="Poke*"] 4
 
 #for_window [class="Discord"] move to workspace $ws4
 #for_window [class="Spotify"] move to workspace $ws4
