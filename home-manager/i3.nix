@@ -121,7 +121,7 @@
 
             startup = [
                 {
-                    command = "${config.xdg.configHome}/polyvar/launch.sh";
+                    command = "${config.xdg.configHome}/polybar/launch.sh";
                     always = true;
                     notification = false;
                 }
