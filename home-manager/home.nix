@@ -1,4 +1,4 @@
-{config, pkgs, lib, ...}:
+{ pkgs, ...}:
 {
     imports = [
         ./git.nix
@@ -22,9 +22,26 @@
     home.username = "azevedo";
     home.homeDirectory = "/home/azevedo";
     home.stateVersion = "23.05";
-    home.packages = [ 
+    home.packages =  with pkgs; [ 
+        prismlauncher
+        steam
+        dolphin-emu
+        parsec-bin
+	    heroic
 
+        spotify
     ];
+
+    nixpkgs.config = {
+        allowUnfree = true;
+        pulseaudio = true;
+    };
+    #nix= {
+    #    package = pkgs.nix;
+    #    settings = {
+    #        experimental-features = ["nix-command"];
+    #    };
+    #};
 
     xdg = {
         enable = true;
