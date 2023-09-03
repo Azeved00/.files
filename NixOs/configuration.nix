@@ -23,6 +23,7 @@
         dates = "weekly";
         options = "--delete-older-than 30d";
     };
+    nix.settings.experimental-features = [ "nix-command" ];
     
     system.stateVersion = "23.05"; 
 }
