@@ -15,7 +15,7 @@
             ".." = "cd ..";
             "..." = "cd ../../";
 
-            "git" = "g";
+            "g" = "git";
 
             "dotfiles"="ranger ${config.home.homeDirectory}/.files/";
         };
