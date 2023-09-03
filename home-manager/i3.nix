@@ -1,9 +1,13 @@
 {config, lib, ...}:
 {
-    xsession.windowManager.i3 = {
+
+xsession = {
+    enable = true;
+    numlock.enable = true;
+
+    windowManager.i3 = {
         enable = true;
         config = {
-
             modifier = "Mod4";
             fonts = {
                 names = [ "pango" ];
@@ -164,7 +168,6 @@
                     Escape = "mode default";
                 };
             };
-
         };
         
         extraConfig = ''
@@ -172,4 +175,5 @@
             workspace 1 output HDMI-1
         '';
     };
+};
 }

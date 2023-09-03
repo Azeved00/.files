@@ -1,4 +1,4 @@
-{pkgs, ...}:
+{ ...}:
 {
     # Configure keymap in X11
     services.xserver = {
@@ -9,15 +9,15 @@
         desktopManager.xterm.enable = false;
         
         displayManager = {
-            lightdm.enable = true;
-            lightdm.greeters.slick.enable = true;
+            lightdm = {
+                enable = true;
+                greeters.slick.enable = true;
+            };
+            ly = {
+                enable = true;
+                defaultUser = "azevedo";
+            };
             defaultSession = "none+i3";
         };
-        
-        windowManager = {
-	        i3.enable = true;
-	        i3.package = pkgs.i3-gaps;
-        };
-
     };
 }
