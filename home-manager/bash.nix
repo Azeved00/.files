@@ -15,13 +15,8 @@
             ".." = "cd ..";
             "..." = "cd ../../";
 
-            "ga" = "git add";
-            "gs" = "git status";
-            "gp" = "git push";
-            "gf" = "git fetch && git pull && git fetch";
-            "gc" = "git commit -m";
-            "gsmod" = "git submodule sync && git submodule update --init --recursive";
-            
+            "git" = "g";
+
             "dotfiles"="ranger ${config.home.homeDirectory}/.files/";
         };
 

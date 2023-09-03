@@ -5,6 +5,13 @@
         userName  = "João Azevedo";
         userEmail = "62391524+Azeved00@users.noreply.github.com";
 
+        aliases = {
+            s = "status";
+            c = "commit -m";
+            d = "difftool";
+
+        };
+
         extraConfig = {
             advice = {
                 addIgnoredFile = false;
@@ -28,6 +35,9 @@
             push = {
                 autoSetupRemote = true;
             };
+            diff.tool = "vimdiff";
+            difftool.prompt = false;
+
         };
     };
 
