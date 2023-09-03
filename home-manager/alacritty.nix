@@ -5,8 +5,8 @@
         
         settings = {
             window = {
-                padding.x = 10;
-                padding.y = 5;
+                padding.x = 2;
+                padding.y = 2;
                 opacity   = 1.0;
                 class.instance = "Alacritty";
                 class.general  = "Alacritty";
