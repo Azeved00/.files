@@ -88,7 +88,7 @@
 
                 "${mod}+h" = ''split h'';
                 "${mod}+v" = ''split v'';
-                "${mod}+f" = ''fullscrieen toggle'';
+                "${mod}+f" = ''fullscreen toggle'';
                 "${mod}+s" = ''layout tabbed'';
                 "${mod}+Shift+v" = ''layout toggle split'';
                 "${mod}+Shift+space" = ''floating toggle'';
