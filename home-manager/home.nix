@@ -1,4 +1,8 @@
 { pkgs, ...}:
+let
+    notWSL = builtins.getEnv "WSL_DISTRO_NAME" == "";
+
+in
 {
     imports = [
         ./git.nix
@@ -7,8 +11,8 @@
         ./neovim/program.nix 
         ./ssh.nix
     ] 
-    ++ (if builtins.getEnv "WSL_DISTRO_NAME" == "" 
-    	then [ 
+    ++ (if notWSL then 
+        [ 
             ./alacritty.nix
             ./picom.nix
             ./polybar.nix 
@@ -22,15 +26,17 @@
     home.username = "azevedo";
     home.homeDirectory = "/home/azevedo";
     home.stateVersion = "23.05";
-    home.packages =  with pkgs; [ 
-        prismlauncher
-        steam
-        dolphin-emu
-        parsec-bin
-	    heroic
+    home.packages = (
+    if notWSL then 
+        with pkgs; [ 
+            prismlauncher
+            dolphin-emu
+            parsec-bin
+	        heroic
 
-        spotify
-    ];
+            spotify
+        ] 
+    else []);
 
     nixpkgs.config = {
         allowUnfree = true;
