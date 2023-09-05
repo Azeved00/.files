@@ -9,7 +9,7 @@
             s = "status";
             c = "commit -m";
             d = "difftool";
-
+            a = "add";
         };
 
         extraConfig = {
