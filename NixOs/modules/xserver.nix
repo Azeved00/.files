@@ -1,4 +1,4 @@
-{ ...}:
+{ pkgs, ...}:
 {
     # Configure keymap in X11
     services.xserver = {
@@ -9,15 +9,33 @@
         desktopManager.xterm.enable = false;
         
         displayManager = {
-            lightdm = {
+            sddm = {
                 enable = true;
+                autoNumlock = true;
+            };
+            lightdm = {
+                enable = false;
                 greeters.slick.enable = true;
             };
-            ly = {
-                enable = true;
-                defaultUser = "azevedo";
-            };
-            defaultSession = "none+i3";
+
+            defaultSession = "none+default";
+            session = [
+                {
+                    name = "default";
+                    manage = "window";
+                    start = '' 
+                        ${pkgs.runtimeShell} $HOME/.xsession &
+                        waitPID=$!
+                    '';
+                }
+                {
+                    name = "i3";
+                    manage = "window";
+                    start = ''
+                        
+                    '';
+                }
+            ];
         };
     };
 }
