@@ -62,4 +62,8 @@ in
     };
 
     programs.home-manager.enable = true;
+    programs.java = {
+        enable = true;
+        package = pkgs.jdk8;
+    };
 }

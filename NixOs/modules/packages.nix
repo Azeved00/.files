@@ -28,11 +28,6 @@ in
             startAgent = true;
         };
 
-        java = {
-            enable = true;
-            package = pkgs.jdk8;
-        };
-
     };
 
     nixpkgs.config = {
