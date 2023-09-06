@@ -1,7 +1,9 @@
 { pkgs, ... }:
-#let
+let
 #unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
-#in
+     min-sddm = pkgs.libsForQt5.callPackage ./min-sddm-theme.nix { };
+
+in
 {
 
     programs = {
@@ -55,6 +57,7 @@
         home-manager
 
      	#display applications
+        min-sddm
      	i3
 	    feh
         dunst

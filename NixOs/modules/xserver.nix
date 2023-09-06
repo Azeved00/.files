@@ -11,6 +11,7 @@
         displayManager = {
             sddm = {
                 enable = true;
+                theme = "min-sddm";
                 autoNumlock = true;
             };
             lightdm = {
