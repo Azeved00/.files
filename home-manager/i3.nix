@@ -25,6 +25,11 @@ xsession = {
                 modifier = "Mod4";
                 titlebar = false;
                 border = 1;
+                
+                criteria = [
+                    {class="Pavucontrol";}
+                    {class="Steam - Update News";}
+                ];
             };
 
             bars = [];
@@ -169,6 +174,7 @@ xsession = {
                 };
             };
             
+
             window.commands = [
                 {
                     command = "sticky enable";
