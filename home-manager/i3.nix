@@ -168,6 +168,15 @@ xsession = {
                     Escape = "mode default";
                 };
             };
+            
+            window.commands = [
+                {
+                    command = "sticky enable";
+                    criteria = {
+                        title = "Picture-in-Picture";
+                    };
+                }
+            ];
         };
         
         extraConfig = ''
