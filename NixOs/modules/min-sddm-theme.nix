@@ -14,8 +14,8 @@ stdenvNoCC.mkDerivation {
     src = fetchFromGitHub {
     owner = "Azeved00";
     repo = "min-sddm";
-    rev = "c584d06f97b29140957c8cd1e9f63eb6c8176627";
-    hash = "sha256-DQ8OiJFwoFFQuqWIxLdJIuPVEiba6kbzCpamQU+WquA=";
+    rev = "10c44840f5efe403d50989c64eba105159a34ae1";
+    hash = "sha256-BZerxC5gl+fSEYfeWs6HqiImjiegpexHXRwMs/Bl21s=";
   };
 
     nativeBuildInputs = [
