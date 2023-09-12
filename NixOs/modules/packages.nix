@@ -1,8 +1,7 @@
 { pkgs, ... }:
 let
-#unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
-     min-sddm = pkgs.libsForQt5.callPackage ./min-sddm-theme.nix { };
-
+    #unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
+     teeny-sddm= pkgs.libsForQt5.callPackage ./teeny-sddm.nix { };
 in
 {
 
@@ -52,11 +51,11 @@ in
         home-manager
 
      	#display applications
-        min-sddm
+        teeny-sddm
      	i3
 	    feh
         dunst
-        shutter
+        gnome.gnome-screenshot
         playerctl
 
 	    # applications
