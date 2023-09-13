@@ -42,7 +42,7 @@ nix-shell -p git --run "git clone -b home-manager -- https://github.com/Azeved00
 
 
 echo "----------------------- linking and rebuilding system -----------------------"
-if [ -f "/etc/nixos/configuration.nix" ]; then
+if [ -d "/etc/nixos" ]; then
     linkFile "/etc/nixos/configuration.nix" "$DotFilesFolder/NixOs/configuration.nix"
     linkFile "/etc/nixos/modules" "$DotFilesFolder/NixOs/modules"
 
