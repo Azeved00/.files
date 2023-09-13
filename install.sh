@@ -8,12 +8,12 @@ linkFile () {
     local FILE=$1
     local DIR=$(dirname $FILE)
     
-    BACKUP=$DotFilesFolder/Backup 
-    if ! [ -d $BACKUP]; then
+    BACKUP="$DotFilesFolder/Backup" 
+    if ! [ -d $BACKUP ]; then
         mkdir $BACKUP
     fi
 
-    echo "linking $FILE"
+    echo "creating $2 link @ $FILE"
 
     mkdir -p $DIR
     if [[ -h $FILE || -f $FILE || -d $FILE ]]; then
@@ -27,7 +27,7 @@ linkFile () {
 
 
 #check if nix is installed
-if nix --version >/dev/null ; then
+if nix --version > /dev/null ; then
     echo "Nix is installed"
 else
     echo "Nix is Not installed, Installing"
@@ -41,8 +41,8 @@ nix-shell -p git --run "git clone -b home-manager -- https://github.com/Azeved00
 
 # if in NixOs link necessary files and rebuild switch
 if [ -f "/etc/nixos/configuration.nix" ]; then
-    linkFile "/etc/nixos/configuration.nix" "$DotFielsFolder/NixOs/configuration.nix"
-    linkFile "/etc/nixos/modules" "$DotFielsFolder/NixOs/modules"
+    linkFile "/etc/nixos/configuration.nix" "$DotFilesFolder/NixOs/configuration.nix"
+    linkFile "/etc/nixos/modules" "$DotFilesFolder/NixOs/modules"
 
     nixos-rebuild switch
 fi
