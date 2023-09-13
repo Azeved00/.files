@@ -36,13 +36,13 @@ else
 fi
 
 
-nix-shell -p git --run "git clone https://github.com:Azeved00/.files.git $DotFilesFolder"
+nix-shell -p git --run "git clone https://github.com:Azeved00/.files.git $DotFilesFolder -b home-manager"
 
 
 # if in NixOs link necessary files and rebuild switch
 if [ -f "/etc/nixos/configuration.nix" ]; then
-    ln -s $DotFielsFolder/NixOs/configuration.nix /etc/nixos/configuration.nix
-    ln -s $DotFielsFolder/NixOs/modules /etc/nixos/modules
+    linkFile $DotFielsFolder/NixOs/configuration.nix /etc/nixos/configuration.nix
+    linkFile $DotFielsFolder/NixOs/modules /etc/nixos/modules
 
     nixos-rebuild switch
 fi
