@@ -18,6 +18,7 @@ in
             ./polybar.nix 
             ./rofi.nix
             ./i3.nix
+            ./dunst.nix
     	] 
     	else []
     );
