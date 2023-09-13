@@ -19,11 +19,11 @@
                 greeters.slick.enable = true;
             };
 
-            defaultSession = "none+default";
+            defaultSession = "default";
             session = [
                 {
                     name = "default";
-                    manage = "window";
+                    manage = "desktop";
                     start = '' 
                         ${pkgs.runtimeShell} $HOME/.xsession &
                         waitPID=$!
@@ -31,10 +31,13 @@
                 }
                 {
                     name = "i3";
-                    manage = "window";
-                    start = ''
-                        
-                    '';
+                    manage = "desktop";
+                    start = '''';
+                }
+                {
+                    name = "tty";
+                    manage = "desktop";
+                    start = '''';
                 }
             ];
         };
