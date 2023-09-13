@@ -26,6 +26,7 @@ linkFile () {
 }
 
 
+echo "----------------------- checking nix -----------------------"
 #check if nix is installed
 if nix --version > /dev/null ; then
     echo "Nix is installed"
@@ -36,10 +37,11 @@ else
 fi
 
 
+echo "----------------------- cloning to correct place -----------------------"
 nix-shell -p git --run "git clone -b home-manager -- https://github.com/Azeved00/.files.git $DotFilesFolder"
 
 
-# if in NixOs link necessary files and rebuild switch
+echo "----------------------- linking and rebuilding system -----------------------"
 if [ -f "/etc/nixos/configuration.nix" ]; then
     linkFile "/etc/nixos/configuration.nix" "$DotFilesFolder/NixOs/configuration.nix"
     linkFile "/etc/nixos/modules" "$DotFilesFolder/NixOs/modules"
@@ -48,11 +50,12 @@ if [ -f "/etc/nixos/configuration.nix" ]; then
 fi
 
 #install home-manager
+echo "----------------------- installing home manager -----------------------"
 nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
 nix-channel --update
 linkFile "$HOME/.config/home-manager" "$DotFilesFolder/home-manager"
 home-manager switch
 
-$DotFilesFolder/Bin/keygen.sh
 
-source ~/.bashrc
+echo "----------------------- creating ssh keys -----------------------"
+$DotFilesFolder/Bin/keygen.sh
