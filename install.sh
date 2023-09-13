@@ -1,6 +1,6 @@
 
 echo "----------------------- welcome to Azeved00 .files installation -----------------------"
-DotFilesFolder=/home/azevedo/.files
+DotFilesFolder="/home/azevedo/.files"
 
 #creating symlinks to where the config files should be
 #while moving the alredy existing ones to the Backup folder
@@ -36,13 +36,13 @@ else
 fi
 
 
-nix-shell -p git --run "git clone https://github.com:Azeved00/.files.git $DotFilesFolder -b home-manager"
+nix-shell -p git --run "git clone -b home-manager -- https://github.com/Azeved00/.files.git $DotFilesFolder"
 
 
 # if in NixOs link necessary files and rebuild switch
 if [ -f "/etc/nixos/configuration.nix" ]; then
-    linkFile $DotFielsFolder/NixOs/configuration.nix /etc/nixos/configuration.nix
-    linkFile $DotFielsFolder/NixOs/modules /etc/nixos/modules
+    linkFile "/etc/nixos/configuration.nix" "$DotFielsFolder/NixOs/configuration.nix"
+    linkFile "/etc/nixos/modules" "$DotFielsFolder/NixOs/modules"
 
     nixos-rebuild switch
 fi
