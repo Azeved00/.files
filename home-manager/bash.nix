@@ -29,7 +29,7 @@
             PS1="$YELLOW\t \W > $GREY"
         '';
 
-        bashrcExtra = builtins.readFile "${config.home.homeDirectory}/.files/System/func";
+        bashrcExtra = builtins.readFile "${config.home.homeDirectory}/.files/Bin/funcs";
 
         shellOptions = [
             "histappend"    # append to history file, dont overwrite it
