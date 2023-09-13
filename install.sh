@@ -1,6 +1,6 @@
 
 echo "----------------------- welcome to Azeved00 .files installation -----------------------"
-DotFilesFolder=$HOME/.files
+DotFilesFolder=/home/azevedo/.files
 
 #creating symlinks to where the config files should be
 #while moving the alredy existing ones to the Backup folder
@@ -25,7 +25,6 @@ linkFile () {
 #check if nix is installed
 if command --version nix >/dev/null 2>/1; then
     echo "Nix is installed"
-    sudo
 else
     echo "Nix is Not installed, Installing"
     sh <(curl -L https://nixos.org/nix/install) --daemon
@@ -38,8 +37,12 @@ if ! [ -d $DotFilesFolder/Backup ]; then
 	mkdir $DotFilesFolder/Backup
 fi
 
+# if in NixOs link necessary files and rebuild switch
 if [ -f "/etc/NIXOS" ]; then
-    sudo nixos-rebuild switch -I nixos-config=$DotFilesFolder/NixOs/configuration.nix
+    sudo ln -s $DotFielsFolder/NixOs/configuration.nix /etc/nixos/configuration.nix
+    sudo ln -s $DotFielsFolder/NixOs/modules /etc/nixos/modules
+
+    sudo nixos-rebuild switch
 fi
 
 #install home-manager
