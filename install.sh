@@ -38,7 +38,7 @@ fi
 
 
 echo "----------------------- cloning to correct place -----------------------"
-nix-shell -p git --run "git clone -b home-manager -- https://github.com/Azeved00/.files.git $DotFilesFolder"
+nix-shell -p git --run "git clone -- https://github.com/Azeved00/.files.git $DotFilesFolder"
 
 
 echo "----------------------- linking and rebuilding system -----------------------"
