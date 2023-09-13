@@ -1,12 +1,34 @@
-## HI!
-These are my .files
-Feel free to take what you want 
-Have fun!
+## HI! These are my .files.
 
-## Things to Remember!
-1. Installation is done trough `install.sh` @ the repo root
+I like minimalistic GUIs and i absolutely hate bloatware as such i keep programs i use to a minimum.
 
-## Things that are missing!
+### Aplications:
+- Window Manager -> [I3](https://github.com/i3/i3)
+- Browser -> [Firefox](https://www.mozilla.org/en-US/firefox/)
+- Terminal -> [Alacrity](https://github.com/alacritty/alacritty)
+- Text Editor -> [NeoVim](https://github.com/neovim/neovim)
+- Managing Configuration Files -> [Home-Manager](https://github.com/nix-community/home-manager)
 
-- [ ] Add some screenshots (maybe)
+Feel free to take what you want and use them as you need. 
+
+### Have fun!
+
+# Files and Folders
+| Folder | Description |
+| ----------- | ----------- |
+| [Assets](./Assets) | Assets used (backgrounds and icons)  |
+| [Bin](./Bin) | Custom made bash commands and binaries  |
+| [Config](./Config) | Configuration files for applications | 
+| [Home-Manager](./home-manager) | Configuration files for [Home-Manager](https://github.com/nix-community/home-manager) (user level) | 
+| [NixOs](./NixOs) | NixOs configuration files |
+
+
+# Things to Remember!
+1. Installation is done trough [install.sh](./install.sh)
+2. This configuration is mainly for NixOS but it can be used in other OS via [Home-Manager](https://github.com/nix-community/home-manager)
+
+# Things that are planned!
+- [ ] Add some screenshots
 - [ ] Cheat Sheet for controls would be nice (in python would be fun)
+- [ ] Move to a flakes based configuration
+- [ ] try wayland instead of Xserver
