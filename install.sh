@@ -7,7 +7,11 @@ DotFilesFolder=/home/azevedo/.files
 linkFile () {
     local FILE=$1
     local DIR=$(dirname $FILE)
+    
     BACKUP=$DotFilesFolder/Backup 
+    if ! [ -d $BACKUP]; then
+        mkdir $BACKUP
+    fi
 
     echo "linking $FILE"
 
@@ -23,7 +27,7 @@ linkFile () {
 
 
 #check if nix is installed
-if command --version nix >/dev/null 2>/1; then
+if nix --version >/dev/null ; then
     echo "Nix is installed"
 else
     echo "Nix is Not installed, Installing"
@@ -33,16 +37,14 @@ fi
 
 
 nix-shell -p git --run "git clone https://github.com:Azeved00/.files.git $DotFilesFolder"
-if ! [ -d $DotFilesFolder/Backup ]; then
-	mkdir $DotFilesFolder/Backup
-fi
+
 
 # if in NixOs link necessary files and rebuild switch
-if [ -f "/etc/NIXOS" ]; then
-    sudo ln -s $DotFielsFolder/NixOs/configuration.nix /etc/nixos/configuration.nix
-    sudo ln -s $DotFielsFolder/NixOs/modules /etc/nixos/modules
+if [ -f "/etc/nixos/configuration.nix" ]; then
+    ln -s $DotFielsFolder/NixOs/configuration.nix /etc/nixos/configuration.nix
+    ln -s $DotFielsFolder/NixOs/modules /etc/nixos/modules
 
-    sudo nixos-rebuild switch
+    nixos-rebuild switch
 fi
 
 #install home-manager
