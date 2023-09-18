@@ -48,6 +48,7 @@ programs.neovim = {
                 p.tree-sitter-vim
                 p.tree-sitter-python
                 p.tree-sitter-bash
+                p.tree-sitter-markdown
             ]
         ))
    ];
