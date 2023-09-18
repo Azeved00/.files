@@ -8,15 +8,13 @@ programs.neovim = {
 
     extraLuaConfig = (builtins.concatStringsSep "\n" [
        (builtins.readFile ./settings.lua)
-       (builtins.readFile ./lualine.lua)
-       (builtins.readFile ./lsp.lua)
     ]);
 
-    extraPackages = [
+    extraPackages = with pkgs; [
         #some language servers
-        pkgs.ccls
-        pkgs.lua-language-server
-        pkgs.nil
+        ccls
+        lua-language-server
+        nil
     ];
 
     plugins = with pkgs.vimPlugins; [
@@ -30,18 +28,26 @@ programs.neovim = {
         nvim-web-devicons
         {
             plugin = lualine-nvim;
-            config = "luafile ~/.config/home-manager/neovim/lualine.lua";
+            type = "lua";
+            config = builtins.readFile ./lualine.lua;
         }
 	
-        nvim-lspconfig
+        {
+            plugin = nvim-lspconfig;
+            type = "lua";
+            config = builtins.readFile ./lsp.lua;
+        }
+
         vim-gitgutter
-        (nvim-treesitter.withPlugins (
-            plugins: with plugins; [
-                nix
-                c
-                cpp
-                lua
-                vim
+
+        (nvim-treesitter.withPlugins (p: [
+                p.tree-sitter-nix
+                p.tree-sitter-c
+                p.tree-sitter-cpp
+                p.tree-sitter-lua
+                p.tree-sitter-vim
+                p.tree-sitter-python
+                p.tree-sitter-bash
             ]
         ))
    ];
