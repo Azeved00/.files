@@ -36,6 +36,7 @@ in
 	        heroic
 
             spotify
+            discord
         ] 
     else []);
 
