@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ ... }:
 {
     imports =
     [ 
@@ -24,9 +24,9 @@
     nix.gc = {
         automatic = true;
         dates = "weekly";
-        options = "--delete-older-than 30d";
+        options = "--delete-older-than 7d";
     };
-    nix.settings.experimental-features = [ "nix-command" ];
+    nix.settings.experimental-features = [ "nix-command flakes" ];
     
     system.stateVersion = "23.05"; 
 }
