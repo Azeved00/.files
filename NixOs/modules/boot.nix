@@ -8,4 +8,9 @@
     boot.kernelModules = [ "88x2bu" ];
     boot.extraModulePackages = [config.boot.kernelPackages.rtl88x2bu ];
 
+    fileSystems = {
+        "/" = {
+            device = "/dev/sda1";
+        };
+    };
 }
