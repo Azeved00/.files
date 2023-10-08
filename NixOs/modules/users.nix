@@ -1,8 +1,11 @@
 {...}:
 {
+    users.mutableUsers = true;
+
     users.users.azevedo = {
-        isNormalUser = true;
         description = "Azevedo";
+        isNormalUser = true;
+        initialPassowrd = "pw123";
         extraGroups = [  "networkmanager" "wheel" "audio" ];
     };
 }
