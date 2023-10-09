@@ -1,10 +1,10 @@
 {pkgs,...}:
 {
     fonts = {
-        enableDefaultFonts = true;
+        enableDefaultPackages = true;
         fontDir.enable = true;
 
-        fonts = with pkgs; [
+        packages = with pkgs; [
             (nerdfonts.override { fonts = [
                 "SpaceMono" 
                 "JetBrainsMono"
