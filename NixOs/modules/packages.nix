@@ -60,8 +60,8 @@ in
 
 	    # applications
      	firefox
-     	ranger
         zathura
+        ls
 
         appimage-run
     ];
