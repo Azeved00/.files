@@ -8,23 +8,18 @@
     outputs = { self, nixpkgs }: 
     let
         mysystem = "x86_64-linux";
-
-        pkgs = import nixpkgs {
-            inherit mysystem;
-            config = {
-                allowUnfree = true;
-            };
-        };
     in
     {
         nixosConfigurations = {
-            myNixos = nixpkgs.lib.nixosSystem {
+            home-pc = nixpkgs.lib.nixosSystem {
                 specialArgs = { inherit mysystem; };
                 
                 system = mysystem;
 
                 modules = [
-                    ./NixOs/configuration.nix
+                    #./hardware-configs/home-pc.nix
+                    ./configuration.nix
+                    ./home-pc.nix
                 ];
             };
         };
