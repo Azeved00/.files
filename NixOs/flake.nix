@@ -17,9 +17,8 @@
                 system = mysystem;
 
                 modules = [
-                    #./hardware-configs/home-pc.nix
+                    ./hardware-configs/home-pc.nix
                     ./configuration.nix
-                    ./home-pc.nix
                 ];
             };
         };
