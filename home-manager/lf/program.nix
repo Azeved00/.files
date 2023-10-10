@@ -11,7 +11,7 @@
             drawbox = true;
             icons = true;
             ignorecase = true;
-            mouse = true;
+            # mouse = true;
         };
 
         commands = {
