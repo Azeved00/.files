@@ -39,6 +39,7 @@ programs.neovim = {
         }
 
         vim-gitgutter
+        vim-css-color
 
         (nvim-treesitter.withPlugins (p: [
                 p.tree-sitter-nix

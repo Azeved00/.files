@@ -8,6 +8,7 @@ I like minimalistic GUIs and i absolutely hate bloatware as such i keep programs
 - Terminal -> [Alacrity](https://github.com/alacritty/alacritty)
 - Text Editor -> [NeoVim](https://github.com/neovim/neovim)
 - Managing Configuration Files -> [Home-Manager](https://github.com/nix-community/home-manager)
+- File Browser -> [LF](https://github.com/gokcehan/lf)
 
 Feel free to take what you want and use them as you need. 
 

@@ -10,6 +10,7 @@ in
         ./readline.nix
         ./neovim/program.nix 
         ./ssh.nix
+        ./lf/program.nix
     ] 
     ++ (if notWSL then 
         [ 
