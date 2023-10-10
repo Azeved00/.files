@@ -61,7 +61,7 @@ in
 	    # applications
      	firefox
         zathura
-        ls
+        lf
 
         appimage-run
     ];
