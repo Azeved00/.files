@@ -4,7 +4,7 @@
 
     users.users.azevedo = {
         description = "Azevedo";
-        home = "/users/azevedo";
+        home = "/home/azevedo";
         isNormalUser = true;
         initialPassword = "pw123";
         extraGroups = [  "networkmanager" "wheel" "audio" ];

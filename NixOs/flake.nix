@@ -11,36 +11,38 @@
 
     outputs = { self, nixpkgs, home-manager, ... }: 
     let
-        mysystem = "x86_64-linux";
-	pkgs = nixpkgs.legacyPackages.${mysystem};
+        username = "azevedo";
+        system = "x86_64-linux";
+	    pkgs = nixpkgs.legacyPackages.${system};
     in
     {
         nixosConfigurations = {
             home-pc = nixpkgs.lib.nixosSystem {
-                specialArgs = { inherit mysystem; };
+                specialArgs = { inherit system username; };
                 
-                system = mysystem;
+                system = system;
 
                 modules = [
                     ./hardware-configs/home-pc.nix
                     ./configuration.nix
                 ];
             };
-	    vm = nixpkgs.lib.nixosSystem {
-                specialArgs = { inherit mysystem; };
+
+	        vm = nixpkgs.lib.nixosSystem {
+                specialArgs = { inherit system username; };
                 
-                system = mysystem;
+                system = system;
 
                 modules = [
                     ./hardware-configs/vm.nix
                     ./configuration.nix
                 ];
             };
-
         };
-	homeConfigurations.azevedo = home-manager.lib.homeManagerConfiguration {
-		inherit pkgs;
-		modules = [ ../home-manager/home.nix ];
-	};
+        
+    	homeConfigurations.azevedo = home-manager.lib.homeManagerConfiguration {
+	    	inherit pkgs username;
+	    	modules = [ ../home-manager/home.nix ];
+    	};
     };
 }
