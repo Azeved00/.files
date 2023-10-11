@@ -21,6 +21,17 @@
                     ./configuration.nix
                 ];
             };
+
+            vm = nixpkgs.lib.nixosSystem {
+                specialArgs = { inherit mysystem; };
+                
+                system = mysystem;
+
+                modules = [
+                    ./hardware-configs/vm.nix
+                    ./configuration.nix
+                ];
+            };
         };
 
     };
