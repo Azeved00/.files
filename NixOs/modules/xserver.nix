@@ -19,7 +19,7 @@
                 greeters.slick.enable = true;
             };
 
-            defaultSession = "default";
+            /*defaultSession = "default";
             session = [
                 {
                     name = "default";
@@ -39,7 +39,11 @@
                     manage = "desktop";
                     start = '''';
                 }
-            ];
+            ];*/
+        };
+
+        windowManager.i3 = {
+            enable = true;
         };
 
         windowManager.i3 = {
