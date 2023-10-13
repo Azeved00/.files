@@ -19,12 +19,12 @@
                 system = system;
 
                 modules = [
+		    ./configuration.nix
                     ./hardware-configs/home-pc.nix
-                    ./configuration.nix
                 ];
             };
 
-	        vm = nixpkgs.lib.nixosSystem {
+	    vm = nixpkgs.lib.nixosSystem {
                 specialArgs = { inherit system username; };
                 
                 system = system;
