@@ -17,7 +17,7 @@
 
             "g" = "git";
 
-            "dotfiles"="ranger ${config.home.homeDirectory}/.files/";
+            "dotfiles"="lf ${config.home.homeDirectory}/.files/";
         };
 
         profileExtra = "";
@@ -29,7 +29,7 @@
             PS1="$YELLOW\t \W > $GREY"
         '';
 
-        bashrcExtra = builtins.readFile "${config.home.homeDirectory}/.files/Bin/funcs";
+        bashrcExtra = builtins.readFile ../Bin/funcs;
 
         shellOptions = [
             "histappend"    # append to history file, dont overwrite it

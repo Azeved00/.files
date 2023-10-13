@@ -3,13 +3,9 @@
 
     inputs = {
         nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-	home-manager = {
-	    url = "github:nix-community/home-manager";
-	    inputs.nixpkgs.follows = "nixpkgs";
 	};
-    };
 
-    outputs = { self, nixpkgs, home-manager, ... }: 
+    outputs = { self, nixpkgs, ... }: 
     let
         username = "azevedo";
         system = "x86_64-linux";
@@ -39,10 +35,5 @@
                 ];
             };
         };
-        
-    	homeConfigurations.azevedo = home-manager.lib.homeManagerConfiguration {
-	    	inherit pkgs username;
-	    	modules = [ ../home-manager/home.nix ];
-    	};
     };
 }
