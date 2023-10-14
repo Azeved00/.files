@@ -23,13 +23,12 @@
         profileExtra = "";
         
         initExtra = ''
-            eval $(ssh-agent)
             YELLOW='\[\e[1;33m\]'
             GREY='\[\e[0;37m\]'
             PS1="$YELLOW\t \W > $GREY"
         '';
 
-       bashrcExtra = builtins.readFile ./funcs;
+        bashrcExtra = builtins.readFile ./funcs;
 
         shellOptions = [
             "histappend"    # append to history file, dont overwrite it
