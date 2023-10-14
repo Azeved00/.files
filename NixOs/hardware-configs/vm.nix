@@ -3,10 +3,19 @@
 {
     imports =[ ];
 
-    boot.initrd.availableKernelModules = [ "ohci_pci" "ehci_pci" "ahci" "sd_mod" ];
-    boot.initrd.kernelModules = [ ];
-    boot.kernelModules = [ ];
-    boot.extraModulePackages = [];
+    boot = {
+        initrd.availableKernelModules = [ "ohci_pci" "ehci_pci" "ahci" "sd_mod" ];
+        initrd.kernelModules = [ ];
+        kernelModules = [ ];
+        extraModulePackages = [];
+
+        loader.systemd-boot.enable = false;
+        loader.efi.canTouchEfiVariables = true;
+        loader.grub = {
+            enable = true;
+            device = "nodev";
+        };
+    };
 
     fileSystems."/" ={  
         device = "/dev/disk/by-uuid/f222513b-ded1-49fa-b591-20ce86a2fe7f";
