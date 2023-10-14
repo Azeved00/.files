@@ -32,10 +32,15 @@ in
     if notWSL then 
         with pkgs; [ 
             prismlauncher
-            dolphin-emu
-            parsec-bin
 	        heroic
-            retroarchBare
+            (retroarch.override {
+                cores = with libretro; [
+                    dolphin
+                    citra
+                    beetle-gba
+                    beetle-psx-hw
+                ];
+            })
 
             spotify
             discord
