@@ -1,9 +1,11 @@
 { pkgs, ... }:
 let
-    #unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
      teeny-sddm= pkgs.libsForQt5.callPackage ./teeny-sddm.nix { };
 in
 {
+    nixpkgs.config = {
+        allowUnfree = true;
+    };
 
     programs = {
         steam = {
@@ -26,7 +28,6 @@ in
         ssh = {
             startAgent = true;
         };
-
     };
 
     environment.systemPackages = with pkgs; [

@@ -1,10 +1,5 @@
 { ... }:
 {
-    imports =
-    [ 
-
-    ] ;
-
 
     nix.gc = {
         automatic = true;

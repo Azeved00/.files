@@ -11,18 +11,11 @@
 
         system = "x86_64-linux";
 
-	    pkgs = import nixpkgs {
-            inherit system;
-
-            config = {
-                allowUnfree = true;
-            };
-        };
     in
     {
         nixosConfigurations = {
             home-pc = nixpkgs.lib.nixosSystem {
-                specialArgs = { inherit pkgs outputs inputs; };
+                specialArgs = { inherit outputs inputs; };
                 
                 inherit system;
 
