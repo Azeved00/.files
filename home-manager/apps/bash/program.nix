@@ -29,7 +29,7 @@
             PS1="$YELLOW\t \W > $GREY"
         '';
 
-        bashrcExtra = builtins.readFile ../Bin/funcs;
+       bashrcExtra = builtins.readFile ./funcs;
 
         shellOptions = [
             "histappend"    # append to history file, dont overwrite it

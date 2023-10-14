@@ -5,21 +5,21 @@ let
 in
 {
     imports = [
-        ./git.nix
-        ./bash.nix
-        ./readline.nix
-        ./neovim/program.nix 
-        ./ssh.nix
-        ./lf/program.nix
+        ./apps/git.nix
+        ./apps/bash/program.nix
+        ./apps/readline.nix
+        ./apps/neovim/program.nix 
+        ./apps/ssh.nix
+        ./apps/lf/program.nix
     ] 
     ++ (if notWSL then 
         [ 
-            ./alacritty.nix
-            ./picom.nix
-            ./polybar.nix 
-            ./rofi.nix
-            ./i3.nix
-            ./dunst.nix
+            ./apps/alacritty.nix
+            ./apps/picom.nix
+            ./apps/polybar.nix 
+            ./apps/rofi.nix
+            ./apps/i3/program.nix
+            ./apps/dunst.nix
     	] 
     	else []
     );
@@ -35,6 +35,7 @@ in
             dolphin-emu
             parsec-bin
 	        heroic
+            retroarchBare
 
             spotify
             discord
