@@ -28,7 +28,7 @@
                     ./modules/fonts.nix
                     ./modules/xserver.nix
                     ./modules/packages.nix
-                    ./modules/local.nix
+                    ./modules/locale.nix
                     ./modules/services.nix
                     ./modules/variables.nix
                 ];
