@@ -140,7 +140,7 @@ xsession = {
                     notification = false;
                 }
                 {
-                    command = "feh --no-fehbg --bg-fill ${../assets/background.jpeg}";
+                    command = "feh --no-fehbg --bg-fill ${../../assets/background.jpeg}";
                     always = true;
                     notification = false;
                 }
