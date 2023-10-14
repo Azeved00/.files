@@ -2,14 +2,7 @@
 {
     imports =
     [ 
-        ./modules/users.nix
-        ./modules/network.nix
-        ./modules/fonts.nix
-        ./modules/xserver.nix
-        ./modules/packages.nix
-        ./modules/local.nix
-        ./modules/services.nix
-        ./modules/variables.nix
+
     ] ;
 
 

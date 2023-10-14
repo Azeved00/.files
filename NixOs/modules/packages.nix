@@ -29,12 +29,6 @@ in
 
     };
 
-    nixpkgs.config = {
-        allowUnfree = true;
-        pulseaudio = true;
-    };
-
-
     environment.systemPackages = with pkgs; [
  	    #basic applications
         gcc
