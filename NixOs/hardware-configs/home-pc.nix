@@ -8,10 +8,20 @@
         (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-    boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod" ];
-    boot.initrd.kernelModules = [ ];
-    boot.kernelModules = [ "kvm-amd" "88x2bu"];
-    boot.extraModulePackages = [config.boot.kernelPackages.rtl88x2bu ];
+    boot = {
+        initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod" ];
+        initrd.kernelModules = [ ];
+        kernelModules = [ "kvm-amd" "88x2bu" ];
+        extraModulePackages = [ config.boot.kernelPackages.rtl88x2bu ];
+
+        # Use the systemd-boot EFI boot loader.
+        loader.systemd-boot.enable = true;
+        loader.efi.canTouchEfiVariables = true;
+        loader.grub = {
+            enable = false;
+            device = "nodev";
+        };
+    };
 
     fileSystems."/" ={  
         device = "/dev/disk/by-label/NIXROOT";

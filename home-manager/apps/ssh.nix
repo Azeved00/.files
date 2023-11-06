@@ -1,5 +1,7 @@
 { config, pkgs, lib, ...}:
 {
+    services.ssh-agent.enable = true;
+
     programs.ssh = {
         enable = true;
 

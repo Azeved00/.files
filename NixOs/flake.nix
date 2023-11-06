@@ -5,33 +5,43 @@
         nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 	};
 
-    outputs = { self, nixpkgs, ... }: 
+    outputs = { self, nixpkgs, ... } @ inputs: 
     let
-        username = "azevedo";
+        inherit (self) outputs;
+
         system = "x86_64-linux";
-	    pkgs = nixpkgs.legacyPackages.${system};
+
     in
     {
         nixosConfigurations = {
             home-pc = nixpkgs.lib.nixosSystem {
-                specialArgs = { inherit system username; };
+                specialArgs = { inherit outputs inputs; };
                 
-                system = system;
+                inherit system;
 
                 modules = [
+		            ./base.nix
                     ./hardware-configs/home-pc.nix
-                    ./configuration.nix
+
+                    ./modules/users.nix
+                    ./modules/network.nix
+                    ./modules/fonts.nix
+                    ./modules/xserver.nix
+                    ./modules/packages.nix
+                    ./modules/locale.nix
+                    ./modules/services.nix
+                    ./modules/variables.nix
                 ];
             };
 
 	        vm = nixpkgs.lib.nixosSystem {
-                specialArgs = { inherit system username; };
+                specialArgs = { };
                 
                 system = system;
 
                 modules = [
                     ./hardware-configs/vm.nix
-                    ./configuration.nix
+                    ./base.nix
                 ];
             };
         };

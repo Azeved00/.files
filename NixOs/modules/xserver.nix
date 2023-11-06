@@ -19,31 +19,11 @@
                 greeters.slick.enable = true;
             };
 
-            /*defaultSession = "default";
-            session = [
-                {
-                    name = "default";
-                    manage = "desktop";
-                    start = '' 
-                        ${pkgs.runtimeShell} $HOME/.xsession &
-                        waitPID=$!
-                    '';
-                }
-                {
-                    name = "i3";
-                    manage = "desktop";
-                    start = '''';
-                }
-                {
-                    name = "tty";
-                    manage = "desktop";
-                    start = '''';
-                }
-            ];*/
         };
-
-        windowManager.i3 = {
+        
+	windowManager.i3 = {
             enable = true;
+            package = pkgs.i3-gaps;
         };
     };
 }
