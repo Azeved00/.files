@@ -22,6 +22,7 @@ o.relativenumber = true
 o.updatetime = 300
 o.termguicolors = true
 o.cursorline = true
+o.background = "dark"
 
 o.signcolumn = 'yes'
 

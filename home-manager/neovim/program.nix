@@ -8,6 +8,7 @@ programs.neovim = {
 
     extraLuaConfig = (builtins.concatStringsSep "\n" [
        (builtins.readFile ./settings.lua)
+       "vim.cmd [[colorscheme kanagawa-wave]]"
     ]);
 
     extraPackages = with pkgs; [
@@ -19,11 +20,11 @@ programs.neovim = {
 
     plugins = with pkgs.vimPlugins; [
         rainbow
-        {
-            plugin = kanagawa-nvim;
-            config = "colorscheme kanagawa-wave";
-        }
 
+	    kanagawa-nvim
+	    palenight-vim
+	    tokyonight-nvim
+        onehalf
 
         nvim-web-devicons
         {
