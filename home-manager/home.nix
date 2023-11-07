@@ -51,12 +51,12 @@ in
         allowUnfree = true;
         pulseaudio = true;
     };
-    #nix= {
-    #    package = pkgs.nix;
-    #    settings = {
-    #        experimental-features = ["nix-command"];
-    #    };
-    #};
+    nix= {
+        package = pkgs.nix;
+        settings = {
+            experimental-features = ["nix-command flakes"];
+        };
+    };
 
     xdg = {
         enable = true;
