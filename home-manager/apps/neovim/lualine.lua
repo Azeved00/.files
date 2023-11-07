@@ -17,9 +17,8 @@ local onehalf = {
     b = {bg = colors.gray, fg = colors.green},
     c = {bg = colors.black, fg = colors.white},
 
-    v = {bg = colors.black, fg = colors.white},
-    w = {bg = colors.gray, fg = colors.white},
-    x = {bg = colors.gray, fg = colors.white},
+    w = {bg = colors.black, fg = colors.white},
+    x = {bg = colors.black, fg = colors.white},
     y = {bg = colors.gray, fg = colors.white},
     z = {bg = colors.green, fg = colors.black}
   },
