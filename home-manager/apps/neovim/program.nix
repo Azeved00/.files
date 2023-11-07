@@ -8,7 +8,6 @@ programs.neovim = {
 
     extraLuaConfig = (builtins.concatStringsSep "\n" [
        (builtins.readFile ./settings.lua)
-       "vim.cmd [[colorscheme onehalfdark]]"
     ]);
 
     extraPackages = with pkgs; [
@@ -42,7 +41,8 @@ programs.neovim = {
         vim-gitgutter
         vim-css-color
 
-        (nvim-treesitter.withPlugins (p: [
+        {
+            plugin = (nvim-treesitter.withPlugins (p: [
                 p.tree-sitter-nix
                 p.tree-sitter-c
                 p.tree-sitter-cpp
@@ -51,8 +51,11 @@ programs.neovim = {
                 p.tree-sitter-python
                 p.tree-sitter-bash
                 p.tree-sitter-markdown
-            ]
-        ))
+            ]));
+
+            type = "lua";
+            config = builtins.readFile ./treesitter.lua;
+        }
    ];
 };
 }

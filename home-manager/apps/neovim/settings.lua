@@ -8,6 +8,7 @@ vim.cmd [[
     set nowritebackup
     set noswapfile
     set nofoldenable
+    colorscheme onehalfdark
 ]]
 
 g.mapleader = ' '
