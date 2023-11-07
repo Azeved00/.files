@@ -16,9 +16,16 @@
 	    pkgs = nixpkgs.legacyPackages.${system};
     in
     {
-    	homeConfigurations.azevedo = home-manager.lib.homeManagerConfiguration {
-	    	inherit pkgs;
-	    	modules = [ ./home.nix ];
-    	};
+    	homeConfigurations = {
+            azevedo = home-manager.lib.homeManagerConfiguration {
+	    	    inherit pkgs;
+	    	    modules = [ ./base.nix ./guis.nix ];
+    	    };
+
+            wsl = home-manager.lib.homeManagerConfiguration {
+                inherit pkgs;
+                modules = [ ./base.nix ];
+            };
+        };
     };
 }

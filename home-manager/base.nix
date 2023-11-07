@@ -1,8 +1,4 @@
 { pkgs, ...}:
-let
-    notWSL = builtins.getEnv "WSL_DISTRO_NAME" == "";
-
-in
 {
     imports = [
         ./apps/git.nix
@@ -11,41 +7,13 @@ in
         ./apps/neovim/program.nix 
         ./apps/ssh.nix
         ./apps/lf/program.nix
-    ] 
-    ++ (if notWSL then 
-        [ 
-            ./apps/alacritty.nix
-            ./apps/picom.nix
-            ./apps/polybar.nix 
-            ./apps/rofi.nix
-            ./apps/i3/program.nix
-            ./apps/dunst.nix
-    	] 
-    	else []
-    );
+    ];
 
 
     home.username = "azevedo";
     home.homeDirectory = "/home/azevedo";
     home.stateVersion = "23.05";
-    home.packages = (
-    if notWSL then 
-        with pkgs; [ 
-            prismlauncher
-	        heroic
-            (retroarch.override {
-                cores = with libretro; [
-                    dolphin
-                    citra
-                    beetle-gba
-                    beetle-psx-hw
-                ];
-            })
-
-            spotify
-            discord
-        ] 
-    else []);
+    home.packages = [];
 
     nixpkgs.config = {
         allowUnfree = true;
@@ -54,7 +22,7 @@ in
     nix= {
         package = pkgs.nix;
         settings = {
-            experimental-features = ["nix-command flakes"];
+            experimental-features = ["nix-command" "flakes"];
         };
     };
 
