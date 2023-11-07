@@ -2,6 +2,9 @@
 
 I like minimalistic GUIs and i absolutely hate bloatware as such i keep programs i use to a minimum.
 
+### Theme
+The theme i use is [One half](https://github.com/sonph/onehalf)
+
 ### Aplications:
 - Window Manager -> [I3](https://github.com/i3/i3)
 - Browser -> [Firefox](https://www.mozilla.org/en-US/firefox/)
@@ -14,7 +17,7 @@ Feel free to take what you want and use them as you need.
 
 ### Have fun!
 
-# Files and Folders
+### Files and Folders
 | Folder | Description |
 | ----------- | ----------- |
 | [Assets](./Assets) | Assets used (backgrounds and icons)  |
@@ -24,12 +27,9 @@ Feel free to take what you want and use them as you need.
 | [NixOs](./NixOs) | NixOs configuration files |
 
 
-# Things to Remember!
+### Things to Remember!
 1. Installation is done trough [install.sh](./install.sh)
 2. This configuration is mainly for NixOS but it can be used in other OS via [Home-Manager](https://github.com/nix-community/home-manager)
 
-# Things that are planned!
-- [ ] Add some screenshots
-- [ ] Cheat Sheet for controls would be nice (in python would be fun)
-- [ ] Move to a flakes based configuration
-- [ ] try wayland instead of Xserver
+### Credits
+[One half](https://github.com/sonph/onehalf)

@@ -1,4 +1,16 @@
-{ config, pkgs, lib, ...}:
+{...}:
+let
+    colors = {
+        black   = "262626";
+        red     = "D43542";
+        green   = "73A94C";
+        yellow  = "ffe11f";
+        blue    = "3398EB";
+        magenta = "B34BD2";
+        cyan    = "0eb8be";
+        white   = "F9F6EE";
+    };
+in
 {
     programs.alacritty = {
         enable = true;
@@ -21,32 +33,32 @@
 
             colors = {
                 primary = {
-                    background = "0x262626";
-                    foreground = "0xEBEBEB";
+                    background = "0x${colors.black}";
+                    foregroundr= "0x${colors.white}";
                 };
                 cursor = {
-                    text    ="0xEBEBEB";
-                    cursor  ="0xEBEBEB";
+                    text    ="0x${colors.white}";
+                    cursor  ="0x${colors.white}";
                 };
                 normal = {
-                    black   ="0x0d0d0d";
-                    red     ="0xFF301B";
-                    green   ="0xA0E521";
-                    yellow  ="0xFFC620";
-                    blue    ="0x1BA6FA";
-                    magenta ="0x8763B8";
-                    cyan    ="0x21DEEF";
-                    white   ="0xEBEBEB";
+                    black   ="0x${colors.black}";
+                    red     ="0x${colors.red}";
+                    green   ="0x${colors.green}";
+                    yellow  ="0x${colors.yellow}";
+                    blue    ="0x${colors.blue}";
+                    magenta ="0x${colors.magenta}";
+                    cyan    ="0x${colors.cyan}";
+                    white   ="0x${colors.white}";
                 };
                 bright = {
-                    black   ="0x6D7070";
-                    red     ="0xFF4352";
-                    green   ="0xB8E466";
-                    yellow  ="0xFFD750";
-                    blue    ="0x1BA6FA";
-                    magenta ="0xA578EA";
-                    cyan    ="0x73FBF1";
-                    white   ="0xFEFEF8";
+                    black   ="0x${colors.black}";
+                    red     ="0x${colors.red}";
+                    green   ="0x${colors.green}";
+                    yellow  ="0x${colors.yellow}";
+                    blue    ="0x${colors.blue}";
+                    magenta ="0x${colors.magenta}";
+                    cyan    ="0x${colors.cyan}";
+                    white   ="0x${colors.white}";
                 };
             };
             
