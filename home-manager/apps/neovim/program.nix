@@ -8,7 +8,7 @@ programs.neovim = {
 
     extraLuaConfig = (builtins.concatStringsSep "\n" [
        (builtins.readFile ./settings.lua)
-       "vim.cmd [[colorscheme kanagawa-wave]]"
+       "vim.cmd [[colorscheme onehalfdark]]"
     ]);
 
     extraPackages = with pkgs; [
