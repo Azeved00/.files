@@ -140,7 +140,7 @@ xsession = {
                     notification = false;
                 }
                 {
-                    command = "feh --no-fehbg --bg-fill ${../../assets/background.jpeg}";
+                    command = "feh --no-fehbg --bg-fill ${../../assets/background.png}";
                     always = true;
                     notification = false;
                 }
@@ -149,14 +149,13 @@ xsession = {
                     always = false;
                     notification = false;
                 }
-                
                 {
-                    command = "xrandr --output DP-1 --mode 1280x800";
+                    command = "xrandr --output HDMI-1 --auto";
                     always = true;
                     notification = false;
                 }
                 {
-                    command = "xrandr --output HDMI-1 --primary --right-of DP-1 --auto";
+                    command = "xrandr --output DP-1 --right-of HDMI-1 --auto";
                     always = true;
                     notification = false;
                 }
