@@ -7,9 +7,10 @@
             url = "github:nix-community/home-manager";
             inputs.nixpkgs.follows = "nixpkgs";
         };
+        teeny-sddm.url ="github:Azeved00/teeny-sddm";
 	};
 
-    outputs = { self, nixpkgs, home-manager, ... } @ inputs: 
+    outputs = { self, nixpkgs, home-manager, teeny-sddm, ... } @ inputs: 
     let
         inherit (self) outputs;
         system = "x86_64-linux";
@@ -21,7 +22,7 @@
 
         nixosConfigurations = {
             home-pc = nixpkgs.lib.nixosSystem {
-                specialArgs = { inherit outputs inputs; };
+                specialArgs = { inherit outputs inputs teeny-sddm; };
                 
                 inherit system;
 
