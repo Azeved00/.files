@@ -1,4 +1,4 @@
-{config, lib, ...}:
+{config, lib, theme, ...}:
 {
 
 xsession = {
@@ -140,7 +140,7 @@ xsession = {
                     notification = false;
                 }
                 {
-                    command = "feh --no-fehbg --bg-fill ${../../assets/background.png}";
+                    command = "feh --no-fehbg --bg-fill ${theme.background}";
                     always = true;
                     notification = false;
                 }

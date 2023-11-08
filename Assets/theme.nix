@@ -1,4 +1,6 @@
 {
+    background = ./Pictures/Backgrounds/fractal.png;
+
     colors = {
         background = "1D1F21";
         window = "282A2E";
