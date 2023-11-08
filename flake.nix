@@ -14,6 +14,7 @@
         inherit (self) outputs;
         system = "x86_64-linux";
 	    pkgs = nixpkgs.legacyPackages.${system};
+        theme = import ./Assets/colorscheme.nix;
     in
     {
         nixosConfigurations = {
@@ -52,6 +53,7 @@
     	homeConfigurations = {
             azevedo = home-manager.lib.homeManagerConfiguration {
 	    	    inherit pkgs;
+                extraSpecialArgs = { inherit theme; };
 	    	    modules = [ ./home-manager/base.nix ./home-manager/guis.nix ];
     	    };
 
