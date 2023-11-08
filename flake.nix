@@ -13,10 +13,12 @@
     let
         inherit (self) outputs;
         system = "x86_64-linux";
-	    pkgs = nixpkgs.legacyPackages.${system};
-        theme = import ./Assets/colorscheme.nix;
+        pkgs = nixpkgs.legacyPackages.${system};
+        theme = import ./Assets/theme.nix;
     in
     {
+        nixosModule = import ./Assets/theme.nix {};
+
         nixosConfigurations = {
             home-pc = nixpkgs.lib.nixosSystem {
                 specialArgs = { inherit outputs inputs; };
@@ -54,12 +56,17 @@
             azevedo = home-manager.lib.homeManagerConfiguration {
 	    	    inherit pkgs;
                 extraSpecialArgs = { inherit theme; };
-	    	    modules = [ ./home-manager/base.nix ./home-manager/guis.nix ];
+	    	    modules = [ 
+                    ./home-manager/base.nix 
+                    ./home-manager/guis.nix 
+                ];
     	    };
 
             wsl = home-manager.lib.homeManagerConfiguration {
                 inherit pkgs;
-                modules = [ ./home-manager/base.nix ];
+                modules = [ 
+                    ./home-manager/base.nix 
+                ];
             };
         };
     };
