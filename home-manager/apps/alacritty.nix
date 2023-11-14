@@ -21,8 +21,8 @@
 
             colors = {
                 primary = {
-                    background = "0x${theme.colors.background}";
-                    foreground = "0x${theme.colors.foreground}";
+                    background = "0x${theme.colors.black}";
+                    foreground = "0x${theme.colors.white}";
                 };
                 cursor = {
                     text    ="0x${theme.colors.white}";

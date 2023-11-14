@@ -16,11 +16,9 @@
         inherit (self) outputs;
         system = "x86_64-linux";
         pkgs = nixpkgs.legacyPackages.${system};
-        theme = import ./Assets/theme.nix;
+        theme = bright-bit.nixosModules.colors;
     in
     {
-        nixosModule = import ./Assets/theme.nix {};
-
         nixosConfigurations = {
             home-pc = nixpkgs.lib.nixosSystem {
                 specialArgs = { inherit outputs inputs teeny-sddm; };
