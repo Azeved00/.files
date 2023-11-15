@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ...}:
+{ config, theme, ...}:
 {
 programs.rofi =  {
     enable = true;
@@ -21,14 +21,6 @@ programs.rofi =  {
     {
         
         "*" = {
-            bg      = mkLiteral "#11121D";
-            bg-alt  = mkLiteral "#444b6a";
-
-            fg      = mkLiteral "#FFFFFF";
-            fg-alt  = mkLiteral "#787c99";
-
-            background-color = mkLiteral "@bg";
-              
             border  = 0;
             margin  = 0;
             padding = 0;
@@ -39,11 +31,11 @@ programs.rofi =  {
         
         "element" = {
             padding     = mkLiteral "8 0";
-            text-color  = mkLiteral "@fg-alt";
+            text-color  = mkLiteral "#${theme.non_text}";
         };
 
         "element selected" = {
-            text-color = mkLiteral "@fg";
+            text-color = mkLiteral "#${theme.white}";
         };
 
         "element-text" = {
@@ -57,9 +49,9 @@ programs.rofi =  {
         };
 
         "entry" = {
-            background-color = mkLiteral "@bg-alt";
+            background-color = mkLiteral "#${theme.white}";
             padding = 12;
-            text-color = mkLiteral "@fg";
+            text-color = mkLiteral "#${theme.white}";
         };
 
         "inputbar" = {
@@ -68,21 +60,21 @@ programs.rofi =  {
 
         "listview" = {
             padding = mkLiteral "8 12";
-            background-color = mkLiteral "@bg";
+            background-color = mkLiteral "#${theme.black}";
             columns = 1;
             lines = 8;
         };
 
         "mainbox" = {
-            background-color = mkLiteral "@bg";
+            background-color = mkLiteral "#${theme.black}";
             children = mkLiteral "[inputbar, listview]";
         };
 
         "prompt" = {
-            background-color = mkLiteral "@bg-alt";
+            background-color = mkLiteral "#${theme.line}";
             enabled = true;
             padding = mkLiteral "12 0 0 12";
-            text-color = mkLiteral "@fg";
+            text-color = mkLiteral "#${theme.white}";
         };
     };
 };
