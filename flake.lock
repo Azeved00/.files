@@ -5,14 +5,17 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1699981112,
-        "narHash": "sha256-3qvmfSNgh5VQne4cuhf7Jly8xx/axaflMCuw9VqlO7c=",
-        "path": "/home/azevedo/bright-bit-local",
-        "type": "path"
+        "lastModified": 1700042710,
+        "narHash": "sha256-6yFfVgwnmh9UzPODAL5Zeua5UWsZjfAFBNgbq3oXe3I=",
+        "owner": "Azeved00",
+        "repo": "bright-bit",
+        "rev": "77ae9a5234f187f971b6aac686068de9caa8be73",
+        "type": "github"
       },
       "original": {
-        "path": "/home/azevedo/bright-bit-local",
-        "type": "path"
+        "owner": "Azeved00",
+        "repo": "bright-bit",
+        "type": "github"
       }
     },
     "home-manager": {

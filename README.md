@@ -3,7 +3,7 @@
 I like minimalistic GUIs and i absolutely hate bloatware as such i keep programs i use to a minimum.
 
 ### Theme
-The theme i use is [One half](https://github.com/sonph/onehalf)
+The theme i use is [Bright Bit](https://github.com/Azeved00/bright-bit)
 
 ### Aplications:
 - Window Manager -> [I3](https://github.com/i3/i3)
@@ -33,3 +33,5 @@ Feel free to take what you want and use them as you need.
 
 ### Credits
 [One half](https://github.com/sonph/onehalf)
+[Bright Bit](https://github.com/Azeved00/bright-bit)
+Rofi theme is [rounded](https://github.com/newmanls/rofi-themes-collection) with custom collors

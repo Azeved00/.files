@@ -8,7 +8,7 @@
             inputs.nixpkgs.follows = "nixpkgs";
         };
         teeny-sddm.url ="github:Azeved00/teeny-sddm";
-        bright-bit.url ="path:/home/azevedo/bright-bit-local";
+        bright-bit.url ="github:Azeved00/bright-bit";
 	};
 
     outputs = { self, nixpkgs, home-manager, teeny-sddm, bright-bit, ... } @ inputs: 
