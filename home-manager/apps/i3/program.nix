@@ -47,8 +47,8 @@ xsession = {
                 focused = {
                     background = "#285577";
                     border = "#${theme.colors.yellow}";
-                    childBorder = "#285577";
-                    indicator = "#2e9ef4";
+                    childBorder = "#${theme.colors.yellow}";
+                    indicator = "#${theme.colors.yellow}";
                     text = "#ffffff";
                 };
 
@@ -130,18 +130,18 @@ xsession = {
                 #window management
                 "${mod}+w" = ''kill'';
 
-                "${mod}+j" = ''focus left'';
-                "${mod}+k" = ''focus down'';
-                "${mod}+l" = ''focus up'';
-                "${mod}+ccedilla" = ''focus right'';
+                "${mod}+h" = ''focus left'';
+                "${mod}+j" = ''focus down'';
+                "${mod}+k" = ''focus up'';
+                "${mod}+l" = ''focus right'';
 
-                "${mod}+Shift+j" = ''focus left'';
-                "${mod}+Shift+k" = ''focus down'';
-                "${mod}+Shift+l" = ''focus up'';
-                "${mod}+Shift+ccedilla" = ''focus right'';
+                "${mod}+Shift+h" = ''focus left'';
+                "${mod}+Shift+j" = ''focus down'';
+                "${mod}+Shift+k" = ''focus up'';
+                "${mod}+Shift+l" = ''focus right'';
 
 
-                "${mod}+h" = ''split h'';
+                #"${mod}+h" = ''split h'';
                 "${mod}+v" = ''split v'';
                 "${mod}+f" = ''fullscreen toggle'';
                 "${mod}+s" = ''layout tabbed'';
@@ -209,10 +209,15 @@ xsession = {
 
             modes = {
                 resize = {
-                    j = "resize shrink width 10 px or 10 ppt"; 
+                    h = "resize shrink width 10 px or 10 ppt"; 
                     k = "resize grow height 10 px or 10 ppt";
-                    l = "resize shrink height 10px or 10 ppt";
-                    ccedilla = "resize grow width 10 px or 10 ppt";
+                    j = "resize shrink height 10px or 10 ppt";
+                    l = "resize grow width 10 px or 10 ppt";
+
+                    H = "resize shrink width 5 px or 5 ppt"; 
+                    K = "resize grow height 5 px or 5 ppt";
+                    J = "resize shrink height 5 px or 5 ppt";
+                    L = "resize grow width 5 px or 5 ppt";
 
                     Return = "mode default";
                     Escape = "mode default";

@@ -1,4 +1,4 @@
-{ pkgs, teeny-sddm, ... }:
+{ pkgs, inputs, ... }:
 {
     nixpkgs.config = {
         allowUnfree = true;
@@ -43,12 +43,12 @@
         home-manager
 
      	#display applications
-        teeny-sddm
      	i3
 	    feh
         dunst
         gnome.gnome-screenshot
         playerctl
+        inputs.teeny-sddm.packages.x86_64-linux.default
 
 	    # applications
      	firefox

@@ -18,6 +18,7 @@
                     citra
                     beetle-gba
                     beetle-psx-hw
+                    pcsx2
                 ];
             })
             spotify
@@ -26,10 +27,12 @@
 
     xdg = {
         enable = true;
+
         mimeApps.defaultApplications = {
             "text/plain" = [ "neovim.desktop" ];
             "application/pdf" = [ "zathura.desktop" ];
         };
+
         userDirs = {
             enable = true;
             createDirectories = false;
