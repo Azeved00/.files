@@ -67,6 +67,7 @@
                 extraSpecialArgs = { inherit theme bright-bit;};
                 modules = [ 
                     ./home-manager/base.nix 
+                    ./home-manager/wsl.nix 
                 ];
             };
         };

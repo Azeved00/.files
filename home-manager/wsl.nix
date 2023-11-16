@@ -1,30 +1,46 @@
-{ pkgs, ...}:
+{config, ...}:
 {
-    imports = [
-        ./apps/alacritty.nix
-        ./apps/picom.nix
-        ./apps/polybar.nix 
-        ./apps/rofi.nix
-        ./apps/i3/program.nix
-        ./apps/dunst.nix
-    ];
+    imports = [];
 
-    home.packages = with pkgs; [ 
-            prismlauncher
-	        heroic
-            (retroarch.override {
-                cores = with libretro; [
-                    dolphin
-                    citra
-                    beetle-gba
-                    beetle-psx-hw
-                ];
-            })
-            spotify
-            discord
-    ];
+    home.packages = [ ];
 
-    nixpkgs.config.permittedInsecurePackages = [
-        "electron-24.8.6"
-    ];
+    #targets.genericLinux.enable = true;
+    
+    xdg = {
+        enable = true;
+        mime.enable = true;
+
+        desktopEntries = {
+            firefox = {
+                name = "Firefox.exe";
+                genericName = "Web Browser";
+                exec = ''/mnt/c/Program\ Files/Firefox\ Developer\ Edition/firefox.exe "\$(wslpath -w \"\$(readlink -f %U)\")"'';
+                terminal = false;
+                categories = [ "Network" "WebBrowser" ];
+                mimeType = [ "text/html" "text/xml" "application/pdf" ];
+            };
+        };
+
+        mimeApps = {
+            enable = true;
+            
+            associations.added = {
+                "application/pdf" = "firefox.desktop";
+            };
+
+            defaultApplications = {
+                "text/plain" = [ "neovim.desktop" ];
+                "application/pdf" = [ "firefox.desktop" ];
+            };
+        };
+        
+        userDirs = {
+            enable = true;
+            createDirectories = false;
+        };
+
+        systemDirs.data = [ "${config.home.homeDirectory}/.nix-profile/share/applications" ];
+    };
+
+
 }
