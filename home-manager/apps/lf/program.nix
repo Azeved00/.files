@@ -1,6 +1,7 @@
 {...}:
 {
     xdg.configFile."lf/icons".source = ./icons;
+    xdg.configFile."lf/colors".source = ./colors;
 
     programs.lf = {
         enable = true;

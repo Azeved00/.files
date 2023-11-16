@@ -1,4 +1,7 @@
-{config, lib, ...}:
+{config, lib, theme, ...}:
+let 
+    background-image = ../../../Assets/Pictures/Backgrounds/fractal.png;
+in
 {
 
 xsession = {
@@ -32,6 +35,50 @@ xsession = {
                 ];
             };
 
+            colors = {
+                urgent = {
+                    background = "#900000";
+                    border = "#${theme.colors.red}";
+                    childBorder = "#900000";
+                    indicator = "#900000";
+                    text = "#ffffff";
+                };
+
+                focused = {
+                    background = "#285577";
+                    border = "#${theme.colors.yellow}";
+                    childBorder = "#285577";
+                    indicator = "#2e9ef4";
+                    text = "#ffffff";
+                };
+
+                unfocused = {
+                    background = "#222222";
+                    border = "#333333";
+                    childBorder = "#222222";
+                    indicator = "#292d2e";
+                    text = "#888888";
+                };
+                                
+                focusedInactive = {
+                    background = "#5f676a";
+                    border = "#333333";
+                    childBorder = "#5f676a";
+                    indicator = "#484e50";
+                    text = "#ffffff";
+                };
+
+                placeholder = {
+                    background = "#0c0c0c";
+                    border = "#000000";
+                    childBorder = "#0c0c0c";
+                    indicator = "#000000";
+                    text = "#ffffff";
+                };
+
+                background = "#${theme.colors.black}";
+            };
+
             bars = [];
             
             assigns = {
@@ -46,7 +93,6 @@ xsession = {
                     {class = "dolphin-emu";}
                     {class = "Mnecraft*";}
                     {class = "steam";}
-                    {class = "explorer.exe";}
                     {class = "leagueclientux*";}
                     {class = "leagueP";}
                     {class = "Poke*";}
@@ -117,7 +163,7 @@ xsession = {
                 "${mod}+b"=''workspace 1; exec firefox'';
                 "${mod}+t"=''workspace 2; exec alacritty'';
                 "${mod}+d"=''exec --no-startup-id rofi -show drun'';
-                "${mod}+Shift+d"=''exec --no-startup-id rofi -show run -theme Monokai'';
+                "${mod}+Shift+d"=''exec --no-startup-id rofi -show run'';
 
                 #i3 shortcuts
                 "${mod}+Shift+c" = ''reload'';
@@ -140,7 +186,7 @@ xsession = {
                     notification = false;
                 }
                 {
-                    command = "feh --no-fehbg --bg-fill ${../../assets/background.png}";
+                    command = "feh --no-fehbg --bg-fill ${background-image}";
                     always = true;
                     notification = false;
                 }

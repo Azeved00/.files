@@ -1,4 +1,4 @@
-{ pkgs, ...}:
+{ pkgs, theme, ...}:
 {
 
 xdg.configFile."launch.sh" = {
@@ -27,16 +27,6 @@ services.polybar = {
     script = '''';
 
     settings = {
-        "Acolors" = {
-            background.text = "#222222";
-            background.alt  = "#444444";
-            foreground.text = "#dfdfdf";
-            foreground.alt  = "#dfdfdf";
-            primary         = "#ffb52a";
-            secondary       = "#e60053";
-            alert           = "#bd2c40";
-        };
-
         "settings" = {
             screenchange.reload = true;
             #compositing.background = "xor"; # or screen
@@ -56,8 +46,8 @@ services.polybar = {
             radius = 6.0;
             fixed.center = true;
 
-            background = "\${Acolors.background}";
-            foreground = "\${Acolors.foreground}";
+            background = "#${theme.colors.black}";
+            foreground = "#${theme.colors.white}";
 
             line.size = 3;
             line.color = "#f00";
@@ -111,13 +101,13 @@ services.polybar = {
                 mode = {
                     padding = 2;
                     foreground = "#000";
-                    background = "\${Acolors.primary}";
+                    background = "${theme.colors.yellow}";
                 };
 
                 focused = {
                     text = "%icon%";
-                    background = "\${Acolors.background-alt}";
-                    underline = "\${Acolors.primary}";
+                    background = "${theme.colors.line}";
+                    underline = "${theme.colors.yellow}";
                     padding = 2;
                 };
 
@@ -135,7 +125,7 @@ services.polybar = {
                 
                 urgent = {
                     text = "%icon%";
-                    background = "\${Acolors.alert}";
+                    background = "${theme.colors.red}";
                     padding = 2;
                 };
             };
@@ -146,7 +136,7 @@ services.polybar = {
             interval = 2;
             format.prefix = {
                 text = "";
-                foreground = "\${Acolors.foreground-alt}";
+                foreground = "${theme.colors.non_text}";
             };
             label = "%percentage_used%%";
         };
@@ -161,7 +151,7 @@ services.polybar = {
             time.text = "%H:%M";
             
             format.prefix.text = "";
-            format.prefix.foreground = "\${Acolors.foreground-alt}";
+            format.prefix.foreground = "${theme.colors.non_text}";
 
             label = "%date% %time%";
         };
@@ -179,22 +169,22 @@ services.polybar = {
 
                 full = {
                     prefix.text = "";
-                    prefix.foreground = "\${Acolors.foreground-alt}";
+                    prefix.foreground = "${theme.colors.non_text}";
                     underline = "\${self.format-charging-underline}";
                 };
 
                 ramp.capacity.text = [" " "" ""];
-                ramp.capacity.foreground = "\${Acolors.foreground-alt}";
+                ramp.capacity.foreground = "${theme.colors.non_text}";
 
                 animation.charging = {
                     text = [" " "" ""];
-                    foreground = "\${Acolors.foreground-alt}";
+                    foreground = "${theme.colors.non_text}";
                     framerate = 750;
                 };
 
                 animation.discharging = {
                     text = ["" "" " "];
-                    foreground = "\${Acolors.foreground-alt}";
+                    foreground = "${theme.colors.non_text}";
                     framerate = 750;
                 };
             };
@@ -214,10 +204,10 @@ services.polybar = {
 
             label.text = "%temperature-c%";
             label.warn.text = "%temperature-c%";
-            label.warn.foreground = "\${Acolors.secondary}";
+            label.warn.foreground = "${theme.colors.red}";
 
             ramp.text = ["" "" ""];
-            ramp.foreground = "\${Acolors.foreground-alt}";
+            ramp.foreground = "${theme.colors.non_text}";
         };
 
         "module/powermenu" = {
@@ -227,11 +217,11 @@ services.polybar = {
 
             label = {
                 open.text="";
-                open.foreground="\${Acolors.secondary}";
+                open.foreground="${theme.colors.red}";
                 close.text=" cancel";
-                close.foreground="\${Acolors.secondary}";
+                close.foreground="${theme.colors.red}";
                 separator.text = "|";
-                separator.foreground = "\${Acolors.foreground-alt}";
+                separator.foreground = "${theme.colors.red}";
             };
 
             menu = [
@@ -283,10 +273,10 @@ services.polybar = {
 
             format.disconnected = "%{A1:bash $HOME/.config/polybar/scripts/rofi-wifi-menu.sh &:} <label-disconnected> %{A}";
             label.disconnected.text = "%ifname% disconnected";
-            label.disconnected.foreground = "\${Acolors.foreground-alt}";
+            label.disconnected.foreground = "${theme.colors.non_text}";
 
             ramp.signal.text = ["" "" "" "" ""];
-            ramp.signal.foreground = "\${Acolors.foreground-alt}";
+            ramp.signal.foreground = "${theme.colors.non_text}";
         };
     };
 };

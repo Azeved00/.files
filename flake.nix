@@ -7,18 +7,21 @@
             url = "github:nix-community/home-manager";
             inputs.nixpkgs.follows = "nixpkgs";
         };
+        teeny-sddm.url ="github:Azeved00/teeny-sddm";
+        bright-bit.url ="github:Azeved00/bright-bit";
 	};
 
-    outputs = { self, nixpkgs, home-manager, ... } @ inputs: 
+    outputs = { self, nixpkgs, home-manager, teeny-sddm, bright-bit, ... } @ inputs: 
     let
         inherit (self) outputs;
         system = "x86_64-linux";
-	    pkgs = nixpkgs.legacyPackages.${system};
+        pkgs = nixpkgs.legacyPackages.${system};
+        theme = bright-bit.nixosModules.colors;
     in
     {
         nixosConfigurations = {
             home-pc = nixpkgs.lib.nixosSystem {
-                specialArgs = { inherit outputs inputs; };
+                specialArgs = { inherit outputs inputs teeny-sddm; };
                 
                 inherit system;
 
@@ -52,12 +55,19 @@
     	homeConfigurations = {
             azevedo = home-manager.lib.homeManagerConfiguration {
 	    	    inherit pkgs;
-	    	    modules = [ ./home-manager/base.nix ./home-manager/guis.nix ];
+                extraSpecialArgs = { inherit theme bright-bit; };
+	    	    modules = [ 
+                    ./home-manager/base.nix 
+                    ./home-manager/guis.nix 
+                ];
     	    };
 
             wsl = home-manager.lib.homeManagerConfiguration {
                 inherit pkgs;
-                modules = [ ./home-manager/base.nix ];
+                extraSpecialArgs = { inherit theme bright-bit;};
+                modules = [ 
+                    ./home-manager/base.nix 
+                ];
             };
         };
     };

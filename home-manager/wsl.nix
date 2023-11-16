@@ -24,18 +24,6 @@
             discord
     ];
 
-    xdg = {
-        enable = true;
-        mimeApps.defaultApplications = {
-            "text/plain" = [ "neovim.desktop" ];
-            "application/pdf" = [ "zathura.desktop" ];
-        };
-        userDirs = {
-            enable = true;
-            createDirectories = false;
-        };
-    };
-
     nixpkgs.config.permittedInsecurePackages = [
         "electron-24.8.6"
     ];

@@ -10,10 +10,11 @@
     ];
 
 
-    home.username = "azevedo";
-    home.homeDirectory = "/home/azevedo";
-    home.stateVersion = "23.05";
-    home.packages = [];
+    home = {
+        username = "azevedo";
+        homeDirectory = "/home/azevedo";
+        stateVersion = "23.05";
+    };
 
     nixpkgs.config = {
         allowUnfree = true;
@@ -26,17 +27,7 @@
         };
     };
 
-    xdg = {
-        enable = true;
-        mimeApps.defaultApplications = {
-            "text/plain" = [ "neovim.desktop" ];
-            "application/pdf" = [ "zathura.desktop" ];
-        };
-        userDirs = {
-            enable = true;
-            createDirectories = false;
-        };
-    };
+
 
     programs.home-manager.enable = true;
     programs.java = {

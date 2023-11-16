@@ -1,4 +1,4 @@
-{ pkgs, ...}:
+{ pkgs, bright-bit, ...}:
 {
 programs.neovim = {
     enable = true;
@@ -24,6 +24,7 @@ programs.neovim = {
 	    palenight-vim
 	    tokyonight-nvim
         onehalf
+        bright-bit.packages.x86_64-linux.default
 
         nvim-web-devicons
         {

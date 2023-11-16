@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ...}:
+{ config, theme, ...}:
 {
 programs.rofi =  {
     enable = true;
@@ -17,33 +17,45 @@ programs.rofi =  {
 
     theme = let
         inherit (config.lib.formats.rasi) mkLiteral;
+
+        bg0       = mkLiteral "#${theme.colors.black}";
+        bg1    = mkLiteral "#${theme.colors.line}";
+        accent      = mkLiteral "#${theme.colors.yellow}";
+        fg0   = mkLiteral "#${theme.colors.white}";
+        fg1   = mkLiteral "#${theme.colors.non-text}";
     in 
     {
-        
         "*" = {
-            bg      = mkLiteral "#11121D";
-            bg-alt  = mkLiteral "#444b6a";
+            text-color = fg0;
+            background-color = mkLiteral "transparent";
 
-            fg      = mkLiteral "#FFFFFF";
-            fg-alt  = mkLiteral "#787c99";
-
-            background-color = mkLiteral "@bg";
-              
             border  = 0;
             margin  = 0;
             padding = 0;
             spacing = 0;
         };
 
-        "window" =  { width = mkLiteral "50%";};
+        "window" =  { 
+            location = mkLiteral "center";
+            width = mkLiteral "50%";
+            border-radius = mkLiteral "24px";
+
+            background-color = bg0;
+        };
         
         "element" = {
-            padding     = mkLiteral "8 0";
-            text-color  = mkLiteral "@fg-alt";
+            padding     = mkLiteral "8px 16px";
+            spacing = mkLiteral "8px";
+            border-radius = mkLiteral "16px";
         };
 
-        "element selected" = {
-            text-color = mkLiteral "@fg";
+        "element normal active" = {
+            text-color = accent;
+        };
+
+        "element selected normal, element selected active" = {
+            background-color = accent;
+            text-color = bg0;
         };
 
         "element-text" = {
@@ -54,35 +66,55 @@ programs.rofi =  {
 
         "element-icon" = {
             size = 30;
+            vertical-align = mkLiteral "0.5";
         };
 
         "entry" = {
-            background-color = mkLiteral "@bg-alt";
-            padding = 12;
-            text-color = mkLiteral "@fg";
+            # background-color = mkLiteral "#${theme.colors.white}";
+            # padding = 12;
+            text-color = fg0;
         };
 
         "inputbar" = {
+            background-color = bg1;
+            border-color = accent;
+            text-color = fg0;
+
+            border = mkLiteral "2px";
+            border-radius = mkLiteral "16px";
+
+            padding = mkLiteral "8px 16px";
+            spacing = mkLiteral "8px";
             children = mkLiteral "[prompt, entry]";
         };
 
         "listview" = {
-            padding = mkLiteral "8 12";
-            background-color = mkLiteral "@bg";
+            background-color = mkLiteral "transparent";
+
+            margin = mkLiteral "12px 0 0";
+
             columns = 1;
             lines = 8;
         };
 
         "mainbox" = {
-            background-color = mkLiteral "@bg";
-            children = mkLiteral "[inputbar, listview]";
+            padding = mkLiteral "12px";
         };
 
         "prompt" = {
-            background-color = mkLiteral "@bg-alt";
             enabled = true;
-            padding = mkLiteral "12 0 0 12";
-            text-color = mkLiteral "@fg";
+            text-color = fg0;
+        };
+
+        "message" = {
+            margin = mkLiteral "12px 0 0";
+            border-radius = mkLiteral "16px";
+            border-color = bg1;
+            background-color = bg1;
+        };
+
+        "textbox" = {
+            padding = mkLiteral "8px 24px";
         };
     };
 };

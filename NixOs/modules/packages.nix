@@ -1,7 +1,4 @@
-{ pkgs, ... }:
-let
-     teeny-sddm= pkgs.libsForQt5.callPackage ./teeny-sddm.nix { };
-in
+{ pkgs, teeny-sddm, ... }:
 {
     nixpkgs.config = {
         allowUnfree = true;
