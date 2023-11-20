@@ -50,5 +50,4 @@
         systemDirs.data = [ "${config.home.homeDirectory}/.nix-profile/share/applications" ];
     };
 
-
 }
