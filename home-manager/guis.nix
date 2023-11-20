@@ -1,6 +1,14 @@
 { pkgs, ...}:
 {
     imports = [
+        ./apps
+
+        ./apps/git.nix
+        ./apps/readline.nix
+        ./apps/neovim/program.nix 
+        ./apps/ssh.nix
+        ./apps/lf/program.nix
+
         ./apps/alacritty.nix
         ./apps/picom.nix
         ./apps/polybar.nix 

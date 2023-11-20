@@ -1,8 +1,17 @@
-{config, ...}:
+{pkgs, config, ...}:
 {
-    imports = [];
+    imports = [
+        ./apps
+        ./apps/git.nix
+        ./apps/readline.nix
+        ./apps/neovim/program.nix 
+        ./apps/ssh.nix
+        ./apps/lf/program.nix
+    ];
 
-    home.packages = [ ];
+    home.packages = with pkgs; [wslu ];
+
+    modules.bash.enable = true;
 
     #targets.genericLinux.enable = true;
     
@@ -11,26 +20,25 @@
         mime.enable = true;
 
         desktopEntries = {
-            firefox = {
-                name = "Firefox.exe";
-                genericName = "Web Browser";
-                exec = ''/mnt/c/Program\ Files/Firefox\ Developer\ Edition/firefox.exe "\$(wslpath -w \"\$(readlink -f %U)\")"'';
+            windows = {
+                name = "Window";
+                genericName = "Windows";
+                exec = ''wslview %U""'';
                 terminal = false;
-                categories = [ "Network" "WebBrowser" ];
+                categories = [ ];
                 mimeType = [ "text/html" "text/xml" "application/pdf" ];
             };
         };
 
         mimeApps = {
             enable = true;
-            
             associations.added = {
-                "application/pdf" = "firefox.desktop";
+                "application/pdf" = "windows.desktop";
             };
 
             defaultApplications = {
                 "text/plain" = [ "neovim.desktop" ];
-                "application/pdf" = [ "firefox.desktop" ];
+                "application/pdf" = [ "windows.desktop" ];
             };
         };
         

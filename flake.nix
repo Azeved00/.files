@@ -9,6 +9,7 @@
         };
         teeny-sddm.url ="github:Azeved00/teeny-sddm";
         bright-bit.url ="github:Azeved00/bright-bit";
+        #bright-bit.url ="path:/home/azevedo/bright-bit-local";
 	};
 
     outputs = { self, nixpkgs, home-manager, teeny-sddm, bright-bit, ... } @ inputs: 
