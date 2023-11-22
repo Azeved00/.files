@@ -41,7 +41,7 @@
             };
 
 	        vm = nixpkgs.lib.nixosSystem {
-                specialArgs = { };
+                specialArgs = { inherit outputs inputs; };
                 
                 system = system;
 
