@@ -48,6 +48,15 @@
                 modules = [
                     ./NixOs/hardware-configs/vm.nix
                     ./NixOs/base.nix
+
+                    ./NixOs/modules/users.nix
+                    ./NixOs/modules/network.nix
+                    ./NixOs/modules/fonts.nix
+                    ./NixOs/modules/xserver.nix
+                    ./NixOs/modules/packages.nix
+                    ./NixOs/modules/locale.nix
+                    ./NixOs/modules/services.nix
+                    ./NixOs/modules/variables.nix
                 ];
             };
         };
