@@ -8,7 +8,8 @@
             inputs.nixpkgs.follows = "nixpkgs";
         };
         teeny-sddm.url ="github:Azeved00/teeny-sddm";
-        bright-bit.url ="github:Azeved00/bright-bit";
+        #bright-bit.url ="github:Azeved00/bright-bit";
+        bright-bit.url ="path:/home/azevedo/Dev/bright-bit";
 	};
 
     outputs = { self, nixpkgs, home-manager, teeny-sddm, bright-bit, ... } @ inputs: 
@@ -21,7 +22,7 @@
     {
         nixosConfigurations = {
             home-pc = nixpkgs.lib.nixosSystem {
-                specialArgs = { inherit outputs inputs teeny-sddm; };
+                specialArgs = { inherit outputs inputs; };
                 
                 inherit system;
 
@@ -64,7 +65,7 @@
     	homeConfigurations = {
             azevedo = home-manager.lib.homeManagerConfiguration {
 	    	    inherit pkgs;
-                extraSpecialArgs = { inherit theme bright-bit; };
+                extraSpecialArgs = { inherit inputs theme ; };
 	    	    modules = [ 
                     ./home-manager/base.nix 
                     ./home-manager/guis.nix 
