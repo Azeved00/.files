@@ -2,11 +2,11 @@
 {
     imports = [
         ./apps/git.nix
-        ./apps/bash/program.nix
+        ./apps/bash
         ./apps/readline.nix
-        ./apps/neovim/program.nix 
+        ./apps/neovim 
         ./apps/ssh.nix
-        ./apps/lf/program.nix
+        ./apps/lf
     ];
 
 

@@ -5,7 +5,7 @@
         ./apps/picom.nix
         ./apps/polybar.nix 
         ./apps/rofi.nix
-        ./apps/i3/program.nix
+        ./apps/i3
         ./apps/dunst.nix
 
         inputs.bright-bit.homeManagerModules.firefox
