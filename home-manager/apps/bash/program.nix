@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ...}:
+{ config, repoFolder, ...}:
 {
     programs.bash = {
         enable = true;
@@ -17,7 +17,10 @@
 
             "g" = "git";
 
-            "dotfiles"="lf ${config.home.homeDirectory}/.files/";
+            "dotfiles"="lf ${repoFolder}";
+
+            "home-manager"="home-manager --flake ${repoFolder}/.#azevedo";
+            "nixos-rebuild" = "nixos-rebuild --flake ${repoFolder}/.#home-pc";
         };
 
         profileExtra = "";
