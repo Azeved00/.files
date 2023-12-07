@@ -25,6 +25,7 @@
             })
             spotify
             discord
+            parsec-bin
     ];
 
     bright-bit.firefox.enable = true;
