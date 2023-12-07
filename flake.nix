@@ -17,7 +17,7 @@
         system = "x86_64-linux";
         pkgs = nixpkgs.legacyPackages.${system};
         theme = inputs.bright-bit.nixosModules.colors;
-        repoFolder = nixpkgs.lib.mkDefault "~/.files";
+        repoFolder = "~/.files";
 
         extraArgs = {inherit inputs theme repoFolder;};
     in
