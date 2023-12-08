@@ -48,7 +48,6 @@
         dunst
         gnome.gnome-screenshot
         playerctl
-        inputs.teeny-sddm.packages.x86_64-linux.default
 
 	    # applications
      	firefox

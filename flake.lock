@@ -5,11 +5,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1701388883,
-        "narHash": "sha256-AeQofnLQfHKWJFIk32tSt+HQ5j702Dyw9OugY0m331s=",
+        "lastModified": 1702065720,
+        "narHash": "sha256-icI67aSRt03vMz9kwE9ifTzuh3djzjzkh862lipwVVI=",
         "owner": "Azeved00",
         "repo": "bright-bit",
-        "rev": "294d8242e2f1c15b80d2a943ae8d04a8a118f631",
+        "rev": "43df87e42c38b847399dd3ae984641f228c174ac",
         "type": "github"
       },
       "original": {
@@ -25,11 +25,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1701071203,
-        "narHash": "sha256-lQywA7QU/vzTdZ1apI0PfgCWNyQobXUYghVrR5zuIeM=",
+        "lastModified": 1701728041,
+        "narHash": "sha256-x0pyrI1vC8evVDxCxyO6olOyr4wlFg9+VS3C3p4xFYQ=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "db1878f013b52ba5e4034db7c1b63e8d04173a86",
+        "rev": "ac7216918cd65f3824ba7817dea8f22e61221eaf",
         "type": "github"
       },
       "original": {
@@ -56,27 +56,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1701068326,
-        "narHash": "sha256-vmMceA+q6hG1yrjb+MP8T0YFDQIrW3bl45e7z24IEts=",
+        "lastModified": 1701718080,
+        "narHash": "sha256-6ovz0pG76dE0P170pmmZex1wWcQoeiomUZGggfH9XPs=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "8cfef6986adfb599ba379ae53c9f5631ecd2fd9c",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_3": {
-      "locked": {
-        "lastModified": 1699099776,
-        "narHash": "sha256-X09iKJ27mGsGambGfkKzqvw5esP1L/Rf8H3u3fCqIiU=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "85f1ba3e51676fa8cc604a3d863d729026a6b8eb",
+        "rev": "2c7f3c0fb7c08a0814627611d9d7d45ab6d75335",
         "type": "github"
       },
       "original": {
@@ -90,26 +74,7 @@
       "inputs": {
         "bright-bit": "bright-bit",
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs_2",
-        "teeny-sddm": "teeny-sddm"
-      }
-    },
-    "teeny-sddm": {
-      "inputs": {
-        "nixpkgs": "nixpkgs_3"
-      },
-      "locked": {
-        "lastModified": 1699478141,
-        "narHash": "sha256-tfo7jaF4bm7N9WRB6dBynjat37e49QPIFSlzwJdDR1E=",
-        "owner": "Azeved00",
-        "repo": "teeny-sddm",
-        "rev": "d85b4a444df4a93a12f1178b6511a5d01728c945",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Azeved00",
-        "repo": "teeny-sddm",
-        "type": "github"
+        "nixpkgs": "nixpkgs_2"
       }
     }
   },

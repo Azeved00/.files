@@ -1,5 +1,12 @@
-{ pkgs, ...}:
+{ pkgs, inputs, ...}:
 {
+    imports = [
+        inputs.bright-bit.nixosModules.sddm
+    ];
+
+
+    bright-bit.sddm.enable = true;
+
     # Configure keymap in X11
     services.xserver = {
         enable = true;
@@ -11,7 +18,6 @@
         displayManager = {
             sddm = {
                 enable = true;
-                theme = "teeny-sddm";
                 autoNumlock = true;
             };
             lightdm = {
