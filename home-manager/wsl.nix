@@ -9,7 +9,10 @@
         ./apps/lf/program.nix
     ];
 
-    home.packages = with pkgs; [wslu ];
+    home.packages = with pkgs; [
+        wslu
+        shared-mime-info
+    ];
 
     modules.bash.enable = true;
 
