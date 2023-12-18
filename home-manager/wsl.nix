@@ -15,34 +15,19 @@
     ];
 
     modules.bash.enable = true;
-
+    programs.bash.sessionVariables = {
+        BROWSER = "wslview";
+    };
     #targets.genericLinux.enable = true;
     
     xdg = {
         enable = true;
         mime.enable = true;
 
-        desktopEntries = {
-            windows = {
-                name = "Window";
-                genericName = "Windows";
-                exec = ''wslview %U""'';
-                terminal = false;
-                categories = [ ];
-                mimeType = [ "text/html" "text/xml" "application/pdf" ];
-            };
-        };
+        desktopEntries = {};
 
         mimeApps = {
             enable = true;
-            associations.added = {
-                "application/pdf" = "windows.desktop";
-            };
-
-            defaultApplications = {
-                "text/plain" = [ "neovim.desktop" ];
-                "application/pdf" = [ "windows.desktop" ];
-            };
         };
         
         userDirs = {
