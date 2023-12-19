@@ -8,7 +8,7 @@
             inputs.nixpkgs.follows = "nixpkgs";
         };
         bright-bit.url ="github:Azeved00/bright-bit";
-        #bright-bit.url ="path:/home/azevedo/Dev/bright-bit";
+        #bright-bit.url ="path:/home/azevedo/bright-bit-local";
 	};
 
     outputs = { self, nixpkgs, ... } @ inputs: 
@@ -16,9 +16,8 @@
         system = "x86_64-linux";
         pkgs = nixpkgs.legacyPackages.${system};
         theme = inputs.bright-bit.nixosModules.colors;
-        repoFolder = "~/.files";
 
-        extraArgs = {inherit inputs theme repoFolder;};
+        extraArgs = {inherit inputs theme;};
     in
     {
         nixosConfigurations = {
@@ -78,6 +77,7 @@
                 extraSpecialArgs = extraArgs;
                 modules = [ 
                     ./home-manager/base.nix 
+                    ./home-manager/wsl.nix 
                 ];
             };
         };

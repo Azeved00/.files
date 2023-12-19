@@ -1,30 +1,46 @@
-{ pkgs, ...}:
+{pkgs, config, ...}:
 {
     imports = [
-        ./apps/alacritty.nix
-        ./apps/picom.nix
-        ./apps/polybar.nix 
-        ./apps/rofi.nix
-        ./apps/i3
-        ./apps/dunst.nix
+        ./apps
+        ./apps/git.nix
+        ./apps/readline.nix
+        ./apps/neovim 
+        ./apps/ssh.nix
+        ./apps/lf
     ];
 
-    home.packages = with pkgs; [ 
-            prismlauncher
-	        heroic
-            (retroarch.override {
-                cores = with libretro; [
-                    dolphin
-                    citra
-                    beetle-gba
-                    beetle-psx-hw
-                ];
-            })
-            spotify
-            discord
+    home.packages = with pkgs; [
+        wslu
+        shared-mime-info
     ];
 
-    nixpkgs.config.permittedInsecurePackages = [
-        "electron-24.8.6"
-    ];
+    modules.bash = {
+        enable = true;
+        repoFolder = "~/.files";
+        hm = "wsl";
+    };
+
+    programs.bash.sessionVariables = {
+        BROWSER = "wslview";
+    };
+    #targets.genericLinux.enable = true;
+    
+    xdg = {
+        enable = true;
+        mime.enable = true;
+
+        desktopEntries = {};
+
+        mimeApps = {
+            enable = true;
+        };
+        
+        userDirs = {
+            enable = true;
+            createDirectories = false;
+        };
+
+        systemDirs.data = [ "${config.home.homeDirectory}/.nix-profile/share/applications" ];
+    };
+
 }

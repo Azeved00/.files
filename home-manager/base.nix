@@ -2,7 +2,7 @@
 {
     imports = [
         ./apps/git.nix
-        ./apps/bash
+        ./apps/bash.nix
         ./apps/readline.nix
         ./apps/neovim 
         ./apps/ssh.nix
