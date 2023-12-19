@@ -1,9 +1,9 @@
 {config, lib, theme, ...}:
 let 
     background-image = ../../../Assets/Pictures/Backgrounds/fractal.png;
+    mod = "Mod4";
 in
 {
-
 xsession = {
     enable = true;
     numlock.enable = true;
@@ -11,7 +11,7 @@ xsession = {
     windowManager.i3 = {
         enable = true;
         config = {
-            modifier = "Mod4";
+            modifier = "${mod}";
             fonts = {
                 names = [ "pango" ];
                 style = "monospace";
@@ -25,7 +25,7 @@ xsession = {
             window.border = 1;
             window.titlebar = false;
             floating = {
-                modifier = "Mod4";
+                modifier = "${mod}";
                 titlebar = false;
                 border = 1;
                 
@@ -99,12 +99,10 @@ xsession = {
                 ];
             };
 
-            keybindings = let 
-                mod = config.xsession.windowManager.i3.config.modifier;
-            in lib.mkOptionDefault {
+            keybindings = lib.mkOptionDefault {
                 "${mod}+r" = ''mode "resize"'';
                 
-                # woprkspace management
+                # workspace management
                 "${mod}+1" = ''workspace number "1"'';
                 "${mod}+2" = ''workspace number "2"'';
                 "${mod}+3" = ''workspace number "3"'';
@@ -140,6 +138,7 @@ xsession = {
                 "${mod}+Shift+k" = ''focus up'';
                 "${mod}+Shift+l" = ''focus right'';
 
+                "${mod}+Tab" = ''move workspace to output next'';
 
                 #"${mod}+h" = ''split h'';
                 "${mod}+v" = ''split v'';

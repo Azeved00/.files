@@ -1,7 +1,12 @@
 { pkgs, ...}:
 {
     imports = [
-
+        ./apps/git.nix
+        ./apps/bash.nix
+        ./apps/readline.nix
+        ./apps/neovim 
+        ./apps/ssh.nix
+        ./apps/lf
     ];
 
 

@@ -1,4 +1,4 @@
-{ pkgs, ...}:
+{ pkgs, inputs, ...}:
 {
     imports = [
         ./apps
@@ -13,8 +13,10 @@
         ./apps/picom.nix
         ./apps/polybar.nix 
         ./apps/rofi.nix
-        ./apps/i3/program.nix
+        ./apps/i3
         ./apps/dunst.nix
+
+        inputs.bright-bit.homeManagerModules.firefox
     ];
 
     home.packages = with pkgs; [ 
@@ -31,7 +33,11 @@
             })
             spotify
             discord
+            parsec-bin
     ];
+
+    bright-bit.firefox.enable = true;
+    
 
     xdg = {
         enable = true;

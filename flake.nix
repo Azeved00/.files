@@ -7,22 +7,22 @@
             url = "github:nix-community/home-manager";
             inputs.nixpkgs.follows = "nixpkgs";
         };
-        teeny-sddm.url ="github:Azeved00/teeny-sddm";
         bright-bit.url ="github:Azeved00/bright-bit";
         #bright-bit.url ="path:/home/azevedo/bright-bit-local";
 	};
 
-    outputs = { self, nixpkgs, home-manager, teeny-sddm, bright-bit, ... } @ inputs: 
+    outputs = { self, nixpkgs, ... } @ inputs: 
     let
-        inherit (self) outputs;
         system = "x86_64-linux";
         pkgs = nixpkgs.legacyPackages.${system};
-        theme = bright-bit.nixosModules.colors;
+        theme = inputs.bright-bit.nixosModules.colors;
+
+        extraArgs = {inherit inputs theme;};
     in
     {
         nixosConfigurations = {
             home-pc = nixpkgs.lib.nixosSystem {
-                specialArgs = { inherit outputs inputs teeny-sddm; };
+                specialArgs = extraArgs;
                 
                 inherit system;
 
@@ -42,30 +42,39 @@
             };
 
 	        vm = nixpkgs.lib.nixosSystem {
-                specialArgs = { };
+                specialArgs = extraArgs;
                 
                 system = system;
 
                 modules = [
                     ./NixOs/hardware-configs/vm.nix
                     ./NixOs/base.nix
+
+                    ./NixOs/modules/users.nix
+                    ./NixOs/modules/network.nix
+                    ./NixOs/modules/fonts.nix
+                    ./NixOs/modules/xserver.nix
+                    ./NixOs/modules/packages.nix
+                    ./NixOs/modules/locale.nix
+                    ./NixOs/modules/services.nix
+                    ./NixOs/modules/variables.nix
                 ];
             };
         };
 
     	homeConfigurations = {
-            azevedo = home-manager.lib.homeManagerConfiguration {
+            azevedo = inputs.home-manager.lib.homeManagerConfiguration {
 	    	    inherit pkgs;
-                extraSpecialArgs = { inherit theme bright-bit; };
+                extraSpecialArgs = extraArgs;
 	    	    modules = [ 
                     ./home-manager/base.nix 
                     ./home-manager/guis.nix 
                 ];
     	    };
 
-            wsl = home-manager.lib.homeManagerConfiguration {
+            wsl = inputs.home-manager.lib.homeManagerConfiguration {
                 inherit pkgs;
-                extraSpecialArgs = { inherit theme bright-bit;};
+                extraSpecialArgs = extraArgs;
                 modules = [ 
                     ./home-manager/base.nix 
                     ./home-manager/wsl.nix 

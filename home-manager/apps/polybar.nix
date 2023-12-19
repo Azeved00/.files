@@ -46,7 +46,7 @@ services.polybar = {
             radius = 6.0;
             fixed.center = true;
 
-            background = "#${theme.colors.black}";
+            background = "#${theme.colors.line}";
             foreground = "#${theme.colors.white}";
 
             line.size = 3;
@@ -106,7 +106,7 @@ services.polybar = {
 
                 focused = {
                     text = "%icon%";
-                    background = "${theme.colors.line}";
+                    background = "${theme.colors.selection}";
                     underline = "${theme.colors.yellow}";
                     padding = 2;
                 };
@@ -136,7 +136,7 @@ services.polybar = {
             interval = 2;
             format.prefix = {
                 text = "";
-                foreground = "${theme.colors.non_text}";
+                foreground = "${theme.colors.white}";
             };
             label = "%percentage_used%%";
         };
@@ -151,7 +151,7 @@ services.polybar = {
             time.text = "%H:%M";
             
             format.prefix.text = "";
-            format.prefix.foreground = "${theme.colors.non_text}";
+            format.prefix.foreground = "${theme.colors.white}";
 
             label = "%date% %time%";
         };
@@ -169,22 +169,22 @@ services.polybar = {
 
                 full = {
                     prefix.text = "";
-                    prefix.foreground = "${theme.colors.non_text}";
+                    prefix.foreground = "${theme.colors.white}";
                     underline = "\${self.format-charging-underline}";
                 };
 
                 ramp.capacity.text = [" " "" ""];
-                ramp.capacity.foreground = "${theme.colors.non_text}";
+                ramp.capacity.foreground = "${theme.colors.white}";
 
                 animation.charging = {
                     text = [" " "" ""];
-                    foreground = "${theme.colors.non_text}";
+                    foreground = "${theme.colors.white}";
                     framerate = 750;
                 };
 
                 animation.discharging = {
                     text = ["" "" " "];
-                    foreground = "${theme.colors.non_text}";
+                    foreground = "${theme.colors.white}";
                     framerate = 750;
                 };
             };
@@ -207,7 +207,7 @@ services.polybar = {
             label.warn.foreground = "${theme.colors.red}";
 
             ramp.text = ["" "" ""];
-            ramp.foreground = "${theme.colors.non_text}";
+            ramp.foreground = "${theme.colors.white}";
         };
 
         "module/powermenu" = {
@@ -273,10 +273,10 @@ services.polybar = {
 
             format.disconnected = "%{A1:bash $HOME/.config/polybar/scripts/rofi-wifi-menu.sh &:} <label-disconnected> %{A}";
             label.disconnected.text = "%ifname% disconnected";
-            label.disconnected.foreground = "${theme.colors.non_text}";
+            label.disconnected.foreground = "${theme.colors.white}";
 
             ramp.signal.text = ["" "" "" "" ""];
-            ramp.signal.foreground = "${theme.colors.non_text}";
+            ramp.signal.foreground = "${theme.colors.white}";
         };
     };
 };

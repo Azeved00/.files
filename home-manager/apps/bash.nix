@@ -8,6 +8,21 @@ in
     
     options.modules.bash = {
         enable = mkEnableOption "bash module";
+        repoFolder = mkOption {
+            description = ".files folder";
+            default = "~/.files";
+            type = types.str;
+        };
+        hm = mkOption {
+            description = "home-manager profile name";
+            default = "azevedo";
+            type = types.str;
+        };
+        nos = mkOption {
+            description = "nixos profile name";
+            default = "home-pc";
+            type = types.str;
+        };
     };
 
     config = mkIf cfg.enable {
@@ -28,7 +43,9 @@ in
 
                 "g" = "git";
                 
-                "dotfiles"="lf ${config.home.homeDirectory}/.files/";
+                "dotfiles"="lf ${cfg.repoFolder}";
+                "home-manager"="home-manager --flake ${cfg.repoFolder}#${cfg.hm}";
+                "nixos-rebuild" = "nixos-rebuild --flake ${cfg.repoFolder}#${cfg.nos}";
             };
 
             profileExtra = "";

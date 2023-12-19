@@ -4,9 +4,9 @@
         ./apps
         ./apps/git.nix
         ./apps/readline.nix
-        ./apps/neovim/program.nix 
+        ./apps/neovim 
         ./apps/ssh.nix
-        ./apps/lf/program.nix
+        ./apps/lf
     ];
 
     home.packages = with pkgs; [
@@ -14,7 +14,12 @@
         shared-mime-info
     ];
 
-    modules.bash.enable = true;
+    modules.bash = {
+        enable = true;
+        repoFolder = "~/.files";
+        hm = "wsl";
+    };
+
     programs.bash.sessionVariables = {
         BROWSER = "wslview";
     };
