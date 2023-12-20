@@ -195,12 +195,12 @@ xsession = {
                     notification = false;
                 }
                 {
-                    command = "xrandr --output HDMI-1 --auto";
+                    command = "xrandr --output HDMI-1 --primary --auto ";
                     always = true;
                     notification = false;
                 }
                 {
-                    command = "xrandr --output DP-1 --right-of HDMI-1 --auto";
+                    command = "xrandr --output DP-3 --auto --right-of HDMI-1";
                     always = true;
                     notification = false;
                 }
@@ -235,7 +235,7 @@ xsession = {
         };
         
         extraConfig = ''
-            workspace 6 output DP-1
+            workspace 6 output DP-3
             workspace 1 output HDMI-1
         '';
     };
