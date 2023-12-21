@@ -17,9 +17,16 @@
 
         commands = {
             edit = ''$$EDITOR $f'';
+            mkdir = ''$mkdir $*'';
+            touch = ''$touch $*'';
         };
 
-        keybindings = {};
+        keybindings = {
+            D = "delete"; 
+            sf = "push :touch<space>";
+            sd = "push :mkdir<space>";
+        };
+
 
     
     };
