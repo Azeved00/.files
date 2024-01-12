@@ -94,9 +94,11 @@ xsession = {
                     {class = "Mnecraft*";}
                     {class = "steam";}
                     {class = "leagueclientux*";}
-                    {class = "leagueP";}
+                    {class = "league*";}
                     {class = "Poke*";}
+                    {class = "Heroic";}
                 ];
+                "8" = [{class = "explorer.exe"; }];
             };
 
             keybindings = lib.mkOptionDefault {
