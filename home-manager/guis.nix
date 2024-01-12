@@ -30,6 +30,7 @@
             parsec-bin
     ];
 
+    programs.firefox.enable = true;
     bright-bit.firefox.enable = true;
     modules.bash = {
         enable = true;
