@@ -1,4 +1,4 @@
-{ pkgs, ...}:
+{ pkgs, inputs, ...}:
 {
     imports = [
         ./apps/git.nix
@@ -7,7 +7,11 @@
         ./apps/neovim 
         ./apps/ssh.nix
         ./apps/lf
+
+        inputs.bright-bit.homeManagerModule
     ];
+
+    bright-bit.user.enable = true;
 
 
     home = {
