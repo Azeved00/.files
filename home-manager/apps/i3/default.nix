@@ -140,7 +140,8 @@ xsession = {
                 "${mod}+Shift+k" = ''focus up'';
                 "${mod}+Shift+l" = ''focus right'';
 
-                "${mod}+Tab" = ''move workspace to output next'';
+                "${mod}+Tab" = ''focus output right'';
+                "${mod}+Shift+Tab" = ''move workspace to output next'';
 
                 #"${mod}+h" = ''split h'';
                 "${mod}+v" = ''split v'';

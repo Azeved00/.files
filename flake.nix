@@ -15,8 +15,9 @@
     let
         system = "x86_64-linux";
         pkgs = nixpkgs.legacyPackages.${system};
+        theme = import ./Assets/colors.nix;
 
-        extraArgs = {inherit inputs;};
+        extraArgs = {inherit inputs theme;};
     in
     {
         nixosConfigurations = {

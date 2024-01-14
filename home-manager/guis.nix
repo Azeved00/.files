@@ -1,4 +1,4 @@
-{ pkgs, inputs, ...}:
+{ pkgs, ...}:
 {
     imports = [
         ./apps
@@ -10,7 +10,6 @@
         ./apps/i3
         ./apps/dunst.nix
 
-        inputs.bright-bit.homeManagerModules.firefox
     ];
 
     home.packages = with pkgs; [ 
@@ -28,10 +27,11 @@
             spotify
             discord
             parsec-bin
+            obs-studio
     ];
 
+    programs.tmux.enable = true;
     programs.firefox.enable = true;
-    bright-bit.firefox.enable = true;
     modules.bash = {
         enable = true;
         repoFolder = "~/.files";
