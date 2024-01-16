@@ -91,12 +91,12 @@ xsession = {
                 "4" = [
                     {class = "prismlauncher";}
                     {class = "dolphin-emu";}
-                    {class = "Mnecraft*";}
+                    {class = "Minecraft*";}
                     {class = "steam";}
                     {class = "leagueclientux*";}
                     {class = "league*";}
                     {class = "Poke*";}
-                    {class = "Heroic";}
+                    {class = "Heroic*";}
                 ];
                 "8" = [{class = "explorer.exe"; }];
             };
