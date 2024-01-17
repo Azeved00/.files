@@ -1,35 +1,45 @@
-{ config, pkgs, lib, ...}:
+{ config, lib, ...}:
+let 
+    cfg = config.dotfiles.home-manager.ssh;
+in
 {
-    services.ssh-agent.enable = true;
+    options.dotfiles.home-manager.ssh = {
+        enable = lib.mkEnableOption "Enable ssh module";
+    };
 
-    programs.ssh = {
-        enable = true;
 
-        matchBlocks = {
-            "github.com" = {
-                hostname = "github.com";
-                user="git";
-                identityFile = "~/.ssh/main";
-                extraOptions={
-                    AddKeysToAgent = "yes";
+    config = lib.mkIf cfg.enable  {
+        services.ssh-agent.enable = true;
+
+        programs.ssh = {
+            enable = true;
+
+            matchBlocks = {
+                "github.com" = {
+                    hostname = "github.com";
+                    user="git";
+                    identityFile = "~/.ssh/main";
+                    extraOptions={
+                        AddKeysToAgent = "yes";
+                    };
                 };
-            };
 
-            "second" = {
-                hostname = "github.com";
-                user = "git";
-                identityFile="~/.ssh/second";
-                extraOptions={
-                    AddKeysToAgent = "yes";
+                "second" = {
+                    hostname = "github.com";
+                    user = "git";
+                    identityFile="~/.ssh/second";
+                    extraOptions={
+                        AddKeysToAgent = "yes";
+                    };
                 };
-            };
 
-            "gitlab" = {
-                hostname = "gitedu.alunos.dcc.fc.up.pt";
-                user = "git";
-                identityFile="~/.ssh/gitlab";
-                extraOptions={
-                    AddKeysToAgent = "yes";
+                "gitlab" = {
+                    hostname = "gitedu.alunos.dcc.fc.up.pt";
+                    user = "git";
+                    identityFile="~/.ssh/gitlab";
+                    extraOptions={
+                        AddKeysToAgent = "yes";
+                    };
                 };
             };
         };

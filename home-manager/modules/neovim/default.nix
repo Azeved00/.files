@@ -1,61 +1,69 @@
-{ pkgs, ...}:
+{ config, lib, pkgs, ...}:
+let 
+    cfg = config.dotfiles.home-manager.nvim;
+in
 {
-programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-    viAlias = true;
-    vimAlias = true;
+    options.dotfiles.home-manager.nvim= {
+        enable = lib.mkEnableOption "Enable nvim module";
+    };
+    config = lib.mkIf cfg.enable {
+        programs.neovim = {
+            enable = true;
+            defaultEditor = true;
+            viAlias = true;
+            vimAlias = true;
 
-    extraLuaConfig = (builtins.concatStringsSep "\n" [
-       (builtins.readFile ./settings.lua)
-    ]);
+            extraLuaConfig = (builtins.concatStringsSep "\n" [
+               (builtins.readFile ./settings.lua)
+            ]);
 
-    extraPackages = with pkgs; [
-        #some language servers
-        ccls
-        lua-language-server
-        nil
-    ];
+            extraPackages = with pkgs; [
+                #some language servers
+                ccls
+                lua-language-server
+                nil
+            ];
 
-    plugins = with pkgs.vimPlugins; [
-        rainbow
+            plugins = with pkgs.vimPlugins; [
+                rainbow
 
-	    kanagawa-nvim
-	    palenight-vim
-	    tokyonight-nvim
-        onehalf
+                kanagawa-nvim
+                palenight-vim
+                tokyonight-nvim
+                onehalf
 
-        nvim-web-devicons
-        {
-            plugin = lualine-nvim;
-            type = "lua";
-            config = builtins.readFile ./lualine.lua;
-        }
-	
-        {
-            plugin = nvim-lspconfig;
-            type = "lua";
-            config = builtins.readFile ./lsp.lua;
-        }
+                nvim-web-devicons
+                {
+                    plugin = lualine-nvim;
+                    type = "lua";
+                    config = builtins.readFile ./lualine.lua;
+                }
+            
+                {
+                    plugin = nvim-lspconfig;
+                    type = "lua";
+                    config = builtins.readFile ./lsp.lua;
+                }
 
-        vim-gitgutter
-        vim-css-color
+                vim-gitgutter
+                vim-css-color
 
-        {
-            plugin = (nvim-treesitter.withPlugins (p: [
-                p.tree-sitter-nix
-                p.tree-sitter-c
-                p.tree-sitter-cpp
-                p.tree-sitter-lua
-                p.tree-sitter-vim
-                p.tree-sitter-python
-                p.tree-sitter-bash
-                p.tree-sitter-markdown
-            ]));
+                {
+                    plugin = (nvim-treesitter.withPlugins (p: [
+                        p.tree-sitter-nix
+                        p.tree-sitter-c
+                        p.tree-sitter-cpp
+                        p.tree-sitter-lua
+                        p.tree-sitter-vim
+                        p.tree-sitter-python
+                        p.tree-sitter-bash
+                        p.tree-sitter-markdown
+                    ]));
 
-            type = "lua";
-            config = builtins.readFile ./treesitter.lua;
-        }
-   ];
-};
+                    type = "lua";
+                    config = builtins.readFile ./treesitter.lua;
+                }
+           ];
+        };
+    };
 }
