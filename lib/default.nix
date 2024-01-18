@@ -25,13 +25,19 @@ in rec {
         ];
     };
 
+
     mkHome = sys: config: 
     inputs.home-manager.lib.homeManagerConfiguration {
         pkgs = mkPkgs sys;
+
         extraSpecialArgs = {
             inherit inputs myLib outputs;
         };
+
         modules = [
+            inputs.bright-bit.homeManagerModule
+            outputs.homeManagerModule
+            outputs.homeManagerModules.profile
             config
         ];
     };

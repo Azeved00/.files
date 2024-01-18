@@ -34,10 +34,10 @@
             (retroarch.override {
                 cores = with libretro; [
                     dolphin
-                    citra
+                    #citra
                     beetle-gba
                     beetle-psx-hw
-                    pcsx2
+                    #pcsx2
                 ];
             })
             spotify

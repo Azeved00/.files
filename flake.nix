@@ -7,20 +7,23 @@
             url = "github:nix-community/home-manager";
             inputs.nixpkgs.follows = "nixpkgs";
         };
-        bright-bit.url ="github:Azeved00/bright-bit";
-        #bright-bit.url ="path:/home/azevedo/bright-bit";
+        #bright-bit.url ="github:Azeved00/bright-bit";
+        bright-bit.url ="path:/home/azevedo/Dev/bright-bit";
 	};
 
     outputs = { self, nixpkgs, ... } @ inputs: 
     let
         myLib = import ./lib/default.nix {inherit inputs;};
         system = "x86_64-linux";
-        pkgs = nixpkgs.legacyPackages.${system};
-        theme = import ./Assets/colors.nix;
-
-        extraArgs = {inherit inputs theme;};
+        extraArgs = {inherit inputs;};
     in
     with myLib; {
+        nixosModule = import ./nixos/modules;
+        #nixosModules.profile = import ./nixos/profiles;
+        homeManagerModule = import ./home-manager/modules;
+        homeManagerModules.profile = import ./home-manager/profiles;
+
+
         nixosConfigurations = {
             home-pc = nixpkgs.lib.nixosSystem {
                 specialArgs = extraArgs;
@@ -64,25 +67,8 @@
         };
 
     	homeConfigurations = {
-            azevedo = inputs.home-manager.lib.homeManagerConfiguration {
-	    	    inherit pkgs;
-                extraSpecialArgs = extraArgs;
-	    	    modules = [ 
-                    inputs.bright-bit.homeManagerModule
-                    ./home-manager/modules
-                    ./home-manager/profiles
-                    ./home-manager/profiles/full.nix
-                ];
-    	    };
-
-            wsl = inputs.home-manager.lib.homeManagerConfiguration {
-                inherit pkgs;
-                extraSpecialArgs = extraArgs;
-                modules = [ 
-                    ./home-manager/base.nix 
-                    ./home-manager/wsl.nix 
-                ];
-            };
+            azevedo = mkHome system ./home-manager/profiles/full.nix;
+            wsl = mkHome system ./home-manager/profiles/wsl.nix;
         };
     };
 }
