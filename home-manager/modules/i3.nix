@@ -128,12 +128,14 @@ in
                         "4" = [
                             {class = "prismlauncher";}
                             {class = "dolphin-emu";}
-                            {class = "Mnecraft*";}
+                            {class = "Minecraft*";}
                             {class = "steam";}
                             {class = "leagueclientux*";}
-                            {class = "leagueP";}
+                            {class = "league*";}
                             {class = "Poke*";}
+                            {class = "Heroic*";}
                         ];
+                        "8" = [{class = "explorer.exe"; }];
                     };
 
                     keybindings = lib.mkOptionDefault {
@@ -175,7 +177,8 @@ in
                         "${cfg.mod}+Shift+k" = ''focus up'';
                         "${cfg.mod}+Shift+l" = ''focus right'';
 
-                        "${cfg.mod}+Tab" = ''move workspace to output next'';
+                        "${cfg.mod}+Tab" = ''focus output right'';
+                        "${cfg.mod}+Shift+Tab" = ''move workspace to output next'';
 
                         #"${cfg.mod}+h" = ''split h'';
                         "${cfg.mod}+v" = ''split v'';

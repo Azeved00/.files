@@ -1,5 +1,6 @@
 {pkgs, ...}: {
 
+
     imports =  [ ];
 
     dotfiles.home-manager = {
@@ -23,8 +24,10 @@
         rofi.enable = true;
         ssh.enable = true;
     };
+    programs.tmux.enable = true;
+    programs.firefox.enable = true;
 
-    bright-bit.user.enable = true;
+
     home.packages = with pkgs; [ 
             prismlauncher
 	        heroic
@@ -40,9 +43,10 @@
             spotify
             discord
             parsec-bin
+            obs-studio
     ];
 
-    bright-bit.user.firefox.enable = true;
+    bright-bit.user.enable = true;
 
     xdg = {
         enable = true;
