@@ -6,7 +6,6 @@ in
     options.dotfiles.home-manager.rofi= {
         enable = lib.mkEnableOption "Enable Rofi module";
         theme = lib.mkOption {
-            name = "theme";
             default = {
                 colors = {
                     line = "313640";
@@ -26,7 +25,7 @@ in
                 };
             };
                 
-            type = lib.options.attrs;
+            type = lib.types.attrs;
         };
     };
 
@@ -50,11 +49,11 @@ in
             theme = let
                 inherit (config.lib.formats.rasi) mkLiteral;
 
-                bg0       = mkLiteral "#${theme.colors.black}";
-                bg1    = mkLiteral "#${theme.colors.line}";
-                accent      = mkLiteral "#${theme.colors.yellow}";
-                fg0   = mkLiteral "#${theme.colors.white}";
-                fg1   = mkLiteral "#${theme.colors.non-text}";
+                bg0       = mkLiteral "#${cfg.theme.colors.black}";
+                bg1    = mkLiteral "#${cfg.theme.colors.line}";
+                accent      = mkLiteral "#${cfg.theme.colors.yellow}";
+                fg0   = mkLiteral "#${cfg.theme.colors.white}";
+                fg1   = mkLiteral "#${cfg.theme.colors.non-text}";
             in 
             {
                 "*" = {
@@ -102,7 +101,7 @@ in
                 };
 
                 "entry" = {
-                    # background-color = mkLiteral "#${theme.colors.white}";
+                    # background-color = mkLiteral "#${cfg.theme.colors.white}";
                     # padding = 12;
                     text-color = fg0;
                 };

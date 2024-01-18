@@ -1,4 +1,4 @@
-{config, lib, theme, ...}:
+{config, lib, ...}:
 let 
     cfg = config.dotfiles.home-manager.i3;
 in
@@ -8,15 +8,34 @@ in
         enable = lib.mkEnableOption "Enable i3 module";
 
         background-image = lib.mkOption {
-            name = "Background Image";
             type = lib.types.path;
-            defualt =  ../../../Assets/Pictures/Backgrounds/fractal.png;
+            default =  ../../../Assets/Pictures/Backgrounds/fractal.png;
         };
 
         mod = lib.mkOption {
-            name = "Modificator";
-            type = lib.types.string;
+            type = lib.types.str;
             default = "Mod4";
+        };
+
+        theme = lib.mkOption {
+            default = {
+                colors = {
+                    line = "313640";
+                    comment = "5c6370";
+                    selection = "474e5d";
+                    non_text = "919baa";
+
+                    black = "282c34";
+                    red = "e06c75";
+                    orange = "de935f";
+                    yellow = "e5c07b";
+                    green = "98c379";
+                    cyan = "56b6c2";
+                    blue = "61afef";
+                    magenta = "c678dd";
+                    white = "dcdfe4";
+                };
+            };
         };
     };
 
@@ -29,7 +48,7 @@ in
             windowManager.i3 = {
                 enable = true;
                 config = {
-                    modifier = "${mod}";
+                    modifier = "${cfg.mod}";
                     fonts = {
                         names = [ "pango" ];
                         style = "monospace";
@@ -43,7 +62,7 @@ in
                     window.border = 1;
                     window.titlebar = false;
                     floating = {
-                        modifier = "${mod}";
+                        modifier = "${cfg.mod}";
                         titlebar = false;
                         border = 1;
                         
@@ -56,7 +75,7 @@ in
                     colors = {
                         urgent = {
                             background = "#900000";
-                            border = "#${theme.colors.red}";
+                            border = "#${cfg.theme.colors.red}";
                             childBorder = "#900000";
                             indicator = "#900000";
                             text = "#ffffff";
@@ -64,9 +83,9 @@ in
 
                         focused = {
                             background = "#285577";
-                            border = "#${theme.colors.yellow}";
-                            childBorder = "#${theme.colors.yellow}";
-                            indicator = "#${theme.colors.yellow}";
+                            border = "#${cfg.theme.colors.yellow}";
+                            childBorder = "#${cfg.theme.colors.yellow}";
+                            indicator = "#${cfg.theme.colors.yellow}";
                             text = "#ffffff";
                         };
 
@@ -94,7 +113,7 @@ in
                             text = "#ffffff";
                         };
 
-                        background = "#${theme.colors.black}";
+                        background = "#${cfg.theme.colors.black}";
                     };
 
                     bars = [];
@@ -118,54 +137,54 @@ in
                     };
 
                     keybindings = lib.mkOptionDefault {
-                        "${mod}+r" = ''mode "resize"'';
+                        "${cfg.mod}+r" = ''mode "resize"'';
                         
                         # workspace management
-                        "${mod}+1" = ''workspace number "1"'';
-                        "${mod}+2" = ''workspace number "2"'';
-                        "${mod}+3" = ''workspace number "3"'';
-                        "${mod}+4" = ''workspace number "4"'';
-                        "${mod}+5" = ''workspace number "5"'';
-                        "${mod}+6" = ''workspace number "6"'';
-                        "${mod}+7" = ''workspace number "7"'';
-                        "${mod}+8" = ''workspace number "8"'';
-                        "${mod}+9" = ''workspace number "9"'';
-                        "${mod}+0" = ''workspace number "0"'';
+                        "${cfg.mod}+1" = ''workspace number "1"'';
+                        "${cfg.mod}+2" = ''workspace number "2"'';
+                        "${cfg.mod}+3" = ''workspace number "3"'';
+                        "${cfg.mod}+4" = ''workspace number "4"'';
+                        "${cfg.mod}+5" = ''workspace number "5"'';
+                        "${cfg.mod}+6" = ''workspace number "6"'';
+                        "${cfg.mod}+7" = ''workspace number "7"'';
+                        "${cfg.mod}+8" = ''workspace number "8"'';
+                        "${cfg.mod}+9" = ''workspace number "9"'';
+                        "${cfg.mod}+0" = ''workspace number "0"'';
 
-                        "${mod}+Shift+1" = ''move container to workspace number "1"'';
-                        "${mod}+Shift+2" = ''move container to workspace number "2"'';
-                        "${mod}+Shift+3" = ''move container to workspace number "3"'';
-                        "${mod}+Shift+4" = ''move container to workspace number "4"'';
-                        "${mod}+Shift+5" = ''move container to workspace number "5"'';
-                        "${mod}+Shift+6" = ''move container to workspace number "6"'';
-                        "${mod}+Shift+7" = ''move container to workspace number "7"'';
-                        "${mod}+Shift+8" = ''move container to workspace number "8"'';
-                        "${mod}+Shift+9" = ''move container to workspace number "9"'';
-                        "${mod}+Shift+0" = ''move container to workspace number "0"'';
+                        "${cfg.mod}+Shift+1" = ''move container to workspace number "1"'';
+                        "${cfg.mod}+Shift+2" = ''move container to workspace number "2"'';
+                        "${cfg.mod}+Shift+3" = ''move container to workspace number "3"'';
+                        "${cfg.mod}+Shift+4" = ''move container to workspace number "4"'';
+                        "${cfg.mod}+Shift+5" = ''move container to workspace number "5"'';
+                        "${cfg.mod}+Shift+6" = ''move container to workspace number "6"'';
+                        "${cfg.mod}+Shift+7" = ''move container to workspace number "7"'';
+                        "${cfg.mod}+Shift+8" = ''move container to workspace number "8"'';
+                        "${cfg.mod}+Shift+9" = ''move container to workspace number "9"'';
+                        "${cfg.mod}+Shift+0" = ''move container to workspace number "0"'';
 
                         #window management
-                        "${mod}+w" = ''kill'';
+                        "${cfg.mod}+w" = ''kill'';
 
-                        "${mod}+h" = ''focus left'';
-                        "${mod}+j" = ''focus down'';
-                        "${mod}+k" = ''focus up'';
-                        "${mod}+l" = ''focus right'';
+                        "${cfg.mod}+h" = ''focus left'';
+                        "${cfg.mod}+j" = ''focus down'';
+                        "${cfg.mod}+k" = ''focus up'';
+                        "${cfg.mod}+l" = ''focus right'';
 
-                        "${mod}+Shift+h" = ''focus left'';
-                        "${mod}+Shift+j" = ''focus down'';
-                        "${mod}+Shift+k" = ''focus up'';
-                        "${mod}+Shift+l" = ''focus right'';
+                        "${cfg.mod}+Shift+h" = ''focus left'';
+                        "${cfg.mod}+Shift+j" = ''focus down'';
+                        "${cfg.mod}+Shift+k" = ''focus up'';
+                        "${cfg.mod}+Shift+l" = ''focus right'';
 
-                        "${mod}+Tab" = ''move workspace to output next'';
+                        "${cfg.mod}+Tab" = ''move workspace to output next'';
 
-                        #"${mod}+h" = ''split h'';
-                        "${mod}+v" = ''split v'';
-                        "${mod}+f" = ''fullscreen toggle'';
-                        "${mod}+s" = ''layout tabbed'';
-                        "${mod}+Shift+v" = ''layout toggle split'';
-                        "${mod}+Shift+space" = ''floating toggle'';
-                        "${mod}+space" = ''focus mode_toggle'';
-                        "${mod}+a" = ''focus parent'';
+                        #"${cfg.mod}+h" = ''split h'';
+                        "${cfg.mod}+v" = ''split v'';
+                        "${cfg.mod}+f" = ''fullscreen toggle'';
+                        "${cfg.mod}+s" = ''layout tabbed'';
+                        "${cfg.mod}+Shift+v" = ''layout toggle split'';
+                        "${cfg.mod}+Shift+space" = ''floating toggle'';
+                        "${cfg.mod}+space" = ''focus mode_toggle'';
+                        "${cfg.mod}+a" = ''focus parent'';
 
                         #audio
                         "F6" = ''exec amixer -q set Master toggle'';
@@ -177,18 +196,18 @@ in
                         "F11"= ''exec playerctl next'';
 
                         #Aplication Shortcuts
-                        "${mod}+b"=''workspace 1; exec firefox'';
-                        "${mod}+t"=''workspace 2; exec alacritty'';
-                        "${mod}+d"=''exec --no-startup-id rofi -show drun'';
-                        "${mod}+Shift+d"=''exec --no-startup-id rofi -show run'';
+                        "${cfg.mod}+b"=''workspace 1; exec firefox'';
+                        "${cfg.mod}+t"=''workspace 2; exec alacritty'';
+                        "${cfg.mod}+d"=''exec --no-startup-id rofi -show drun'';
+                        "${cfg.mod}+Shift+d"=''exec --no-startup-id rofi -show run'';
 
                         #i3 shortcuts
-                        "${mod}+Shift+c" = ''reload'';
-                        "${mod}+Shift+r" = ''restart'';
-                        "${mod}+Shift+e" = ''exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"'';
+                        "${cfg.mod}+Shift+c" = ''reload'';
+                        "${cfg.mod}+Shift+r" = ''restart'';
+                        "${cfg.mod}+Shift+e" = ''exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"'';
 
                         #Computer Shortcts
-                        "${mod}+F12"="exec shutdown now";
+                        "${cfg.mod}+F12"="exec shutdown now";
                     };
 
                     startup = [
@@ -203,7 +222,7 @@ in
                             notification = false;
                         }
                         {
-                            command = "feh --no-fehbg --bg-fill ${background-image}";
+                            command = "feh --no-fehbg --bg-fill ${cfg.background-image}";
                             always = true;
                             notification = false;
                         }

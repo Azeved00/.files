@@ -6,7 +6,6 @@ in
     options.dotfiles.home-manager.alacritty = {
         enable = lib.mkEnableOption "Enable Alacritty module";
         theme = lib.mkOption {
-            name = "theme";
             default = {
                 colors = {
                     line = "313640";
@@ -26,7 +25,7 @@ in
                 };
             };
                 
-            type = lib.options.attrs;
+            type = lib.types.attrs;
         };
     };
 
@@ -52,32 +51,32 @@ in
 
                 colors = {
                     primary = {
-                        background = "0x${cfg.colors.black}";
-                        foreground = "0x${cfg.colors.white}";
+                        background = "0x${cfg.theme.colors.black}";
+                        foreground = "0x${cfg.theme.colors.white}";
                     };
                     cursor = {
-                        text    ="0x${cfg.colors.white}";
-                        cursor  ="0x${cfg.colors.white}";
+                        text    ="0x${cfg.theme.colors.white}";
+                        cursor  ="0x${cfg.theme.colors.white}";
                     };
                     normal = {
-                        black   ="0x${cfg.colors.black}";
-                        red     ="0x${cfg.colors.red}";
-                        green   ="0x${cfg.colors.green}";
-                        yellow  ="0x${cfg.colors.yellow}";
-                        blue    ="0x${cfg.colors.blue}";
-                        magenta ="0x${cfg.colors.magenta}";
-                        cyan    ="0x${cfg.colors.cyan}";
-                        white   ="0x${cfg.colors.white}";
+                        black   ="0x${cfg.theme.colors.black}";
+                        red     ="0x${cfg.theme.colors.red}";
+                        green   ="0x${cfg.theme.colors.green}";
+                        yellow  ="0x${cfg.theme.colors.yellow}";
+                        blue    ="0x${cfg.theme.colors.blue}";
+                        magenta ="0x${cfg.theme.colors.magenta}";
+                        cyan    ="0x${cfg.theme.colors.cyan}";
+                        white   ="0x${cfg.theme.colors.white}";
                     };
                     bright = {
-                        black   ="0x${cfg.colors.black}";
-                        red     ="0x${cfg.colors.red}";
-                        green   ="0x${cfg.colors.green}";
-                        yellow  ="0x${cfg.colors.yellow}";
-                        blue    ="0x${cfg.colors.blue}";
-                        magenta ="0x${cfg.colors.magenta}";
-                        cyan    ="0x${cfg.colors.cyan}";
-                        white   ="0x${cfg.colors.white}";
+                        black   ="0x${cfg.theme.colors.black}";
+                        red     ="0x${cfg.theme.colors.red}";
+                        green   ="0x${cfg.theme.colors.green}";
+                        yellow  ="0x${cfg.theme.colors.yellow}";
+                        blue    ="0x${cfg.theme.colors.blue}";
+                        magenta ="0x${cfg.theme.colors.magenta}";
+                        cyan    ="0x${cfg.theme.colors.cyan}";
+                        white   ="0x${cfg.theme.colors.white}";
                     };
                 };
                 

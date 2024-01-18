@@ -1,18 +1,30 @@
-{ pkgs, inputs, ...}:
-{
-    imports = [
-        ./apps
+{pkgs, ...}: {
 
-        ./apps/alacritty.nix
-        ./apps/picom.nix
-        ./apps/polybar.nix 
-        ./apps/rofi.nix
-        ./apps/i3
-        ./apps/dunst.nix
+    imports =  [ ];
 
-        inputs.bright-bit.homeManagerModules.firefox
-    ];
+    dotfiles.home-manager = {
+        alacritty.enable = true;
+        bash = {
+            enable = true;
+            repoFolder = "~/.files";
+            hm = "azevedo";
+        };
+        dunst.enable = true;
+        git.enable = true;
+        i3= {
+            enable = true;
+            background-image = ../../assets/Pictures/Backgrounds/fractal.png;
+        };
+        lf.enable = true;
+        nvim.enable = true;
+        picom.enable = true;
+        polybar.enable = true;
+        readline.enable = true;
+        rofi.enable = true;
+        ssh.enable = true;
+    };
 
+    bright-bit.user.enable = true;
     home.packages = with pkgs; [ 
             prismlauncher
 	        heroic
@@ -30,14 +42,7 @@
             parsec-bin
     ];
 
-    bright-bit.firefox.enable = true;
-    modules.bash = {
-        enable = true;
-        repoFolder = "~/.files";
-        hm = "azevedo";
-    };
-
-
+    bright-bit.user.firefox.enable = true;
 
     xdg = {
         enable = true;
@@ -56,4 +61,5 @@
     nixpkgs.config.permittedInsecurePackages = [
         "electron-24.8.6"
     ];
+
 }

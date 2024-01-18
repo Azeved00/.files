@@ -6,7 +6,6 @@ in
     options.dotfiles.home-manager.polybar = {
         enable = lib.mkEnableOption "Enable Polybar module";
         theme = lib.mkOption {
-            name = "theme";
             default = {
                 colors = {
                     line = "313640";
@@ -26,7 +25,7 @@ in
                 };
             };
                 
-            type = lib.options.attrs;
+            type = lib.types.attrs;
         };
     };
 
@@ -76,8 +75,8 @@ in
                     radius = 6.0;
                     fixed.center = true;
 
-                    background = "#${theme.colors.line}";
-                    foreground = "#${theme.colors.white}";
+                    background = "#${cfg.theme.colors.line}";
+                    foreground = "#${cfg.theme.colors.white}";
 
                     line.size = 3;
                     line.color = "#f00";
@@ -131,13 +130,13 @@ in
                         mode = {
                             padding = 2;
                             foreground = "#000";
-                            background = "${theme.colors.yellow}";
+                            background = "${cfg.theme.colors.yellow}";
                         };
 
                         focused = {
                             text = "%icon%";
-                            background = "${theme.colors.selection}";
-                            underline = "${theme.colors.yellow}";
+                            background = "${cfg.theme.colors.selection}";
+                            underline = "${cfg.theme.colors.yellow}";
                             padding = 2;
                         };
 
@@ -155,7 +154,7 @@ in
                         
                         urgent = {
                             text = "%icon%";
-                            background = "${theme.colors.red}";
+                            background = "${cfg.theme.colors.red}";
                             padding = 2;
                         };
                     };
@@ -166,7 +165,7 @@ in
                     interval = 2;
                     format.prefix = {
                         text = "";
-                        foreground = "${theme.colors.white}";
+                        foreground = "${cfg.theme.colors.white}";
                     };
                     label = "%percentage_used%%";
                 };
@@ -181,7 +180,7 @@ in
                     time.text = "%H:%M";
                     
                     format.prefix.text = "";
-                    format.prefix.foreground = "${theme.colors.white}";
+                    format.prefix.foreground = "${cfg.theme.colors.white}";
 
                     label = "%date% %time%";
                 };
@@ -199,22 +198,22 @@ in
 
                         full = {
                             prefix.text = "";
-                            prefix.foreground = "${theme.colors.white}";
+                            prefix.foreground = "${cfg.theme.colors.white}";
                             underline = "\${self.format-charging-underline}";
                         };
 
                         ramp.capacity.text = [" " "" ""];
-                        ramp.capacity.foreground = "${theme.colors.white}";
+                        ramp.capacity.foreground = "${cfg.theme.colors.white}";
 
                         animation.charging = {
                             text = [" " "" ""];
-                            foreground = "${theme.colors.white}";
+                            foreground = "${cfg.theme.colors.white}";
                             framerate = 750;
                         };
 
                         animation.discharging = {
                             text = ["" "" " "];
-                            foreground = "${theme.colors.white}";
+                            foreground = "${cfg.theme.colors.white}";
                             framerate = 750;
                         };
                     };
@@ -234,10 +233,10 @@ in
 
                     label.text = "%temperature-c%";
                     label.warn.text = "%temperature-c%";
-                    label.warn.foreground = "${theme.colors.red}";
+                    label.warn.foreground = "${cfg.theme.colors.red}";
 
                     ramp.text = ["" "" ""];
-                    ramp.foreground = "${theme.colors.white}";
+                    ramp.foreground = "${cfg.theme.colors.white}";
                 };
 
                 "module/powermenu" = {
@@ -247,11 +246,11 @@ in
 
                     label = {
                         open.text="";
-                        open.foreground="${theme.colors.red}";
+                        open.foreground="${cfg.theme.colors.red}";
                         close.text=" cancel";
-                        close.foreground="${theme.colors.red}";
+                        close.foreground="${cfg.theme.colors.red}";
                         separator.text = "|";
-                        separator.foreground = "${theme.colors.red}";
+                        separator.foreground = "${cfg.theme.colors.red}";
                     };
 
                     menu = [
@@ -303,10 +302,10 @@ in
 
                     format.disconnected = "%{A1:bash $HOME/.config/polybar/scripts/rofi-wifi-menu.sh &:} <label-disconnected> %{A}";
                     label.disconnected.text = "%ifname% disconnected";
-                    label.disconnected.foreground = "${theme.colors.white}";
+                    label.disconnected.foreground = "${cfg.theme.colors.white}";
 
                     ramp.signal.text = ["" "" "" "" ""];
-                    ramp.signal.foreground = "${theme.colors.white}";
+                    ramp.signal.foreground = "${cfg.theme.colors.white}";
                 };
             };
         };

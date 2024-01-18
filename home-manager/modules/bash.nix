@@ -1,12 +1,12 @@
 { config, lib, ...}:
 with lib;
 let
-  cfg = config.modules.bash;
+  cfg = config.dotfiles.home-manager.bash;
 in
 {
     imports = [];
     
-    options.modules.bash = {
+    options.dotfiles.home-manager.bash = {
         enable = mkEnableOption "bash module";
         repoFolder = mkOption {
             description = ".files folder";

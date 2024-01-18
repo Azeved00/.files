@@ -13,11 +13,14 @@
 
     outputs = { self, nixpkgs, ... } @ inputs: 
     let
-        myLib = import ./myLib/default.nix {inherit inputs;};
+        myLib = import ./lib/default.nix {inherit inputs;};
+        system = "x86_64-linux";
+        pkgs = nixpkgs.legacyPackages.${system};
+
+        extraArgs = {inherit inputs;};
     in
     with myLib; {
         nixosConfigurations = {
-            home-pc = mkSystem "x86_64-linux" ./; 
             home-pc = nixpkgs.lib.nixosSystem {
                 specialArgs = extraArgs;
                 
@@ -60,13 +63,14 @@
         };
 
     	homeConfigurations = {
-            azevedo = 
             azevedo = inputs.home-manager.lib.homeManagerConfiguration {
 	    	    inherit pkgs;
                 extraSpecialArgs = extraArgs;
 	    	    modules = [ 
-                    ./home-manager/base.nix 
-                    ./home-manager/guis.nix 
+                    inputs.bright-bit.homeManagerModule
+                    ./home-manager/modules
+                    ./home-manager/profiles
+                    ./home-manager/profiles/full.nix
                 ];
     	    };
 
