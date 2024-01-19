@@ -78,16 +78,18 @@ in
                         cyan    ="0x${cfg.theme.colors.cyan}";
                         white   ="0x${cfg.theme.colors.white}";
                     };
+                    draw_bold_text_with_bright_colors = true;
                 };
                 
                 cursor = {
-                    style = "Beam";
-                    blinking = "On";
+                    style = {
+                        shape = "Beam";
+                        blinking = "On";
+                    };
                     blink_interval = 750;
                 };
 
-                draw_bold_text_with_bright_colors = true;
-                live_theme.reload = true;
+                live_config_reload = true;
                 #working_directory = "/users/azevedo/";
             };
         };
