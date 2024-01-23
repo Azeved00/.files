@@ -21,6 +21,9 @@ in rec {
             system = sys;
         };
         modules = [
+            inputs.bright-bit.nixosModule
+            outputs.nixosModule
+            outputs.nixosModule.profile
             config
         ];
     };
