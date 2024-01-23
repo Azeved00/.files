@@ -1,9 +1,5 @@
 { pkgs, inputs, ... }:
 {
-    nixpkgs.config = {
-        allowUnfree = true;
-    };
-
     programs = {
         steam = {
             enable = true;
@@ -53,7 +49,5 @@
      	firefox
         zathura
         lf
-
-        appimage-run
     ];
 }

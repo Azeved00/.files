@@ -1,12 +1,10 @@
-{ pkgs, inputs, lib, config, ...}:
+{ pkgs, lib, config, ...}:
 let
     cfg = config.dotfiles.nixos.xserver;
 in
 with lib;
 {
-    imports = [
-        inputs.bright-bit.nixosModules.sddm
-    ];
+    imports = [];
 
     options.dotfiles.nixos.xserver = {
         enable = mkEnableOption "enable xserver";

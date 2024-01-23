@@ -23,7 +23,7 @@ in rec {
         modules = [
             inputs.bright-bit.nixosModule
             outputs.nixosModule
-            outputs.nixosModule.profile
+            outputs.nixosModules.profile
             config
         ];
     };

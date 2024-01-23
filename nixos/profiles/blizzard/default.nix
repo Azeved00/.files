@@ -1,9 +1,9 @@
-{}:
+{...}:
 {
 
     imports = [ ./hardware.nix ];
     
     dotfiles.nixos.network.name = "quininha";
-    dotfiles.nixos.xserver.enable = "true";
+    dotfiles.nixos.xserver.enable = true;
 
 }

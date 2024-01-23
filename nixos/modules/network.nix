@@ -1,6 +1,6 @@
 {lib, config, ...}:
 let
-    cfg = config.dotfiles.nixos.module;
+    cfg = config.dotfiles.nixos.network;
 in
 with lib;
 {

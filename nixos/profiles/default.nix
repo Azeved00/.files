@@ -1,7 +1,5 @@
-{ inputs, ... }:
+{ ... }:
 {
-    imports = [ inputs.bright-bit.nixosModule ];
-
     nix.gc = {
         automatic = true;
         dates = "weekly";

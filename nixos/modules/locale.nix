@@ -1,6 +1,6 @@
 {...}:
 let
-    EN = "en_EN.UTF-8";
+    EN = "en_GB.UTF-8";
     US = "en_US.UTF-8";
     PT = "pt_PT.UTF-8";
 in

@@ -5,14 +5,17 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1705606516,
-        "narHash": "sha256-HmTgN/K+HjhSoYO3I7WAojvd/XOwOWZJ7wqO+hubs64=",
-        "path": "/home/azevedo/Dev/bright-bit",
-        "type": "path"
+        "lastModified": 1703894842,
+        "narHash": "sha256-67FWgez7qiKj8JLRHmJbQc2Z6zl6MYGudlPZTHtGUk0=",
+        "owner": "Azeved00",
+        "repo": "bright-bit",
+        "rev": "c57cb328df74d4e928ef87f89702660d145a24f8",
+        "type": "github"
       },
       "original": {
-        "path": "/home/azevedo/Dev/bright-bit",
-        "type": "path"
+        "owner": "Azeved00",
+        "repo": "bright-bit",
+        "type": "github"
       }
     },
     "home-manager": {
@@ -22,11 +25,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1705535278,
-        "narHash": "sha256-V5+XKfNbiY0bLKLQlH+AXyhHttEL7XcZBH9iSbxxexA=",
+        "lastModified": 1706001011,
+        "narHash": "sha256-J7Bs9LHdZubgNHZ6+eE/7C18lZ1P6S5/zdJSdXFItI4=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "b84191db127c16a92cbdf7f7b9969d58bb456699",
+        "rev": "3df2a80f3f85f91ea06e5e91071fa74ba92e5084",
         "type": "github"
       },
       "original": {
@@ -53,11 +56,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1705496572,
-        "narHash": "sha256-rPIe9G5EBLXdBdn9ilGc0nq082lzQd0xGGe092R/5QE=",
+        "lastModified": 1705856552,
+        "narHash": "sha256-JXfnuEf5Yd6bhMs/uvM67/joxYKoysyE3M2k6T3eWbg=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "842d9d80cfd4560648c785f8a4e6f3b096790e19",
+        "rev": "612f97239e2cc474c13c9dafa0df378058c5ad8d",
         "type": "github"
       },
       "original": {

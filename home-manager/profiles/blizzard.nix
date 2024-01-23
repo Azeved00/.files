@@ -8,7 +8,8 @@
         bash = {
             enable = true;
             repoFolder = "~/.files";
-            hm = "azevedo";
+            hm = "blizzard";
+            nos = "blizzard";
         };
         dunst.enable = true;
         git.enable = true;

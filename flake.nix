@@ -7,8 +7,8 @@
             url = "github:nix-community/home-manager";
             inputs.nixpkgs.follows = "nixpkgs";
         };
-        #bright-bit.url ="github:Azeved00/bright-bit";
-        bright-bit.url ="path:/home/azevedo/Dev/bright-bit";
+        bright-bit.url ="github:Azeved00/bright-bit";
+        #bright-bit.url ="path:/home/azevedo/Dev/bright-bit";
 	};
 
     outputs = { self, nixpkgs, ... } @ inputs: 
