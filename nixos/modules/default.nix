@@ -9,6 +9,7 @@ imports = [
     ./locale.nix
     ./services.nix
     ./xserver.nix
+    ./wayland.nix
 ];
 
 }
