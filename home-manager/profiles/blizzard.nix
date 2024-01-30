@@ -7,7 +7,7 @@
         alacritty.enable = true;
         bash = {
             enable = true;
-            repoFolder = "~/.files";
+            repoFolder = "~/Dev/dotfiles";
             hm = "blizzard";
             nos = "blizzard";
         };
@@ -19,8 +19,6 @@
         };
         lf.enable = true;
         nvim.enable = true;
-        picom.enable = true;
-        polybar.enable = true;
         readline.enable = true;
         rofi.enable = true;
         ssh.enable = true;

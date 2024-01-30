@@ -33,5 +33,9 @@ Feel free to take what you want and use them as you need.
 
 ### Credits
 [One half](https://github.com/sonph/onehalf)
+
 [Bright Bit](https://github.com/Azeved00/bright-bit)
-Rofi theme is [rounded](https://github.com/newmanls/rofi-themes-collection) with custom collors
+
+Rofi theme is [rounded](https://github.com/newmanls/rofi-themes-collection) with custom colors
+
+[The eww bar](https://github.com/saimoomedits/eww-widgets.git) with custom colors

@@ -1,10 +1,10 @@
 { config, lib, ...}:
 let 
-    cfg = config.dotfiles.home-manager.picom;
+    cfg = config.dotfiles.home-manager.i3.picom;
 in
 {
 
-    options.dotfiles.home-manager.picom = {
+    options.dotfiles.home-manager.i3.picom = {
         enable = lib.mkEnableOption "Enable picom module";
     };
 

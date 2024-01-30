@@ -4,11 +4,9 @@
         ./bash.nix
         ./dunst.nix
         ./git.nix
-        ./i3.nix
+        ./i3
         ./lf
         ./neovim
-        ./picom.nix
-        ./polybar.nix
         ./readline.nix
         ./rofi.nix
         ./ssh.nix

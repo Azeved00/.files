@@ -10,7 +10,7 @@ in
     config = lib.mkIf cfg.enable {
         services.dunst = {
             enable = true;
-            configFile = "$HOME/.files/Config/dunst/dunstrc";
+            configFile = "$HOME/Dev/dotfiles/config/dunst/dunstrc";
         };
     };
 }

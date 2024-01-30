@@ -9,6 +9,7 @@
         };
         bright-bit.url ="github:Azeved00/bright-bit";
         #bright-bit.url ="path:/home/azevedo/Dev/bright-bit";
+        hyprland.url = "github:hyprwm/Hyprland";
 	};
 
     outputs = { self, nixpkgs, ... } @ inputs: 

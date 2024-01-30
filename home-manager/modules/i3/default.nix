@@ -3,6 +3,10 @@ let
     cfg = config.dotfiles.home-manager.i3;
 in
 {
+    imports = [ 
+        ./polybar.nix
+        ./picom.nix
+    ];
 
     options.dotfiles.home-manager.i3 = {
         enable = lib.mkEnableOption "Enable i3 module";
@@ -41,6 +45,14 @@ in
 
 
     config = lib.mkIf cfg.enable {
+        dotfiles.home-manager= {
+            i3.picom.enable = true;
+            i3.polybar.enable = true;
+            #eww.enable = false;
+        };
+
+        services.playerctld.enable = true;
+
         xsession = {
             enable = true;
             numlock.enable = true;
@@ -119,7 +131,7 @@ in
                     bars = [];
                     
                     assigns = {
-                        "1" = [{class="firefox";}];
+                        "1" = [];
                         "2" = [
                             {class="Alacritty";}
                             {class="Develop*";}
@@ -134,6 +146,7 @@ in
                             {class = "league*";}
                             {class = "Poke*";}
                             {class = "Heroic*";}
+                            {class = "heroic*";}
                         ];
                         "8" = [{class = "explorer.exe"; }];
                     };
@@ -214,26 +227,27 @@ in
                     };
 
                     startup = [
-                        {
+                        (lib.mkIf cfg.polybar.enable {
                             command = "${config.xdg.configHome}/polybar/launch.sh";
                             always = true;
                             notification = false;
-                        }
-                        {
+                        })
+                        #({
+                        #    command = "${config.xdg.configHome}/eww/bar/launch_bar";
+                        #    always = true;
+                        #    notification = false;
+                        #})
+                        (lib.mkIf cfg.picom.enable {
                             command = "picom --config ${config.xdg.configHome}/picom/picon.conf";
                             always = true;
                             notification = false;
-                        }
+                        })
                         {
                             command = "feh --no-fehbg --bg-fill ${cfg.background-image}";
                             always = true;
                             notification = false;
                         }
-                        {
-                            command = "playerctld daemon";
-                            always = false;
-                            notification = false;
-                        }
+
                         {
                             command = "xrandr --output HDMI-1 --primary --auto ";
                             always = true;
