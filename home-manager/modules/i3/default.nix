@@ -206,6 +206,9 @@ in
                         "F6" = ''exec amixer -q set Master toggle'';
                         "F7" = ''exec amixer -q set Master 5%- unmute'';
                         "F8" = ''exec amixer -q set Master 5%+ unmute'';
+                        "XF86AudioMute" = ''exec amixer -q set Master toggle'';
+                        "XF86AudioLowerVolume" = ''exec amixer -q set Master 5%- unmute'';
+                        "XF86AudioRaiseVolume" = ''exec amixer -q set Master 5%+ unmute'';
                         
                         "F9" = ''exec playerctl play-pause'';
                         "F10"= ''exec playerctl previous'';
