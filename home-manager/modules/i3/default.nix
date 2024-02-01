@@ -199,7 +199,7 @@ in
                         "${cfg.mod}+s" = ''layout tabbed'';
                         "${cfg.mod}+Shift+v" = ''layout toggle split'';
                         "${cfg.mod}+Shift+space" = ''floating toggle'';
-                        "${cfg.mod}+space" = ''focus mode_toggle'';
+                        "${cfg.mod}+space" = ''exec --no-startup-id " if [[ $(setxkbmap -query | grep \\"variant\\" | cut -d ':' -f 2) == \\"\\" ]]; then setxkbmap -layout us -variant intl; else setxkbmap -layout us; fi;" '';
                         "${cfg.mod}+a" = ''focus parent'';
 
                         #audio
