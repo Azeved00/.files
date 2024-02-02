@@ -3,13 +3,16 @@
 
     inputs = {
         nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+        
         home-manager = {
             url = "github:nix-community/home-manager";
             inputs.nixpkgs.follows = "nixpkgs";
         };
+        
+        hyprland.url = "github:hyprwm/Hyprland";
+
         bright-bit.url ="github:Azeved00/bright-bit";
         #bright-bit.url ="path:/home/azevedo/Dev/bright-bit";
-        hyprland.url = "github:hyprwm/Hyprland";
 	};
 
     outputs = { self, nixpkgs, ... } @ inputs: 
