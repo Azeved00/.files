@@ -22,6 +22,7 @@
         readline.enable = true;
         rofi.enable = true;
         ssh.enable = true;
+        feh.enable = true;
     };
     programs.tmux.enable = true;
     programs.firefox.enable = true;

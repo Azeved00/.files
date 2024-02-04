@@ -3,6 +3,7 @@
         ./alacritty.nix
         ./bash.nix
         ./dunst.nix
+        ./feh.nix
         ./git.nix
         ./i3
         ./lf
