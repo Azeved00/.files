@@ -17,9 +17,16 @@ with lib;
             wayland.enable = true;
         };
 
+        environment.sessionVariables = {
+            NIXOS_OZONE_WL = "1";
+        };
 
-        programs.hyprland.enable = true;
-        programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland;
+
+        programs.hyprland = {
+            enable = true;
+            xwayland.enable = true;
+            package = inputs.hyprland.packages."${pkgs.system}".hyprland;
+        };
 
     };
 
