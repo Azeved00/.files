@@ -23,10 +23,9 @@
         rofi.enable = true;
         ssh.enable = true;
         feh.enable = true;
+        firefox.enable = true;
     };
     programs.tmux.enable = true;
-    programs.firefox.enable = true;
-
 
     home.packages = with pkgs; [ 
             prismlauncher

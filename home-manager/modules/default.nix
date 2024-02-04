@@ -11,5 +11,6 @@
         ./readline.nix
         ./rofi.nix
         ./ssh.nix
+        ./firefox.nix
     ];
 }
