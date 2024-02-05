@@ -24,8 +24,8 @@
         ssh.enable = true;
         feh.enable = true;
         firefox.enable = true;
+        tmux.enable = true;
     };
-    programs.tmux.enable = true;
 
     home.packages = with pkgs; [ 
             prismlauncher
