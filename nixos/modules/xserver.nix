@@ -22,7 +22,7 @@ with lib;
         services.xserver = {
             enable = true;
             autorun = true;
-            layout = cfg.layout;
+            xkb.layout = cfg.layout;
             libinput.enable = true;
             desktopManager.xterm.enable = false;
             
