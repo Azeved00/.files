@@ -30,6 +30,7 @@
     home.packages = with pkgs; [ 
             prismlauncher
 	        heroic
+            pinta
             (retroarch.override {
                 cores = with libretro; [
                     dolphin
