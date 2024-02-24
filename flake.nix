@@ -36,5 +36,10 @@
             blizzard = mkHome system ./home-manager/profiles/blizzard.nix;
             frost = mkHome system ./home-manager/profiles/frost.nix;
         };
+
+        templates.dev = {
+            path = ./lib/dev-template.nix;
+            description = "A template for development";
+        };
     };
 }
