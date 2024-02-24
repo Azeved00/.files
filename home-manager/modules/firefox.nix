@@ -64,7 +64,7 @@ in
 
                         "Home-Manager Option Search" = {
                             urls = [{
-                                template = "https://mipmip.github.io/home-manager-option-search/?query=firefox";
+                                template = "https://mipmip.github.io/home-manager-option-search/?";
                                 params = [
                                     { name = "query"; value = "{searchTerms}"; }
                                 ];
