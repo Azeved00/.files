@@ -24,7 +24,8 @@ end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
-require('lspconfig').lua_ls.setup {
+local lspconfig = require('lspconfig')
+lspconfig.lua_ls.setup {
      on_attach = on_attach,
      capabilities = capabilities,
      Lua = {
@@ -32,11 +33,15 @@ require('lspconfig').lua_ls.setup {
        telemetry = { enable = false },
      },
 }
-require('lspconfig').ccls.setup {
+lspconfig.ccls.setup {
      on_attach = on_attach,
      capabilities = capabilities,
 }
-require('lspconfig').nil_ls.setup {
+lspconfig.nil_ls.setup {
+         on_attach = on_attach,
+         capabilities = capabilities,
+}
+lspconfig.rust_analyzer.setup {
          on_attach = on_attach,
          capabilities = capabilities,
 }
