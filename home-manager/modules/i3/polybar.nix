@@ -89,8 +89,8 @@ in
                     padding.left = 0;
                     padding.right = 2;
 
-                    module.margin.left = 1;
-                    module.margin.right = 1;
+                    module.margin.left = 0;
+                    module.margin.right = 0;
 
 
                     font = [
@@ -110,12 +110,13 @@ in
 
                     cursor.click = "pointer";
                     cursor.scroll = "ns-resize";
-                    separator = "|";
+                    separator = "";
                 };
 
                 "module/xwindow" = {
                     type = "internal/xwindow";
-                    label = "%title:0:30:...%";
+                    label.text = "%title:0:30:...%";
+                    label.padding.left = 2;
                 };
 
                 "module/i3" = {
@@ -163,11 +164,18 @@ in
                 "module/memory" = {
                     type = "internal/memory";
                     interval = 2;
-                    format.prefix = {
-                        text = "";
-                        foreground = "${cfg.theme.colors.white}";
-                    };
-                    label = "%percentage_used%%";
+                    warn.percentage = 70;
+
+                    format.prefix.text = " ";
+
+                    format.text = "<label>";
+                    format.foreground = "${cfg.theme.colors.green}";
+                    format.padding = 1;
+
+                    format.warn.text = "<label-warn>";
+                    format.warn.foreground = "${cfg.theme.colors.white}";
+                    format.warn.background = "${cfg.theme.colors.red}";
+                    format.warn.padding = 1;
                 };
 
                 "module/date" = {
@@ -179,10 +187,10 @@ in
 
                     time.text = "%H:%M";
                     
-                    format.prefix.text = "";
+                    format.prefix.text = "";
                     format.prefix.foreground = "${cfg.theme.colors.white}";
 
-                    label = "%date% %time%";
+                    label = "%date%  %time%";
                 };
 
                 "module/batery" = {
@@ -229,14 +237,17 @@ in
                     warn-temperature = 60;
 
                     format.text = "<ramp> <label>";
-                    format.warn = "<ramp> <label-warn>";
-
+                    format.foreground = "${cfg.theme.colors.green}";
+                    format.padding = 1;
                     label.text = "%temperature-c%";
+
+                    format.warn.text = "<ramp> <label-warn>";
+                    format.warn.foreground = "${cfg.theme.colors.white}";
+                    format.warn.backgroud= "${cfg.theme.colors.red}";
+                    format.warn.padding = 1;
                     label.warn.text = "%temperature-c%";
-                    label.warn.foreground = "${cfg.theme.colors.red}";
 
                     ramp.text = ["" "" ""];
-                    ramp.foreground = "${cfg.theme.colors.white}";
                 };
 
                 "module/powermenu" = {
@@ -244,6 +255,7 @@ in
 
                     expand-right = true;
 
+                    format.padding = 1;
                     label = {
                         open.text="";
                         open.foreground="${cfg.theme.colors.red}";
@@ -274,11 +286,14 @@ in
                     use.ui.max = true;
                     interval = 5;
                     
-                    format.volume = "<ramp-volume> <label-volume>";
-                    format.muted = "<label-muted>";
+                    format.volume.text = "<ramp-volume> <label-volume>";
+                    format.volume.backgroud = "${cfg.theme.colors.selection}";
+                    format.volume.padding = 1;
 
-                    label.muted.text = " muted";
-                    label.muted.foreground = "#66";
+                    format.muted.text = " muted";
+                    format.muted.foreground = "${cfg.theme.colors.selection}";
+                    format.muted.background= "${cfg.theme.colors.white}";
+                    format.muted.padding = 1;
                 
                     ramp.volume = ["" "" ""];
 
@@ -295,17 +310,20 @@ in
                 "module/wlan" = {
                     type = "internal/network";
                     interface = "wlp22s0f0u3";
-                    interval = 3.0;
+                    interval = 1.0;
                     
-                    format.connected = "%{A1:bash $HOME/.config/polybar/scripts/rofi-wifi-menu.sh &:} <ramp-signal> <label-connected> %{A}";
-                    label.connected = "%essid%";
+                    format.connected.text = "%{A1:bash $HOME/.config/polybar/scripts/rofi-wifi-menu.sh &:} <ramp-signal> <label-connected> %{A}";
+                    format.connected.foreground = "${cfg.theme.colors.blue}";
+                    format.connected.padding = 1;
+                    label.connected.text = "%essid%";
 
-                    format.disconnected = "%{A1:bash $HOME/.config/polybar/scripts/rofi-wifi-menu.sh &:} <label-disconnected> %{A}";
-                    label.disconnected.text = "%ifname% disconnected";
-                    label.disconnected.foreground = "${cfg.theme.colors.white}";
+                    format.disconnected.text = "%{A1:bash $HOME/.config/polybar/scripts/rofi-wifi-menu.sh &:} <label-disconnected> %{A}";
+                    format.disconnected.foreground = "${cfg.theme.colors.white}";
+                    format.disconnected.background = "${cfg.theme.colors.blue}";
+                    format.disconnected.padding = 1;
+                    label.disconnected.text = "󰂭 %ifname% disconnected";
 
                     ramp.signal.text = ["" "" "" "" ""];
-                    ramp.signal.foreground = "${cfg.theme.colors.white}";
                 };
             };
         };
