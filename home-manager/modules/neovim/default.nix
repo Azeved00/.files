@@ -5,7 +5,20 @@ in
 {
     options.dotfiles.home-manager.nvim= {
         enable = lib.mkEnableOption "Enable nvim module";
+
+        lsps = lib.mkOption {
+            description = "Add Extra lsp configurations to neovim.
+                These will be appended to lsp.lua file"; 
+            default = "";
+            type = lib.types.str;
+            example = "
+            require('lspconfig').ccls.setup {
+                 on_attach = on_attach,
+                 capabilities = capabilities,
+            }";
+        };
     };
+
     config = lib.mkIf cfg.enable {
         programs.neovim = {
             enable = true;
@@ -17,8 +30,8 @@ in
                (builtins.readFile ./settings.lua)
             ]);
 
+            # some default language servers
             extraPackages = with pkgs; [
-                #some language servers
                 ccls
                 lua-language-server
                 nil
@@ -42,7 +55,10 @@ in
                 {
                     plugin = nvim-lspconfig;
                     type = "lua";
-                    config = builtins.readFile ./lsp.lua;
+                    config = (builtins.concatStringsSep "\n" [
+                        (builtins.readFile ./lsp.lua)
+                        cfg.lsps
+                    ]);
                 }
 
                 vim-gitgutter
