@@ -14,19 +14,12 @@ in
             clock24 = true;
             disableConfirmationPrompt = true;
             mouse = true;
-            #shortcut = "w";
             keyMode = "vi";
             customPaneNavigationAndResize = true;
 
-            extraConfig = "
-                unbind C-b
-                set-option -g prefix C-w
-                bind-key C-w send-prefix
-
-                set-option -g status-position top
-                set -s escape-time 50 
-            "; 
-
+            extraConfig = (builtins.concatStringsSep "\n" [
+               (builtins.readFile ./config)
+            ]);
         };
     };
 }

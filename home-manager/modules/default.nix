@@ -12,6 +12,6 @@
         ./rofi.nix
         ./ssh.nix
         ./firefox.nix
-        ./tmux.nix
+        ./tmux
     ];
 }
