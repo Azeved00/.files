@@ -52,23 +52,7 @@ in
 
             profileExtra = "";
             
-            initExtra = ''
-                RESET='\[\e[0;0m\]'
-                YELLOW='\[\e[1;33m\]'
-                BLACK='\[\e[0;30m\]'
-                BLACK_ON_BLUE='\e[30;44m\]'
-
-
-                if [ -n "$IN_NIX_SHELL" ]; then
-                    if [ -n "$NIX_SHELL_NAME" ]; then
-                        PS1="$BLACK_ON_BLUE$NIX_SHELL_NAME >$RESET $YELLOW\t \W > $RESET"
-                    else
-                        PS1="$BLACK_ON_BLUE[Shell] >$RESET $YELLOW\t \W > $RESET"
-                    fi
-                else 
-                    PS1="$YELLOW\t \W > $RESET"
-                fi
-            '';
+            initExtra = builtins.readFile ./prompt.sh;
 
             #bashrcExtra = builtins.readFile Assets/fuc;
 
@@ -86,6 +70,7 @@ in
                 GREP_OPTIONS = "-color=auto";
                 HISTCONTROL="ignoreboth";
                 TERMINAL = "alacritty";
+                PROMPT_COMMAND="make_prompt";
             }; 
 
             historySize = 2000;
