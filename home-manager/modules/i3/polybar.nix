@@ -27,6 +27,13 @@ in
                 
             type = lib.types.attrs;
         };
+        wifi-interface = lib.mkOption {
+            default =  "wlp22s0f0u3";
+            type = lib.types.str;
+            description = "Wifi Interface Name";
+        };
+        modules.bluetooth.enable = lib.mkEnableOption "Enable polybar bluetooth module";
+        modules.batery.enable = lib.mkEnableOption "Enable polybar batery module";
     };
 
     config = lib.mkIf cfg.enable {
@@ -102,7 +109,10 @@ in
                     modules = {
                         left = "i3 xwindow";
                         center = "date";
-                        right = "temperature memory pulseaudio wlan powermenu";
+                        right = "temperature memory pulseaudio " +
+                                (if cfg.modules.bluetooth.enable then "bluetooth " else "") +
+                                (if cfg.modules.batery.enable then "battery " else "") +
+                                " wlan powermenu";
                     };
 
                     tray.position = "none";
@@ -193,7 +203,7 @@ in
                     label = "%date%  %time%";
                 };
 
-                "module/batery" = {
+                "module/battery" = {
                     type = "internal/battery";
                     battery = "BAT1";
                     adapter = "ACAD";
@@ -243,7 +253,7 @@ in
 
                     format.warn.text = "<ramp> <label-warn>";
                     format.warn.foreground = "${cfg.theme.colors.white}";
-                    format.warn.backgroud= "${cfg.theme.colors.red}";
+                    format.warn.background= "${cfg.theme.colors.red}";
                     format.warn.padding = 1;
                     label.warn.text = "%temperature-c%";
 
@@ -309,7 +319,7 @@ in
 
                 "module/wlan" = {
                     type = "internal/network";
-                    interface = "wlp22s0f0u3";
+                    interface = cfg.wifi-interface;
                     interval = 1.0;
                     
                     format.connected.text = "%{A1:bash $HOME/.config/polybar/scripts/rofi-wifi-menu.sh &:} <ramp-signal> <label-connected> %{A}";
