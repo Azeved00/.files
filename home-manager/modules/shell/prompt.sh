@@ -1,41 +1,56 @@
 make_prompt(){
-    RESET='\[\e[0m\]'
+    # colors
+    local RESET='\[\e[0m\]'
 
-    YELLOW='\[\e[1;33m\]'
-    BLACK='\[\e[1;30m\]'
-    GREEN='\[\e[1;32m\]'
-    BLUE='\e[1;34m\]'
-    WHITE='\e[1;97m\]'
+    local YELLOW='\[\e[1;33m\]'
+    local BLACK='\[\e[1;30m\]'
+    local GREEN='\[\e[1;32m\]'
+    local BLUE='\e[1;34m\]'
+    local WHITE='\e[1;97m\]'
 
-    BG_BLUE='\e[44m\]'
-    BG_GREEN='\e[42m\]'
+    local BG_BLUE='\e[44m\]'
+    local BG_GREEN='\e[42m\]'
+    local BG_BLACK='\e[40m\]'
 
+    # other vars
+
+    local GB="$(git symbolic-ref --short HEAD 2>/dev/null)"
     PS1=""
-    if [ -n "$IN_NIX_SHELL" ] ; then 
-        if [ -n "$NIX_SHELL_NAME" ] ; then
+
+    # function to put separators correctly
+    # parameters
+    # 1 and 2 are left and right vars
+    # 3 foreground and 4 balckground colors
+    make_separator() {
+        PS1+="$RESET"
+        if [[ -n "$1" && -n "$2" ]]; then
+            PS1+="$3$4"
+        elif [[ -n "$1" ]]; then
+            PS1+="$3"
+        fi
+
+        if [[ -n "$2" ]]; then
+            PS1+="$RESET$4 ";
+        else
+            PS1+="$RESET";
+        fi
+    }
+
+    if [[ -n "$IN_NIX_SHELL" ]] ; then 
+        if [[ -n "$NIX_SHELL_NAME" ]] ; then
             PS1+="$BG_BLUE$BLACK $NIX_SHELL_NAME"
         else
             PS1+="$BG_BLACK$BLUE Shell"
         fi
-        
-        PS1+="$RESET"
-
-        if [ -n "$GB" ] ; then
-            PS1+="$BG_GREEN$BLUE" 
-        else
-            PS1+="$BLUE"
-        fi
     fi
-    PS1+="$RESET"
+    make_separator "$IN_NIX_SHELL" "$GB" "$BLUE" "$BG_GREEN"
 
-    GB="$(git symbolic-ref --short HEAD 2>/dev/null)"
-    if [ -n "$GB" ] ; then
-        PS1+="$WHITE$BG_GREEN  $GB "
-        PS1+="  "
-        PS1+="$RESET$GREEN$RESET "
+    if [[ -n "$GB" ]] ; then
+        PS1+="$WHITE$BG_GREEN $GB  "
+        PS1+=" +1 -1"
     fi
-    PS1+="$RESET"
+    make_separator "$GB" "a" "$GREEN" "$BG_BLACK"
 
-    PS1+="$YELLOW\t \W >"
+    PS1+="$YELLOW\t \W  "
     PS1+="$RESET"
 }
