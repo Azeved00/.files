@@ -1,4 +1,4 @@
-{config, lib, ...}:
+{config, lib, pkgs,...}:
 let 
     cfg = config.dotfiles.home-manager.i3;
 in
@@ -142,8 +142,9 @@ in
                             {class = "dolphin-emu";}
                             {class = "Minecraft*";}
                             {class = "steam";}
-                            {class = "leagueclientux*";}
                             {class = "league*";}
+                            {class = "live.exe";}
+                            {class = "riot*";}
                             {class = "Poke*";}
                             {class = "Heroic*";}
                             {class = "heroic*";}
@@ -219,6 +220,7 @@ in
                         "${cfg.mod}+t"=''workspace 2; exec alacritty'';
                         "${cfg.mod}+d"=''exec --no-startup-id rofi -show drun'';
                         "${cfg.mod}+Shift+d"=''exec --no-startup-id rofi -show run'';
+                        "${cfg.mod}+Shift+s" = ''exec --no-startup-id ${pkgs.flameshot}/bin/flameshot gui'';
 
                         #i3 shortcuts
                         "${cfg.mod}+Shift+c" = ''reload'';
