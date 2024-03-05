@@ -15,6 +15,7 @@ make_prompt(){
     # other vars
 
     local GB="$(git symbolic-ref --short HEAD 2>/dev/null)"
+    local SEPARATOR=""
     PS1=""
 
     # function to put separators correctly
@@ -22,15 +23,10 @@ make_prompt(){
     # 1 and 2 are left and right vars
     # 3 foreground and 4 balckground colors
     make_separator() {
-        PS1+="$RESET"
-        if [[ -n "$1" && -n "$2" ]]; then
-            PS1+="$3$4"
-        elif [[ -n "$1" ]]; then
-            PS1+="$3"
-        fi
-
-        if [[ -n "$2" ]]; then
-            PS1+="$RESET$4 ";
+        local last_char=${PS1: -1}
+        if [[ "$last_char" == "$SEPARATOR" ]]; then
+            PS1="${PS1:0:-1}$2$SEPARATOR"
+            PS1+="$RESET$2 ";
         else
             PS1+="$RESET";
         fi
@@ -42,14 +38,16 @@ make_prompt(){
         else
             PS1+="$BG_BLACK$BLUE Shell"
         fi
+        PS1+="$RESET$BLUE$SEPARATOR"
     fi
-    make_separator "$IN_NIX_SHELL" "$GB" "$BLUE" "$BG_GREEN"
+    make_separator "$GB" "$BG_GREEN"
 
     if [[ -n "$GB" ]] ; then
         PS1+="$WHITE$BG_GREEN $GB  "
         PS1+=" +1 -1"
+        PS1+="$RESET$GREEN$SEPARATOR"
     fi
-    make_separator "$GB" "a" "$GREEN" "$BG_BLACK"
+    make_separator "a" "$BG_BLACK"
 
     PS1+="$YELLOW\t \W  "
     PS1+="$RESET"
