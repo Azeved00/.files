@@ -1,4 +1,4 @@
-x{pkgs, ...}: {
+{pkgs, ...}: {
 
 
     imports =  [ ];
@@ -16,6 +16,11 @@ x{pkgs, ...}: {
         i3= {
             enable = true;
             background-image = ../../assets/Pictures/Backgrounds/fractal.png;
+            polybar.modules = {
+                wifi.wifi-interface = "wlp5s0";
+                bluetooth.enable = true;
+                batery = true;
+            };
         };
         lf.enable = true;
         nvim.enable = true;
@@ -28,11 +33,11 @@ x{pkgs, ...}: {
     };
 
     home.packages = with pkgs; [ 
-            pinta
-            spotify
-            discord
-            parsec-bin
-	    network-manager-applet
+        pinta
+        spotify
+        discord
+        parsec-bin
+        gnomeExtentions.gestures-improvements
     ];
 
     bright-bit.user.enable = true;

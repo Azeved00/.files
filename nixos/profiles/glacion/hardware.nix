@@ -4,14 +4,25 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-  imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
+    imports =[ 
+	(modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" ];
-  boot.extraModulePackages = [ ];
+    boot = {
+	initrd.availableKernelModules = [ "xhci_pci" "ahci" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
+  	initrd.kernelModules = [ ];
+  	kernelModules = [ "kvm-intel" ];
+  	extraModulePackages = [ ];
+
+	loader = {
+	    systemd-boot.enable = true;
+	    efi.canTouchEfiVariables = true;
+	    grub = {
+		enable = false;
+		device = "nodev";
+	    };
+	};
+    };
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/21e417d5-1b69-497d-96fe-c877dc7ce3cf";

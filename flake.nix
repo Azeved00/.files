@@ -30,11 +30,13 @@
         nixosConfigurations = {
             blizzard = mkSystem system ./nixos/profiles/blizzard;
             chilly = mkSystem system ./nixos/profiles/chilly;
+	    glacion = mkSystem system ./nixos/profiles/glacion;		
         };
 
     	homeConfigurations = {
             blizzard = mkHome system ./home-manager/profiles/blizzard.nix;
             frost = mkHome system ./home-manager/profiles/frost.nix;
+	    glacion = mkHome system ./home-manager/profiles/glacion.nix;
         };
 
         templates.dev = {
