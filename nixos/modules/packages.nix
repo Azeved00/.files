@@ -37,6 +37,7 @@
         zip
         unzip
         home-manager
+        neovim
 
      	#display applications
      	i3
@@ -44,6 +45,7 @@
         dunst
         gnome.gnome-screenshot
         playerctl
+        networkmanagerapplet
 
 	    # applications
      	firefox
