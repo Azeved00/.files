@@ -27,13 +27,28 @@ in
                 
             type = lib.types.attrs;
         };
-        modules.wifi.wifi-interface = lib.mkOption {
-            default =  "wlp22s0f0u3";
-            type = lib.types.str;
-            description = "Wifi Interface Name";
+
+        modules = {
+            wifi.wifi-interface = lib.mkOption {
+                default =  "wlp22s0f0u3";
+                type = lib.types.str;
+                description = "Wifi Interface Name";
+            };
+            bluetooth.enable = lib.mkEnableOption "Enable polybar bluetooth module";
+            battery= {
+                enable = lib.mkEnableOption "Enable polybar battery module";
+                battery = lib.mkOption {
+                    description = "Baterys module battery to monitor";
+                    type = lib.types.str;
+                    default = "BAT1";
+                };
+                adapter = lib.mkOption {
+                    description = "Batteries module adapter to monitor";
+                    type = lib.types.str;
+                    default = "ACAD";
+                }; 
+            };
         };
-        modules.bluetooth.enable = lib.mkEnableOption "Enable polybar bluetooth module";
-        modules.batery.enable = lib.mkEnableOption "Enable polybar batery module";
     };
 
     config = lib.mkIf cfg.enable {
@@ -111,7 +126,7 @@ in
                         center = "date";
                         right = "temperature memory pulseaudio " +
                                 (if cfg.modules.bluetooth.enable then "bluetooth " else "") +
-                                (if cfg.modules.batery.enable then "battery " else "") +
+                                (if cfg.modules.battery.enable then "battery " else "") +
                                 " wlan powermenu";
                     };
 
@@ -205,36 +220,24 @@ in
 
                 "module/battery" = {
                     type = "internal/battery";
-                    battery = "BAT1";
-                    adapter = "ACAD";
-                    full-at = 98;
+                    battery = cfg.modules.battery.battery;
+                    adapter = cfg.modules.battery.adapter;
+                    full.at = 95;
+                    low.at = 20;
 
-                    format = {
-                        charging ="<animation-charging> <label-charging>";
-                        discharging.text = "<animation-discharging> <label-discharging>";
-                        discharging.underline = "\${self.format-charging-underline}";
+                    format.charging ="<animation-charging> <label-charging>";
+                    format.discharging = "<ramp-capacity> <label-discharging>";
+                    full.text = "  full";
+                    label.discharging = "%percentage%";
+                    label.charging = "%percentage%";
 
-                        full = {
-                            prefix.text = "";
-                            prefix.foreground = "${cfg.theme.colors.white}";
-                            underline = "\${self.format-charging-underline}";
-                        };
-
-                        ramp.capacity.text = [" " "" ""];
-                        ramp.capacity.foreground = "${cfg.theme.colors.white}";
-
-                        animation.charging = {
-                            text = [" " "" ""];
-                            foreground = "${cfg.theme.colors.white}";
-                            framerate = 750;
-                        };
-
-                        animation.discharging = {
-                            text = ["" "" " "];
-                            foreground = "${cfg.theme.colors.white}";
-                            framerate = 750;
-                        };
+                    animation.charging = {
+                        text = [" " " " " "];
+                        foreground = "${cfg.theme.colors.white}";
+                        framerate = 750;
                     };
+                    ramp.capacity = [" " " " " "];
+
                 };
 
                 "module/temperature" = {
@@ -319,7 +322,7 @@ in
 
                 "module/wlan" = {
                     type = "internal/network";
-                    interface = cfg.wifi-interface;
+                    interface = cfg.modules.wifi.wifi-interface;
                     interval = 1.0;
                     
                     format.connected.text = "%{A1:bash $HOME/.config/polybar/scripts/rofi-wifi-menu.sh &:} <ramp-signal> <label-connected> %{A}";
