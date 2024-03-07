@@ -27,7 +27,7 @@ in
                 
             type = lib.types.attrs;
         };
-        wifi-interface = lib.mkOption {
+        modules.wifi.wifi-interface = lib.mkOption {
             default =  "wlp22s0f0u3";
             type = lib.types.str;
             description = "Wifi Interface Name";
