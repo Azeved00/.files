@@ -13,7 +13,7 @@ in
 
         programs.ssh = {
             enable = true;
-            AddKeysToAdgent = "yes";
+            addKeysToAgent = "yes";
 
             matchBlocks = {
                 "github.com" = {
