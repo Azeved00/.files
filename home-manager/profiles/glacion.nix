@@ -18,8 +18,10 @@
             background-image = ../../assets/Pictures/Backgrounds/fractal.png;
             polybar.modules = {
                 wifi.wifi-interface = "wlp5s0";
-                bluetooth.enable = true;
-                batery = true;
+                bluetooth.enable = false;
+                battery.enable = true;
+                battery.battery = "BAT0";
+                battery.adapter = "AC";
             };
         };
         lf.enable = true;
@@ -37,7 +39,6 @@
         spotify
         discord
         parsec-bin
-        gnomeExtentions.gestures-improvements
     ];
 
     bright-bit.user.enable = true;
