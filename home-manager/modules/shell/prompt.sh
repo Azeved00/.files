@@ -18,6 +18,9 @@ make_prompt(){
     local SEPARATOR=""
     PS1=""
 
+    local GITHUB_COMMITS=$(git rev-list --count origin/$branch..HEAD 2>/dev/null)
+    local LOCAL_COMMITS=$(git rev-list --count HEAD ^origin/$branch 2>/dev/null)
+
     # function to put separators correctly
     # parameters
     # 1 and 2 are left and right vars
@@ -44,7 +47,7 @@ make_prompt(){
 
     if [[ -n "$GB" ]] ; then
         PS1+="$WHITE$BG_GREEN $GB  "
-        PS1+=" +1 -1"
+        PS1+=" +$LOCAL_COMMITS -$GITHUB_COMMITS"
         PS1+="$RESET$GREEN$SEPARATOR"
     fi
     make_separator "a" "$BG_BLACK"
