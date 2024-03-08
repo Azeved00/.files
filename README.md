@@ -13,9 +13,7 @@ The theme i use is [Bright Bit](https://github.com/Azeved00/bright-bit)
 - Managing Configuration Files -> [Home-Manager](https://github.com/nix-community/home-manager)
 - File Browser -> [LF](https://github.com/gokcehan/lf)
 
-Feel free to take what you want and use them as you need. 
-
-### Have fun!
+Feel free to take what you want and use them as you need. **Have fun!**
 
 ### Files and Folders
 | Folder | Description |
