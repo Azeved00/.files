@@ -227,16 +227,16 @@ in
 
                     format.charging ="<animation-charging> <label-charging>";
                     format.discharging = "<ramp-capacity> <label-discharging>";
-                    full.text = "  full";
+                    full.text = "󱈏  full";
                     label.discharging = "%percentage%";
                     label.charging = "%percentage%";
 
                     animation.charging = {
-                        text = [" " " " " "];
+                        text = ["󰢟" "󰂆" "󰂈" "󰂉" "󰂊" "󰂅"];
                         foreground = "${cfg.theme.colors.white}";
                         framerate = 750;
                     };
-                    ramp.capacity = [" " " " " "];
+                    ramp.capacity = ["󰁻" "󰁽" "󰁿" "󰂁" "󰁹"];
 
                 };
 
