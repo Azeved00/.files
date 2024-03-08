@@ -5,12 +5,13 @@ make_prompt(){
     local YELLOW='\[\e[1;33m\]'
     local BLACK='\[\e[1;30m\]'
     local GREEN='\[\e[1;32m\]'
-    local BLUE='\e[1;34m\]'
-    local WHITE='\e[1;97m\]'
+    local BLUE='\[\e[1;34m\]'
+    local WHITE='\[\e[1;97m\]'
 
-    local BG_BLUE='\e[44m\]'
-    local BG_GREEN='\e[42m\]'
-    local BG_BLACK='\e[40m\]'
+    local BG_BLUE='\[\e[44m\]\]'
+    local BG_GREEN='\[\e[42m\]\]'
+    local BG_BLACK='\[\e[40m\]\]'
+    local BG_YELLOW='\[\e[43m\]\]'
 
     # other vars
 
@@ -18,37 +19,44 @@ make_prompt(){
     local SEPARATOR=""
     PS1=""
 
+    local LOCAL_COMMITS="$(git rev-list --count $GB --not origin/$GB 2>/dev/null)"
+    local REMOTE_COMMITS="$(git rev-list --count origin/$GB --not $GB 2>/dev/null)"
+
     # function to put separators correctly
     # parameters
-    # 1 and 2 are left and right vars
-    # 3 foreground and 4 balckground colors
+    # $1 the color of the next module
     make_separator() {
         local last_char=${PS1: -1}
         if [[ "$last_char" == "$SEPARATOR" ]]; then
-            PS1="${PS1:0:-1}$2$SEPARATOR"
-            PS1+="$RESET$2 ";
+            PS1="${PS1:0:-1}$1$SEPARATOR"
+            PS1+="$RESET$1 ";
         else
             PS1+="$RESET";
         fi
     }
 
+    PS1+="$BG_YELLOW$BLACK\t"
+    PS1+="$RESET$YELLOW$SEPARATOR"
+
     if [[ -n "$IN_NIX_SHELL" ]] ; then 
+        make_separator "$BG_BLUE"
         if [[ -n "$NIX_SHELL_NAME" ]] ; then
             PS1+="$BG_BLUE$BLACK $NIX_SHELL_NAME"
         else
-            PS1+="$BG_BLACK$BLUE Shell"
+            PS1+="$BG_BLUE$BLACK Shell"
         fi
         PS1+="$RESET$BLUE$SEPARATOR"
     fi
-    make_separator "$GB" "$BG_GREEN"
 
     if [[ -n "$GB" ]] ; then
-        PS1+="$WHITE$BG_GREEN $GB  "
-        PS1+=" +1 -1"
+        make_separator "$BG_GREEN"
+
+        PS1+="$BLACK$BG_GREEN $GB  "
+        PS1+=" +$LOCAL_COMMITS -$REMOTE_COMMITS"
         PS1+="$RESET$GREEN$SEPARATOR"
     fi
-    make_separator "a" "$BG_BLACK"
 
-    PS1+="$YELLOW\t \W  "
+    make_separator "$BG_BLACK"
+    PS1+="\n\W  "
     PS1+="$RESET"
 }

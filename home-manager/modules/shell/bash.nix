@@ -71,6 +71,7 @@ in
                 HISTCONTROL="ignoreboth";
                 TERMINAL = "alacritty";
                 PROMPT_COMMAND="make_prompt";
+                PS2=" 󱞩 ";
             }; 
 
             historySize = 2000;
