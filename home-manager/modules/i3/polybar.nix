@@ -111,12 +111,12 @@ in
                     padding.left = 0;
                     padding.right = 2;
 
-                    module.margin.left = 0;
-                    module.margin.right = 0;
+                    module.margin.right=1;
+                    module.margin.left =1;
 
 
                     font = [
-                        "SpaceMono Nerd Font Mono:style=Bold:size=13.5;"
+                        "SpaceMono Nerd Font Mono:style=Bold:size=13.5;4"
                         "DejaVu Sans Nerd Font Mono:style=Regular;"
                         "JetBrainsMono Nerd Font Mono:style=Regular:pixelsize=13;1"
                     ];
@@ -141,7 +141,6 @@ in
                 "module/xwindow" = {
                     type = "internal/xwindow";
                     label.text = "%title:0:30:...%";
-                    label.padding.left = 2;
                 };
 
                 "module/i3" = {
@@ -154,7 +153,6 @@ in
 
                     label= {
                         mode = {
-                            padding = 2;
                             foreground = "#000";
                             background = "${cfg.theme.colors.yellow}";
                         };
@@ -175,7 +173,7 @@ in
                             text = "%icon%";
                             background = "\${self.label-focused-background}";
                             underline = "\${self.label-focused-underline}";
-                            padding = "\${self.label-focused-padding}";
+                            padding = 2;
                         };
                         
                         urgent = {
@@ -195,12 +193,10 @@ in
 
                     format.text = "<label>";
                     format.foreground = "${cfg.theme.colors.green}";
-                    format.padding = 1;
 
                     format.warn.text = "<label-warn>";
                     format.warn.foreground = "${cfg.theme.colors.white}";
                     format.warn.background = "${cfg.theme.colors.red}";
-                    format.warn.padding = 1;
                 };
 
                 "module/date" = {
@@ -227,7 +223,7 @@ in
 
                     format.charging ="<animation-charging> <label-charging>";
                     format.discharging = "<ramp-capacity> <label-discharging>";
-                    full.text = "󱈏  full";
+                    format.full = "󱈏 full";
                     label.discharging = "%percentage%";
                     label.charging = "%percentage%";
 
@@ -237,7 +233,6 @@ in
                         framerate = 750;
                     };
                     ramp.capacity = ["󰁻" "󰁽" "󰁿" "󰂁" "󰁹"];
-
                 };
 
                 "module/temperature" = {
@@ -251,13 +246,11 @@ in
 
                     format.text = "<ramp> <label>";
                     format.foreground = "${cfg.theme.colors.green}";
-                    format.padding = 1;
                     label.text = "%temperature-c%";
 
                     format.warn.text = "<ramp> <label-warn>";
                     format.warn.foreground = "${cfg.theme.colors.white}";
                     format.warn.background= "${cfg.theme.colors.red}";
-                    format.warn.padding = 1;
                     label.warn.text = "%temperature-c%";
 
                     ramp.text = ["" "" ""];
@@ -268,7 +261,6 @@ in
 
                     expand-right = true;
 
-                    format.padding = 1;
                     label = {
                         open.text="";
                         open.foreground="${cfg.theme.colors.red}";
@@ -301,12 +293,10 @@ in
                     
                     format.volume.text = "<ramp-volume> <label-volume>";
                     format.volume.backgroud = "${cfg.theme.colors.selection}";
-                    format.volume.padding = 1;
 
                     format.muted.text = " muted";
                     format.muted.foreground = "${cfg.theme.colors.selection}";
                     format.muted.background= "${cfg.theme.colors.white}";
-                    format.muted.padding = 1;
                 
                     ramp.volume = ["" "" ""];
 
@@ -327,13 +317,11 @@ in
                     
                     format.connected.text = "%{A1:bash $HOME/.config/polybar/scripts/rofi-wifi-menu.sh &:} <ramp-signal> <label-connected> %{A}";
                     format.connected.foreground = "${cfg.theme.colors.blue}";
-                    format.connected.padding = 1;
                     label.connected.text = "%essid%";
 
                     format.disconnected.text = "%{A1:bash $HOME/.config/polybar/scripts/rofi-wifi-menu.sh &:} <label-disconnected> %{A}";
                     format.disconnected.foreground = "${cfg.theme.colors.white}";
                     format.disconnected.background = "${cfg.theme.colors.blue}";
-                    format.disconnected.padding = 1;
                     label.disconnected.text = "󰂭 %ifname% disconnected";
 
                     ramp.signal.text = ["" "" "" "" ""];
