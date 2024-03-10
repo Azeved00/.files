@@ -211,9 +211,9 @@ in
                         "XF86AudioLowerVolume" = ''exec amixer -q set Master 5%- unmute'';
                         "XF86AudioRaiseVolume" = ''exec amixer -q set Master 5%+ unmute'';
                         
-                        "F9" = ''exec playerctl play-pause'';
-                        "F10"= ''exec playerctl previous'';
-                        "F11"= ''exec playerctl next'';
+                        "F9" = ''exec ${pkgs.playerctl}/bin/playerctl play-pause'';
+                        "F10"= ''exec ${pkgs.playerctl}/bin/playerctl previous'';
+                        "F11"= ''exec ${pkgs.playerctl}/bin/playerctl next'';
 
                         #Aplication Shortcuts
                         "${cfg.mod}+b"=''workspace 1; exec firefox'';
@@ -248,7 +248,7 @@ in
                             notification = false;
                         })
                         {
-                            command = "feh --no-fehbg --bg-fill ${cfg.background-image}";
+                            command = "${pkgs.feh}/bin/feh --no-fehbg --bg-fill ${cfg.background-image}";
                             always = true;
                             notification = false;
                         }

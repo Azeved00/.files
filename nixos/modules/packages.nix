@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 {
     programs = {
         steam = {
@@ -24,32 +24,21 @@
     };
 
     environment.systemPackages = with pkgs; [
- 	    #basic applications
+ 	    #command line stuyff
         gcc
         wget
         networkmanager
-        xclip
         git
-        pavucontrol
-        killall
-        tree
-        htop
-        zip
-        unzip
         home-manager
         neovim
 
-     	#display applications
+     	#other apps
      	i3
-	    feh
-        dunst
-        gnome.gnome-screenshot
-        playerctl
         networkmanagerapplet
-
-	    # applications
+        pavucontrol
      	firefox
         zathura
         lf
+        alacritty
     ];
 }

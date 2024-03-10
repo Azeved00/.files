@@ -56,8 +56,8 @@ in
             enable = true;
             executable = true;
             text = ''
-                killall -q polybar
-                killall -q .polybar-wrapper
+                ${pkgs.killall}/bin/killall -q polybar
+                ${pkgs.killall}/bin/killall -q .polybar-wrapper
 
                 echo "---" | tee -a /tmp/polybar1.log /tmp/polybar2.log
                 polybar main 2>&1 | tee -a /tmp/polybar1.log & disown

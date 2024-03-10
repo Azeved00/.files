@@ -4,15 +4,16 @@
         ./dunst.nix
         ./feh.nix
         ./i3
-        ./lf
-        ./neovim
         ./rofi.nix
         ./firefox.nix
-        ./tmux
 
+        ./neovim
+        ./tmux
+        ./lf
         ./shell/bash.nix
         ./shell/git.nix
         ./shell/readline.nix
         ./shell/ssh.nix
+        ./shell/packages.nix
     ];
 }
