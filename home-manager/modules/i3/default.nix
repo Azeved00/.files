@@ -252,17 +252,6 @@ in
                             always = true;
                             notification = false;
                         }
-
-                        {
-                            command = "xrandr --output HDMI-1 --primary --auto ";
-                            always = true;
-                            notification = false;
-                        }
-                        {
-                            command = "xrandr --output DP-3 --auto --right-of HDMI-1";
-                            always = true;
-                            notification = false;
-                        }
                     ];
 
                     modes = {
