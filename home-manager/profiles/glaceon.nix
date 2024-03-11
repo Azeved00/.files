@@ -8,8 +8,8 @@
         bash = {
             enable = true;
             repoFolder = "~/Dev/dotfiles";
-            hm = "glacion";
-            nos = "glacion";
+            hm = "glaceon";
+            nos = "glaceon";
         };
         dunst.enable = true;
         git.enable = true;
