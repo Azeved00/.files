@@ -41,6 +41,11 @@ in
                 };
             };
         };
+
+        monitor-config =lib.mkOption {
+            type = lib.types.str;
+            default = "workspace 1 output HDMI-1";
+        };
     };
 
 
@@ -282,10 +287,7 @@ in
                     ];
                 };
                 
-                extraConfig = ''
-                    workspace 6 output DP-3
-                    workspace 1 output HDMI-1
-                '';
+                extraConfig = cfg.monitor-config;
             };
         };
     };

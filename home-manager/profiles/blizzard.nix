@@ -9,6 +9,10 @@
         i3= {
             enable = true;
             background-image = ../../assets/Pictures/Backgrounds/fractal.png;
+            monitor-config = ''
+                workspace 6 output DP-3
+                workspace 1 output HDMI-1
+            '';
         };
         lf.enable = true;
         nvim.enable = true;
