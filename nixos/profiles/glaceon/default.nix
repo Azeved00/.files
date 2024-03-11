@@ -7,6 +7,7 @@
 
     dotfiles.nixos.xserver.enable = true;
     dotfiles.nixos.xserver.layout = "pt";
+    dotfiles.nixos.tlp.enable = true;
 
     services.xserver.xrandrHeads = [
         {
