@@ -22,16 +22,15 @@
         {
             output = "HDMI-1";
             primary = true;
+            #   DisplaySize 1920 1080
             monitorConfig = ''
-                DisplaySize 1920 1080
             '';
         }
         {
             output = "DP-3";
+            #   DisplaySize 1920 1080
             monitorConfig = ''
-                DisplaySize 1920 1080
                 Option "RightOf" "HDMI-1"
-
             '';
         }
     ];
