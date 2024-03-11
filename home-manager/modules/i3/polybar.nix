@@ -48,6 +48,11 @@ in
                     default = "ACAD";
                 }; 
             };
+            temperature.file = lib.mkOption {
+                description = "Temperature module: path of temperature sysfs path";
+                type = lib.types.str;
+                default = "/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon1/temp1_input";
+            }; 
         };
     };
 
@@ -238,7 +243,7 @@ in
                 "module/temperature" = {
                     type = "internal/temperature";
                     thermal-zone = 0;
-                    hwmon-path = "/sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon1/temp1_input";
+                    hwmon-path = cfg.modules.temperature.file;
 
                     interval = 0.5;
                     base-temperature = 20;
@@ -325,6 +330,8 @@ in
                     label.disconnected.text = "󰂭 %ifname% disconnected";
 
                     ramp.signal.text = ["" "" "" "" ""];
+
+                    click.right= '''';
                 };
             };
         };
