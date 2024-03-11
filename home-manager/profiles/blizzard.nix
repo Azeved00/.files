@@ -5,26 +5,28 @@
 
     dotfiles.home-manager = {
         alacritty.enable = true;
-        bash = {
-            enable = true;
-            repoFolder = "~/Dev/dotfiles";
-            hm = "blizzard";
-            nos = "blizzard";
-        };
         dunst.enable = true;
-        git.enable = true;
         i3= {
             enable = true;
             background-image = ../../assets/Pictures/Backgrounds/fractal.png;
         };
         lf.enable = true;
         nvim.enable = true;
-        readline.enable = true;
         rofi.enable = true;
-        ssh.enable = true;
         feh.enable = true;
         firefox.enable = true;
+
+        bash = {
+            enable = true;
+            repoFolder = "~/Dev/dotfiles";
+            hm = "blizzard";
+            nos = "blizzard";
+        };
+        git.enable = true;
+        readline.enable = true;
+        ssh.enable = true;
         tmux.enable = true;
+        terminal.packages.enable = true;
     };
 
     home.packages = with pkgs; [ 

@@ -5,14 +5,7 @@
 
     dotfiles.home-manager = {
         alacritty.enable = true;
-        bash = {
-            enable = true;
-            repoFolder = "~/Dev/dotfiles";
-            hm = "glaceon";
-            nos = "glaceon";
-        };
         dunst.enable = true;
-        git.enable = true;
         i3= {
             enable = true;
             background-image = ../../assets/Pictures/Backgrounds/fractal.png;
@@ -26,12 +19,21 @@
         };
         lf.enable = true;
         nvim.enable = true;
-        readline.enable = true;
         rofi.enable = true;
-        ssh.enable = true;
         feh.enable = true;
         firefox.enable = true;
         tmux.enable = true;
+
+        terminal.packages.enable = true;
+        git.enable = true;
+        readline.enable = true;
+        ssh.enable = true;
+        bash = {
+            enable = true;
+            repoFolder = "~/Dev/dotfiles";
+            hm = "glaceon";
+            nos = "glaceon";
+        };
     };
 
     home.packages = with pkgs; [ 
