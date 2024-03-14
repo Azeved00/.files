@@ -8,6 +8,7 @@
     dotfiles.nixos.xserver.enable = true;
     dotfiles.nixos.xserver.layout = "pt";
     dotfiles.nixos.tlp.enable = true;
+    dotfiles.nixos.bluetooth.enable = true;
 
     services.xserver.xrandrHeads = [
         {

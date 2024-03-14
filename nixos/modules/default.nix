@@ -11,6 +11,7 @@ imports = [
     ./xserver.nix
     ./wayland.nix
     ./tlp.nix
+    ./bluetooth.nix
 ];
 
 }
