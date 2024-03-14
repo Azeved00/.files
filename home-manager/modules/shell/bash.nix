@@ -45,7 +45,7 @@ in
                 
                 "dotfiles"="lf ${cfg.repoFolder}";
                 "hm"="home-manager --flake ${cfg.repoFolder}#${cfg.hm}";
-                "nosr" = "nixos-rebuild --flake ${cfg.repoFolder}#${cfg.nos}";
+                "nosr" = "sudo nixos-rebuild --flake ${cfg.repoFolder}#${cfg.nos}";
                 "dev" = "nix develop";
 
             };
@@ -54,7 +54,7 @@ in
             
             initExtra = builtins.readFile ./prompt.sh;
 
-            #bashrcExtra = builtins.readFile Assets/fuc;
+            bashrcExtra = builtins.readFile ./funcs.sh;
 
             shellOptions = [
                 "histappend"    # append to history file, dont overwrite it
