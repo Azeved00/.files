@@ -3,6 +3,8 @@
 This is flake is only for development purposes
 It will eventually be merged with the root flake
 
+find way to not have to reset shell on each change
+
 # Todo
 
 ## Widgets 
