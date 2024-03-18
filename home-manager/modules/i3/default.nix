@@ -284,6 +284,18 @@ in
                                 title = "Picture-in-Picture";
                             };
                         }
+                        {
+                            command = "floating disable";
+                            criteria = {
+                                class = "league*";
+                            };
+                        }
+                        {
+                            command = "floating disable";
+                            criteria = {
+                                class = "riot*";
+                            };
+                        }
                     ];
                 };
                 
