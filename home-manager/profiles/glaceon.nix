@@ -29,6 +29,7 @@
         feh.enable = true;
         firefox.enable = true;
         tmux.enable = true;
+        redshift.enable = true;
 
         terminal.packages.enable = true;
         git.enable = true;
