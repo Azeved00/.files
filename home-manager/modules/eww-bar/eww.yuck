@@ -1,63 +1,74 @@
-(defwidget bar []
-  (centerbox :orientation "h"
-    (workspaces)
-    (music)
-    (sidestuff)))
-
-(defwidget sidestuff []
-  (box :class "sidestuff" :orientation "h" :space-evenly false :halign "end"
-    (metric :label "🔊"
-            :value volume
-            :onchange "amixer -D pulse sset Master {}%")
-    (metric :label ""
-            :value {EWW_RAM.used_mem_perc}
-            :onchange "")
-    (metric :label "💾"
-            :value {round((1 - (EWW_DISK["/"].free / EWW_DISK["/"].total)) * 100, 0)}
-            :onchange "")
-    time))
-
-(defwidget workspaces []
-  (box :class "workspaces"
-       :orientation "h"
-       :space-evenly true
-       :halign "start"
-       :spacing 10
-    (button :onclick "wmctrl -s 0" 1)
-    (button :onclick "wmctrl -s 1" 2)
-    (button :onclick "wmctrl -s 2" 3)
-    (button :onclick "wmctrl -s 3" 4)
-    (button :onclick "wmctrl -s 4" 5)
-    (button :onclick "wmctrl -s 5" 6)
-    (button :onclick "wmctrl -s 6" 7)
-    (button :onclick "wmctrl -s 7" 8)
-    (button :onclick "wmctrl -s 8" 9)))
-
-(defwidget metric [label value onchange]
-  (box :orientation "h"
-       :class "metric"
-       :space-evenly false
-    (box :class "label" label)
-    (scale :min 0
-           :max 101
-           :active {onchange != ""}
-           :value value
-           :onchange onchange)))
-
-
+; ============= POOL DEFs ==================
 (defpoll volume :interval "1s"
-  "scripts/getvol")
+    "awk -F\"[][]\" '/Left:/ { print $2 }' <(amixer sget Master)")
 
 (defpoll time :interval "10s"
-  "date '+%H:%M %b %d, %Y'")
+    "date '+D %b %d, %Y T %H:%M'")
 
+(defpoll cpu-temp :interval "1s"
+    "cat /sys/class/hwmon/hwmon1/temp1_input | awk '{printf \"%2.f°C\", $1/1000}'")
+
+(defpoll red-light :interval "1s"
+    "xrandr --verbose | awk -F: '/Gamma/ { if ( $2 + $3 + $4 != 3.0 ) { print \"\"; } else { print \"\"; } exit; }'")
+
+(defpoll ram :interval "1s"
+    "free -m | grep 'Mem:' | awk '{ printf \"%2.f%%\", $3/$2*100 }'")
+
+; ============ BAR DEFs ================
 (defwindow bar
-  :monitor 0
-  :windowtype "dock"
-  :geometry (geometry :x "0%"
-                      :y "0%"
-                      :width "90%"
-                      :height "10px"
-                      :anchor "top center")
-  :reserve (struts :side "top" :distance "4%")
-  (bar))
+    :monitor 0
+    :windowtype "dock"
+    :geometry (geometry :x "0%"
+                        :y "0%"
+                        :width "90%"
+                        :height "10px"
+                        :anchor "top center")
+    :reserve (struts :side "top" :distance "4%")
+    (bar))
+
+(defwidget bar []
+    (centerbox :orientation "h"
+        (workspaces)
+        (box :class "time" time)
+        (sidestuff)))
+
+; ========= WIDGETS DEFs =============
+(defwidget sidestuff []
+    (box :class "sidestuff" :orientation "h" :space-evenly true :halign "end"
+        (metric :label "VOL"
+                :value volume
+                :onchange "amixer -D pulse sset Master {}%")
+        (metric :label "RL"
+                :value  red-light
+                :onchange "")
+        (metric :label "CPU"
+                :value cpu-temp
+                :onchange "")
+        (metric :label "RAM"
+                :value  ram
+                :onchange "")))
+
+(defwidget workspaces []
+    (box :class "workspaces"
+           :orientation "h"
+        :space-evenly true
+        :halign "start"
+        :spacing 10
+        (button :onclick "wmctrl -s 0" 1)
+        (button :onclick "wmctrl -s 1" 2)
+        (button :onclick "wmctrl -s 2" 3)
+        (button :onclick "wmctrl -s 3" 4)
+        (button :onclick "wmctrl -s 4" 5)
+        (button :onclick "wmctrl -s 5" 6)
+        (button :onclick "wmctrl -s 6" 7)
+        (button :onclick "wmctrl -s 7" 8)
+        (button :onclick "wmctrl -s 8" 9)))
+
+(defwidget metric [label value onchange]
+    (box :orientation "h"
+        :class "metric"
+        :space-evenly false
+        (box :class "label" label)
+        (box :class "label" value)))
+
+
