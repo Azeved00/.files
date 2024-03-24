@@ -6,7 +6,6 @@
         ./i3
         ./rofi.nix
         ./firefox.nix
-        ./redshift.nix
 
         ./neovim
         ./tmux

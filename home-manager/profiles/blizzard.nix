@@ -19,7 +19,6 @@
         rofi.enable = true;
         feh.enable = true;
         firefox.enable = true;
-        redshift.enable = true;
 
         bash = {
             enable = true;

@@ -1,9 +1,9 @@
 {config, lib, ...}:with lib;
 let
-    cfg = config.dotfiles.home-manager.redshift;
+    cfg = config.dotfiles.home-manager.i3.redshift;
 in
 {
-    options.dotfiles.home-manager.redshift = {
+    options.dotfiles.home-manager.i3.redshift = {
         enable = mkEnableOption "Enable Redshift module";
     };
 
