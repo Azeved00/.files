@@ -1,6 +1,6 @@
 ; ============= POOL DEFs ==================
 (defpoll volume :interval "1s"
-    "awk -F\"[][]\" '/Left:/ { print $2 }' <(amixer sget Master)")
+    "awk -F[][] '/Left:/ { if ($4 == \"on\") {print $2} else {print \"muted\"} }' <(amixer sget Master)")
 
 (defpoll time :interval "10s"
     "date '+D %b %d, %Y T %H:%M'")
@@ -26,7 +26,6 @@
         (box :class "icon" icon)
         (box :class "value" value)))
 
-
 (defwidget revealer-on-hover [var varname ?class ?duration ?transition]
     (box  :class "${class} revealer-on-hover"
         :orientation "h"
@@ -51,7 +50,7 @@
 (defvar revealVolume false)
 (defwidget volume [?class]
     (box :space-evenly false
-        :class "hover-module ${class}"
+        :class "hover-module ${class} ${volume == "muted"? "inactive" : "active"}"
         (revealer-on-hover :class "hl-on-hover"
             :var revealVolume
             :varname "revealVolume"

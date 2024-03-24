@@ -39,6 +39,14 @@ $cyan: #56b6c2;
     padding-right: 7px;
 }
 
+.volume {
+
+}
+.volume .inactive{
+    color: $line;
+    background-color: $white;
+}
+
 .wifi {
     color: $blue;
 }
