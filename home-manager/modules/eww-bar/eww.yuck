@@ -14,6 +14,10 @@
 (defpoll ram :interval "1s"
     "free -m | grep 'Mem:' | awk '{ printf \"%2.f%%\", $3/$2*100 }'")
 
+(defpoll wifi :interval "1s"
+    "nmcli -t -f NAME connection show --active | awk -F: '!/lo/{print $1; found=1} END{if (!found) print \"not connected\"}'")
+
+
 ; ============ BAR DEFs ================
 (defwindow bar
     :monitor 0
@@ -34,18 +38,22 @@
 
 ; ========= WIDGETS DEFs =============
 (defwidget sidestuff []
-    (box :class "sidestuff" :orientation "h" :space-evenly true :halign "end"
-        (metric :label "VOL"
+    (box :class "sidestuff" :orientation "h" :space-evenly false :halign "end"
+        :
+        (metric :label "VOL "
                 :value volume
                 :onchange "amixer -D pulse sset Master {}%")
-        (metric :label "RL"
+        (metric :label ""
                 :value  red-light
                 :onchange "")
-        (metric :label "CPU"
+        (metric :label "CPU "
                 :value cpu-temp
                 :onchange "")
-        (metric :label "RAM"
+        (metric :label "RAM "
                 :value  ram
+                :onchange "")
+        (metric :label "WIFI "
+                :value  wifi
                 :onchange "")))
 
 (defwidget workspaces []
