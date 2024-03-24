@@ -1,0 +1,112 @@
+; ============= POOL DEFs ==================
+(defpoll volume :interval "1s"
+    "awk -F\"[][]\" '/Left:/ { print $2 }' <(amixer sget Master)")
+
+(defpoll time :interval "10s"
+    "date '+D %b %d, %Y T %H:%M'")
+
+(defpoll cpu-temp :interval "1s"
+    "cat /sys/class/hwmon/hwmon1/temp1_input | awk '{printf \"%2.f°C\", $1/1000}'")
+
+(defpoll red-light :interval "1s"
+    "xrandr --verbose | awk -F: '/Gamma/ { if ( $2 + $3 + $4 != 3.0 ) { print \"\"; } else { print \"\"; } exit; }'")
+
+(defpoll ram :interval "1s"
+    "free -m | grep 'Mem:' | awk '{ printf \"%2.f%%\", $3/$2*100 }'")
+
+(defpoll wifi :interval "1s"
+    "nmcli -t -f NAME connection show --active | awk -F: '!/lo/{print $1; found=1} END{if (!found) print \"not connected\"}'")
+
+
+; ============= Widgets ==================
+(defwidget metric [?icon value ?class ?onchange]
+    (box :orientation "h"
+        :class "metric ${class}"
+        :space-evenly false
+        (box :class "icon" icon)
+        (box :class "value" value)))
+
+
+(defwidget revealer-on-hover [var varname ?class ?duration ?transition]
+    (box  :class "${class} revealer-on-hover"
+        :orientation "h"
+        :space-evenly false
+        (eventbox :class "eventbox"
+              :onhover "${EWW_CMD} update ${varname}=true"
+              :onhoverlost "${EWW_CMD} update ${varname}=false"
+            (box :space-evenly false
+                (children :nth 0)
+                (revealer :reveal var
+                    :transition {transition ?: "slideright"}
+                    :duration {duration ?: "500ms"}
+                    (children :nth 1)
+                )
+            )
+        )
+    )
+)
+
+
+; ============= Stats ==================
+(defvar revealVolume false)
+(defwidget volume [?class]
+    (box :space-evenly false
+        :class "hover-module ${class}"
+        (revealer-on-hover :class "hl-on-hover"
+            :var revealVolume
+            :varname "revealVolume"
+            :transition "slideleft"
+            :class "volume"
+            "VOL"
+            (metric
+                :class "volume"
+                :value volume
+                :onchange "amixer -D pulse sset Master {}%")
+        )
+    )
+)
+
+(defvar revealCPU false)
+(defwidget cpu [?class]
+    (box :space-evenly false
+        :class "hover-module ${class}"
+        (revealer-on-hover :class "hl-on-hover"
+            :var revealCPU
+            :varname "revealCPU"
+            :transition "slideleft"
+            :class "cpu"
+            "CPU"
+            (metric :value cpu-temp)
+        )
+    )
+)
+
+(defvar revealRAM false)
+(defwidget ram [?class]
+    (box :space-evenly false
+        :class "hover-module ${class}"
+        (revealer-on-hover :class "hl-on-hover"
+            :var revealRAM
+            :varname "revealRAM"
+            :transition "slideleft"
+            :class "ram"
+            "RAM"
+            (metric :value ram)
+        )
+    )
+)
+
+(defvar revealWIFI false)
+(defwidget wifi [?class]
+    (box :space-evenly false
+        :class "hover-module ${class}"
+        (revealer-on-hover :class "hl-on-hover"
+            :var revealWIFI
+            :varname "revealWIFI"
+            :transition "slideleft"
+            :class "wifi"
+            "WIFI"
+            (metric :value wifi)
+        )
+    )
+)

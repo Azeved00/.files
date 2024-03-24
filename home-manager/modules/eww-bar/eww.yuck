@@ -1,22 +1,4 @@
-; ============= POOL DEFs ==================
-(defpoll volume :interval "1s"
-    "awk -F\"[][]\" '/Left:/ { print $2 }' <(amixer sget Master)")
-
-(defpoll time :interval "10s"
-    "date '+D %b %d, %Y T %H:%M'")
-
-(defpoll cpu-temp :interval "1s"
-    "cat /sys/class/hwmon/hwmon1/temp1_input | awk '{printf \"%2.f°C\", $1/1000}'")
-
-(defpoll red-light :interval "1s"
-    "xrandr --verbose | awk -F: '/Gamma/ { if ( $2 + $3 + $4 != 3.0 ) { print \"\"; } else { print \"\"; } exit; }'")
-
-(defpoll ram :interval "1s"
-    "free -m | grep 'Mem:' | awk '{ printf \"%2.f%%\", $3/$2*100 }'")
-
-(defpoll wifi :interval "1s"
-    "nmcli -t -f NAME connection show --active | awk -F: '!/lo/{print $1; found=1} END{if (!found) print \"not connected\"}'")
-
+(include "stats.yuck")
 
 ; ============ BAR DEFs ================
 (defwindow bar
@@ -39,22 +21,14 @@
 ; ========= WIDGETS DEFs =============
 (defwidget sidestuff []
     (box :class "sidestuff" :orientation "h" :space-evenly false :halign "end"
-        :
-        (metric :label "VOL "
-                :value volume
-                :onchange "amixer -D pulse sset Master {}%")
-        (metric :label ""
+        (volume)
+        (metric :icon ""
                 :value  red-light
+                :class "redl"
                 :onchange "")
-        (metric :label "CPU "
-                :value cpu-temp
-                :onchange "")
-        (metric :label "RAM "
-                :value  ram
-                :onchange "")
-        (metric :label "WIFI "
-                :value  wifi
-                :onchange "")))
+        (cpu)
+        (ram)
+        (wifi)))
 
 (defwidget workspaces []
     (box :class "workspaces"
@@ -72,11 +46,5 @@
         (button :onclick "wmctrl -s 7" 8)
         (button :onclick "wmctrl -s 8" 9)))
 
-(defwidget metric [label value onchange]
-    (box :orientation "h"
-        :class "metric"
-        :space-evenly false
-        (box :class "label" label)
-        (box :class "label" value)))
 
 
