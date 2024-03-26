@@ -1,22 +1,13 @@
+(include "colors.yuck")
+
 ; ============= POOL DEFs ==================
-(defpoll volume :interval "1s"
-    "awk -F[][] '/Left:/ { if ($4 == \"on\") {print $2} else {print \"muted\"} }' <(amixer sget Master)")
 
 (defpoll time :interval "10s"
     "date '+D %b %d, %Y T %H:%M'")
 
-(defpoll cpu-temp :interval "1s"
-    "cat /sys/class/hwmon/hwmon1/temp1_input | awk '{printf \"%2.f°C\", $1/1000}'")
 
 (defpoll red-light :interval "1s"
     "xrandr --verbose | awk -F: '/Gamma/ { if ( $2 + $3 + $4 != 3.0 ) { print \"\"; } else { print \"\"; } exit; }'")
-
-(defpoll ram :interval "1s"
-    "free -m | grep 'Mem:' | awk '{ printf \"%2.f%%\", $3/$2*100 }'")
-
-(defpoll wifi :interval "1s"
-    "nmcli -t -f NAME connection show --active | awk -F: '!/lo/{print $1; found=1} END{if (!found) print \"not connected\"}'")
-
 
 ; ============= Widgets ==================
 (defwidget metric [?icon value ?class ?onchange]
@@ -27,7 +18,7 @@
         (box :class "value" value)))
 
 (defwidget revealer-on-hover [var varname ?class ?duration ?transition]
-    (box  :class "${class} revealer-on-hover"
+    (box  :class "revealer-on-hover ${class}"
         :orientation "h"
         :space-evenly false
         (eventbox :class "eventbox"
@@ -45,67 +36,83 @@
     )
 )
 
-
-; ============= Stats ==================
+; ============= VOLUME ==================
+(defpoll volume :interval "1s"
+    "awk -F[][] '/Left:/ { if ($4 == \"on\") {print $2} else {print \"muted\"} }' <(amixer sget Master)")
 (defvar revealVolume false)
-(defwidget volume [?class]
-    (box :space-evenly false
-        :class "hover-module ${class} ${volume == "muted"? "inactive" : "active"}"
-        (revealer-on-hover :class "hl-on-hover"
-            :var revealVolume
-            :varname "revealVolume"
-            :transition "slideleft"
-            :class "volume"
-            "VOL"
-            (metric
+(defwidget volume []
+        (eventbox
+            :class "hover-module"
+            :style {(volume == "muted") ? "background-color: ${white};color: ${line}" : ""}
+            :onclick "amixer set Master toggle"
+            :onrightclick "pavucontrol &"
+            (revealer-on-hover :class "hl-on-hover"
+                :var revealVolume
+                :varname "revealVolume"
+                :transition "slideleft"
                 :class "volume"
-                :value volume
-                :onchange "amixer -D pulse sset Master {}%")
+                "VOL"
+                (metric
+                    :class "volume"
+                    :value volume)
+            )
         )
-    )
 )
 
+; ============= CPU TEMPERATURE ==================
+(defpoll cpu-temp :interval "1s"
+    "cat /sys/class/hwmon/hwmon1/temp1_input | awk '{printf \"%2.f\", $1/1000}'")
 (defvar revealCPU false)
-(defwidget cpu [?class]
+(defwidget cpu []
     (box :space-evenly false
-        :class "hover-module ${class}"
+        :class "hover-module"
+        :style {(cpu-temp >= 60) ? "background-color: ${red};color: ${white}" : ""}
         (revealer-on-hover :class "hl-on-hover"
             :var revealCPU
             :varname "revealCPU"
             :transition "slideleft"
             :class "cpu"
             "CPU"
-            (metric :value cpu-temp)
+            (metric :value "${cpu-temp} °C")
         )
     )
 )
 
+; ============= RAM TEMPERATURE ==================
+(defpoll ram :interval "1s"
+    "free -m | grep 'Mem:' | awk '{ printf \"%2.f\", $3/$2*100 }'")
 (defvar revealRAM false)
-(defwidget ram [?class]
+(defwidget ram []
     (box :space-evenly false
-        :class "hover-module ${class}"
+        :class "hover-module"
+        :style {(ram >= 70) ? "background-color: ${red};color: ${white}" : ""}
         (revealer-on-hover :class "hl-on-hover"
             :var revealRAM
             :varname "revealRAM"
             :transition "slideleft"
             :class "ram"
             "RAM"
-            (metric :value ram)
+            (metric :value "${ram} %")
         )
     )
 )
 
+; ============= WIFI CONNECTION ==================
+(defpoll wifi :interval "1s"
+    "nmcli -t -f NAME connection show --active | awk -F: '!/lo/{print $1; found=1} END{if (!found) print \"not connected\"}'")
 (defvar revealWIFI false)
 (defwidget wifi [?class]
     (box :space-evenly false
-        :class "hover-module ${class}"
+        :class "hover-module ${class} ${(wifi == "not connected") ? "inactive" : "active"}"
         (revealer-on-hover :class "hl-on-hover"
             :var revealWIFI
             :varname "revealWIFI"
             :transition "slideleft"
             :class "wifi"
             "WIFI"
-            (metric :value wifi)
+            (metric
+                :class "${(wifi == "not connected") ? "inactive" : "active"}"
+                :value wifi)
         )
     )
 )

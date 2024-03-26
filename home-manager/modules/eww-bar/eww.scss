@@ -40,15 +40,23 @@ $cyan: #56b6c2;
 }
 
 .volume {
-
 }
-.volume .inactive{
+.volume .active {
+    color: $blue;
+    background-color: $white;
+}
+
+.volume .inactive {
     color: $line;
     background-color: $white;
 }
 
 .wifi {
-    color: $blue;
+    color: $cyan;
+}
+.wifi .inactive {
+    color: $line;
+    background-color: $white;
 }
 
 .ram, .cpu{
