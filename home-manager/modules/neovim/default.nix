@@ -65,17 +65,7 @@ in
                 vim-css-color
 
                 {
-                    plugin = (nvim-treesitter.withPlugins (p: [
-                        p.tree-sitter-nix
-                        p.tree-sitter-c
-                        p.tree-sitter-cpp
-                        p.tree-sitter-lua
-                        p.tree-sitter-vim
-                        p.tree-sitter-python
-                        p.tree-sitter-bash
-                        p.tree-sitter-markdown
-                    ]));
-
+                    plugin = nvim-treesitter.withAllGrammars;
                     type = "lua";
                     config = builtins.readFile ./treesitter.lua;
                 }
