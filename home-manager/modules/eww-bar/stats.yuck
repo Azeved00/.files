@@ -6,8 +6,6 @@
     "date '+D %b %d, %Y T %H:%M'")
 
 
-(defpoll red-light :interval "1s"
-    "xrandr --verbose | awk -F: '/Gamma/ { if ( $2 + $3 + $4 != 3.0 ) { print \"\"; } else { print \"\"; } exit; }'")
 
 ; ============= Widgets ==================
 (defwidget metric [?icon value ?class ?onchange]
@@ -36,14 +34,27 @@
     )
 )
 
+; ============= RED LIGHT ==================
+(defpoll red-light-var :interval "1s"
+    "xrandr --verbose | awk -F: '/Gamma/ { if ( $2 + $3 + $4 != 3.0 ) { print \"X\"; } else { print \"X\"; } exit; }'")
+(defwidget red-light []
+        (eventbox
+            :class ""
+            :onclick ""
+            :onrightclick ""
+            :style {(red-light-var == "X") ? "background-color: ${orange};color: ${white}" : "color:${orange}"}
+            (metric :value red-light-var)
+        )
+)
+
 ; ============= VOLUME ==================
-(defpoll volume :interval "1s"
+(defpoll volume-var :interval "1s"
     "awk -F[][] '/Left:/ { if ($4 == \"on\") {print $2} else {print \"muted\"} }' <(amixer sget Master)")
 (defvar revealVolume false)
 (defwidget volume []
         (eventbox
             :class "hover-module"
-            :style {(volume == "muted") ? "background-color: ${white};color: ${line}" : ""}
+            :style {(volume-var == "muted") ? "background-color: ${white};color: ${line}" : "color:${white}"}
             :onclick "amixer set Master toggle"
             :onrightclick "pavucontrol &"
             (revealer-on-hover :class "hl-on-hover"
@@ -54,65 +65,64 @@
                 "VOL"
                 (metric
                     :class "volume"
-                    :value volume)
+                    :value volume-var)
             )
         )
 )
 
 ; ============= CPU TEMPERATURE ==================
-(defpoll cpu-temp :interval "1s"
+(defpoll cpu-temp-var :interval "1s"
     "cat /sys/class/hwmon/hwmon1/temp1_input | awk '{printf \"%2.f\", $1/1000}'")
 (defvar revealCPU false)
 (defwidget cpu []
     (box :space-evenly false
         :class "hover-module"
-        :style {(cpu-temp >= 60) ? "background-color: ${red};color: ${white}" : ""}
+        :style {(cpu-temp-var >= 60) ? "background-color: ${red};color: ${white}" : "color: ${green};"}
         (revealer-on-hover :class "hl-on-hover"
             :var revealCPU
             :varname "revealCPU"
             :transition "slideleft"
             :class "cpu"
             "CPU"
-            (metric :value "${cpu-temp} °C")
+            (metric :value "${cpu-temp-var} °C")
         )
     )
 )
 
 ; ============= RAM TEMPERATURE ==================
-(defpoll ram :interval "1s"
+(defpoll ram-var :interval "1s"
     "free -m | grep 'Mem:' | awk '{ printf \"%2.f\", $3/$2*100 }'")
 (defvar revealRAM false)
 (defwidget ram []
     (box :space-evenly false
         :class "hover-module"
-        :style {(ram >= 70) ? "background-color: ${red};color: ${white}" : ""}
+        :style {(ram-var >= 70) ? "background-color: ${red};color: ${white};" : "color: ${green};"}
         (revealer-on-hover :class "hl-on-hover"
             :var revealRAM
             :varname "revealRAM"
             :transition "slideleft"
             :class "ram"
             "RAM"
-            (metric :value "${ram} %")
+            (metric :value "${ram-var} %")
         )
     )
 )
 
 ; ============= WIFI CONNECTION ==================
-(defpoll wifi :interval "1s"
+(defpoll wifi-var :interval "1s"
     "nmcli -t -f NAME connection show --active | awk -F: '!/lo/{print $1; found=1} END{if (!found) print \"not connected\"}'")
 (defvar revealWIFI false)
-(defwidget wifi [?class]
+(defwidget wifi []
     (box :space-evenly false
-        :class "hover-module ${class} ${(wifi == "not connected") ? "inactive" : "active"}"
+        :class "hover-module"
+        :style {(wifi-var == "not connected") ? "background-color: ${cyan};color: ${white};" : "color: ${cyan}"}
         (revealer-on-hover :class "hl-on-hover"
             :var revealWIFI
             :varname "revealWIFI"
             :transition "slideleft"
             :class "wifi"
             "WIFI"
-            (metric
-                :class "${(wifi == "not connected") ? "inactive" : "active"}"
-                :value wifi)
+            (metric :value wifi-var)
         )
     )
 )

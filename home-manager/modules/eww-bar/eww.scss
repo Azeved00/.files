@@ -39,30 +39,3 @@ $cyan: #56b6c2;
     padding-right: 7px;
 }
 
-.volume {
-}
-.volume .active {
-    color: $blue;
-    background-color: $white;
-}
-
-.volume .inactive {
-    color: $line;
-    background-color: $white;
-}
-
-.wifi {
-    color: $cyan;
-}
-.wifi .inactive {
-    color: $line;
-    background-color: $white;
-}
-
-.ram, .cpu{
-    color: $green;
-}
-
-.redl {
-    color: $orange;   
-}

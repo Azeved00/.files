@@ -3,27 +3,38 @@
 This is flake is only for development purposes
 It will eventually be merged with the root flake
 
+# Nix structure
+eww
+- enable?
+- wayland?
+- modules
+    - batery
+        - enable
+        - adaptor
+    - red-light
+        - enable
+    - bluetooth
+        - enable
+        - adaptor
+
 # Todo
 
 ## Widgets 
 ### Left
 - workspaces
-- window name
-
-### Center
-- time and calendar
+    -  not working entirely
 
 ### Left
 - Power Menu (dont know if keep)
-- WIFI
 - Battery
 - Bluetooth
-- Volume
-- RAM usage
-- CPU temp
 
 ## Style
-- Format
-- Colors
+- Format better
+    - spacing between modules
+    - use all the space
+    - make 
 - Use Emojies and icons 
     instead of nerdfonts charactes
+## Nix options
+

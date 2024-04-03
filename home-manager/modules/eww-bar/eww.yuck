@@ -21,11 +21,8 @@
 ; ========= WIDGETS DEFs =============
 (defwidget sidestuff []
     (box :class "sidestuff" :orientation "h" :space-evenly false :halign "end"
+        (red-light)
         (volume)
-        (metric :icon ""
-                :value  red-light
-                :class "redl"
-                :onchange "")
         (cpu)
         (ram)
         (wifi)))
