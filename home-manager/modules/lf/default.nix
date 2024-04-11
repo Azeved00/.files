@@ -39,7 +39,19 @@ in
                   esac
                 }}
                 '';
-                zip = ''''$${pkgs.zip}/bin/zip -r -q $1 $fs'';
+                zip = ''
+                &{{
+                    pushd $PWD
+                    read -r -d '\n' -a split_array <<< "$fs"
+
+                    # Map each element to a function
+                    for i in "''${!split_array[@]}"; do
+                        a="''$(basename "''${split_array[i]}")"
+                        ${pkgs.zip}/bin/zip -u "$1" "$a"
+                    done
+
+                    popd
+                }}'';
             };
 
             keybindings = {
