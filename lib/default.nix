@@ -41,6 +41,9 @@ in rec {
         };
 
         modules = [
+            {
+                nixpkgs.config.allowUnfree = true;
+            }
             inputs.bright-bit.homeManagerModule
             outputs.homeManagerModule
             outputs.homeManagerModules.profile

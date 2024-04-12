@@ -6,6 +6,7 @@
         ./i3
         ./rofi.nix
         ./firefox.nix
+        ./eww-bar
 
         ./neovim
         ./tmux
