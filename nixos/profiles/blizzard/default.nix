@@ -10,10 +10,10 @@
 
     dotfiles.nixos.wayland.enable = true;
 
-    bright-bit.system.sddm.themeconfig = ''
+    bright-bit.system.sddm.theme-config = ''
                 [General]
                 clockEnabled="true"
-                clockSize=30
+                clockSize=40
     '';
 
     programs.steam = {
