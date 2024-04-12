@@ -89,7 +89,7 @@
     )
 )
 
-; ============= RAM TEMPERATURE ==================
+; ============= RAM USAGE ==================
 (defpoll ram-var :interval "1s"
     "free -m | grep 'Mem:' | awk '{ printf \"%2.f\", $3/$2*100 }'")
 (defvar revealRAM false)
@@ -104,6 +104,28 @@
             :class "ram"
             "RAM"
             (metric :value "${ram-var} %")
+        )
+    )
+)
+
+; ============= BATTERY STATUS ==================
+(defpoll bat-status-var :interval "1s"
+    "awk '{ printf \"%2.f\", $3/$2*100 }' /sys/class/power_supply/BAT0/status")
+(defpoll bat-perc-var :interval "1s"
+    "awk 'NR==FNR {num1=$1; next} { printf \"%2.f\", num1/$1*100 }' /sys/class/power_supply/BAT0/energy_now /sys/class/power_supply/BAT0/energy_full")
+(defvar revealBat false)
+(defwidget bat []
+    (box :space-evenly false
+        :class "hover-module"
+        :style {
+            (bat-perc-var < 30) ? "background-color: ${red};color: ${white};" : "color: ${green};"}
+        (revealer-on-hover :class "hl-on-hover"
+            :var revealBAT
+            :varname "revealBAT"
+            :transition "slideleft"
+            :class "bat"
+            "BAT"
+            (metric :value "${bat-perc-var} %")
         )
     )
 )
