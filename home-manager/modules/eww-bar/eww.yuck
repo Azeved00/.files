@@ -23,6 +23,7 @@
     (box :class "sidestuff" :orientation "h" :space-evenly false :halign "end"
         (red-light)
         (volume)
+        (bat)
         (cpu)
         (ram)
         (wifi)))
