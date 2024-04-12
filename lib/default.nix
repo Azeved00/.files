@@ -9,7 +9,10 @@ in rec {
     # package helper
     mkPkgs = sys: (import inputs.nixpkgs {
         system = "${sys}";
-        config = {allowUnfree = true;};
+        config = {
+            allowUnfree = true;
+            pulseaudio = true;
+        };
     });
 
     # building system

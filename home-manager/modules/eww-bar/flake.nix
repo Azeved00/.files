@@ -8,7 +8,7 @@
     outputs = { self, ... } @ inputs: 
     let
         pkgs = import inputs.nixpkgs { inherit system; };
-        ROOT = builtins.toString ./.;
+        ROOT = "$HOME/Dev/dotfiles/home-manager/modules/eww-bar/";
         name = "eww development";
         system = "x86_64-linux";
     in {
@@ -26,7 +26,7 @@
                 eww daemon --config ${ROOT}
 
                 alias open="eww open bar --config ${ROOT}"
-                alias kill="eww close-all --config ${ROOT}"
+                alias close="eww close-all --config ${ROOT}"
 
                 reload
                 trap "${pkgs.eww}/bin/eww kill --config ${ROOT}" EXIT

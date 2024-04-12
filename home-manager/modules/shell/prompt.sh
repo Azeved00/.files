@@ -57,6 +57,6 @@ make_prompt(){
     fi
 
     make_separator "$BG_BLACK"
-    PS1+="\n\W  "
+    PS1+="\n$BLUE\W $RESET "
     PS1+="$RESET"
 }

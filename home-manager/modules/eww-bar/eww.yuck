@@ -1,58 +1,35 @@
-; =========== POOLS ========== 
+(include "stats.yuck")
 
-(defpoll volume :interval "1s"
-    "scripts/getvol")
+; ============ BAR DEFs ================
+(defwindow bar
+    :monitor 0
+    :windowtype "dock"
+    :geometry (geometry :x "0%"
+                        :y "0%"
+                        :width "90%"
+                        :height "10px"
+                        :anchor "top center")
+    :reserve (struts :side "top" :distance "4%")
+    (bar))
 
-(defpoll time :interval "10s"
-    "date '+%H:%M %b %d, %Y'")
-
-
-; =========== BAR ========== 
 (defwidget bar []
     (centerbox :orientation "h"
         (workspaces)
-        (metric :label "clock"
-            :value time
-            :onchange "")
+        (box :class "time" time)
         (sidestuff)))
 
-(defwindow bar
-  :monitor 0
-  :windowtype "dock"
-  :geometry (geometry :x "0%"
-                      :y "0%"
-                      :width "90%"
-                      :height "10px"
-                      :anchor "top center")
-  :reserve (struts :side "top" :distance "4%")
-  (bar))
-
-; =========== WIDGETS ========== 
-
-(defwidget metric [label value onchange]
-    (box :orientation "h"
-       :class "metric"
-       :space-evenly false
-        (box :class "label" label)
-        (scale :min 0
-           :max 101
-           :active {onchange != ""}
-           :value value
-           :onchange onchange)))
-
+; ========= WIDGETS DEFs =============
 (defwidget sidestuff []
     (box :class "sidestuff" :orientation "h" :space-evenly false :halign "end"
-        (metric :label "🔊"
-            :value volume
-            :onchange "amixer -D pulse sset Master {}%")
-        (metric :label ""
-            :value {EWW_RAM.used_mem_perc}
-            :onchange "")
-    time))
+        (red-light)
+        (volume)
+        (cpu)
+        (ram)
+        (wifi)))
 
 (defwidget workspaces []
     (box :class "workspaces"
-        :orientation "h"
+           :orientation "h"
         :space-evenly true
         :halign "start"
         :spacing 10
@@ -65,4 +42,6 @@
         (button :onclick "wmctrl -s 6" 7)
         (button :onclick "wmctrl -s 7" 8)
         (button :onclick "wmctrl -s 8" 9)))
+
+
 

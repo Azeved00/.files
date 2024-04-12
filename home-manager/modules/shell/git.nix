@@ -27,6 +27,7 @@ in
                 };
                 fetch = {
                     prune = true;
+                    writeCommitGraph = true;
                 };
                 diff = {
                     colorMoved = "zebra";
@@ -34,6 +35,8 @@ in
                 core =  {
                     editor = "nvim";
                     autocrlf = false;
+                    untrackedcache = true;
+                    fsmonitor = true;
                 };
                 init = {
                     defaultBranch = "main";
@@ -46,6 +49,8 @@ in
                 };
                 diff.tool = "vimdiff";
                 difftool.prompt = false;
+                column.ui = "auto";
+                branch.sort = "-commiterdate";
 
             };
         };

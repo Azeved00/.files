@@ -9,6 +9,7 @@ in
     };
 
     config = lib.mkIf cfg.enable {
+        programs.bash.shellAliases."lf" = ''cd "$(command lf -print-last-dir "$@")"'';
         xdg.configFile."lf/icons".source = ./icons;
         xdg.configFile."lf/colors".source = ./colors;
 
@@ -17,11 +18,12 @@ in
 
             settings = {
                 preview = true;
-                hidden = true;
+                hidden = false;
                 drawbox = true;
                 icons = true;
                 ignorecase = true;
-                # mouse = true;
+                number = true;
+                mouse = true;
             };
 
             commands = {
@@ -39,7 +41,19 @@ in
                   esac
                 }}
                 '';
-                zip = ''''$${pkgs.zip}/bin/zip -r -q $1 $fs'';
+                zip = ''
+                &{{
+                    pushd $PWD
+                    read -r -d '\n' -a split_array <<< "$fs"
+
+                    # Map each element to a function
+                    for i in "''${!split_array[@]}"; do
+                        a="''$(basename "''${split_array[i]}")"
+                        ${pkgs.zip}/bin/zip -u "$1" "$a"
+                    done
+
+                    popd
+                }}'';
             };
 
             keybindings = {

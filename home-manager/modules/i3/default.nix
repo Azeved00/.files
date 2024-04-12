@@ -6,6 +6,8 @@ in
     imports = [ 
         ./polybar.nix
         ./picom.nix
+        ./packages.nix
+        ./redshift.nix
     ];
 
     options.dotfiles.home-manager.i3 = {
@@ -54,6 +56,7 @@ in
             i3.picom.enable = true;
             i3.polybar.enable = true;
             #eww.enable = false;
+            i3.redshift.enable = true;
         };
 
         services.playerctld.enable = true;
@@ -282,6 +285,18 @@ in
                             command = "sticky enable";
                             criteria = {
                                 title = "Picture-in-Picture";
+                            };
+                        }
+                        {
+                            command = "floating disable";
+                            criteria = {
+                                class = "league*";
+                            };
+                        }
+                        {
+                            command = "floating disable";
+                            criteria = {
+                                class = "riot*";
                             };
                         }
                     ];
