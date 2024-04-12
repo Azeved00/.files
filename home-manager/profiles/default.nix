@@ -9,10 +9,6 @@
         stateVersion = "23.05";
     };
 
-    nixpkgs.config = {
-        allowUnfree = true;
-        pulseaudio = true;
-    };
     nix= {
         package = pkgs.nix;
         settings = {
