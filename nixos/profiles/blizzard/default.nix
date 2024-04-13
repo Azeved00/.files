@@ -10,6 +10,12 @@
 
     dotfiles.nixos.wayland.enable = true;
 
+    bright-bit.system.sddm.theme-config = ''
+                [General]
+                clockEnabled="true"
+                clockSize=40
+    '';
+
     programs.steam = {
         enable = true;
         # Open ports in the firewall for Steam Remote Play

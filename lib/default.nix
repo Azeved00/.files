@@ -9,7 +9,10 @@ in rec {
     # package helper
     mkPkgs = sys: (import inputs.nixpkgs {
         system = "${sys}";
-        config = {allowUnfree = true;};
+        config = {
+            allowUnfree = true;
+            pulseaudio = true;
+        };
     });
 
     # building system
@@ -38,6 +41,9 @@ in rec {
         };
 
         modules = [
+            {
+                nixpkgs.config.allowUnfree = true;
+            }
             inputs.bright-bit.homeManagerModule
             outputs.homeManagerModule
             outputs.homeManagerModules.profile

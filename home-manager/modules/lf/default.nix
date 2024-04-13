@@ -9,6 +9,7 @@ in
     };
 
     config = lib.mkIf cfg.enable {
+        programs.bash.shellAliases."lf" = ''cd "$(command lf -print-last-dir "$@")"'';
         xdg.configFile."lf/icons".source = ./icons;
         xdg.configFile."lf/colors".source = ./colors;
 
@@ -17,11 +18,12 @@ in
 
             settings = {
                 preview = true;
-                hidden = true;
+                hidden = false;
                 drawbox = true;
                 icons = true;
                 ignorecase = true;
-                # mouse = true;
+                number = true;
+                mouse = true;
             };
 
             commands = {

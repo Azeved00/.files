@@ -53,10 +53,9 @@ in
 
     config = lib.mkIf cfg.enable {
         dotfiles.home-manager= {
-            i3.picom.enable = true;
-            i3.polybar.enable = true;
-            #eww.enable = false;
-            i3.redshift.enable = true;
+            i3.picom.enable = lib.mkDefault true;
+            i3.polybar.enable = lib.mkDefault true;
+            i3.redshift.enable = lib.mkDefault true;
         };
 
         services.playerctld.enable = true;
@@ -245,11 +244,11 @@ in
                             always = true;
                             notification = false;
                         })
-                        #({
-                        #    command = "${config.xdg.configHome}/eww/bar/launch_bar";
-                        #    always = true;
-                        #    notification = false;
-                        #})
+                        (lib.mkIf config.dotfiles.home-manager.eww.enable {
+                            command = "${pkgs.eww}/bin/eww open bar";
+                            always = true;
+                            notification = false;
+                        })
                         (lib.mkIf cfg.picom.enable {
                             command = "picom --config ${config.xdg.configHome}/picom/picon.conf";
                             always = true;

@@ -1,0 +1,41 @@
+$black: #282c34;
+$non_text: #919baa;
+$selection: #474e5d;
+$comments: #5c6370;
+$line: #313640;
+$white: #dcdfe4;
+$red: #e06c75;
+$green: #98c379;
+$orange: #de935f;
+$yellow: #e5c07b;
+$blue: #61afef;
+$magenta: #c678dd;
+$cyan: #56b6c2;
+
+* {
+    all: unset; //Unsets everything so you can style everything from scratch
+
+}
+
+//Global Styles
+.bar {
+    background-color: $line;
+    color: $white;
+    padding: 10px;
+}
+
+.workspaces button:hover {
+    color: $yellow;
+    background-color: $selection;
+}
+
+.metric {
+    padding-left: 7px;
+    padding-right: 7px;
+}
+
+.hover-module {
+    padding-left: 7px;
+    padding-right: 7px;
+}
+

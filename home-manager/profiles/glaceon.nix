@@ -9,20 +9,24 @@
         i3= {
             enable = true;
             background-image = ../../assets/Pictures/Backgrounds/fractal.png;
-            polybar.modules = {
-                wifi.wifi-interface = "wlp5s0";
-                bluetooth.enable = false;
-                battery = {
-                    enable = true;
-                    battery = "BAT0";
-                    adapter = "AC";
+            polybar= {
+                enable = false;
+                modules = {
+                    wifi.wifi-interface = "wlp5s0";
+                    bluetooth.enable = false;
+                    battery = {
+                        enable = true;
+                        battery = "BAT0";
+                        adapter = "AC";
+                    };
+                    temperature.file = "";
                 };
-                temperature.file = "";
             };
             monitor-config = ''
                 workspace 1 output eDP-1
             '';
         };
+        eww.enable=true;
         lf.enable = true;
         nvim.enable = true;
         rofi.enable = true;
