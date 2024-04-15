@@ -38,6 +38,11 @@ in
             ];
 
             plugins = with pkgs.vimPlugins; [
+                {
+                    plugin = nvim-treesitter.withAllGrammars;
+                    type = "lua";
+                    config = builtins.readFile ./treesitter.lua;
+                }
                 rainbow
 
                 kanagawa-nvim
@@ -64,11 +69,6 @@ in
                 vim-gitgutter
                 vim-css-color
 
-                {
-                    plugin = nvim-treesitter.withAllGrammars;
-                    type = "lua";
-                    config = builtins.readFile ./treesitter.lua;
-                }
            ];
         };
     };

@@ -17,6 +17,8 @@ local on_attach = function(_, bufnr)
 
     bufmap('K', vim.lsp.buf.hover)
 
+    vim.highlight.priorities.semantic_tokens = 95 
+
     vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
         vim.lsp.buf.format()
     end, {})
