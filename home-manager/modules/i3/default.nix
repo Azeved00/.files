@@ -228,6 +228,7 @@ in
                         "${cfg.mod}+d"=''exec --no-startup-id rofi -show drun'';
                         "${cfg.mod}+Shift+d"=''exec --no-startup-id rofi -show run'';
                         "${cfg.mod}+Shift+s" = ''exec --no-startup-id ${pkgs.flameshot}/bin/flameshot gui'';
+                        "Print" = ''exec --no-startup-id ${pkgs.flameshot}/bin/flameshot gui'';
 
                         #i3 shortcuts
                         "${cfg.mod}+Shift+c" = ''reload'';
