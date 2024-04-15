@@ -259,6 +259,11 @@ in
                             always = true;
                             notification = false;
                         }
+                        {
+                            command = "${pkgs.flameshot}/bin/flameshot &";
+                            always = true;
+                            notification = false;
+                        }
                     ];
 
                     modes = {
