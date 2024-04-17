@@ -7,6 +7,7 @@
         ./rofi.nix
         ./firefox.nix
         ./eww-bar
+        ./zathura.nix
 
         ./neovim
         ./tmux

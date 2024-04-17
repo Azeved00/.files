@@ -19,6 +19,7 @@
         rofi.enable = true;
         feh.enable = true;
         firefox.enable = true;
+        zathura.enable = true;
 
         bash = {
             enable = true;
