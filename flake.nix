@@ -40,7 +40,7 @@
         };
 
         templates.dev = {
-            path = ./lib/dev-template.nix;
+            path = ./template;
             description = "A template for development";
         };
     };
