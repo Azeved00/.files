@@ -18,6 +18,14 @@ with lib;
     };
 
     config = mkIf cfg.enable {
+        services.displayManager = {
+            sddm = {
+                enable = true;
+                autoNumlock = true;
+            };
+        };
+
+        
         # Configure keymap in X11
         services.xserver = {
             enable = true;
@@ -27,16 +35,12 @@ with lib;
             desktopManager.xterm.enable = false;
             
             displayManager = {
-                sddm = {
-                    enable = true;
-                    autoNumlock = true;
-                };
                 lightdm = {
                     enable = false;
                     greeters.slick.enable = true;
                 };
-
             };
+
             
             windowManager.i3 = {
                     enable = true;

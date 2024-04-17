@@ -8,7 +8,7 @@
         dunst.enable = true;
         i3= {
             enable = true;
-            background-image = ../../assets/Pictures/Backgrounds/fractal.png;
+            background-image = ../../assets/Pictures/Backgrounds/ball.png;
             polybar= {
                 enable = false;
                 modules = {

@@ -11,7 +11,7 @@ with lib;
     };
 
     config = mkIf cfg.enable {
-        services.xserver.displayManager.sddm = {
+        services.displayManager.sddm = {
             enable = true;
             autoNumlock = true;
             wayland.enable = true;
