@@ -8,5 +8,6 @@
         ./readline.nix
         ./ssh.nix
         ./packages.nix
+        ./neofetch
     ];
 }

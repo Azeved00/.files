@@ -27,6 +27,7 @@
             hm = "blizzard";
             nos = "blizzard";
         };
+        neofetch.enable = true;
         git.enable = true;
         readline.enable = true;
         ssh.enable = true;
