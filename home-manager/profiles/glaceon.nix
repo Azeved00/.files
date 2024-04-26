@@ -27,13 +27,14 @@
             '';
         };
         eww.enable=true;
-        lf.enable = true;
         nvim.enable = true;
         rofi.enable = true;
         feh.enable = true;
         firefox.enable = true;
-        tmux.enable = true;
+        zathura.enable = true;
 
+        lf.enable = true;
+        tmux.enable = true;
         terminal.packages.enable = true;
         git.enable = true;
         readline.enable = true;
@@ -49,8 +50,6 @@
     home.packages = with pkgs; [ 
         pinta
         spotify
-        discord
-        parsec-bin
     ];
 
     bright-bit.user.enable = true;
