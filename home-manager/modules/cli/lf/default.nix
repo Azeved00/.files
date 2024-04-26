@@ -61,6 +61,9 @@ in
                 "." = "set hidden!"; 
                 sf = "push :touch<space>";
                 sd = "push :mkdir<space>";
+                gtD = ''cd ~/Dev"'';
+                gtd = ''cd ~/Downloads'';
+                gth = ''cd ~'';
             };
         };
     };
