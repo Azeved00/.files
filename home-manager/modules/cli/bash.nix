@@ -47,8 +47,7 @@ in
                 "hm"="home-manager --flake ${cfg.repoFolder}#${cfg.hm}";
                 "nosr" = "sudo nixos-rebuild --flake ${cfg.repoFolder}#${cfg.nos}";
                 "new-dev" = "nix flake new -t ${cfg.repoFolder}#dev";
-                "dev" = "nix develop && tmux new-session -s $NIX_SHELL_NAME";
-
+                "dev" = ''tmux new-session "nix develop -c \"tmux rename-session \"$NIX_SHELL_NAME\"\"; nix develop --impure "'';
             };
 
             profileExtra = "";

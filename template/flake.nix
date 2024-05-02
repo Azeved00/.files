@@ -8,20 +8,18 @@
     outputs = { self, ... } @ inputs: 
     let
         pkgs = import inputs.nixpkgs { inherit system; };
-        ROOT = builtins.getEnv "PWD";
+        ROOT = let p = builtins.getEnv "PWD"; in if p == "" then self else p;
         name = "name of your shell";
         system = "x86_64-linux";
     in {
         devShells."${system}".default = pkgs.mkShell {
             inherit name ROOT;
+            NIX_SHELL_NAME = name;
 
             buildInputs = with pkgs; [];
 
             shellHook = ''
-                export NIX_SHELL_NAME="${name}" 
                 echo -ne "\033]0;${name}\007"
-
-                reload
             '';
 
         };
