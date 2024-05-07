@@ -1,4 +1,4 @@
-{ config, lib, ...}:
+{ config, lib, pkgs, ...}:
 with lib;
 let
   cfg = config.dotfiles.home-manager.bash;
@@ -25,7 +25,7 @@ in
         };
     };
 
-        config = mkIf cfg.enable {
+    config = mkIf cfg.enable {
         programs.bash = {
             enable = true;
 
@@ -47,7 +47,7 @@ in
                 "hm"="home-manager --flake ${cfg.repoFolder}#${cfg.hm}";
                 "nosr" = "sudo nixos-rebuild --flake ${cfg.repoFolder}#${cfg.nos}";
                 "new-dev" = "nix flake new -t ${cfg.repoFolder}#dev";
-                "dev" = ''tmux new-session "nix develop -c \"tmux rename-session \"$NIX_SHELL_NAME\"\"; nix develop --impure "'';
+                "dev" = ''${pkgs.tmux}/bin/tmux new-session "nix develop -c \"nix develop --impure\""'';
             };
 
             profileExtra = "";
