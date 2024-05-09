@@ -2,6 +2,7 @@
 with lib;
 let
   cfg = config.dotfiles.home-manager.bash;
+  tmux = "${pkgs.tmux}/bin/tmux";
 in
 {
     imports = [];
@@ -47,7 +48,12 @@ in
                 "hm"="home-manager --flake ${cfg.repoFolder}#${cfg.hm}";
                 "nosr" = "sudo nixos-rebuild --flake ${cfg.repoFolder}#${cfg.nos}";
                 "new-dev" = "nix flake new -t ${cfg.repoFolder}#dev";
-                "dev" = ''${pkgs.tmux}/bin/tmux new-session "nix develop -c \"nix develop --impure\""'';
+                "dev" = ''
+                    NIX_SHELL_NAME="$(nix develop --impure --offline -c bash -c "env | awk -F'=' '{ if (\$1 == \"name\") print \$2 }'")";
+                    ${tmux} new-session -d -s "$NIX_SHELL_NAME";
+                    ${tmux} split-window -h -t "$NIX_SHELL_NAME":0 "nix develop --impure --offline";
+                    ${tmux} attach -t "$NIX_SHELL_NAME";
+                '';
             };
 
             profileExtra = "";

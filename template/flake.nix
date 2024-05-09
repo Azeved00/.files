@@ -14,7 +14,6 @@
     in {
         devShells."${system}".default = pkgs.mkShell {
             inherit name ROOT;
-            NIX_SHELL_NAME = name;
 
             buildInputs = with pkgs; [];
 
