@@ -43,5 +43,10 @@
             path = ./template;
             description = "A template for development";
         };
+
+
+        devShells."${system}".default = (mkPkgs system).mkShell {
+            name = "Dotfiles Development";
+        };
     };
 }
