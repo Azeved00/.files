@@ -5,11 +5,13 @@ make_prompt(){
     local YELLOW='\[\e[1;33m\]'
     local BLACK='\[\e[1;30m\]'
     local GREEN='\[\e[1;32m\]'
+    local RED='\[\e[1;31m\]'
     local BLUE='\[\e[1;34m\]'
     local WHITE='\[\e[1;97m\]'
 
     local BG_BLUE='\[\e[44m\]\]'
     local BG_GREEN='\[\e[42m\]\]'
+    local BG_RED='\[\e[41m\]\]'
     local BG_BLACK='\[\e[40m\]\]'
     local BG_YELLOW='\[\e[43m\]\]'
 
@@ -49,11 +51,11 @@ make_prompt(){
     fi
 
     if [[ -n "$GB" ]] ; then
-        make_separator "$BG_GREEN"
+        make_separator "$BG_RED"
 
-        PS1+="$BLACK$BG_GREEN $GB  "
+        PS1+="$WHITE$BG_RED $GB  "
         PS1+=" +$LOCAL_COMMITS -$REMOTE_COMMITS"
-        PS1+="$RESET$GREEN$SEPARATOR"
+        PS1+="$RESET$RED$SEPARATOR"
     fi
 
     make_separator "$BG_BLACK"
