@@ -47,7 +47,7 @@ in
                     multiplier = 3;
                 };
 
-                font.size = 13.0;
+                font.size = 12.5;
 
                 colors = {
                     primary = {
