@@ -31,7 +31,6 @@ with lib;
             enable = true;
             autorun = true;
             xkb.layout = cfg.layout;
-            libinput.enable = true;
             desktopManager.xterm.enable = false;
             
             displayManager = {
