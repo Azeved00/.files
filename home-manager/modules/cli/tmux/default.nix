@@ -20,6 +20,8 @@ in
             extraConfig = (builtins.concatStringsSep "\n" [
                (builtins.readFile ./config)
             ]);
+
+            plugins = [];
         };
     };
 }

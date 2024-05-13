@@ -1,5 +1,4 @@
-#bind r source-file ~/.config/tmux.conf \; display-message "RELOADING CONFIGURATION FILE…"
-bind r source-file ~/Dev/dotfiles/home-manager/modules/cli/tmux/config \; display-message "RELOADING CONFIGURATION FILE…"
+bind r source-file ~/.config/tmux/tmux.conf \; display-message "RELOADING CONFIGURATION FILE…"
 
 unbind C-b
 set-option -g prefix C-w
@@ -12,9 +11,9 @@ set-option -g status-position top
 set-option -g status-justify centre
 
 set -g status-right '#S @ #h'
-set -g status-left '#I #W - #T'
+set -g status-left '#I #W'
 set-option -g status-left-length 30
-set-window-option -g window-status-current-format '%H:%M %d-%b-%y'
+set-window-option -g window-status-current-format 'C %b %d, %Y  T %H:%M '
 # Disable showing the default window list component.
 set-window-option -g window-status-format ''
 
