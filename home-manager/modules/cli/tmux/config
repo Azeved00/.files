@@ -10,10 +10,12 @@ set -s escape-time 50
 set-option -g status-position top
 set-option -g status-justify centre
 
-set -g status-right '#S @ #h'
+set -g status-right '#S @ #h < C %b %d, %Y  T %H:%M '
 set -g status-left '#I #W'
 set-option -g status-left-length 30
-set-window-option -g window-status-current-format 'C %b %d, %Y  T %H:%M '
+set-option -g status-right-length 100
+
+set-window-option -g window-status-current-format ''
 # Disable showing the default window list component.
 set-window-option -g window-status-format ''
 
