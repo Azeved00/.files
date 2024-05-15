@@ -15,7 +15,7 @@ in
         };
         xdg.configFile."fastfetch_image" = {
             enable = true;
-            executable = true;
+            executable = false;
             text = builtins.readFile ./image.txt;
             target = "fastfetch/image.txt";
         };

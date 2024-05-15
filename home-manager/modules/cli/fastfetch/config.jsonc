@@ -14,16 +14,14 @@
         "theme",
         "icons",
         "font",
-        "cursor",
         "terminal",
         "cpu",
         "gpu",
-        "memory",
         "break",
         "colors"
     ],
     "logo": {
-        "source": "./image.txt",
+        "source": "$XDG_CONFIG_HOME/fastfetch/image.txt",
         "type": "file",
         "color": {
             "1": "red",
