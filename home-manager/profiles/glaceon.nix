@@ -33,6 +33,7 @@
         firefox.enable = true;
         zathura.enable = true;
 
+        fastfetch.enable = true;
         lf.enable = true;
         tmux.enable = true;
         terminal.packages.enable = true;
