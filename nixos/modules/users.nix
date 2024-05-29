@@ -7,6 +7,9 @@
         home = "/home/azevedo";
         isNormalUser = true;
         initialPassword = "pw123";
-        extraGroups = [  "networkmanager" "wheel" "audio" ];
+        extraGroups = [  
+            "networkmanager" "wheel" "audio" 
+            "dialout" 
+        ];
     };
 }
