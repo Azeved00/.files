@@ -23,6 +23,7 @@ make_prompt(){
 
     local LOCAL_COMMITS="$(git rev-list --count $GB --not origin/$GB 2>/dev/null)"
     local REMOTE_COMMITS="$(git rev-list --count origin/$GB --not $GB 2>/dev/null)"
+    local NIX_SHELL_NAME="$(env | awk -F'=' '{ if ($1 == "name") print $2 }')";
 
     # function to put separators correctly
     # parameters
