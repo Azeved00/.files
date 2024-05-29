@@ -9,7 +9,11 @@
             inputs.nixpkgs.follows = "nixpkgs";
         };
         
-        hyprland.url = "github:hyprwm/Hyprland";
+        hyprland = {
+            type = "git";
+            url = "https://github.com/hyprwm/Hyprland";
+            submodules = true;
+        };
 
         bright-bit.url ="github:Azeved00/bright-bit";
         #bright-bit.url ="path:/home/azevedo/Dev/bright-bit";
