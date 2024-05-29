@@ -15,6 +15,7 @@ in
             btop
             zip
             unzip
+            killall
         ];
 
     };
