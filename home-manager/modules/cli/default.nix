@@ -3,7 +3,7 @@
         ./neovim
         ./tmux
         ./lf
-        ./bash.nix
+        ./bash
         ./git.nix
         ./readline.nix
         ./ssh.nix
