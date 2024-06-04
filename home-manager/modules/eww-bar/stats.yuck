@@ -110,7 +110,7 @@
 
 ; ============= BATTERY STATUS ==================
 (defpoll bat-status-var :interval "1s"
-    "awk '{ printf \"%2.f\", $3/$2*100 }' /sys/class/power_supply/BAT0/status")
+    "awk '{ printf \"%s\", $1 }' /sys/class/power_supply/BAT0/status")
 (defpoll bat-perc-var :interval "1s"
     "awk 'NR==FNR {num1=$1; next} { printf \"%2.f\", num1/$1*100 }' /sys/class/power_supply/BAT0/energy_now /sys/class/power_supply/BAT0/energy_full")
 (defvar revealBAT false)
@@ -118,7 +118,12 @@
     (box :space-evenly false
         :class "hover-module"
         :style {
-            (bat-perc-var < 30) ? "background-color: ${red};color: ${white};" : "color: ${green};"}
+            (bat-status-var == "Charging") ? 
+                "background-color: ${blue};color: ${white};" : 
+                (bat-perc-var < 30) ? 
+                    "background-color: ${red};color: ${white};" : 
+                    "color: ${green};"
+        }
         (revealer-on-hover :class "hl-on-hover"
             :var revealBAT
             :varname "revealBAT"
