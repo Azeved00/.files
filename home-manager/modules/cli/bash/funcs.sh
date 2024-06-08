@@ -1,5 +1,5 @@
 function link-proj() {
-    ln -s "$1" "$HOME/Dev/"
+    ln -s "$PWD/$1" "$HOME/Dev/$2"
 }
 
 function dev() {
