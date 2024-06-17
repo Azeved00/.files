@@ -17,10 +17,7 @@
 
             buildInputs = with pkgs; [];
 
-            shellHook = ''
-                echo -ne "\033]0;${name}\007"
-            '';
-
+            shellHook = '''';
         };
     };
 }
