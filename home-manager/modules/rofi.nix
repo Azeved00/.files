@@ -1,4 +1,4 @@
-{ config, lib, ...}:
+{ config, lib, pkgs,...}:
 let 
     cfg = config.dotfiles.home-manager.rofi;
 in
@@ -36,9 +36,10 @@ in
             cycle = true;
             font = "JetBrainsMono Nerd Font Medium 13";
             location = "center";
+            plugins = [ pkgs.rofi-calc ];
             extraConfig = {
                 show-icons = true;
-                modi = "window,run,drun";
+                modi = "window,run,drun,calc";
 
                 display-drun= "Applications:";
                 drun-display-format= "{icon} {name}";
