@@ -44,8 +44,8 @@
         };
 
         templates.dev = {
-            path = ./template;
-            description = "A template for development";
+            path = ./dev-template;
+            description = "A general template for development through a nix shell";
         };
 
 
