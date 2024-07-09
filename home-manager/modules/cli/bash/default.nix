@@ -43,7 +43,7 @@ in
 
                 "g" = "git";
                 
-                "dotfiles"=''pushd ${cfg.repoFolder}; tmux new-session -t dotfiles; popd;'';
+                "dotfiles"=''pushd ${cfg.repoFolder}; tmux new-session -s dotfiles; popd;'';
                 "hm"="home-manager --flake ${cfg.repoFolder}#${cfg.hm}";
                 "nosr" = "sudo nixos-rebuild --flake ${cfg.repoFolder}#${cfg.nos}";
                 "new-dev" = "nix flake new -t ${cfg.repoFolder}#dev";
