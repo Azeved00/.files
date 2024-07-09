@@ -22,6 +22,7 @@
         git
         home-manager
         neovim
+        appimage-run
 
      	#other apps
      	i3
