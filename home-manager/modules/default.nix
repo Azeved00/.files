@@ -8,6 +8,7 @@
         ./firefox.nix
         ./eww-bar
         ./zathura.nix
+        ./drawio.nix
 
         ./cli
     ];

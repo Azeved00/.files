@@ -20,6 +20,7 @@
         feh.enable = true;
         firefox.enable = true;
         zathura.enable = true;
+        drawio.enable = true;
 
         bash = {
             enable = true;
