@@ -2,8 +2,8 @@
 
 ; ============= POOL DEFs ==================
 
-(defpoll time :interval "10s"
-    "date '+D %b %d, %Y T %H:%M'")
+(defpoll time :interval "30s"
+    "date '+  %b %d, %Y       %H:%M'")
 
 
 
@@ -48,7 +48,7 @@
 )
 
 ; ============= VOLUME ==================
-(defpoll volume-var :interval "1s"
+(defpoll volume-var :interval "1ms"
     "awk -F[][] '/Left:/ { if ($4 == \"on\") {print $2} else {print \"muted\"} }' <(amixer sget Master)")
 (defvar revealVolume false)
 (defwidget volume []

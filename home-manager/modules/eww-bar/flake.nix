@@ -18,17 +18,12 @@
             buildInputs = with pkgs; [ eww ];
 
             shellHook = ''
-                export NIX_SHELL_NAME="${name}" 
-                echo -ne "\033]0;${name}\007"
-
-
                 alias eww="${pkgs.eww}/bin/eww"
                 eww daemon --config ${ROOT}
 
                 alias open="eww open bar --config ${ROOT}"
                 alias close="eww close-all --config ${ROOT}"
 
-                reload
                 trap "${pkgs.eww}/bin/eww kill --config ${ROOT}" EXIT
             '';
 
