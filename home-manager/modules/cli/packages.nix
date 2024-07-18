@@ -59,7 +59,12 @@ let
 
                 tmux send-keys -t "$SESSION_NAME":0.0 "nix develop --impure" Enter
             fi
-            tmux attach-session -t "$SESSION_NAME"
+
+            if  [ "$TERM" = "screen" ] && [ -n "$TMUX" ]; then
+                echo "Already inside tmux, not attaching to new session"
+            else
+                tmux attach-session -t "$SESSION_NAME"
+            fi
 
             popd
         '';
