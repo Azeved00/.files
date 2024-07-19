@@ -1,4 +1,4 @@
-{config, lib, ...}:with lib;
+{config, lib, pkgs, ...}:with lib;
 let
     cfg = config.dotfiles.home-manager.tmux;
 in
@@ -18,10 +18,13 @@ in
             customPaneNavigationAndResize = true;
 
             extraConfig = (builtins.concatStringsSep "\n" [
-               (builtins.readFile ./config)
+               (builtins.readFile ./config.conf)
             ]);
 
-            plugins = [];
+            plugins = with pkgs.tmuxPlugins; [
+                #catppuccin
+                yank
+            ];
         };
     };
 }
