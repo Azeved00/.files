@@ -24,7 +24,7 @@ in rec {
             system = sys;
         };
         modules = [
-            inputs.bright-bit.nixosModule
+            inputs.bright-bit.nixosModules.default
             outputs.nixosModule
             outputs.nixosModules.profile
             config
@@ -44,7 +44,7 @@ in rec {
             {
                 nixpkgs.config.allowUnfree = true;
             }
-            inputs.bright-bit.homeManagerModule
+            inputs.bright-bit.homeManagerModules.default
             outputs.homeManagerModule
             outputs.homeManagerModules.profile
             config
