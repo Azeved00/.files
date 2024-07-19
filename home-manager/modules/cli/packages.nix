@@ -10,14 +10,17 @@ let
             NIX_RENAME=true
             NIX_SHELL=true
             MONO=true
+            ATTACH=true
+
 
             # Function to display help
             usage() {
-                echo "Usage: $0 [directory] [-r] [-k] [-s] [-h]"
+                echo "Usage: $0 [directory] [-r] [-k] [-s] [-h] [-a]"
                 echo "  DIRECTORY       Directory to change to (default is current directory)"
                 echo "  -r              Do not read the name from the nix shell"
                 echo "  -k              Do not start a nix shell"
                 echo "  -s              initial window will be split into 2 panes"
+                echo "  -a              Don't attach to tmux"
                 echo "  -h              Help/Usage"
                 exit 1
             }
@@ -28,11 +31,12 @@ let
             fi
 
             # Parse options
-            while getopts ":skhr" opt; do
+            while getopts ":skhra" opt; do
                 case $opt in
                     r) NIX_RENAME=false;;
                     k) NIX_SHELL=false ;;
                     s) MONO=false;;
+                    a) ATTACH=false;;
                     h) usage ;;
                     *) usage ;;
                 esac
@@ -60,7 +64,7 @@ let
                 tmux send-keys -t "$SESSION_NAME":0.0 "nix develop --impure" Enter
             fi
 
-            if  [ "$TERM" = "screen" ] && [ -n "$TMUX" ]; then
+            if  [ "$ATTACH" = false ] && [ "$TERM" = "screen" ] && [ -n "$TMUX" ]; then
                 echo "Already inside tmux, not attaching to new session"
             else
                 tmux attach-session -t "$SESSION_NAME"
