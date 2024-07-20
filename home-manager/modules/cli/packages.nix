@@ -54,14 +54,14 @@ let
             # Handle nix develop step if flake.nix exists and SKIP_NIX_DEVELOP is false
             if [ "$NIX_SHELL" = true ]; then
                 if [ -f "flake.nix" ] && [ "$NIX_RENAME" = true ]; then
-                    tmux send-keys -t "$SESSION_NAME":0.0 "tmux rename-session \"\$(nix --quiet develop --quiet -c bash -c \"env | awk -F'=' '{ if (\\\$1 == \\\"name\\\") print \\\$2 }'\")\"; clear" Enter
+                    tmux send-keys -t "$SESSION_NAME":1.0 "tmux rename-session \"\$(nix --quiet develop --quiet -c bash -c \"env | awk -F'=' '{ if (\\\$1 == \\\"name\\\") print \\\$2 }'\")\"; clear" Enter
                 fi
 
                 if [ "$MONO" = false ]; then
-                    tmux split-window -h -t "$SESSION_NAME":0 "nix develop --impure"
+                    tmux split-window -h -t "$SESSION_NAME":1 "nix develop --impure"
                 fi
 
-                tmux send-keys -t "$SESSION_NAME":0.0 "nix develop --impure" Enter
+                tmux send-keys -t "$SESSION_NAME":1.0 "nix develop --impure" Enter
             fi
 
             if  [ "$ATTACH" = false ] && [ "$TERM" = "screen" ] && [ -n "$TMUX" ]; then
