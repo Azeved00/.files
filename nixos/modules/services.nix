@@ -1,7 +1,7 @@
 {...}:
 {
     systemd.coredump.enable = false;
-    sound.enable = true;
+    # sound.enable = true;
     hardware.pulseaudio.enable = false;
 
     # Enable the OpenSSH daemon.

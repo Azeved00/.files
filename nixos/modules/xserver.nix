@@ -32,6 +32,7 @@ with lib;
             autorun = true;
             xkb.layout = cfg.layout;
             desktopManager.xterm.enable = false;
+            wacom.enable = true;
             
             displayManager = {
                 lightdm = {

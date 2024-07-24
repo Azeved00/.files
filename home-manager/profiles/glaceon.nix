@@ -52,6 +52,8 @@
     home.packages = with pkgs; [ 
         pinta
         spotify
+        zoom-us
+        teams-for-linux
     ];
 
     bright-bit.user.enable = true;
@@ -61,8 +63,12 @@
         mimeApps.enable = true;
 
         mimeApps.defaultApplications = {
-            "text/plain" = [ "neovim.desktop" ];
-            "application/pdf" = [ "zathura.desktop" ];
+            "application/pdf"   =  "zathura.desktop";
+
+            "text/plain"        =  "neovim.desktop";
+            "text/rust"         =  "neovim.desktop";
+            "text/markdown"     =  "neovim.desktop";
+            "application/toml"  =  "neovim.desktop";
         };
 
         userDirs = {
