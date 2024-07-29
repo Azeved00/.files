@@ -24,23 +24,5 @@
         BROWSER = "wslview";
     };
     #targets.genericLinux.enable = true;
-    
-    xdg = {
-        enable = true;
-        mime.enable = true;
-
-        desktopEntries = {};
-
-        mimeApps = {
-            enable = true;
-        };
-        
-        userDirs = {
-            enable = true;
-            createDirectories = false;
-        };
-
-        systemDirs.data = [ "${config.home.homeDirectory}/.nix-profile/share/applications" ];
-    };
 
 }

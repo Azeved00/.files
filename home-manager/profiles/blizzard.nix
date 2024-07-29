@@ -42,6 +42,7 @@
             prismlauncher
 	        heroic
             pinta
+            krita
             (retroarch.override {
                 cores = with libretro; [
                     dolphin
@@ -53,25 +54,10 @@
             })
             spotify
             discord
-            parsec-bin
-            obs-studio
     ];
 
     bright-bit.user.enable = true;
 
-    xdg = {
-        enable = true;
-
-        mimeApps.defaultApplications = {
-            "text/plain" = [ "neovim.desktop" ];
-            "application/pdf" = [ "zathura.desktop" ];
-        };
-
-        userDirs = {
-            enable = true;
-            createDirectories = false;
-        };
-    };
 
     nixpkgs.config.permittedInsecurePackages = [
         "electron-24.8.6"

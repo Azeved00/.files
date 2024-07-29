@@ -58,24 +58,6 @@
 
     bright-bit.user.enable = true;
 
-    xdg = {
-        enable = true;
-        mimeApps.enable = true;
-
-        mimeApps.defaultApplications = {
-            "application/pdf"   =  "zathura.desktop";
-
-            "text/plain"        =  "neovim.desktop";
-            "text/rust"         =  "neovim.desktop";
-            "text/markdown"     =  "neovim.desktop";
-            "application/toml"  =  "neovim.desktop";
-        };
-
-        userDirs = {
-            enable = true;
-            createDirectories = false;
-        };
-    };
     nixpkgs.config.permittedInsecurePackages = [
         "electron-24.8.6"
     ];

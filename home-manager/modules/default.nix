@@ -11,5 +11,6 @@
         ./drawio.nix
 
         ./cli
+        ./xdg.nix
     ];
 }
