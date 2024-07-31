@@ -211,12 +211,12 @@ in
                         "${cfg.mod}+a" = ''focus parent'';
 
                         #audio
-                        "F6" = ''exec amixer -q set Master toggle'';
-                        "F7" = ''exec amixer -q set Master 5%- unmute'';
-                        "F8" = ''exec amixer -q set Master 5%+ unmute'';
-                        "XF86AudioMute" = ''exec amixer -q set Master toggle'';
-                        "XF86AudioLowerVolume" = ''exec amixer -q set Master 5%- unmute'';
-                        "XF86AudioRaiseVolume" = ''exec amixer -q set Master 5%+ unmute'';
+                        "F6" = ''exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle'';
+                        "F7" = ''exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- && wpctl set-mute @DEFAULT_AUDIO_SINK@ 0'';
+                        "F8" = ''exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ && wpctl set-mute @DEFAULT_AUDIO_SINK@ 0'';
+                        "XF86AudioMute" = ''exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle'';
+                        "XF86AudioLowerVolume" = ''exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- && wpctl set-mute @DEFAULT_AUDIO_SINK@ 0'';
+                        "XF86AudioRaiseVolume" = ''exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ && wpctl set-mute @DEFAULT_AUDIO_SINK@ 0'';
                         
                         "F9" = ''exec ${pkgs.playerctl}/bin/playerctl play-pause'';
                         "F10"= ''exec ${pkgs.playerctl}/bin/playerctl previous'';

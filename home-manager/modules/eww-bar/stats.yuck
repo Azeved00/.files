@@ -49,7 +49,7 @@
 
 ; ============= VOLUME ==================
 (defpoll volume-var :interval "1ms"
-    "awk -F[][] '/Left:/ { if ($4 == \"on\") {print $2} else {print \"muted\"} }' <(amixer sget Master)")
+    "wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk -F'[: ]+' '/Volume:/ {printf \"%d\n\", $2 * 100}'"
 (defvar revealVolume false)
 (defwidget volume []
         (eventbox
