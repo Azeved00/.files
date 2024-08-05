@@ -1,6 +1,6 @@
 (include "stats.yuck")
 
-; ============ BAR DEFs ================
+; ============ WINDOW DEFs================
 (defwindow bar
     :monitor 0
     :windowtype "dock"
@@ -12,13 +12,24 @@
     :reserve (struts :side "top" :distance "4%")
     (bar))
 
+
+(defwindow calendar
+    :monitor 0
+    :windowtype "dialog"
+    :geometry (geometry :x "0%"
+                        :y "50px"
+						:width "270px" 
+						:height "60px"
+                        :anchor "top center")
+    (cal))
+
+; ========= WIDGETS DEFs =============
 (defwidget bar []
     (centerbox :orientation "h"
         (workspaces)
-        (box :class "time" time)
+        (time)
         (sidestuff)))
 
-; ========= WIDGETS DEFs =============
 (defwidget sidestuff []
     (box :class "sidestuff" :orientation "h" :space-evenly false :halign "end"
         (red-light)

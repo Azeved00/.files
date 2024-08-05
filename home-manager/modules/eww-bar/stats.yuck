@@ -1,12 +1,5 @@
 (include "colors.yuck")
 
-; ============= POOL DEFs ==================
-
-(defpoll time :interval "30s"
-    "date '+  %b %d, %Y       %H:%M'")
-
-
-
 ; ============= Widgets ==================
 (defwidget metric [?icon value ?class ?onchange]
     (box :orientation "h"
@@ -34,6 +27,31 @@
     )
 )
 
+; =============== TIME ====================
+(defpoll time-var :interval "30s"
+    "date '+  %b %d, %Y       %H:%M'")
+(defpoll calendar_day :interval "10h"
+    "date '+%d'")
+(defpoll calendar_month :interval "10h"
+    "scripts/calendar")
+(defpoll calendar_year :interval "10h"
+    "date '+%Y'")
+
+(defwidget time []  
+    (button :onclick "${EWW_CMD} open --toggle calendar"
+        (box    :class "time" time-var)))
+
+
+(defwidget cal []
+    (box :class "cal-box" 
+    (box :class "cal-inner-box"
+    (calendar :class "cal" 
+              :day calendar_day 
+              :month calendar_month 
+              :year calendar_year))))
+
+
+
 ; ============= RED LIGHT ==================
 (defpoll red-light-var :interval "1s"
     "xrandr --verbose | awk -F: '/Gamma/ { if ( $2 + $3 + $4 != 3.0 ) { print \"X\"; } else { print \"X\"; } exit; }'")
@@ -49,7 +67,7 @@
 
 ; ============= VOLUME ==================
 (defpoll volume-var :interval "1ms"
-    "wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk -F'[: ]+' '/Volume:/ {printf \"%d\n\", $2 * 100}'"
+    "wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk -F'[: ]+' '/Volume:/ {printf \"%d%%\", $2 * 100}'")
 (defvar revealVolume false)
 (defwidget volume []
         (eventbox

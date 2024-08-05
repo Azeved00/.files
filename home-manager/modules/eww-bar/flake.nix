@@ -8,12 +8,11 @@
     outputs = { self, ... } @ inputs: 
     let
         pkgs = import inputs.nixpkgs { inherit system; };
-        ROOT = "$HOME/Dev/dotfiles/home-manager/modules/eww-bar/";
-        name = "eww development";
+        ROOT = ./.;
         system = "x86_64-linux";
     in {
         devShells."${system}".default = pkgs.mkShell {
-            inherit name ROOT;
+            inherit ROOT;
 
             buildInputs = with pkgs; [ eww ];
 

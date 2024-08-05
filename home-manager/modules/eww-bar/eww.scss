@@ -39,3 +39,46 @@ $cyan: #56b6c2;
     padding-right: 7px;
 }
 
+// Calendar
+.cal-box {
+  background-color: $black;
+  font-family: Comic Mono;
+  font-size: 1em;
+  font-weight: bold;
+
+  .cal-inner-box {
+      padding: 1rem 1rem .2rem;
+
+      .cal {
+          &.highlight {
+              padding: 10rem;
+          }
+
+          padding: .8rem .25rem 0rem;
+          margin-left: 10px;
+      }
+  }
+}
+
+calendar:selected {
+  color: $blue;
+}
+
+calendar.header {
+  color: $blue;
+  font-weight: bold;
+}
+
+calendar.button {
+  color: $magenta;
+}
+
+calendar.highlight {
+  color: $magenta;
+  font-weight: bold;
+}
+
+calendar:indeterminate {
+  color: $black;
+}
+

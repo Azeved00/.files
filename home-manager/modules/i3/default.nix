@@ -246,7 +246,7 @@ in
                             notification = false;
                         })
                         (lib.mkIf config.dotfiles.home-manager.eww.enable {
-                            command = "${pkgs.eww}/bin/eww open bar";
+                            command = "${pkgs.eww}/bin/eww close-all && ${pkgs.eww}/bin/eww open bar";
                             always = true;
                             notification = false;
                         })
