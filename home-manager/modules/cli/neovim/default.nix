@@ -45,10 +45,10 @@ in
                 }
                 rainbow
 
-                kanagawa-nvim
-                palenight-vim
-                tokyonight-nvim
-                onehalf
+                #kanagawa-nvim
+                #palenight-vim
+                #tokyonight-nvim
+                #onehalf
 
                 nvim-web-devicons
                 {
@@ -68,6 +68,11 @@ in
 
                 vim-gitgutter
                 vim-css-color
+                {
+                    plugin = render-markdown;
+                    type = "lua";
+                    config = builtins.readFile ./markdown.lua;
+                }
 
            ];
         };
