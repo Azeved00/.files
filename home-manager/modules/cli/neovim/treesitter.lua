@@ -3,7 +3,4 @@ require'nvim-treesitter.configs'.setup {
         enable = true,  -- Enable syntax highlighting for supported languages
         disable = {"c"}
     },
-    rainbow = {
-        enable = true,
-    }
 }

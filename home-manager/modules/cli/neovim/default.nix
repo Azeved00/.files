@@ -43,7 +43,12 @@ in
                     type = "lua";
                     config = builtins.readFile ./treesitter.lua;
                 }
-                rainbow
+                {
+                    plugin = rainbow-delimiters-nvim;
+                    type = "lua";
+                    config = builtins.readFile ./rainbow.lua;
+                }
+               
 
                 #kanagawa-nvim
                 #palenight-vim
