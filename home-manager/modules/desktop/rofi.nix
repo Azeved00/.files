@@ -1,9 +1,9 @@
 { config, lib, pkgs,...}:
 let 
-    cfg = config.dotfiles.home-manager.rofi;
+    cfg = config.dotfiles.home-manager.desktop.rofi;
 in
 {
-    options.dotfiles.home-manager.rofi= {
+    options.dotfiles.home-manager.desktop.rofi= {
         enable = lib.mkEnableOption "Enable Rofi module";
         theme = lib.mkOption {
             default = {

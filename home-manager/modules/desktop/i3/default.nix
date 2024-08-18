@@ -1,6 +1,6 @@
 {config, lib, pkgs,...}:
 let 
-    cfg = config.dotfiles.home-manager.i3;
+    cfg = config.dotfiles.home-manager.desktop.i3;
 in
 {
     imports = [ 
@@ -10,7 +10,7 @@ in
         ./redshift.nix
     ];
 
-    options.dotfiles.home-manager.i3 = {
+    options.dotfiles.home-manager.desktop.i3 = {
         enable = lib.mkEnableOption "Enable i3 module";
 
         background-image = lib.mkOption {
@@ -52,7 +52,7 @@ in
 
 
     config = lib.mkIf cfg.enable {
-        dotfiles.home-manager= {
+        dotfiles.home-manager.desktop = {
             i3.picom.enable = lib.mkDefault true;
             i3.polybar.enable = lib.mkDefault true;
             i3.redshift.enable = lib.mkDefault true;
@@ -245,12 +245,12 @@ in
                             always = true;
                             notification = false;
                         })
-                        (lib.mkIf config.dotfiles.home-manager.eww.enable {
+                        (lib.mkIf config.dotfiles.home-manager.desktop.eww.enable {
                             command = "${pkgs.eww}/bin/eww daemon";
                             always = false;
                             notification = false;
                         })
-                        (lib.mkIf config.dotfiles.home-manager.eww.enable {
+                        (lib.mkIf config.dotfiles.home-manager.desktop.eww.enable {
                             command = "${pkgs.eww}/bin/eww close-all && ${pkgs.eww}/bin/eww open bar";
                             always = true;
                             notification = false;

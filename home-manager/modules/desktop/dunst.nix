@@ -1,9 +1,9 @@
 {config,lib,...}:
 let 
-    cfg = config.dotfiles.home-manager.dunst;
+    cfg = config.dotfiles.home-manager.desktop.dunst;
 in
 {
-    options.dotfiles.home-manager.dunst = {
+    options.dotfiles.home-manager.desktop.dunst = {
         enable = lib.mkEnableOption "Enable dunst Module";
     };
 

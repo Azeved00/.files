@@ -1,9 +1,9 @@
 {config, lib, ...}:with lib;
 let
-    cfg = config.dotfiles.home-manager.eww;
+    cfg = config.dotfiles.home-manager.desktop.eww;
 in
 {
-    options.dotfiles.home-manager.eww = {
+    options.dotfiles.home-manager.desktop.eww = {
         enable = mkEnableOption "Enable eww bar module";
     };
 

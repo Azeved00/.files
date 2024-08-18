@@ -1,9 +1,9 @@
 { pkgs, config, lib, ...}:
 let 
-    cfg = config.dotfiles.home-manager.i3.polybar;
+    cfg = config.dotfiles.home-manager.desktop.i3.polybar;
 in
 {
-    options.dotfiles.home-manager.i3.polybar = {
+    options.dotfiles.home-manager.desktop.i3.polybar = {
         enable = lib.mkEnableOption "Enable Polybar module";
         theme = lib.mkOption {
             default = {

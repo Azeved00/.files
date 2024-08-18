@@ -1,6 +1,6 @@
 { config, lib, pkgs, ...}:
 let 
-    cfg = config.dotfiles.home-manager.i3;
+    cfg = config.dotfiles.home-manager.desktop.i3;
 in
 {
 

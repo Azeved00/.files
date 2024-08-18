@@ -1,34 +1,43 @@
-{...}:
+{config, lib, ...}:
+let
+    cfg = config.dotfiles.home-manager.desktop.xdg;
+in
 {
-    xdg = {
-        enable = true;
+    options.dotfiles.home-manager.desktop.xdg = {
+        enable = lib.mkEnableOption "Enable xdg stuff (default apps and dirs)";
+    };
 
-        mimeApps = {
+    config = lib.mkIf cfg.enable {
+        xdg = {
             enable = true;
-            associations.added = {
-                "application/pdf"   =  ["org.pwmt.zathura.desktop"];
 
-                "text/plain"        =  ["nvim.desktop"];
-                "text/rust"         =  ["nvim.desktop"];
-                "text/markdown"     =  ["nvim.desktop"];
-                "application/toml"  =  ["nvim.desktop"];
-            };
-            associations.removed= {
-                "application/pdf"   =  ["krita_pdf.desktop"];
-            };
-            defaultApplications = {
-                "application/pdf"   =  ["org.pwmt.zathura.desktop"];
+            mimeApps = {
+                enable = true;
+                associations.added = {
+                    "application/pdf"   =  ["org.pwmt.zathura.desktop"];
 
-                "text/plain"        =  ["nvim.desktop"];
-                "text/rust"         =  ["nvim.desktop"];
-                "text/markdown"     =  ["nvim.desktop"];
-                "application/toml"  =  ["nvim.desktop"];
-            };
-        };
+                    "text/plain"        =  ["nvim.desktop"];
+                    "text/rust"         =  ["nvim.desktop"];
+                    "text/markdown"     =  ["nvim.desktop"];
+                    "application/toml"  =  ["nvim.desktop"];
+                };
+                associations.removed= {
+                    "application/pdf"   =  ["krita_pdf.desktop"];
+                };
+                defaultApplications = {
+                    "application/pdf"   =  ["org.pwmt.zathura.desktop"];
 
-        userDirs = {
-            enable = true;
-            createDirectories = false;
+                    "text/plain"        =  ["nvim.desktop"];
+                    "text/rust"         =  ["nvim.desktop"];
+                    "text/markdown"     =  ["nvim.desktop"];
+                    "application/toml"  =  ["nvim.desktop"];
+                };
+            };
+
+            userDirs = {
+                enable = true;
+                createDirectories = false;
+            };
         };
     };
 }
