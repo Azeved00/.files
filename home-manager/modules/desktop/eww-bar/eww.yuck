@@ -1,4 +1,4 @@
-(include "stats.yuck")
+(include "src/stats.yuck")
 
 ; ============ WINDOW DEFs================
 (defwindow bar
