@@ -5,11 +5,11 @@ local on_attach = function(_, bufnr)
 
     bufmap('<leader>r', vim.lsp.buf.rename)
     bufmap('<leader>a', vim.lsp.buf.code_action)
+    bufmap('<leader>e', function() vim.diagnostic.open_float({scope="line"}) end)
 
-    bufmap('gd', vim.lsp.buf.definition)
-    bufmap('gD', vim.lsp.buf.declaration)
-    bufmap('gI', vim.lsp.buf.implementation)
-    bufmap('<leader>D', vim.lsp.buf.type_definition)
+    bufmap('<leader>i', vim.lsp.buf.implementation)
+    bufmap('<leader>d', vim.lsp.buf.definition)
+    bufmap('<leader>D', vim.lsp.buf.declaration)
 
     --bufmap('gr', require('telescope.builtin').lsp_references)
     --bufmap('<leader>s', require('telescope.builtin').lsp_document_symbols)
