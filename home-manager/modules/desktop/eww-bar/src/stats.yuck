@@ -1,4 +1,4 @@
-(include "colors.yuck")
+(include "src/colors.yuck")
 
 ; ============= Widgets ==================
 (defwidget metric [?icon value ?class ?onchange]
