@@ -51,8 +51,6 @@ in
 
             profileExtra = "";
             
-            initExtra = builtins.readFile ./prompt.sh;
-
             bashrcExtra = builtins.readFile ./funcs.sh;
 
             shellOptions = [
@@ -69,7 +67,6 @@ in
                 GREP_OPTIONS = "-color=auto";
                 HISTCONTROL="ignoreboth";
                 TERMINAL = "alacritty";
-                PROMPT_COMMAND="make_prompt";
                 PS2=" 󱞩 ";
             }; 
 
