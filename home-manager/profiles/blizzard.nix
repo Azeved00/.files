@@ -31,7 +31,6 @@
             hm = "blizzard";
             nos = "blizzard";
         };
-        fastfetch.enable = true;
         git.enable = true;
         readline.enable = true;
         ssh.enable = true;
