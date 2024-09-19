@@ -1,7 +1,7 @@
 {...}:
 {
 
-    imports = [ ./hardware.nix ];
+    imports = [ ../shared.nix ./hardware.nix ];
     
     dotfiles.nixos.network.name = "blizzard";
 

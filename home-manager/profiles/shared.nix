@@ -1,4 +1,4 @@
-{ pkgs, inputs, ...}:
+{ pkgs, ...}:
 {
     imports = [
     ];
@@ -17,10 +17,15 @@
     };
 
 
-
     programs.home-manager.enable = true;
     programs.java = {
         enable = true;
         package = pkgs.jdk8;
     };
+
+    bright-bit.user.enable = true;
+
+    nixpkgs.config.permittedInsecurePackages = [
+        "electron-24.8.6"
+    ];
 }

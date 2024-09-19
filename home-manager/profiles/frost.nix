@@ -1,12 +1,7 @@
-{pkgs, config, ...}:
+{pkgs, ...}:
 {
     imports = [
-        ./apps
-        ./apps/git.nix
-        ./apps/readline.nix
-        ./apps/neovim 
-        ./apps/ssh.nix
-        ./apps/lf
+        ./shared
     ];
 
     home.packages = with pkgs; [

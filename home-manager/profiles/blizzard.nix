@@ -1,7 +1,5 @@
 {pkgs, ...}: {
-
-
-    imports =  [ ];
+    imports =  [ ./shared.nix ];
 
     dotfiles.home-manager = {
         alacritty.enable = true;
@@ -57,11 +55,5 @@
             zoom-us
     ];
 
-    bright-bit.user.enable = true;
-
-
-    nixpkgs.config.permittedInsecurePackages = [
-        "electron-24.8.6"
-    ];
 
 }

@@ -26,7 +26,6 @@ in rec {
         modules = [
             inputs.bright-bit.nixosModules.default
             outputs.nixosModule
-            outputs.nixosModules.profile
             config
         ];
     };
@@ -46,7 +45,6 @@ in rec {
             }
             inputs.bright-bit.homeManagerModules.default
             outputs.homeManagerModule
-            outputs.homeManagerModules.profile
             config
         ];
     };

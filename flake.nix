@@ -26,9 +26,7 @@
     in
     with myLib; {
         nixosModule = import ./nixos/modules;
-        nixosModules.profile = import ./nixos/profiles;
         homeManagerModule = import ./home-manager/modules;
-        homeManagerModules.profile = import ./home-manager/profiles;
 
 
         nixosConfigurations = {
