@@ -25,6 +25,7 @@ Feel free to take what you want and use them as you need. **Have fun!**
 | [Home-Manager](./home-manager) | Configuration files for [Home-Manager](https://github.com/nix-community/home-manager) (user level) | 
 | [NixOs](./NixOs)               | NixOs configuration files                |
 | [Dev templates](./dev-template)| Custom development templates             |
+| [Lib](./lib)                   | Custom nix functions                     |
 
 ## Installing & configuring
 
