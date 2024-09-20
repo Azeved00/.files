@@ -13,7 +13,7 @@ The theme i use is [Bright Bit](https://github.com/Azeved00/bright-bit)
 This system is built on **NixOS**, and uses the following applications.
 
 ### Core System
-- **Nix** - Declarative package manager and system configuration tool.
+- **[Nix](https://github.com/NixOS/nix)** - Declarative package manager and system configuration tool.
 - **[Home-Manager](https://github.com/nix-community/home-manager)** - Manages user-level configurations through Nix.
 - **[I3](https://github.com/i3/i3)** - Window Manager
 - **[EWW](https://github.com/elkowar/eww)** - Custom status Bar
@@ -21,20 +21,22 @@ This system is built on **NixOS**, and uses the following applications.
 ### Productivity and Utilities
 - **[Firefox](https://www.mozilla.org/en-US/firefox/)** - Primary web browser.
 - **[Alacrity](https://github.com/alacritty/alacritty)** - Terminal emulator.
+- **[Zathura](https://github.com/pwmt/zathura)** - PDF Viewer
+- **[Feh](https://github.com/derf/feh)** - Image Viewer
 
 ### Development Tools
 - **[NeoVim](https://github.com/neovim/neovim)** - Primary text editor.
 - **[Tmux](https://github.com/tmux/tmux)** - Terminal multiplexer.
 - **[LF](https://github.com/gokcehan/lf)** -  File Manager.
 
-
-Feel free to take what you want and use them as you need. **Have fun!**
+For more info and what applications I`m using you can checkout the individual modules.
+And feel free to take what you want and use them as you need. **Have fun!**
 
 ## Files and Folders
 | Folder                         | Description                              |
 | -----------                    | -----------                              |
 | [Assets](./Assets)             | Assets used (backgrounds and icons)      |
-| [Home-Manager](./home-manager) | Configuration files for [Home-Manager](https://github.com/nix-community/home-manager) (user level) | 
+| [Home-Manager](./home-manager) | Configuration files for Home-Manager( user level) | 
 | [NixOs](./NixOs)               | NixOs configuration files                |
 | [Dev templates](./dev-template)| Custom development templates             |
 | [Lib](./lib)                   | Custom nix functions                     |
