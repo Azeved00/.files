@@ -23,7 +23,7 @@ in
             i3.enable = lib.mkDefault true;
 
             dunst.enable = lib.mkDefault true;
-            gtk.enable = lib.mkDefault true;
+            gtk.enable = lib.mkDefault false;
             rofi.enable = lib.mkDefault true;
             xdg.enable = lib.mkDefault true;
         };

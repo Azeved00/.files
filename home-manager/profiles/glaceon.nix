@@ -5,26 +5,30 @@
 
     dotfiles.home-manager = {
         alacritty.enable = true;
-        dunst.enable = true;
-        i3= {
+
+        desktop = {
             enable = true;
-            background-image = ../../assets/Pictures/Backgrounds/ball.png;
-            polybar= {
-                enable = false;
-                modules = {
-                    wifi.wifi-interface = "wlp5s0";
-                    bluetooth.enable = false;
-                    battery = {
-                        enable = true;
-                        battery = "BAT0";
-                        adapter = "AC";
+            dunst.enable = true;
+            i3= {
+                enable = true;
+                background-image = ../../assets/Pictures/Backgrounds/ball.png;
+                polybar= {
+                    enable = false;
+                    modules = {
+                        wifi.wifi-interface = "wlp5s0";
+                        bluetooth.enable = false;
+                        battery = {
+                            enable = true;
+                            battery = "BAT0";
+                            adapter = "AC";
+                        };
+                        temperature.file = "";
                     };
-                    temperature.file = "";
                 };
+                monitor-config = ''
+                    workspace 1 output eDP-1
+                '';
             };
-            monitor-config = ''
-                workspace 1 output eDP-1
-            '';
         };
         eww.enable=true;
         nvim.enable = true;

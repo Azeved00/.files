@@ -23,27 +23,6 @@ in
             default = "Mod4";
         };
 
-        theme = lib.mkOption {
-            default = {
-                colors = {
-                    line = "313640";
-                    comment = "5c6370";
-                    selection = "474e5d";
-                    non_text = "919baa";
-
-                    black = "282c34";
-                    red = "e06c75";
-                    orange = "de935f";
-                    yellow = "e5c07b";
-                    green = "98c379";
-                    cyan = "56b6c2";
-                    blue = "61afef";
-                    magenta = "c678dd";
-                    white = "dcdfe4";
-                };
-            };
-        };
-
         monitor-config =lib.mkOption {
             type = lib.types.str;
             default = "workspace 1 output HDMI-1";
@@ -68,71 +47,16 @@ in
                 enable = true;
                 config = {
                     modifier = "${cfg.mod}";
-                    fonts = {
-                        names = [ "pango" ];
-                        style = "monospace";
-                        size = 15.0;
-                    };
 
                     terminal = "alacritty";
 
-                    gaps.inner = 10;
-                    gaps.outer = 5;
-                    window.border = 1;
-                    window.titlebar = false;
                     floating = {
                         modifier = "${cfg.mod}";
-                        titlebar = false;
-                        border = 1;
                         
                         criteria = [
                             {class="Pavucontrol";}
                             {class="Steam - Update News";}
                         ];
-                    };
-
-                    colors = {
-                        urgent = {
-                            background = "#900000";
-                            border = "#${cfg.theme.colors.red}";
-                            childBorder = "#900000";
-                            indicator = "#900000";
-                            text = "#ffffff";
-                        };
-
-                        focused = {
-                            background = "#285577";
-                            border = "#${cfg.theme.colors.yellow}";
-                            childBorder = "#${cfg.theme.colors.yellow}";
-                            indicator = "#${cfg.theme.colors.yellow}";
-                            text = "#ffffff";
-                        };
-
-                        unfocused = {
-                            background = "#222222";
-                            border = "#333333";
-                            childBorder = "#222222";
-                            indicator = "#292d2e";
-                            text = "#888888";
-                        };
-                                        
-                        focusedInactive = {
-                            background = "#5f676a";
-                            border = "#333333";
-                            childBorder = "#5f676a";
-                            indicator = "#484e50";
-                            text = "#ffffff";
-                        };
-
-                        placeholder = {
-                            background = "#0c0c0c";
-                            border = "#000000";
-                            childBorder = "#0c0c0c";
-                            indicator = "#000000";
-                            text = "#ffffff";
-                        };
-
-                        background = "#${cfg.theme.colors.black}";
                     };
 
                     bars = [];
