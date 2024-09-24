@@ -4,40 +4,27 @@
     imports =  [ ./shared.nix ];
 
     dotfiles.home-manager = {
-        alacritty.enable = true;
-
         desktop = {
             enable = true;
+            eww.enable = true;
             dunst.enable = true;
+            rofi.enable = true;
             i3= {
                 enable = true;
                 background-image = ../../assets/Pictures/Backgrounds/ball.png;
-                polybar= {
-                    enable = false;
-                    modules = {
-                        wifi.wifi-interface = "wlp5s0";
-                        bluetooth.enable = false;
-                        battery = {
-                            enable = true;
-                            battery = "BAT0";
-                            adapter = "AC";
-                        };
-                        temperature.file = "";
-                    };
-                };
+                polybar.enable = false;
                 monitor-config = ''
                     workspace 1 output eDP-1
                 '';
             };
         };
-        eww.enable=true;
-        nvim.enable = true;
-        rofi.enable = true;
+        alacritty.enable = true;
         feh.enable = true;
         firefox.enable = true;
         zathura.enable = true;
         drawio.enable = true;
 
+        nvim.enable = true;
         lf.enable = true;
         tmux.enable = true;
         terminal.packages.enable = true;
