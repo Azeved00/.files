@@ -18,6 +18,7 @@ with lib;
     };
 
     config = mkIf cfg.enable {
+        programs.dconf.enable = true;
         services.displayManager = {
             sddm = {
                 enable = true;
