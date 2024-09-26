@@ -38,11 +38,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1726678928,
-        "narHash": "sha256-7/IDLRcHzzeCPObRjiCUteC/jY+C3VYLcxwMOe31JsU=",
+        "lastModified": 1727169154,
+        "narHash": "sha256-1/lda69uxTtsimE3iTvbu5B71kX6QJBqYdoYVjjth54=",
         "owner": "Azeved00",
         "repo": "bright-bit",
-        "rev": "422f81022d912a4a7c424b59c5a7f9ad7dd2d480",
+        "rev": "b4ae202355871b45fe53b452e09bcdb1c9127c53",
         "type": "github"
       },
       "original": {
