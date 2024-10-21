@@ -43,6 +43,9 @@ And feel free to take what you want and use them as you need. **Have fun!**
 
 ## Installing & configuring
 
+0. Notes and Pre-requesits
+    - `git` is necessary to install these dotfiles, you can use `nix-shell -p git` for a temporary install
+
 1. Clone the Repository
 
 ```bash
