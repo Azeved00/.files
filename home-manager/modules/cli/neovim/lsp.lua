@@ -40,10 +40,14 @@ lspconfig.ccls.setup {
      capabilities = capabilities,
 }
 lspconfig.nil_ls.setup {
-         on_attach = on_attach,
-         capabilities = capabilities,
+     on_attach = on_attach,
+     capabilities = capabilities,
 }
 lspconfig.rust_analyzer.setup {
-         on_attach = on_attach,
-         capabilities = capabilities,
+     on_attach = on_attach,
+     capabilities = capabilities,
+}
+lspconfig.gopls.setup {
+     on_attach = on_attach,
+     capabilities = capabilities,
 }
