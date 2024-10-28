@@ -8,6 +8,13 @@
         (box :class "icon" icon)
         (box :class "value" value)))
 
+(defwidget stat [?class ?style ?visible]
+    (box :orientation "h"
+        :style "${style}"
+        :class "stat ${class}"
+        :visible "${visible}"
+        (children :nth 0)))
+
 (defwidget revealer-on-hover [var varname ?class ?duration ?transition]
     (box  :class "revealer-on-hover ${class}"
         :orientation "h"
@@ -54,38 +61,44 @@
 
 ; ============= RED LIGHT ==================
 (defpoll red-light-var :interval "1s"
-    "xrandr --verbose | awk -F: '/Gamma/ { if ( $2 + $3 + $4 != 3.0 ) { print \"X\"; } else { print \"X\"; } exit; }'")
+    "xrandr --verbose | awk -F: '/Gamma/ { if ( $2 + $3 + $4 != 3.0 ) { print \"󰛨\"; } else { print \"󰹏\"; } exit; }'")
 (defwidget red-light []
-        (eventbox
-            :class ""
-            :onclick ""
-            :onrightclick ""
-            :style {(red-light-var == "X") ? "background-color: ${orange};color: ${white}" : "color:${orange}"}
-            (metric :value red-light-var)
-        )
+    (stat 
+        :style {(red-light-var == "󰹏") ? "background-color: ${orange};color: ${white}" : "color:${orange}"}
+        :class "red-light"
+        (box red-light-var)
+    )
 )
 
 ; ============= VOLUME ==================
 (defpoll volume-var :interval "1ms"
-    "wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk -F'[: ]+' '/Volume:/ {printf \"%d%%\", $2 * 100}'")
+    "./scripts/volume.sh percent")
+(defpoll muted-var :interval "1ms"
+    "./scripts/volume.sh muted")
+(defpoll volume-icon :interval "1ms"
+    "./scripts/volume.sh icon")
+
 (defvar revealVolume false)
 (defwidget volume []
+    (stat
+        :style {(muted-var == "muted") ? "background-color: ${white};color: ${line}" : "color:${white}"}
         (eventbox
             :class "hover-module"
-            :style {(volume-var == "muted") ? "background-color: ${white};color: ${line}" : "color:${white}"}
-            :onclick "amixer set Master toggle"
+            :onclick "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
             :onrightclick "pavucontrol &"
+            :onscroll "[[ \"{}\" == \"up\" ]] && wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+ || [[ \"{}\" == \"down\" ]] && wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05-"
             (revealer-on-hover :class "hl-on-hover"
                 :var revealVolume
                 :varname "revealVolume"
                 :transition "slideleft"
                 :class "volume"
-                "VOL"
+                volume-icon
                 (metric
                     :class "volume"
                     :value volume-var)
             )
         )
+    )
 )
 
 ; ============= CPU TEMPERATURE ==================
@@ -93,16 +106,18 @@
     "cat /sys/class/hwmon/hwmon1/temp1_input | awk '{printf \"%2.f\", $1/1000}'")
 (defvar revealCPU false)
 (defwidget cpu []
-    (box :space-evenly false
-        :class "hover-module"
-        :style {(cpu-temp-var >= 60) ? "background-color: ${red};color: ${white}" : "color: ${green};"}
-        (revealer-on-hover :class "hl-on-hover"
-            :var revealCPU
-            :varname "revealCPU"
-            :transition "slideleft"
-            :class "cpu"
-            "CPU"
-            (metric :value "${cpu-temp-var} °C")
+    (stat
+        :style {(cpu-temp-var > 60) ? "background-color: ${red};color: ${white}" : "color:${green}"}
+        (box :space-evenly false
+            :class "hover-module"
+            (revealer-on-hover :class "hl-on-hover"
+                :var revealCPU
+                :varname "revealCPU"
+                :transition "slideleft"
+                :class "cpu"
+                " "
+                (metric :value " ${cpu-temp-var} °C")
+            )
         )
     )
 )
@@ -112,29 +127,37 @@
     "free -m | grep 'Mem:' | awk '{ printf \"%2.f\", $3/$2*100 }'")
 (defvar revealRAM false)
 (defwidget ram []
-    (box :space-evenly false
-        :class "hover-module"
-        :style {(ram-var >= 70) ? "background-color: ${red};color: ${white};" : "color: ${green};"}
-        (revealer-on-hover :class "hl-on-hover"
-            :var revealRAM
-            :varname "revealRAM"
-            :transition "slideleft"
-            :class "ram"
-            "RAM"
-            (metric :value "${ram-var} %")
+    (stat
+        :style {(ram-var > 60) ? "background-color: ${red};color: ${white}" : "color:${green}"}
+        (box :space-evenly false
+            :class "hover-module"
+            (revealer-on-hover :class "hl-on-hover"
+                :var revealRAM
+                :varname "revealRAM"
+                :transition "slideleft"
+                :class "ram"
+                " "
+                (metric :value "${ram-var} %")
+            )
         )
     )
 )
 
 ; ============= BATTERY STATUS ==================
+(defpoll bat-exists :interval "30s"
+    "[ -d /sys/class/power_supply/BAT0 ] && echo \"true\" || echo \"false\"")
+
 (defpoll bat-status-var :interval "1s"
+    :run-while bat-exists
     "awk '{ printf \"%s\", $1 }' /sys/class/power_supply/BAT0/status")
+
 (defpoll bat-perc-var :interval "1s"
+    :run-while bat-exists
     "awk 'NR==FNR {num1=$1; next} { printf \"%2.f\", num1/$1*100 }' /sys/class/power_supply/BAT0/energy_now /sys/class/power_supply/BAT0/energy_full")
+
 (defvar revealBAT false)
 (defwidget bat []
-    (box :space-evenly false
-        :class "hover-module"
+    (stat
         :style {
             (bat-status-var == "Charging") ? 
                 "background-color: ${blue};color: ${white};" : 
@@ -142,32 +165,42 @@
                     "background-color: ${red};color: ${white};" : 
                     "color: ${green};"
         }
-        (revealer-on-hover :class "hl-on-hover"
-            :var revealBAT
-            :varname "revealBAT"
-            :transition "slideleft"
-            :class "bat"
-            "BAT"
-            (metric :value "${bat-perc-var} %")
+        :visible bat-exists
+        (box :space-evenly false
+            :class "hover-module"
+
+            (revealer-on-hover :class "hl-on-hover"
+                :var revealBAT
+                :varname "revealBAT"
+                :transition "slideleft"
+                :class "bat"
+                "BAT"
+                (metric :value "${bat-perc-var} %")
+            )
         )
     )
 )
 
 ; ============= WIFI CONNECTION ==================
 (defpoll wifi-var :interval "1s"
-    "nmcli -t -f NAME connection show --active | awk -F: '!/lo/{print $1; found=1} END{if (!found) print \"not connected\"}'")
+    "./scripts/network.sh strength")
+(defpoll wifi-icon :interval "1s"
+    "./scripts/network.sh icon")
+
 (defvar revealWIFI false)
 (defwidget wifi []
-    (box :space-evenly false
-        :class "hover-module"
+    (stat
         :style {(wifi-var == "not connected") ? "background-color: ${cyan};color: ${white};" : "color: ${cyan}"}
-        (revealer-on-hover :class "hl-on-hover"
-            :var revealWIFI
-            :varname "revealWIFI"
-            :transition "slideleft"
-            :class "wifi"
-            "WIFI"
-            (metric :value wifi-var)
+        (box :space-evenly false
+            :class "hover-module"
+            (revealer-on-hover :class "hl-on-hover"
+                :var revealWIFI
+                :varname "revealWIFI"
+                :transition "slideleft"
+                :class "wifi"
+                wifi-icon
+                (metric :value wifi-var)
+            )
         )
     )
 )

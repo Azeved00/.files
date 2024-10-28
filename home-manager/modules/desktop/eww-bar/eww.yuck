@@ -37,7 +37,10 @@
         (bat)
         (cpu)
         (ram)
-        (wifi)))
+        (wifi)
+        (power)
+    )
+)
 
 (defwidget workspaces []
     (box :class "workspaces"
@@ -55,5 +58,41 @@
         (button :onclick "wmctrl -s 7" 8)
         (button :onclick "wmctrl -s 8" 9)))
 
-
+(defvar power false)
+(defwidget power []
+	(eventbox	
+        :onhover "${EWW_CMD} update power=true"	
+		:onhoverlost "${EWW_CMD} update power=false" 
+	(box		
+        :orientation "h"					
+		:space-evenly "false" 	 
+		:vexpand "false" 	
+		:class "powermenu"
+        (revealer	
+            :transition "slideleft"				
+            :reveal power			 
+            :duration "550ms"
+            (box		
+                :orientation "h"					
+                :space-evenly "false"
+                (button		
+                    :class "power-button button-reb"					
+                    :tooltip "Reboot"		 
+                    :onclick "reboot"	
+                    "")
+                (button		
+                    :class "power-button button-quit" 				
+                    :tooltip "Logout" 		 
+                    :onclick "killall bspwm" 
+                    "")
+                (button		
+                    :class "power-button button-lock" 				
+                    :tooltip "Lock Screen"	 
+                    :onclick "betterlockscreen -l"	
+                    "")))
+        (button		
+            :class "power-button button-off"					
+            :tooltip "Shutdown"		 
+            :onclick "shutdown now"	
+            "󰐥"))))
 

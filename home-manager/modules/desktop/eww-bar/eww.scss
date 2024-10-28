@@ -21,7 +21,7 @@ $cyan: #56b6c2;
 .bar {
     background-color: $line;
     color: $white;
-    padding: 10px;
+    padding:3px;
 }
 
 .workspaces button:hover {
@@ -29,19 +29,60 @@ $cyan: #56b6c2;
     background-color: $selection;
 }
 
+// Statistics (left)
+.stat{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left:10px;
+    padding-right: 10px;
+    font-size:17px;
+    //border: 1px solid white;
+}
+.wifi{
+  font-size:20px;
+}
+.red-light{
+  font-size:20px;
+}
 .metric {
-    padding-left: 7px;
-    padding-right: 7px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size:13px;
+    //border: 1px solid white;
+}
+.revealer-on-hover {
+}
+.hover-module {
+    padding-left:5px;
+    padding-right:5px;
+    //border: 1px solid white;
 }
 
-.hover-module {
-    padding-left: 7px;
-    padding-right: 7px;
+//power button
+.power-button {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left:10px;
+    padding-right: 10px;
+    font-size:20px;
+}
+.button-off {
+    color: $red;
+    font-size:20px;
+}
+.button-reb {
+    color: $yellow;
+}
+.button-quit {
+    color: $magenta;
+}
+.button-lock {
+    color: $blue;
 }
 
 // Calendar
 .cal-box {
-  background-color: $black;
+  background-color: $line;
   font-family: Comic Mono;
   font-size: 1em;
   font-weight: bold;
@@ -65,20 +106,20 @@ calendar:selected {
 }
 
 calendar.header {
-  color: $blue;
+  color: $white;
   font-weight: bold;
 }
 
 calendar.button {
-  color: $magenta;
+  color: $red;
 }
 
 calendar.highlight {
-  color: $magenta;
+  color: $yellow;
   font-weight: bold;
 }
 
 calendar:indeterminate {
-  color: $black;
+  color: $selection;
 }
 
