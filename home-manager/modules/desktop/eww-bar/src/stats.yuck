@@ -149,14 +149,17 @@
 
 (defpoll bat-status-var :interval "1s"
     :run-while bat-exists
+    :initial ""
     "scripts/battery.sh status")
 
 (defpoll bat-perc-var :interval "1s"
     :run-while bat-exists
+    :initial "0"
     "scripts/battery.sh percent")
 
 (defpoll bat-icon-var :interval "1s"
     :run-while bat-exists
+    :initial ""
     "scripts/battery.sh icon")
 
 (defvar revealBAT false)
@@ -195,8 +198,9 @@
 (defwidget wifi []
     (stat
         :style {(wifi-var == "not connected") ? "background-color: ${cyan};color: ${white};" : "color: ${cyan}"}
-        (box :space-evenly false
+        (eventbox 
             :class "hover-module"
+            :onclick "scripts/wifi-menu.sh"
             (revealer-on-hover :class "hl-on-hover"
                 :var revealWIFI
                 :varname "revealWIFI"

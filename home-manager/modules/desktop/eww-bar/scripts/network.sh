@@ -11,19 +11,19 @@ icon() {
 
 
     if [ "$per" -gt "80" ]; then
-        icon="󰤨"
+        icon="󰤨 "
     elif [ "$per" -gt "60" ]; then
-        icon="󰤥"
+        icon="󰤥 "
     elif [ "$per" -gt "40" ]; then
-        icon="󰤢"
+        icon="󰤢 "
     elif [ "$per" -gt "20" ]; then
-        icon="󰤟"
+        icon="󰤟 "
     elif [ "$per" -gt "0" ]; then
-        icon="󰤮"
+        icon="󰤮 "
     else
         echo  && exit
     fi
-    echo "$icon "
+    echo "$icon"
 }
 
 con_name() {
