@@ -23,7 +23,7 @@ icon() {
     else
         echo  && exit
     fi
-    echo "$icon"
+    echo "$icon "
 }
 
 con_name() {
@@ -31,11 +31,11 @@ con_name() {
         echo "Wired Connection" && exit
     fi
 
-    echo "$(nmcli -f IN-USE,SSID,SIGNAL dev wifi | grep '*' | awk '{print $2}')"
-    
+    per="$(nmcli -f IN-USE,SSID dev wifi | awk '/^\*/ {print $2}')"
+    echo "$per"
 }
 
 
 [ "$1" = "icon" ] && icon && exit
-[ "$1" = "strength" ] && strength && exit
+[ "$1" = "name" ] && con_name && exit
 exit

@@ -187,7 +187,7 @@
 
 ; ============= WIFI CONNECTION ==================
 (defpoll wifi-var :interval "1s"
-    "./scripts/network.sh strength")
+    "./scripts/network.sh name")
 (defpoll wifi-icon :interval "1s"
     "./scripts/network.sh icon")
 
