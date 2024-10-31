@@ -35,28 +35,6 @@
 )
 
 ; =============== TIME ====================
-(defpoll time-var :interval "30s"
-    "date '+  %b %d, %Y       %H:%M'")
-(defpoll calendar_day :interval "10h"
-    "date '+%d'")
-(defpoll calendar_month :interval "10h"
-    "scripts/calendar.sh")
-(defpoll calendar_year :interval "10h"
-    "date '+%Y'")
-
-(defwidget time []  
-    (button :onclick "${EWW_CMD} open --toggle calendar"
-        (box    :class "time" time-var)))
-
-
-(defwidget cal []
-    (box :class "cal-box" 
-    (box :class "cal-inner-box"
-    (calendar :class "cal" 
-              :day calendar_day 
-              :month calendar_month 
-              :year calendar_year))))
-
 
 
 ; ============= RED LIGHT ==================

@@ -1,4 +1,5 @@
 (include "src/stats.yuck")
+(include "src/calendar.yuck")
 
 ; ============ WINDOW DEFs================
 (defwindow bar
@@ -26,7 +27,13 @@
 ; ========= WIDGETS DEFs =============
 (defwidget bar []
     (centerbox :orientation "h"
-        (workspaces)
+        (box
+            :halign "start"
+            :orientation "h"
+            :space-evenly false
+            (runmenu)
+            (workspaces)
+        )
         (time)
         (sidestuff)))
 
@@ -42,11 +49,17 @@
     )
 )
 
+(defwidget runmenu []
+    (button
+        :class "run-menu"
+        :onclick "rofi -show drun &"
+        " "
+    )
+)
 (defwidget workspaces []
     (box :class "workspaces"
-           :orientation "h"
+        :orientation "h"
         :space-evenly true
-        :halign "start"
         :spacing 10
         (button :onclick "wmctrl -s 0" 1)
         (button :onclick "wmctrl -s 1" 2)
