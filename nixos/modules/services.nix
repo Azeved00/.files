@@ -28,6 +28,5 @@
         };
 
         libinput.enable = true;
-        zerotierone.enable = true;
     };
 }
