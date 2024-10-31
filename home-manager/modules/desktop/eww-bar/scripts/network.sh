@@ -26,12 +26,13 @@ icon() {
     echo "$icon"
 }
 
-strength() {
+con_name() {
     if [[ "$wired" == "true" ]]; then
         echo "Wired Connection" && exit
     fi
+
+    echo "$(nmcli -f IN-USE,SSID,SIGNAL dev wifi | grep '*' | awk '{print $2}')"
     
-    echo "$per%"
 }
 
 

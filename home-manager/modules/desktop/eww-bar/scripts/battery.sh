@@ -25,8 +25,8 @@ icon() {
     elif [ "$per" -gt "10" ]; then
         icon="󰁺"
         notify-send -u critical "Battery Low" "Connect Charger"
-    elif [ "$per" -gt "0" ]; then
-        icon="󰂃"
+    elif [ "$pera" -gt "0" ]; then
+        icon="󰂃 "
         notify-send -u critical "Battery Low" "Connect Charger"
     else
             echo "x" && exit
@@ -37,7 +37,12 @@ icon() {
 percent() {
     echo $per
 }
+status() {
+    status="$(cat "$bat"/status)"
+    echo $status
+}
 
 [ "$1" = "icon" ] && icon && exit
 [ "$1" = "percent" ] && percent && exit
+[ "$1" = "status" ] && status && exit
 exit

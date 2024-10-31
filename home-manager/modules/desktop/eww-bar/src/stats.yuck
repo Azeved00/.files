@@ -144,16 +144,20 @@
 )
 
 ; ============= BATTERY STATUS ==================
-(defpoll bat-exists :interval "30s"
+(defpoll bat-exists :interval "5m"
     "[ -d /sys/class/power_supply/BAT0 ] && echo \"true\" || echo \"false\"")
 
 (defpoll bat-status-var :interval "1s"
     :run-while bat-exists
-    "awk '{ printf \"%s\", $1 }' /sys/class/power_supply/BAT0/status")
+    "scripts/battery.sh status")
 
 (defpoll bat-perc-var :interval "1s"
     :run-while bat-exists
-    "awk 'NR==FNR {num1=$1; next} { printf \"%2.f\", num1/$1*100 }' /sys/class/power_supply/BAT0/energy_now /sys/class/power_supply/BAT0/energy_full")
+    "scripts/battery.sh percent")
+
+(defpoll bat-icon-var :interval "1s"
+    :run-while bat-exists
+    "scripts/battery.sh icon")
 
 (defvar revealBAT false)
 (defwidget bat []
@@ -174,7 +178,7 @@
                 :varname "revealBAT"
                 :transition "slideleft"
                 :class "bat"
-                "BAT"
+                bat-icon-var
                 (metric :value "${bat-perc-var} %")
             )
         )
