@@ -10,6 +10,8 @@ local on_attach = function(_, bufnr)
     bufmap('<leader>i', vim.lsp.buf.implementation)
     bufmap('<leader>d', vim.lsp.buf.definition)
     bufmap('<leader>D', vim.lsp.buf.declaration)
+    bufmap('<leader>n', vim.diagnostic.goto_next)
+    bufmap('<leader>N', vim.diagnostic.goto_prev)
 
     --bufmap('gr', require('telescope.builtin').lsp_references)
     --bufmap('<leader>s', require('telescope.builtin').lsp_document_symbols)
