@@ -29,19 +29,19 @@
 
     dotfiles.nixos.xserver.enable = true;
     dotfiles.nixos.wayland.enable = true;
+    programs.steam = {
+        enable = true;
+        # Open ports in the firewall for Steam Remote Play
+        remotePlay.openFirewall = true;
+        # Open ports in the firewall for Source Dedicated Server
+        dedicatedServer.openFirewall = true; 
+    };
     
     specialisation = {
         gaming.configuration = {
             system.nixos.tags = [ "Gaming" ];
             programs.gamemode.enable = true;
 
-            programs.steam = {
-                enable = true;
-                # Open ports in the firewall for Steam Remote Play
-                remotePlay.openFirewall = true;
-                # Open ports in the firewall for Source Dedicated Server
-                dedicatedServer.openFirewall = true; 
-            };
         };
         
         server.configuration = {
