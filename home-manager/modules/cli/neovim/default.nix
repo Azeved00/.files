@@ -74,7 +74,7 @@ in
                 vim-gitgutter
                 vim-css-color
                 {
-                    plugin = render-markdown;
+                    plugin = render-markdown-nvim;
                     type = "lua";
                     config = builtins.readFile ./markdown.lua;
                 }

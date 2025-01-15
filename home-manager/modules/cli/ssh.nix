@@ -24,20 +24,8 @@ in
                         AddKeysToAgent = "yes";
                     };
                 };
-
-                "second" = {
-                    hostname = "github.com";
-                    user = "git";
-                    identityFile="~/.ssh/second";
-                    extraOptions={
-                        AddKeysToAgent = "yes";
-                    };
-                };
-
-                "gitlab" = {
-                    hostname = "gitedu.alunos.dcc.fc.up.pt";
-                    user = "git";
-                    identityFile="~/.ssh/gitlab";
+                "*" = {
+                    identityFile = "~/.ssh/main";
                     extraOptions={
                         AddKeysToAgent = "yes";
                     };

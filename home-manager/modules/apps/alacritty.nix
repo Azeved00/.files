@@ -35,7 +35,7 @@ in
                     blink_interval = 750;
                 };
 
-                live_config_reload = true;
+                general.live_config_reload = true;
                 #working_directory = "/users/azevedo/";
             };
         };
