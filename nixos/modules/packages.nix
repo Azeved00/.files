@@ -23,6 +23,7 @@
         home-manager
         neovim
         appimage-run
+        steam-run
 
      	#other apps
      	i3
