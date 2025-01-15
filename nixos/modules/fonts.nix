@@ -5,11 +5,9 @@
         fontDir.enable = true;
 
         packages = with pkgs; [
-            (nerdfonts.override { fonts = [
-                "SpaceMono" 
-                "JetBrainsMono"
-                "DejaVuSansMono"
-             ]; })
-        ];
+           nerd-fonts.space-mono
+           nerd-fonts.jetbrains-mono
+           nerd-fonts.dejavu-sans-mono
+        ]; 
     };
 }
