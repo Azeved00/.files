@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{pkgs, inputs, ...}: {
     imports =  [ ./shared.nix ];
 
     dotfiles.home-manager = {
@@ -41,7 +41,8 @@
 	        heroic
             pinta
             krita
-            (retroarch.override {
+            inputs.zen-browser.packages.x86_64-linux.default
+            (retroarch-bare.wrapper {
                 cores = with libretro; [
                     dolphin
                     #citra
@@ -53,6 +54,7 @@
             spotify
             discord
             zoom-us
+            stremio
     ];
 
 

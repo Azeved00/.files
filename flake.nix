@@ -14,6 +14,7 @@
             url = "https://github.com/hyprwm/Hyprland";
             submodules = true;
         };
+        zen-browser.url = "github:0xc000022070/zen-browser-flake";
 
         bright-bit.url ="github:Azeved00/bright-bit";
         #bright-bit.url ="path:/home/azevedo/Dev/bright-bit";
