@@ -19,9 +19,9 @@ icon() {
     elif [ "$per" -gt "20" ]; then
         icon="󰤟 "
     elif [ "$per" -gt "0" ]; then
-        icon="󰤮 "
+        icon="󰤯 "
     else
-        echo  && exit
+        icon="󰤮 "
     fi
     echo "$icon"
 }
