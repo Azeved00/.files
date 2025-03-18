@@ -45,9 +45,7 @@ o.foldlevel = 99
 o.mouse = 'a'
 o.hidden = true
 
-v.api.nvim_set_keymap("n", "<C-s>", ":w<CR>",  {noremap = true, silent = true} )
-v.api.nvim_set_keymap("n", ",", ":",  {noremap = true, silent = false} )
-v.api.nvim_set_keymap("n", "<C-t>", ":vsplit term://bash<CR>i",  {noremap = true, silent = true} )
+v.api.nvim_set_keymap("n", "<leader>w", ":w<CR>",  {noremap = true, silent = true} )
 v.api.nvim_set_keymap("t", "<Esc>", "<C-\\><C-N><CR>", {noremap = true, silent = false} )
 v.api.nvim_set_keymap("t", '<C-w>', "<C-\\><C-O><C-w>",{silent = false})
 
