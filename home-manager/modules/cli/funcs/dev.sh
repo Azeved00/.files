@@ -32,7 +32,11 @@ if [ $# -eq 0 ]; then
     exit 1
 fi
 
-echo "dev $*" > "$HISTORY_FILE"
+#Save absolute path to history file
+first_param="$(realpath "$1")"
+shift
+all_params=("$first_param" "$@")
+echo "dev ${all_params[*]}" > "$HISTORY_FILE"
 
 if [[ -d "$1" ]]; then
     DIRECTORY="$1"
