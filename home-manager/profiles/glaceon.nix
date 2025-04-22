@@ -11,7 +11,7 @@
             rofi.enable = true;
             i3= {
                 enable = true;
-                background-image = ../../assets/Pictures/Backgrounds/ball.png;
+                background-image = ../../assets/Pictures/Backgrounds/river.jpg;
                 polybar.enable = false;
                 monitor-config = ''
                     workspace 1 output eDP-1
@@ -20,7 +20,6 @@
         };
         alacritty.enable = true;
         feh.enable = true;
-        firefox.enable = true;
         zathura.enable = true;
         drawio.enable = true;
 
@@ -39,11 +38,11 @@
         };
     };
 
+
     home.packages = with pkgs; [ 
         pinta
         spotify
         zoom-us
         teams-for-linux
     ];
-
 }
