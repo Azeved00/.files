@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
     programs = {
         # Some programs need SUID wrappers, can be configured further or are
@@ -29,9 +29,10 @@
      	i3
         networkmanagerapplet
         pavucontrol
-     	firefox
         zathura
         lf
         alacritty
     ];
+
+    #programs.firefox.enable = lib.mkDefault true;
 }
