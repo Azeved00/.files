@@ -1,10 +1,7 @@
 { config, lib, pkgs, ...}:
 let 
     cfg = config.dotfiles.home-manager.terminal.packages;
-    devapp = pkgs.writeShellApplication {
-        name = "dev";
-        text = builtins.readFile ./funcs/dev.sh;
-    };
+    devapp = import ./bin/dev/package.nix (pkgs);
 in
 {
     options.dotfiles.home-manager.terminal.packages = {
