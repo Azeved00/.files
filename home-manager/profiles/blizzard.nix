@@ -8,6 +8,7 @@
 
             i3= {
                 enable = true;
+                mod ="Mod1";
                 background-image = ../../assets/Pictures/Backgrounds/fractal.png;
                 polybar.enable = false;
                 monitor-config = ''
