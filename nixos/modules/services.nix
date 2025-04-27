@@ -2,10 +2,11 @@
 {
     systemd.coredump.enable = false;
     # sound.enable = true;
-    hardware.pulseaudio.enable = false;
-    hardware.opentabletdriver.enable = true;
+    hardware.opentabletdriver.enable = false;
 
     services = {
+        pulseaudio.enable = false;
+
         # Enable the OpenSSH daemon.
         openssh = {
           enable = true;
