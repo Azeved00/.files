@@ -11,7 +11,7 @@ in
     config = lib.mkIf cfg.enable {
         services.picom = {
             enable = true;
-            backend = "xrender";
+            backend = "glx";
             vSync = true;
 
             shadow = true;
@@ -72,7 +72,6 @@ in
                 detect-client-leader = true;
                 use-damage = true;
                 log-level = "warn";
-                
             };
         };
     };
