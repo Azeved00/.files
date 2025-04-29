@@ -18,11 +18,11 @@
     ];
 
 
-    services.postgresql.enable = true;
-    services.zerotierone.enable = true;
+    services.postgresql.enable = false;
+    services.zerotierone.enable = false;
 
     services.matrix-synapse = { 
-        enable = true;
+        enable = false;
         settings.server_name = "fcup";
         settings.args.database = {
             database = "synapse";

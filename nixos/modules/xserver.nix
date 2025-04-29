@@ -21,9 +21,10 @@ with lib;
         programs.dconf.enable = true;
         services.displayManager = {
             sddm = {
-                enable = true;
+                enable = false;
                 autoNumlock = true;
             };
+            ly.enable= true;
         };
 
         
