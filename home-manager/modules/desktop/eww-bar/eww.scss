@@ -24,10 +24,7 @@ $cyan: #56b6c2;
     padding:3px;
 }
 
-.workspaces button:hover {
-    color: $yellow;
-    background-color: $selection;
-}
+
 
 // Statistics (left)
 .stat{
@@ -131,3 +128,20 @@ calendar:indeterminate {
   color: $selection;
 }
 
+.workspaces {
+  font-size: 15px;
+
+}
+
+.workspace{
+    color: $comments;
+    margin: 10px;
+}
+
+.workspace.visible{
+    color: $white;
+}
+
+.workspace button:hover{
+    color: $yellow;
+}

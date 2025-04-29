@@ -10,12 +10,12 @@
         pkgs = import inputs.nixpkgs { inherit system; };
         ROOT = ./.;
         system = "x86_64-linux";
-        workspaceapp = import ./scripts/workspace/package.nix (pkgs);
+        ws = import ./scripts/workspace/package.nix (pkgs);
     in {
         devShells."${system}".default = pkgs.mkShell {
             inherit ROOT;
 
-            buildInputs = with pkgs; [ eww workspaceapp];
+            buildInputs = with pkgs; [ eww ws];
 
             shellHook = ''
                 alias eww="${pkgs.eww}/bin/eww"

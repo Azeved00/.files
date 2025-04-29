@@ -1,68 +1,55 @@
 use i3ipc::I3Connection;
+use std::thread;
 use std::time::Duration;
 
+/// Small program to connect to i3 Server and get workspace status for eww
+/// 
+/// This program returns an eww widget to be used as literal
 fn main() {
-    // Establish connection to i3
     let mut conn = I3Connection::connect().expect("Unable to connect to i3");
 
-    let mut ws_open = [false, false, false, false, false, false, false ,false, false];
-    let mut ws_vis = [false, false, false, false, false, false, false ,false, false];
+    let mut ws_open: u16 = 0;
+    let mut ws_vis: u16 = 0;
+    let arr = ["0", "", "", "", "", "5", "󰍹", "7", "8" ];
     
-    let mut change = false;
-
     loop {
-        let mut workspaces = conn
+        let workspaces = conn
             .get_workspaces()
             .expect("Failed to get workspaces")
             .workspaces;
-        workspaces.sort_by(|a, b| a.num.cmp(&b.num));
-        //println!("{:?}",workspaces);
 
+        let mut new_ws_open: u16 = 0;
+        let mut new_ws_vis: u16 = 0;
 
-        let mut ws_idx = 0;
-        for idx in 0..9 as usize{
-            let ws_i_num = if ws_idx < workspaces.len() {workspaces[ws_idx].num} else {-1};
-            let ws_i_vis = if ws_idx < workspaces.len() {workspaces[ws_idx].visible} else {false};
-
-            if ws_i_num == idx as i32 {
-                //println!("check {}", idx);
-                if ws_vis[idx] != ws_i_vis {
-                    ws_vis[idx] = ws_i_vis;
-                    change = true;
-                }
-                if !ws_open[idx] {
-                    ws_open[idx] = true;
-                    change = true;
-                }
-                ws_idx+=1;
-            } else {
-                if ws_vis[idx]{
-                    ws_vis[idx] = false;
-                    change = true;
-                }
-                if ws_open[idx] {
-                    ws_open[idx] = false;
-                    change = true;
-                }
+        for ws in workspaces{
+            new_ws_open |= 1 << ws.num;
+            if ws.visible {
+                new_ws_vis |= 1 << ws.num;
             }
         }
-        //println!("{:?}",ws_open);
-        //println!("{:?}",ws_vis);
-        if change {
-            print!("(defwidget workspaces [] (box  :orientation \"h\" :class \"workspaces\" :space-evenly true :spacing 10");
 
+        if ws_open != new_ws_open || ws_vis != new_ws_vis {
+            ws_open = new_ws_open;
+            ws_vis = new_ws_vis;
+            
+            print!("(box  :orientation \"h\" :class \"workspaces\" :space-evenly true :spacing 10");
             for idx in 0..9 as usize{
-                if ws_open[idx] && !ws_vis[idx]{
-                    print!("(button :class \"workspace\" :onclick \"i3-msg workspace {:}\" \"{:}\")",idx,idx);
-                }
-                if ws_open[idx] && ws_vis[idx]{
-                    print!("(button :class \"workspace visible\" :onclick \"i3-msg workspace {:}\" \"{:}\")",idx,idx);
+                let is_open = (ws_open & (1 << idx)) != 0;
+                let is_vis = (ws_vis & (1 << idx)) != 0;
+
+                if is_open {
+                    if is_vis {
+                        print!(" (button :class \"workspace visible\" :onclick \"i3-msg workspace {:}\" \"{:}\")",idx,arr[idx]);
+                    } else {
+                        print!(" (button :class \"workspace\" :onclick \"i3-msg workspace {:}\" \"{:}\")",idx,arr[idx]);
+                    }
                 }
             }
 
-            println!("))");
-        }
-        change = false;
+            println!(")");
 
+        }
+
+        thread::sleep(Duration::from_millis(200));
     }
 }

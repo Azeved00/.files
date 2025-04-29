@@ -7,7 +7,7 @@
     "i3_workspace_monitor")
 
 (defwidget workspaces []
-  (literal workspace_var))
+  (literal :content workspace_var))
 
 (defwidget workspaces1 []
     (box :class "workspaces"
