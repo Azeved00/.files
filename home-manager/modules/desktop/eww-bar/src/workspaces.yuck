@@ -1,0 +1,25 @@
+
+;(deflisten opened_workspaces :initial "[1]"
+;    #"echo $(i3-msg -t get_workspaces | grep -Po '\"name\":\"\K[^\"]+') | sed 's/ /, /g' | sed 's/^/[/' | sed 's/$/]/'")
+
+
+(deflisten workspace_var :initial ""
+    "i3_workspace_monitor")
+
+(defwidget workspaces []
+  (literal workspace_var))
+
+(defwidget workspaces1 []
+    (box :class "workspaces"
+        :orientation "h"
+        :space-evenly true
+        :spacing 10
+        (button :onclick "i3-msg workspace 1" 1)
+        (button :onclick "i3-msg workspace 2" 2)
+        (button :onclick "i3-msg workspace 3" 3)
+        (button :onclick "i3-msg workspace 4" 4)
+        (button :onclick "i3-msg workspace 5" 5)
+        (button :onclick "i3-msg workspace 6" 6)
+        (button :onclick "i3-msg workspace 7" 7)
+        (button :onclick "i3-msg workspace 8" 8)
+        (button :onclick "i3-msg workspace 9" 9)))
