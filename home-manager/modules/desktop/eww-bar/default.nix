@@ -1,4 +1,4 @@
-{config, lib, ...}:with lib;
+{config, lib, pkgs, ...}:with lib;
 let
     cfg = config.dotfiles.home-manager.desktop.eww;
     workspaceapp = import ./scripts/workspace/package.nix (pkgs);
@@ -9,7 +9,7 @@ in
     };
 
     config = mkIf cfg.enable {
-        buildInputs = [workspaceapp];
+        home.packages = [workspaceapp];
 
         programs.eww = {
             enable = true;
