@@ -89,13 +89,18 @@ fn initiate_tmux(inst: Cli){
             .ok();
     }
 
-    if !inst.no_attach || env::var("TERM").unwrap_or_default() != "screen" || env::var("TMUX").is_err() {
-        Command::new("tmux")
-            .args(["attach-session", "-t", &inst.session_name])
-            .status()
-            .ok();
-    } else {
-        println!("Already inside tmux, not attaching to new session");
+    if !inst.no_attach {
+        if env::var("TERM").unwrap_or_default() != "screen" || env::var("TMUX").is_err() {
+            Command::new("tmux")
+                .args(["attach-session", "-t", &inst.session_name])
+                .status()
+                .ok();
+        } else {
+            Command::new("tmux")
+                .args(["switch-client", "-t", &inst.session_name])
+                .status()
+                .ok();
+        }
     }
 }
 
