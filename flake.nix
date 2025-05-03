@@ -17,6 +17,7 @@
         zen-browser.url = "github:0xc000022070/zen-browser-flake";
 
         bright-bit.url ="github:Azeved00/bright-bit";
+        dev-command.url ="github:Azeved00/dev-command";
         #bright-bit.url ="path:/home/azevedo/Dev/bright-bit";
 	};
 

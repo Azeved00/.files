@@ -1,7 +1,6 @@
-{ config, lib, pkgs, ...}:
+{config, lib, pkgs, ...}:
 let 
     cfg = config.dotfiles.home-manager.terminal.packages;
-    devapp = import ./bin/dev/package.nix (pkgs);
 in
 {
     options.dotfiles.home-manager.terminal.packages = {
@@ -10,6 +9,7 @@ in
 
 
     config = lib.mkIf cfg.enable  {
+        dev-command.enable = true;
 
         home.packages = with pkgs; [ 
             tree
@@ -17,7 +17,6 @@ in
             zip
             unzip
             killall
-            devapp
         ];
 
     };

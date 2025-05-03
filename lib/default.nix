@@ -44,6 +44,7 @@ in rec {
                 nixpkgs.config.allowUnfree = true;
             }
             inputs.bright-bit.homeManagerModules.default
+            inputs.dev-command.homeManagerModules.default
             outputs.homeManagerModule
             config
         ];

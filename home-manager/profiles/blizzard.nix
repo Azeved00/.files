@@ -26,7 +26,7 @@
 
         bash = {
             enable = true;
-            repoFolder = "~/Dev/dotfiles";
+            repoFolder = "~/Dev/config/dotfiles";
             hm = "blizzard";
             nos = "blizzard";
         };
