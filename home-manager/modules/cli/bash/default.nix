@@ -48,7 +48,7 @@ in
                 "new-dev" = "nix flake new -t ${cfg.repoFolder}#dev";
             };
 
-            profileExtra = "";
+            profileExtra = "set -o vi";
             
             bashrcExtra = builtins.readFile ./funcs.sh;
 
@@ -57,7 +57,6 @@ in
                 "checkwinsize"  # checkwindow size after each command
                 "nocaseglob"    # case insensitive globbing
                 "cdspell"       # autocorrect typos in path names in cd
-                "vi"
             ];
 
             sessionVariables = {
