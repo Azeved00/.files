@@ -9,8 +9,6 @@ in
 
 
     config = lib.mkIf cfg.enable  {
-        dev-command.enable = true;
-
         home.packages = with pkgs; [ 
             tree
             btop
