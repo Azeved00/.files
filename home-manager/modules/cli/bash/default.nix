@@ -48,7 +48,7 @@ in
                 "new-dev" = "nix flake new -t ${cfg.repoFolder}#dev";
             };
 
-            profileExtra = "";
+            profileExtra = "set -o vi";
             
             bashrcExtra = builtins.readFile ./funcs.sh;
 

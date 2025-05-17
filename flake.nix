@@ -19,7 +19,7 @@
         bright-bit.url ="github:Azeved00/bright-bit";
         dev-command.url ="github:Azeved00/dev-command";
         #bright-bit.url ="path:/home/azevedo/Dev/bright-bit";
-        #dev-command.url ="path:/home/azevedo/Dev/config/dev-command";
+        #dev-command.url ="path:/home/azevedo/Dev/dev-command";
 	};
 
     outputs = { self, nixpkgs, ... } @ inputs: 

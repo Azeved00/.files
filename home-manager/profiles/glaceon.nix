@@ -38,6 +38,26 @@
         };
     };
 
+    programs.dev-command = {
+        enable = true;
+        settings = {
+            sessions.dotfiles = {
+                path = "$HOME/Dev/dotfiles";
+                title = "dot files";
+            };
+            sessions.thesis = {
+                path = "$HOME/Dev/matrixcrdt";
+                title = "Thesis";
+                windows = [
+                    {title = "Dev 1"; nix_shell = "dev";}
+                    {title = "Dev 2"; nix_shell = "dev";}
+                    {title = "Run"; nix_shell = "run";}
+                    {title = "Graph"; nix_shell = "graphing";}
+                ];
+            };
+
+        };
+    };
 
     home.packages = with pkgs; [ 
         pinta
