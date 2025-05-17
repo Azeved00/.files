@@ -92,6 +92,7 @@ in
                     config = ''
                         let g:vimtex_compiler_latexmk = { 
                                 \ 'executable' : 'latexmk',
+                                \ 'out_dir' : 'out',
                                 \ 'options' : [ 
                                 \   '-xelatex',
                                 \   '-file-line-error',
