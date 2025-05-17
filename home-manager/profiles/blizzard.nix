@@ -37,6 +37,36 @@
         terminal.packages.enable = true;
     };
 
+    programs.dev-command = {
+        enable = true;
+        settings = {
+            sessions.dotfiles = {
+                path = "$HOME/Dev/config/dotfiles";
+                title = "dot files";
+            };
+            sessions.writting= {
+                path = "$HOME/Dev/investigacao/Thesis";
+                title = "Thesis Writting";
+                windows = [
+                    {title = "A"; nix_shell = "default";}
+                    {title = "B"; nix_shell = "default";}
+                ];
+            };
+            sessions.thesis = {
+                path = "$HOME/Dev/investigacao/matrixcrdt";
+                title = "Thesis";
+                windows = [
+                    {title = "Dev 1"; nix_shell = "dev";}
+                    {title = "Dev 2"; nix_shell = "dev";}
+                    {title = "Run"; nix_shell = "run";}
+                    {title = "Graph"; nix_shell = "graph";}
+                ];
+            };
+
+        };
+    };
+
+
     home.packages = with pkgs; [ 
             prismlauncher
 	        heroic

@@ -52,7 +52,7 @@
                     {title = "Dev 1"; nix_shell = "dev";}
                     {title = "Dev 2"; nix_shell = "dev";}
                     {title = "Run"; nix_shell = "run";}
-                    {title = "Graph"; nix_shell = "graphing";}
+                    {title = "Graph"; nix_shell = "graph";}
                 ];
             };
 
