@@ -1,6 +1,8 @@
 { config, lib, pkgs, ...}:
 let 
     cfg = config.dotfiles.home-manager.nvim;
+    vimtexPkgs = pkgs.vimPlugins.vimtex;
+    vimtexSite  = "${toString vimtexPkgs}/share/vim-plugins/vimtex";
 in
 {
     options.dotfiles.home-manager.nvim= {
@@ -29,6 +31,13 @@ in
             extraLuaConfig = (builtins.concatStringsSep "\n" [
                (builtins.readFile ./settings.lua)
             ]);
+
+            extraConfig = ''
+              " Force vimtex’s ftplugin to load before the builtin one
+              if isdirectory('${vimtexSite}')
+                set runtimepath^='${vimtexSite}'
+              endif
+            '';
 
             # some default language servers
             extraPackages = with pkgs; [
@@ -77,6 +86,24 @@ in
                     plugin = render-markdown-nvim;
                     type = "lua";
                     config = builtins.readFile ./markdown.lua;
+                }
+                {
+                    plugin = vimtex;
+                    config = ''
+                        let g:vimtex_compiler_latexmk = { 
+                                \ 'executable' : 'latexmk',
+                                \ 'options' : [ 
+                                \   '-xelatex',
+                                \   '-file-line-error',
+                                \   '-synctex=1',
+                                \   '-interaction=nonstopmode',
+                                \ ],
+                                \}
+                        let g:vimtex_view_method='zathura'
+                        let g:vimtex_quickfix_mode=0
+                        set conceallevel=1
+                        let g:tex_conceal='abdmg'
+                    '';
                 }
 
            ];
