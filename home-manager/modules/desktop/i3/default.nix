@@ -117,10 +117,10 @@ in
                         "${cfg.mod}+k" = ''focus up'';
                         "${cfg.mod}+l" = ''focus right'';
 
-                        "${cfg.mod}+Shift+h" = ''focus left'';
-                        "${cfg.mod}+Shift+j" = ''focus down'';
-                        "${cfg.mod}+Shift+k" = ''focus up'';
-                        "${cfg.mod}+Shift+l" = ''focus right'';
+                        "${cfg.mod}+Shift+h" = ''move container left'';
+                        "${cfg.mod}+Shift+j" = ''move container down'';
+                        "${cfg.mod}+Shift+k" = ''move container up'';
+                        "${cfg.mod}+Shift+l" = ''move container right'';
 
                         "${cfg.mod}+Tab" = ''focus output right'';
                         "${cfg.mod}+Shift+Tab" = ''move workspace to output next'';
