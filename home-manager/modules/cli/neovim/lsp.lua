@@ -17,7 +17,7 @@ local on_attach = function(_, bufnr)
     --bufmap('<leader>s', require('telescope.builtin').lsp_document_symbols)
     --bufmap('<leader>S', require('telescope.builtin').lsp_dynamic_workspace_symbols)
 
-    bufmap('K', vim.lsp.buf.hover)
+    bufmap('<leader>k', vim.lsp.buf.hover)
 
     vim.highlight.priorities.semantic_tokens = 95 
 
