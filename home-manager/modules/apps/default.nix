@@ -9,9 +9,10 @@
     ];
 
     home.packages = with pkgs; [ 
-            pinta
-            inputs.zen-browser.packages.x86_64-linux.default
-            spotify
-            stremio
+        pinta
+        inputs.zen-browser.packages.x86_64-linux.default
+        spotify
+        stremio
+        vlc
     ];
 }
