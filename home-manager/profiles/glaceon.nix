@@ -43,7 +43,7 @@
         settings = {
             sessions.dotfiles = {
                 path = "$HOME/Dev/dotfiles";
-                title = "dot files";
+                title = "dotfiles";
             };
             sessions.thesis = {
                 path = "$HOME/Dev/matrixcrdt";
@@ -56,6 +56,23 @@
                 ];
             };
 
+            sessions.writting = {
+                path = "$HOME/Dev/thesis";
+                title = "Thesis Writting";
+                windows = [
+                    {title = "Base"; nix_shell = "default";}
+                    {title = "Edit"; nix_shell = "default";}
+                ];
+            };
+
+            sessions.ns = {
+                path = "$HOME/Dev/NS_Homework2";
+                title = "NetworkScience";
+                windows = [
+                    {title = "Base"; nix_shell = "default";}
+                    {title = "Edit"; nix_shell = "default";}
+                ];
+            };
         };
     };
 
