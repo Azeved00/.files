@@ -15,12 +15,14 @@ v.cmd [[
     colorscheme bright-bit
 ]]
 
+o.cc="80"
 g.mapleader = ' '
 g.maplocalleader = ' '
 g.rainbow_active = 1
 o.encoding = 'UTF-8'
 
 o.clipboard = 'unnamedplus'
+
 
 o.number = true
 o.relativenumber = true
