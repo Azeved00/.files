@@ -12,7 +12,7 @@ with lib;
 
     config = mkIf cfg.enable {
         services.displayManager.sddm = {
-            enable = true;
+            enable = false;
             autoNumlock = true;
             wayland.enable = true;
         };

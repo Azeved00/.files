@@ -8,10 +8,14 @@ imports = [
     ./packages.nix
     ./locale.nix
     ./services.nix
-    ./xserver.nix
-    ./wayland.nix
     ./tlp.nix
     ./bluetooth.nix
+    ./cd-autoplay.nix
+
+
+    ./desktop/xserver.nix
+    ./desktop/wayland.nix
+    ./desktop/displaymanager.nix
 ];
 
 }

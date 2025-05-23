@@ -19,14 +19,6 @@ with lib;
 
     config = mkIf cfg.enable {
         programs.dconf.enable = true;
-        services.displayManager = {
-            sddm = {
-                enable = false;
-                autoNumlock = true;
-            };
-            ly.enable= true;
-        };
-
         
         # Configure keymap in X11
         services.xserver = {
@@ -37,10 +29,7 @@ with lib;
             wacom.enable = true;
             
             displayManager = {
-                lightdm = {
-                    enable = false;
-                    greeters.slick.enable = true;
-                };
+                lightdm.enable = false;
             };
 
             
