@@ -93,7 +93,9 @@ in
                         let g:vimtex_compiler_latexmk = { 
                                 \ 'executable' : 'latexmk',
                                 \ 'out_dir' : 'out',
+                                \ 'build_dir' : 'build',
                                 \ 'options' : [ 
+                                \   '-shell-escape',
                                 \   '-xelatex',
                                 \   '-file-line-error',
                                 \   '-synctex=1',
