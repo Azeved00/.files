@@ -47,6 +47,7 @@
         (cpu)
         (ram)
         (wifi)
+        (notification-toggle)
         (power)
     )
 )

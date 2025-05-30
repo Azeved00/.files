@@ -8,11 +8,12 @@
         (box :class "icon" icon)
         (box :class "value" value)))
 
-(defwidget stat [?class ?style ?visible]
+(defwidget stat [?class ?style ?visible ?onclick]
     (box :orientation "h"
         :style "${style}"
         :class "stat ${class}"
         :visible "${visible}"
+        :onclick "${onclick}"
         (children :nth 0)))
 
 (defwidget revealer-on-hover [var varname ?class ?duration ?transition]
@@ -34,8 +35,21 @@
     )
 )
 
-; =============== TIME ====================
 
+; ============= NOTIFICATIONS TOGGLE ==================
+(defvar mutedNotifications false)
+(defwidget notification-toggle []
+    (eventbox
+        :onclick " [ \"$(dunstctl is-paused)\" = \"true\" ] \
+            && (dunstctl set-paused false && ${EWW_CMD} update mutedNotifications=false) \
+            || (dunstctl set-paused true &&  ${EWW_CMD} update mutedNotifications=true)"
+        (stat 
+            :style {(mutedNotifications == false) ? "background-color: ${white};color: ${orange}" : "color:${white}"}
+            :class "notifications-toggle"
+            (box {(mutedNotifications == false) ? "󰂚" : "󰂛"})
+        )
+    )
+)
 
 ; ============= RED LIGHT ==================
 (defpoll red-light-var :interval "1s"
