@@ -30,14 +30,13 @@ in
 
             extraLuaConfig = (builtins.concatStringsSep "\n" [
                (builtins.readFile ./settings.lua)
+                # Force vimtex’s ftplugin to load before the builtin one
+                (''
+                    if vim.fn.isdirectory('${vimtexSite}') == 1 then
+                        vim.opt.runtimepath:prepend('${vimtexSite}')
+                    end
+                '')
             ]);
-
-            extraConfig = ''
-              " Force vimtex’s ftplugin to load before the builtin one
-              if isdirectory('${vimtexSite}')
-                set runtimepath^='${vimtexSite}'
-              endif
-            '';
 
             # some default language servers
             extraPackages = with pkgs; [
@@ -57,7 +56,17 @@ in
                     type = "lua";
                     config = builtins.readFile ./rainbow.lua;
                 }
+                {
+                    plugin = luasnip;
+                    type = "lua";
+                    config = (builtins.concatStringsSep "\n" [
+                        (builtins.readFile ./luasnip.lua)
+                        (''require("luasnip.loaders.from_lua").load({paths = "${./snippets}"})'')
+
+                    ]);
+                }
                
+
 
                 #kanagawa-nvim
                 #palenight-vim
@@ -89,24 +98,8 @@ in
                 }
                 {
                     plugin = vimtex;
-                    config = ''
-                        let g:vimtex_compiler_latexmk = { 
-                                \ 'executable' : 'latexmk',
-                                \ 'out_dir' : 'out',
-                                \ 'build_dir' : 'build',
-                                \ 'options' : [ 
-                                \   '-shell-escape',
-                                \   '-xelatex',
-                                \   '-file-line-error',
-                                \   '-synctex=1',
-                                \   '-interaction=nonstopmode',
-                                \ ],
-                                \}
-                        let g:vimtex_view_method='zathura'
-                        let g:vimtex_quickfix_mode=0
-                        set conceallevel=1
-                        let g:tex_conceal='abdmg'
-                    '';
+                    type = "lua";
+                    config = builtins.readFile ./vimtex.lua;
                 }
 
            ];
