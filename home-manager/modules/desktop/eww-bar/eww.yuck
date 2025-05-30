@@ -40,6 +40,7 @@
 
 (defwidget sidestuff []
     (box :class "sidestuff" :orientation "h" :space-evenly false :halign "end"
+        (systray :orientation "h" :prepend-new true)
         (red-light)
         (volume)
         (bat)
