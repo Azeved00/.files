@@ -66,6 +66,7 @@
         };
     };
 
+    services.caffeine.enable = true;
 
     home.packages = with pkgs; [ 
             prismlauncher
