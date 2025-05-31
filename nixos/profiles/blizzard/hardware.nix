@@ -38,10 +38,10 @@
         fsType = "ext4";
     };
 
-    fileSystems."/media/games" ={ 
-        device = "/dev/disk/by-uuid/1702dd2e-49ed-4b13-afe9-37d9fe0783ee";
-        fsType = "ext4";
-    };
+    #fileSystems."/media/games" ={ 
+    #    device = "/dev/disk/by-uuid/1702dd2e-49ed-4b13-afe9-37d9fe0783ee";
+    #    fsType = "ext4";
+    #};
 
     swapDevices = [ ];
 
