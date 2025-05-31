@@ -40,6 +40,8 @@ in
 
             # some default language servers
             extraPackages = with pkgs; [
+                rust-analyzer
+                texlab
                 ccls
                 lua-language-server
                 nil
