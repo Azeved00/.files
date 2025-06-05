@@ -56,7 +56,9 @@
     "xrandr --verbose | awk -F: '/Gamma/ { if ( $2 + $3 + $4 != 3.0 ) { print \"󰛨\"; } else { print \"󰹏\"; } exit; }'")
 (defwidget red-light []
     (stat 
-        :style {(red-light-var == "󰹏") ? "background-color: ${orange};color: ${white}" : "color:${orange}"}
+        :style {(red-light-var == "󰹏") ? 
+            "color: ${blue}" : 
+            "color:${orange}"}
         :class "red-light"
         (box red-light-var)
     )

@@ -40,15 +40,23 @@
 
 (defwidget sidestuff []
     (box :class "sidestuff" :orientation "h" :space-evenly false :halign "end"
-        (systray :orientation "h" :prepend-new true)
-        (red-light)
-        (volume)
-        (bat)
-        (cpu)
-        (ram)
-        (wifi)
-        (notification-toggle)
-        (power)
+        (box :class "system-stuff" :space-evenly false
+            (systray :orientation "h" :prepend-new true :space-evenly true)
+            (bat)
+            (cpu)
+            (ram)
+        )
+
+        (box :class "confort-stuff" :space-evenly false
+            (volume)
+            (red-light)
+            (notification-toggle)
+        )
+
+        (box :class "other-stuff" :space-evenly false
+            (wifi)
+            (power)
+        )
     )
 )
 
