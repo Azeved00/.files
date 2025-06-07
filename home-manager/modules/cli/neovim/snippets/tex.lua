@@ -16,6 +16,14 @@ s({trig="tt", dscr="Expands 'tt' into '\texttt{}'"},
         { i(1) }
     )
 ),
+s({trig="it", dscr="Italic Text"},
+    fmta(
+        "\\textit{<>}",
+        { i(1) }
+    )
+),
+
+
 
 s({trig="ff", dscr="Fraction'"},
     fmta(

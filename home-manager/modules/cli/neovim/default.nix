@@ -100,8 +100,7 @@ in
                 }
                 {
                     plugin = vimtex;
-                    type = "lua";
-                    config = builtins.readFile ./vimtex.lua;
+                    config = builtins.readFile ./vimtex.vim;
                 }
 
            ];
