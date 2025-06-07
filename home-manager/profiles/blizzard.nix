@@ -1,5 +1,9 @@
-{pkgs, inputs, ...}: {
-    imports =  [ ./shared.nix ];
+{pkgs, inputs, ...}: 
+let
+    vs-latest = pkgs.callPackage ../modules/apps/vintagestory.nix {};
+in
+{
+    imports =  [ ./shared.nix];
 
     dotfiles.home-manager = {
         alacritty.enable = true;
@@ -20,7 +24,7 @@
         lf.enable = true;
         nvim.enable = true;
         feh.enable = true;
-        firefox.enable = true;
+        firefox.enable = false;
         zathura.enable = true;
         drawio.enable = true;
 
@@ -42,14 +46,18 @@
         settings = {
             sessions.dotfiles = {
                 path = "$HOME/Dev/config/dotfiles";
-                title = "dot files";
+                title = "dotfiles";
+                windows = [
+                    {title = "edit";}
+                    {title = "switch";}
+                ];
             };
             sessions.writting= {
                 path = "$HOME/Dev/investigacao/Thesis";
-                title = "Thesis Writting";
+                title = "Thesis-Writting";
                 windows = [
-                    {title = "A"; nix_shell = "default";}
-                    {title = "B"; nix_shell = "default";}
+                    {title = "main"; nix_shell = "default";}
+                    {title = "biblio"; nix_shell = "default";}
                 ];
             };
             sessions.thesis = {
@@ -68,6 +76,10 @@
 
     services.caffeine.enable = true;
 
+    nixpkgs.config.permittedInsecurePackages = [
+        "dotnet-runtime-7.0.20"
+    ];
+
     home.packages = with pkgs; [ 
             prismlauncher
 	        heroic
@@ -83,6 +95,7 @@
                     #pcsx2
                 ];
             })
+            vs-latest
             spotify
             discord
             zoom-us
