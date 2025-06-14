@@ -22,6 +22,12 @@ in
     };
 
     config = lib.mkIf cfg.enable {
+       xdg.configFile."nvim/after/syntax" = {
+            source = ./syntax;
+            recursive = true;
+            enable = true;
+        };
+
         programs.neovim = {
             enable = true;
             defaultEditor = true;
