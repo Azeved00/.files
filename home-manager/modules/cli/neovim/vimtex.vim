@@ -42,3 +42,8 @@ set conceallevel=2
 let g:vimtex_toc_enabled = 0
 let g:vimtex_indent_bib_enabled = 0
 
+
+let g:vimtex_syntax_custom_cmds = [
+    \ {'name': 'az'},
+    \]
+
