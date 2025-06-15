@@ -22,8 +22,8 @@ in
     };
 
     config = lib.mkIf cfg.enable {
-       xdg.configFile."nvim/after/syntax" = {
-            source = ./syntax;
+       xdg.configFile."nvim/after" = {
+            source = ./after;
             recursive = true;
             enable = true;
         };
