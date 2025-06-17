@@ -55,6 +55,7 @@ in
             sessions.writting= {
                 path = "$HOME/Dev/investigacao/Thesis";
                 title = "Thesis-Writting";
+                git = true;
                 windows = [
                     {title = "main"; nix_shell = "default";}
                     {title = "biblio"; nix_shell = "default";}
@@ -63,6 +64,7 @@ in
             sessions.thesis = {
                 path = "$HOME/Dev/investigacao/matrixcrdt";
                 title = "Thesis";
+                git = true;
                 windows = [
                     {title = "Dev 1"; nix_shell = "dev";}
                     {title = "Dev 2"; nix_shell = "dev";}
