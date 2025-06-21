@@ -16,9 +16,21 @@ s({trig="tt", dscr="Expands 'tt' into '\texttt{}'"},
         { i(1) }
     )
 ),
+s({trig="az", dscr="Expands to az custom command"},
+    fmta(
+        "\\az{<>}",
+        { i(1) }
+    )
+),
 s({trig="it", dscr="Italic Text"},
     fmta(
         "\\textit{<>}",
+        { i(1) }
+    )
+),
+s({trig="bf", dscr="Bold Text"},
+    fmta(
+        "\\textbf{<>}",
         { i(1) }
     )
 ),
