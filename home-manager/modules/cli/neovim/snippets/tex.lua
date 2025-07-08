@@ -43,7 +43,7 @@ s({trig="ff", dscr="Fraction'"},
         { i(1), i(2) }
     )
 ),
-s({trig="chp", dscr="Chapter'"},
+s({trig="cha", dscr="Chapter'"},
     fmta(
         "\\chapter{<>}",
         { i(1) }
@@ -67,16 +67,14 @@ s({trig="sssec", dscr="Sub Sub Section'"},
         { i(1) }
     )
 ),
-
-s({trig="eq", dscr="Equation environment"},
-    fmta(
-        [[
-          \begin{equation}
-              <>
-          \end{equation}
-        ]],
-        { i(1) }
-    )
+s({trig="hr", dscr="HRef"},
+  fmta(
+    [[\href{<>}{<>}]],
+    {
+      i(1, "url"),
+      i(2, "display name"),
+    }
+  )
 ),
 
 s({trig="env", dscr="Environment"},
@@ -92,6 +90,17 @@ s({trig="env", dscr="Environment"},
       rep(1)
     }
   )
+),
+
+s({trig="eq", dscr="Equation environment"},
+    fmta(
+        [[
+          \begin{equation}
+              <>
+          \end{equation}
+        ]],
+        { i(1) }
+    )
 ),
 
 s({trig="fig", dscr="Figure Environment"},
@@ -129,13 +138,24 @@ s({trig="svg", dscr="SVG Figure Environment"},
 ),
 
 
-s({trig="hr", dscr="HRef"},
+s({trig="tab", dscr="Table Environment"},
   fmta(
-    [[\href{<>}{<>}]],
+    [[
+        \begin{table}
+            \begin{tabular}{<>}
+            <>
+            \end{tabular}
+            \caption{<>}
+            \label{tab:<>}
+        \end{table}
+    ]],
     {
-      i(1, "url"),
-      i(2, "display name"),
+      i(1),
+      i(2),
+      i(3),
+      i(4),
     }
   )
 ),
+
 }
