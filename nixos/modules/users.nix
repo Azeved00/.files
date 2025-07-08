@@ -9,7 +9,7 @@
         initialPassword = "pw123";
         extraGroups = [  
             "networkmanager" "wheel" "audio" 
-            "dialout" "cdrom"
+            "dialout" "cdrom" "gamemode"
         ];
     };
 }
