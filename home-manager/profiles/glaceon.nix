@@ -66,11 +66,12 @@
             };
 
             sessions.ns = {
-                path = "$HOME/Dev/NS_Homework2";
-                title = "NetworkScience";
+                path = "$HOME/Dev/ProjetoNS";
+                title = "NS";
                 windows = [
-                    {title = "Base"; nix_shell = "default";}
                     {title = "Edit"; nix_shell = "default";}
+                    {title = "Run"; nix_shell = "default";}
+                    {title = "Report"; nix_shell = "latex";}
                 ];
             };
         };
@@ -80,6 +81,5 @@
         pinta
         spotify
         zoom-us
-        teams-for-linux
     ];
 }
