@@ -28,14 +28,17 @@
     ];
 
     dotfiles.nixos.xserver.enable = true;
-    dotfiles.nixos.wayland.enable = true;
-    programs.steam = {
-        enable = true;
-        # Open ports in the firewall for Steam Remote Play
-        remotePlay.openFirewall = true;
-        # Open ports in the firewall for Source Dedicated Server
-        dedicatedServer.openFirewall = true; 
-    };
+    dotfiles.nixos.wayland.enable = false;
+    dotfiles.nixos.docker.enable =true;
+
+
+            programs.steam = {
+                enable = true;
+                # Open ports in the firewall for Steam Remote Play
+                remotePlay.openFirewall = true;
+                # Open ports in the firewall for Source Dedicated Server
+                dedicatedServer.openFirewall = true; 
+            };
     
     specialisation = {
         gaming.configuration = {
@@ -45,11 +48,13 @@
         };
         
         server.configuration = {
+            system.nixos.tags = [ "Headless" ];
+
             dotfiles.nixos.xserver.enable = lib.mkForce false;
             dotfiles.nixos.wayland.enable = lib.mkForce false;
-            system.nixos.tags = [ "Headless" ];
             services.zerotierone.enable = true;
-        };
 
+            #networking.firewall.allowedTCPPorts = [22];
+        };
     };
 }

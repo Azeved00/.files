@@ -11,6 +11,7 @@ imports = [
     ./tlp.nix
     ./bluetooth.nix
     ./cd-autoplay.nix
+    ./docker.nix
 
 
     ./desktop/xserver.nix
