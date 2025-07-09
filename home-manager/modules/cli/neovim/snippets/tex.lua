@@ -67,6 +67,18 @@ s({trig="sssec", dscr="Sub Sub Section'"},
         { i(1) }
     )
 ),
+s({trig="sf", dscr="mathsf"},
+    fmta(
+        "\\mathsf{<>}",
+        { i(1) }
+    )
+),
+s({trig="msf", dscr="mathsf"},
+    fmta(
+        "$\\mathsf{<>}$",
+        { i(1) }
+    )
+),
 s({trig="hr", dscr="HRef"},
   fmta(
     [[\href{<>}{<>}]],
@@ -148,6 +160,28 @@ s({trig="tab", dscr="Table Environment"},
             \caption{<>}
             \label{tab:<>}
         \end{table}
+    ]],
+    {
+      i(1),
+      i(2),
+      i(3),
+      i(4),
+    }
+  )
+),
+
+
+s({trig="alg", dscr="Algorithm Environment"},
+  fmta(
+    [[
+        \begin{algorithm}[H]
+            \caption{<>}
+            \KwIn{<>}
+            \KwOut{<>}
+        
+            <>
+
+        \end{algorithm}
     ]],
     {
       i(1),
