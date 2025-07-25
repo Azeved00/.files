@@ -1,7 +1,5 @@
 {pkgs, inputs, ...}: 
-let
-    vs-latest = pkgs.callPackage ../modules/apps/vintagestory.nix {};
-in
+
 {
     imports =  [ ./shared.nix];
 
@@ -78,26 +76,11 @@ in
 
     services.caffeine.enable = true;
 
-    nixpkgs.config.permittedInsecurePackages = [
-        "dotnet-runtime-7.0.20"
-    ];
 
     home.packages = with pkgs; [ 
-            prismlauncher
-	        heroic
             pinta
             krita
             inputs.zen-browser.packages.x86_64-linux.default
-            (retroarch-bare.wrapper {
-                cores = with libretro; [
-                    dolphin
-                    #citra
-                    beetle-gba
-                    beetle-psx-hw
-                    #pcsx2
-                ];
-            })
-            vs-latest
             spotify
             discord
             zoom-us

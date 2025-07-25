@@ -69,13 +69,13 @@ s({trig="sssec", dscr="Sub Sub Section'"},
 ),
 s({trig="sf", dscr="mathsf"},
     fmta(
-        "\\mathsf{<>}",
+        "\\textsf{<>}",
         { i(1) }
     )
 ),
 s({trig="msf", dscr="mathsf"},
     fmta(
-        "$\\mathsf{<>}$",
+        "\\mathsf{<>}",
         { i(1) }
     )
 ),
@@ -118,8 +118,9 @@ s({trig="eq", dscr="Equation environment"},
 s({trig="fig", dscr="Figure Environment"},
   fmta(
     [[
-        \begin{figure}
-            \includegraphics{images/<>}
+        \begin{figure}[ht!]
+            \centering
+            \includegraphics[width=0.5\linewidth]{images/<>}
             \caption{<>}
             \label{fig:<>}
         \end{figure}
@@ -135,8 +136,9 @@ s({trig="fig", dscr="Figure Environment"},
 s({trig="svg", dscr="SVG Figure Environment"},
   fmta(
     [[
-        \begin{figure}
-            \includesvg{images/<>}
+        \begin{figure}[ht!]
+            \centering
+            \includesvg[width=0.5\linewidth]{Svgs/<>}
             \caption{<>}
             \label{fig:<>}
         \end{figure}

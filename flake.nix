@@ -18,6 +18,10 @@
             url = "github:0xc000022070/zen-browser-flake";
             inputs.nixpkgs.follows = "nixpkgs";
         };
+        curseforge = {
+            url = "github:Eveeifyeve/Curseforge-nix";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
 
         bright-bit.url ="github:Azeved00/bright-bit";
         dev-command.url ="github:Azeved00/dev-command";

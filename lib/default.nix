@@ -12,6 +12,9 @@ in rec {
         config = {
             allowUnfree = true;
             pulseaudio = true;
+            permittedInsecurePackages = [
+                "dotnet-runtime-7.0.20"
+            ];
         };
     });
 

@@ -1,4 +1,7 @@
-{lib, ...}:
+{lib, pkgs, ...}:
+let
+    vs-latest = pkgs.callPackage ./vintagestory.nix {};
+in
 {
 
     imports = [ ../shared.nix ./hardware.nix ];
@@ -21,6 +24,7 @@
         {
             output = "DP-3";
             #   DisplaySize 1920 1080
+            primary = false;
             monitorConfig = ''
                 Option "RightOf" "HDMI-1"
             '';
@@ -32,18 +36,38 @@
     dotfiles.nixos.docker.enable =true;
 
 
+    specialisation = {
+        gaming.configuration = {
+            system.nixos.tags = [ "Gaming" ];
+            programs.gamemode.enable = true;
+            hardware.graphics = {
+                enable = true;
+            };
+
             programs.steam = {
                 enable = true;
                 # Open ports in the firewall for Steam Remote Play
                 remotePlay.openFirewall = true;
                 # Open ports in the firewall for Source Dedicated Server
                 dedicatedServer.openFirewall = true; 
+                gamescopeSession.enable = true;
             };
-    
-    specialisation = {
-        gaming.configuration = {
-            system.nixos.tags = [ "Gaming" ];
-            programs.gamemode.enable = true;
+
+            environment.systemPackages = with pkgs; [
+                mangohud
+                prismlauncher
+                heroic
+                (retroarch-bare.wrapper {
+                    cores = with libretro; [
+                        dolphin
+                        #citra
+                        beetle-gba
+                        beetle-psx-hw
+                        #pcsx2
+                    ];
+                })
+                vs-latest
+            ];
 
         };
         

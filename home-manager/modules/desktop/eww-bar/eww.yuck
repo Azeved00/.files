@@ -3,8 +3,9 @@
 (include "src/workspaces.yuck")
 
 ; ============ WINDOW DEFs================
+(defvar target-monitor "HDMI-1")
 (defwindow bar
-    :monitor 0
+    :monitor "<primary>"
     :windowtype "dock"
     :geometry (geometry :x "0%"
                         :y "0%"
@@ -26,7 +27,7 @@
     (cal))
 
 ; ========= WIDGETS DEFs =============
-(defwidget bar []
+(defwidget bar  []
     (centerbox :orientation "h"
         (box
             :halign "start"

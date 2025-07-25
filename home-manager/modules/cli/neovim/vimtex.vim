@@ -45,5 +45,8 @@ let g:vimtex_indent_bib_enabled = 0
 
 let g:vimtex_syntax_custom_cmds = [
     \ {'name': 'az'},
+    \ {'name': 'texttt', 'conceal': v:true},
+    \ {'name': 'textit', 'conceal': v:true},
+    \ {'name': 'type', 'concea': v:true},
     \]
 
