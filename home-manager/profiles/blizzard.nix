@@ -70,6 +70,16 @@
                     {title = "Graph"; nix_shell = "graph";}
                 ];
             };
+            sessions.tracker = {
+                path = "$HOME/Dev/tracker";
+                title = "Tracker";
+                git = false;
+                windows = [
+                    {title = "Dev 1"; nix_shell = "default";}
+                    {title = "Dev 2"; nix_shell = "default";}
+                    {title = "Run"; nix_shell = "default";}
+                ];
+            };
 
         };
     };
