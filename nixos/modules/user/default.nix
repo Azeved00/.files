@@ -11,5 +11,9 @@
             "networkmanager" "wheel" "audio" 
             "dialout" "cdrom" "gamemode"
         ];
+
+        openssh.authorizedKeys.keyFiles = [
+            ./laptop.pub
+        ];
     };
 }
