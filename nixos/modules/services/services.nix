@@ -7,15 +7,6 @@
     services = {
         pulseaudio.enable = false;
 
-        # Enable the OpenSSH daemon.
-        openssh = {
-          enable = true;
-          settings = {
-            PermitRootLogin = "no"; 
-            PasswordAuthentication = false; 
-          };
-        };
-
         # Enable CUPS to print documents.
         printing.enable = true;
 
