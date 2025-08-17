@@ -1,14 +1,7 @@
 {...}:
 {
-    systemd.coredump.enable = false;
-    # sound.enable = true;
-    hardware.opentabletdriver.enable = false;
-
     services = {
         pulseaudio.enable = false;
-
-        # Enable CUPS to print documents.
-        printing.enable = true;
 
         # Enable sound.
         pipewire = {
@@ -19,6 +12,5 @@
             jack.enable = true;
         };
 
-        libinput.enable = true;
     };
 }
