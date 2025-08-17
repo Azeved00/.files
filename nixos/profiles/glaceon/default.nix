@@ -3,7 +3,7 @@
 
     imports = [ ../shared.nix ./hardware.nix ];
     
-    dotfiles.nixos.network.name = "glaceon";
+    networking.hostName = "glaceon";
 
     dotfiles.nixos.xserver.enable = true;
     dotfiles.nixos.xserver.layout = "pt";
@@ -17,13 +17,4 @@
         }
     ];
 
-    services.zerotierone.enable = false;
-
-    virtualisation.docker = {
-        enable = false;
-        rootless = {
-            enable = true;
-            setSocketVariable = true;
-        };
-    };
 }

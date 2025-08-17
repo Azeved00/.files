@@ -1,11 +1,5 @@
 { pkgs, lib, ... }:
 {
-    programs = {
-        ssh = {
-            startAgent = true;
-        };
-    };
-
     environment.systemPackages = with pkgs; [
  	    #command line stuyff
         gcc

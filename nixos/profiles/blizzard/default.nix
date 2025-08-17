@@ -6,7 +6,7 @@ in
 
     imports = [ ../shared.nix ./hardware.nix ];
 
-    dotfiles.nixos.network.name = "blizzard";
+    networking.hostName  = "blizzard";
     dotfiles.nixos.xserver.layout = "us";
     bright-bit.system.sddm.theme-config = ''
                 [General]
