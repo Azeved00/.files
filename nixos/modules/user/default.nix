@@ -13,7 +13,8 @@
         ];
 
         openssh.authorizedKeys.keyFiles = [
-            ./laptop.pub
+            ./glaceon.pub
+            ./blizzard.pub
         ];
     };
 }

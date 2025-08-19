@@ -1,24 +1,33 @@
-{ pkgs, lib, ... }:
-{
-    environment.systemPackages = with pkgs; [
- 	    #command line stuyff
+{pkgs, lib, config, ...}:
+let
+    cfg = config.dotfiles.nixos.gui ;
+    cli-pkgs = with pkgs; [
         gcc
         wget
         networkmanager
         git
         home-manager
         neovim
+        lf
+    ];
+    gui-pkgs =  with pkgs; [
         appimage-run
         steam-run
-
-     	#other apps
-     	i3
+        i3
         networkmanagerapplet
         pavucontrol
         zathura
-        lf
         alacritty
     ];
+in
+with lib;
+{
+    imports = [];
 
-    #programs.firefox.enable = lib.mkDefault true;
+    options.dotfiles.nixos.gui = mkEnableOption "Add Gui Package";
+
+    config ={
+        environment.systemPackages =
+            cli-pkgs ++ lib.optionals cfg gui-pkgs;
+    };
 }
