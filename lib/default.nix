@@ -19,7 +19,7 @@ in rec {
     });
 
     # building system
-    mkSystem = sys: config: 
+    mkSystem = sys: config: {minimalIso ? false }:
     inputs.nixpkgs.lib.nixosSystem {
         pkgs = mkPkgs sys;
         specialArgs = {
@@ -30,7 +30,11 @@ in rec {
             inputs.bright-bit.nixosModules.default
             outputs.nixosModule
             config
-        ];
+        ] ++ inputs.nixpkgs.lib.optionals minimalIso [
+        ({ pkgs, ... }: {
+          imports = [ "${inputs.nixpkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix" ];
+        })
+      ];
     };
 
 

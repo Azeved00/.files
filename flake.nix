@@ -40,9 +40,10 @@
 
 
         nixosConfigurations = {
-            blizzard = mkSystem system ./nixos/profiles/blizzard;
-            #chilly = mkSystem system ./nixos/profiles/chilly;
-	        glaceon = mkSystem system ./nixos/profiles/glaceon;		
+            blizzard = mkSystem system ./nixos/profiles/blizzard {};
+            #chilly = mkSystem system ./nixos/profiles/chilly {};
+	        glaceon = mkSystem system ./nixos/profiles/glaceon {};		
+	        tundra = mkSystem system ./nixos/profiles/tundra {};
         };
 
     	homeConfigurations = {

@@ -5,8 +5,10 @@
      
     dotfiles.nixos.xserver.enable = false;
     dotfiles.nixos.ssh.enable = true;
+    dotfiles.nixos.docker.enable = true;
+    dotfiles.nixos.gui = false;
 
-    networking.host-name = "oldie";
+    networking.hostName = "oldie";
     networking.firewall.enable = true;
     networking.firewall.allowedTCPPorts = [ 22 ];
 
