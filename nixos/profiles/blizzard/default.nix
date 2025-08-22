@@ -4,10 +4,11 @@ let
 in
 {
 
-    imports = [ ../shared.nix ./hardware.nix ];
+    imports = [ ./hardware.nix ];
 
     networking.hostName  = "blizzard";
     dotfiles.nixos.xserver.layout = "us";
+    dotfiles.nixos.ssh.enable = true;
     bright-bit.system.sddm.theme-config = ''
                 [General]
                 clockEnabled="true"

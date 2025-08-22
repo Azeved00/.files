@@ -11,9 +11,9 @@ with lib;
     };
 
     config = mkIf cfg.enable {
+        dotfiles.nixos.dm.enable = true;
+
         services.displayManager.sddm = {
-            enable = false;
-            autoNumlock = true;
             wayland.enable = true;
         };
 

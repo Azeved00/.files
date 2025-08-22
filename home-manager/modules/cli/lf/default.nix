@@ -52,6 +52,11 @@ in
 
                     popd
                 }}'';
+                copy-name = ''
+                ''${{
+                    printf "$fx" | xclip -selection clipboard
+                }}
+                '';
             };
 
             keybindings = {
@@ -62,6 +67,7 @@ in
                 gtD = ''cd ~/Dev"'';
                 gtd = ''cd ~/Downloads'';
                 gth = ''cd ~'';
+                yn = '' copy-name'';
             };
         };
     };

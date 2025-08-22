@@ -19,6 +19,7 @@ with lib;
 
     config = mkIf cfg.enable {
         programs.dconf.enable = true;
+        dotfiles.nixos.dm.enable = true;
         
         # Configure keymap in X11
         services.xserver = {
