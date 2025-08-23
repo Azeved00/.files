@@ -36,6 +36,8 @@ in
     dotfiles.nixos.wayland.enable = false;
     dotfiles.nixos.docker.enable =true;
 
+    environment.systemPackages = with pkgs; [sops];
+
 
     specialisation = {
         gaming.configuration = {

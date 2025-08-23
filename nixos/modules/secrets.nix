@@ -1,4 +1,4 @@
-{ pkgs, config, inputs, ... }:
+{ pkgs, inputs, ... }:
 {
     imports = [
         inputs.sops-nix.nixosModules.sops
@@ -12,7 +12,7 @@
         
         secrets.example-key = {};
         secrets."myservice/my_subdir/my_secret" = {};
-        secrets."cloudflared/grafana-tunnel/tunnel-credentials-path" = {};
+        secrets."cloudflared/grafana-tunnel/tunnel-credentials" = {};
     };
 }
 

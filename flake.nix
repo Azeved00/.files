@@ -3,6 +3,7 @@
 
     inputs = {
         nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+        deploy-rs.url = "github:serokell/deploy-rs";
         
         home-manager = {
             url = "github:nix-community/home-manager";
@@ -34,7 +35,7 @@
         #dev-command.url ="path:/home/azevedo/Dev/dev-command";
 	};
 
-    outputs = { self, nixpkgs, ... } @ inputs: 
+    outputs = { self, nixpkgs, deploy-rs, ... } @ inputs: 
     let
         myLib = import ./lib/default.nix {inherit inputs;};
         system = "x86_64-linux";
@@ -50,6 +51,21 @@
 	        glaceon = mkSystem system ./nixos/profiles/glaceon {};		
 	        tundra = mkSystem system ./nixos/profiles/tundra {};
         };
+
+
+    deploy.nodes = {
+      tundra = {
+        hostname = "192.168.1.197";  
+        profiles.system = {
+          user = "root";         
+          sshUser = "root";  
+          path = deploy-rs.lib.x86_64-linux.activate.nixos
+            self.nixosConfigurations.tundra;
+        };
+      };
+
+      # you can add other nodes later the same way
+    };
 
     	homeConfigurations = {
             blizzard = mkHome system ./home-manager/profiles/blizzard.nix;

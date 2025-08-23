@@ -7,6 +7,7 @@
     dotfiles.nixos.ssh.enable = true;
     dotfiles.nixos.docker.enable = true;
     dotfiles.nixos.gui = false;
+    sops.age.keyFile = lib.mkForce "/root/.config/sops/age/keys.txt";
 
     services ={
 
@@ -18,7 +19,7 @@
             enable = true;
             tunnels = {
               "Grafana" = {
-                credentialsFile = "${config.sops.secrets."cloudflared/grafana-tunnel/tunnel-credentials-path".path}";
+                credentialsFile = config.sops.secrets."cloudflared/grafana-tunnel/tunnel-credentials".path;
                 default = "http_status:404";
               };
             };

@@ -1,7 +1,7 @@
 {...}:
 {
 
-    imports = [ ../shared.nix ./hardware.nix ];
+    imports = [ ./hardware.nix ];
     
     networking.hostName = "glaceon";
 
