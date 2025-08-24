@@ -4,6 +4,7 @@
     imports = [
         ./docker.nix
         ./ssh.nix
+        ./tailscale.nix
     ];
 
 
@@ -11,7 +12,7 @@
 
     services = {
         # Enable CUPS to print documents.
-        printing.enable = true;
+        #printing.enable = true;
         libinput.enable = true;
     };
 }
