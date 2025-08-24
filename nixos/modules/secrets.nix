@@ -10,8 +10,7 @@
 
         age.keyFile = "/home/azevedo/.config/sops/age/keys.txt";
         
-        secrets.example-key = {};
-        secrets."myservice/my_subdir/my_secret" = {};
+        secrets.my_domain = {};
         secrets."cloudflared/grafana-tunnel/tunnel-credentials" = {};
     };
 }

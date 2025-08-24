@@ -75,7 +75,7 @@
             server = {
               http_addr = "0.0.0.0";
               http_port = 3000;
-              domain = "graphs.jazevedo.dev";
+              domain = "graphs.${config.sops.secrets.my_domain}";
               serve_from_sub_path = false;
             };
           };
