@@ -10,7 +10,6 @@
     sops.age.keyFile = lib.mkForce "/root/.config/sops/age/keys.txt";
 
     services ={
-
         openssh.settings = {
             PermitRootLogin = lib.mkForce "yes"; 
         };
@@ -75,18 +74,22 @@
             server = {
               http_addr = "0.0.0.0";
               http_port = 3000;
-              domain = "graphs.${config.sops.secrets.my_domain}";
               serve_from_sub_path = false;
             };
           };
         };
     };
 
+    # this is so that the domain is not publicly available
+    systemd.services.grafana.serviceConfig.EnvironmentFile =
+      config.sops.secrets."grafana/env".path;
+
             
     networking.hostName = "tundra";
     networking.firewall = {
         enable = true;
-        allowedTCPPorts = [ 22 1883 3000];
+        allowedTCPPorts = [22];
+        trustedInterfaces = [ "tailscale0" ];
     };
 
     system.autoUpgrade.enable = true;

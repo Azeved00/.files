@@ -10,8 +10,12 @@
 
         age.keyFile = "/home/azevedo/.config/sops/age/keys.txt";
         
-        secrets.my_domain = {};
-        secrets."cloudflared/grafana-tunnel/tunnel-credentials" = {};
+        secrets."grafana/env" = {};
+        secrets."cloudflared/grafana-tunnel/tunnel-credentials" = {
+            mode = "0440";
+            owner = "cloudflared-tunnel-Grafana";
+            group = "cloudflared-tunnel-Grafana";
+        };
     };
 }
 

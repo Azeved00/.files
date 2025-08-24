@@ -36,7 +36,7 @@ in
     dotfiles.nixos.wayland.enable = false;
     dotfiles.nixos.docker.enable =true;
 
-    environment.systemPackages = with pkgs; [sops];
+    environment.systemPackages = with pkgs; [sops deploy-rs];
 
 
     specialisation = {
