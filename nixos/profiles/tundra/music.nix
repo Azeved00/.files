@@ -11,7 +11,7 @@ in
         user = "navidrome";
 
         settings = {
-            Port = port;
+            Address="0.0.0.0";
         };
     };
     networking.firewall.allowedTCPPorts = [ port ];
