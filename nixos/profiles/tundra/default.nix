@@ -5,6 +5,7 @@
         ./hardware.nix ./users.nix
 
         ./plantinhas.nix
+        ./data.nix
         #./retroserver.nix
         ./obsidian.nix
         ./music.nix
