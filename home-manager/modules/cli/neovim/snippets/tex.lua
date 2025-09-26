@@ -28,10 +28,23 @@ s({trig="it", dscr="Italic Text"},
         { i(1) }
     )
 ),
+
+s({trig="ie", dscr="i.e."},
+    fmta(
+        "\\textit{i.e.}",
+        { }
+    )
+),
 s({trig="bf", dscr="Bold Text"},
     fmta(
         "\\textbf{<>}",
         { i(1) }
+    )
+),
+s({trig="\\", dscr="default snippet"},
+    fmta(
+        "\\<>{<>}",
+        { i(1), i(2) }
     )
 ),
 
