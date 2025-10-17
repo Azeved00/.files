@@ -14,5 +14,7 @@
         spotify
         stremio
         vlc
+        obsidian
+        pomodoro-gtk
     ];
 }

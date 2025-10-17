@@ -4,7 +4,6 @@ let
     cli-pkgs = with pkgs; [
         gcc
         wget
-        networkmanager
         git
         home-manager
         neovim

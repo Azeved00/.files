@@ -3,27 +3,28 @@
 
     inputs = {
         nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-        deploy-rs.url = "github:serokell/deploy-rs";
         
         home-manager = {
             url = "github:nix-community/home-manager";
             inputs.nixpkgs.follows = "nixpkgs";
         };
 
-       sops-nix = {
+        sops-nix = {
             url = "github:mic92/sops-nix";
             inputs.nixpkgs.follows = "nixpkgs";
-       };
+        };
         
         hyprland = {
             type = "git";
             url = "https://github.com/hyprwm/Hyprland";
             submodules = true;
         };
+
         zen-browser = {
             url = "github:0xc000022070/zen-browser-flake";
             inputs.nixpkgs.follows = "nixpkgs";
         };
+
         curseforge = {
             url = "github:Eveeifyeve/Curseforge-nix";
             inputs.nixpkgs.follows = "nixpkgs";
@@ -35,10 +36,11 @@
         #dev-command.url ="path:/home/azevedo/Dev/dev-command";
 	};
 
-    outputs = { self, nixpkgs, deploy-rs, ... } @ inputs: 
+    outputs = { self, nixpkgs, ... } @ inputs: 
     let
         myLib = import ./lib/default.nix {inherit inputs;};
         system = "x86_64-linux";
+        pkgs = myLib.mkPkgs system;
     in
     with myLib; {
         nixosModule = import ./nixos/modules;
@@ -49,23 +51,7 @@
             blizzard = mkSystem system ./nixos/profiles/blizzard {};
             #chilly = mkSystem system ./nixos/profiles/chilly {};
 	        glaceon = mkSystem system ./nixos/profiles/glaceon {};		
-	        tundra = mkSystem system ./nixos/profiles/tundra {};
         };
-
-
-    deploy.nodes = {
-      tundra = {
-        hostname = "192.168.1.197";  
-        profiles.system = {
-          user = "root";         
-          sshUser = "root";  
-          path = deploy-rs.lib.x86_64-linux.activate.nixos
-            self.nixosConfigurations.tundra;
-        };
-      };
-
-      # you can add other nodes later the same way
-    };
 
     	homeConfigurations = {
             blizzard = mkHome system ./home-manager/profiles/blizzard.nix;
@@ -79,8 +65,21 @@
         };
 
 
-        devShells."${system}".default = (mkPkgs system).mkShell {
-            name = "Dotfiles Development";
+        devShells."${system}"= {
+            default = pkgs.mkShell {
+                name = "Dotfiles Development";
+            };
+            cdrip = pkgs.mkShell {
+                name = "CD Ripping";
+                buildInputs = [pkgs.abcde pkgs.libnotify];
+
+                shellHook = ''
+                    alias rip="abcde -B -o flac -d /dev/sr0 && notify-send \"CD Ripping Finished\" \"\"";
+                    send(){
+                        rsync -avz ./$1 root@192.168.1.197:/srv/media/music/
+                    }
+                '';
+            };
         };
     };
 }
