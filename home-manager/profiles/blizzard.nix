@@ -95,6 +95,7 @@
             discord
             zoom-us
             stremio
+            godot
     ];
 
 
