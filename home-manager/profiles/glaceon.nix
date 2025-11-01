@@ -6,13 +6,19 @@
     dotfiles.home-manager = {
         desktop = {
             enable = true;
-            eww.enable = true;
+            eww.enable = false;
             dunst.enable = true;
             rofi.enable = true;
             i3= {
                 enable = true;
                 background-image = ../../assets/Pictures/Backgrounds/river.jpg;
-                polybar.enable = false;
+                polybar = {
+                    enable = true;
+                    modules.bluetooth.enable = false;
+                    modules.battery.enable = true;
+                    modules.battery.battery = "BAT0";
+                    modules.wifi.wifi-interface = "wlp5s0";
+                };
                 monitor-config = ''
                     workspace 1 output eDP-1
                 '';
@@ -45,16 +51,6 @@
                 path = "$HOME/Dev/dotfiles";
                 title = "dotfiles";
             };
-            sessions.thesis = {
-                path = "$HOME/Dev/matrixcrdt";
-                title = "Thesis";
-                windows = [
-                    {title = "Dev 1"; nix_shell = "dev";}
-                    {title = "Dev 2"; nix_shell = "dev";}
-                    {title = "Run"; nix_shell = "run";}
-                    {title = "Graph"; nix_shell = "graph";}
-                ];
-            };
 
             sessions.writting = {
                 path = "$HOME/Dev/thesis";
@@ -64,22 +60,11 @@
                     {title = "Edit"; nix_shell = "default";}
                 ];
             };
-
-            sessions.ns = {
-                path = "$HOME/Dev/ProjetoNS";
-                title = "NS";
-                windows = [
-                    {title = "Edit"; nix_shell = "default";}
-                    {title = "Run"; nix_shell = "default";}
-                    {title = "Report"; nix_shell = "latex";}
-                ];
-            };
         };
     };
 
     home.packages = with pkgs; [ 
         pinta
-        spotify
         zoom-us
     ];
 }
