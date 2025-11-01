@@ -50,6 +50,14 @@
                     {title = "switch";}
                 ];
             };
+            sessions.homelab = {
+                path = "$HOME/Dev/config/homelab";
+                title = "homelab";
+                windows = [
+                    {title = "edit";}
+                    {title = "switch"; nix_shell = "default";}
+                ];
+            };
             sessions.writting= {
                 path = "$HOME/Dev/investigacao/Thesis";
                 title = "Thesis-Writting";
