@@ -10,7 +10,7 @@ in
     config = mkIf cfg.enable {
         services.redshift = {
             enable = true;
-            dawnTime = "07:00";
+            dawnTime = "08:00";
             duskTime = "20:00";
             temperature.day = 6500;
             temperature.night = 4000;
