@@ -16,16 +16,16 @@
   libglvnd,
   pipewire,
   libpulseaudio,
-  dotnet-runtime_7,
+  dotnet-runtime_8,
 }:
 
 stdenv.mkDerivation rec {
   pname = "vintagestory";
-  version = "1.20.11";
+  version = "1.21.5";
 
   src = fetchurl {
     url = "https://cdn.vintagestory.at/gamefiles/stable/vs_client_linux-x64_${version}.tar.gz";
-    hash = "sha256-IOreg6j/jLhOK8jm2AgSnYQrql5R6QxsshvPs8OUcQA=";
+    hash = "sha256-dG1D2Buqht+bRyxx2ie34Z+U1bdKgi5R3w29BG/a5jg=";
   };
 
   nativeBuildInputs = [
@@ -33,7 +33,7 @@ stdenv.mkDerivation rec {
     copyDesktopItems
   ];
 
-  buildInputs = [ dotnet-runtime_7 ];
+  buildInputs = [ dotnet-runtime_8 ];
 
   runtimeLibs = lib.makeLibraryPath (
     [
@@ -79,10 +79,10 @@ stdenv.mkDerivation rec {
 
   preFixup =
     ''
-      makeWrapper ${dotnet-runtime_7}/bin/dotnet $out/bin/vintagestory \
+      makeWrapper ${dotnet-runtime_8}/bin/dotnet $out/bin/vintagestory \
         --prefix LD_LIBRARY_PATH : "${runtimeLibs}" \
         --add-flags $out/share/vintagestory/Vintagestory.dll
-      makeWrapper ${dotnet-runtime_7}/bin/dotnet $out/bin/vintagestory-server \
+      makeWrapper ${dotnet-runtime_8}/bin/dotnet $out/bin/vintagestory-server \
         --prefix LD_LIBRARY_PATH : "${runtimeLibs}" \
         --add-flags $out/share/vintagestory/VintagestoryServer.dll
     ''

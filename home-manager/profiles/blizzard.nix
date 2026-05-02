@@ -50,6 +50,15 @@
                     {title = "switch";}
                 ];
             };
+            sessions.homelab = {
+                path = "$HOME/Dev/config/homelab";
+                title = "homelab";
+                windows = [
+                    {title = "edit";}
+                    {title = "switch"; nix_shell = "default";}
+                    {title = "ssh";}
+                ];
+            };
             sessions.writting= {
                 path = "$HOME/Dev/investigacao/Thesis";
                 title = "Thesis-Writting";
@@ -68,6 +77,18 @@
                     {title = "Dev 2"; nix_shell = "dev";}
                     {title = "Run"; nix_shell = "run";}
                     {title = "Graph"; nix_shell = "graph";}
+                ];
+            };
+            sessions.acrdt= {
+                path = "$HOME/Dev/investigacao/ACRDT";
+                title = "ACRDT";
+                git = false;
+                windows = [
+                    {title = "Rust"; nix_shell = "dev";}
+                    {title = "Js"; nix_shell = "dev";}
+                    {title = "Python"; nix_shell = "dev";}
+                    {title = "Run"; nix_shell = "run"; pane_count=6; pane_layout="tiled";}
+                    {title = "Logs"; pane_count=6; pane_layout="main-horizontal";}
                 ];
             };
             sessions.tracker = {
@@ -90,12 +111,10 @@
     home.packages = with pkgs; [ 
             pinta
             krita
-            #inputs.zen-browser.packages.x86_64-linux.default
-            #spotify
             discord
-            #zoom-us
+            inputs.zen-browser.packages.x86_64-linux.default
+            discord
             #stremio
-            godot
     ];
 
 

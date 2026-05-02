@@ -9,7 +9,7 @@ in
     };
 
     config = mkIf cfg.enable {
-        home.packages = [workspaceapp];
+        home.packages = [workspaceapp pkgs.pavucontrol];
 
         programs.eww = {
             enable = true;
