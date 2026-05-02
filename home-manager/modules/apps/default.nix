@@ -9,12 +9,11 @@
     ];
 
     home.packages = with pkgs; [ 
+        qutebrowser
         pinta
         inputs.zen-browser.packages.x86_64-linux.default
-        spotify
         stremio
         vlc
         obsidian
-        pomodoro-gtk
     ];
 }

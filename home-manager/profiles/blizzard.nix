@@ -90,11 +90,11 @@
     home.packages = with pkgs; [ 
             pinta
             krita
-            inputs.zen-browser.packages.x86_64-linux.default
-            spotify
+            #inputs.zen-browser.packages.x86_64-linux.default
+            #spotify
             discord
-            zoom-us
-            stremio
+            #zoom-us
+            #stremio
             godot
     ];
 

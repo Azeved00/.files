@@ -11,17 +11,16 @@ in
     config = lib.mkIf cfg.enable {
         programs.git = {
             enable = true;
-            userName  = "João Azevedo";
-            userEmail = "62391524+Azeved00@users.noreply.github.com";
 
-            aliases = {
-                s = "status";
-                c = "commit -m";
-                d = "difftool";
-                a = "add";
-            };
-
-            extraConfig = {
+            settings = {
+                user.name  = "João Azevedo";
+                user.email = "62391524+Azeved00@users.noreply.github.com";
+                aliases = {
+                    s = "status";
+                    c = "commit -m";
+                    d = "difftool";
+                    a = "add";
+                };
                 advice = {
                     addIgnoredFile = false;
                 };

@@ -33,8 +33,10 @@ in
             defaultEditor = true;
             viAlias = true;
             vimAlias = true;
+            withPython3 = false;
+            withRuby = false;
 
-            extraLuaConfig = (builtins.concatStringsSep "\n" [
+            initLua = (builtins.concatStringsSep "\n" [
                (builtins.readFile ./settings.lua)
                 # Force vimtex’s ftplugin to load before the builtin one
                 (''
@@ -81,7 +83,10 @@ in
                 #tokyonight-nvim
                 #onehalf
 
-                nvim-web-devicons
+                {
+                    plugin = nvim-web-devicons;
+                    type = "viml";
+                }
                 {
                     plugin = lualine-nvim;
                     type = "lua";
@@ -96,9 +101,15 @@ in
                         cfg.lsps
                     ]);
                 }
-
-                vim-gitgutter
-                vim-css-color
+                {
+                    plugin =vim-gitgutter;
+                    type = "viml";
+                }
+                {
+                    plugin =vim-css-color;
+                    type = "viml";
+                }
+                
                 {
                     plugin = render-markdown-nvim;
                     type = "lua";
@@ -106,6 +117,7 @@ in
                 }
                 {
                     plugin = vimtex;
+                    type = "viml";
                     config = builtins.readFile ./vimtex.vim;
                 }
 

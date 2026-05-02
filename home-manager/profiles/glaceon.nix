@@ -38,7 +38,7 @@
         ssh.enable = true;
         bash = {
             enable = true;
-            repoFolder = "~/Dev/dotfiles";
+            repoFolder = "~/Dev/config/dotfiles";
             hm = "glaceon";
             nos = "glaceon";
         };
@@ -48,16 +48,31 @@
         enable = true;
         settings = {
             sessions.dotfiles = {
-                path = "$HOME/Dev/dotfiles";
-                title = "dotfiles";
+                path = "$HOME/Dev/config/dotfiles";
+                title = "Dot Files";
+                windows = [
+                    {title = "edit";}
+                    {title = "switch";}
+                ];
+            };
+            sessions.homelab = {
+                path = "$HOME/Dev/config/homelab";
+                title = "HomeLab";
+                windows = [
+                    {title = "edit";}
+                    {title = "deploy";}
+                    {title = "ssh";}
+                ];
             };
 
-            sessions.writting = {
-                path = "$HOME/Dev/thesis";
-                title = "Thesis Writting";
+            sessions.acrdt = {
+                path = "$HOME/Dev/FCUP/ACRDT";
+                title = "ACRDT";
                 windows = [
-                    {title = "Base"; nix_shell = "default";}
-                    {title = "Edit"; nix_shell = "default";}
+                    {title = "1"; nix_shell = "dev";}
+                    {title = "2";}
+                    {title = "3"; nix_shell = "run";}
+                    {title = "4";}
                 ];
             };
         };
@@ -65,6 +80,5 @@
 
     home.packages = with pkgs; [ 
         pinta
-        zoom-us
     ];
 }

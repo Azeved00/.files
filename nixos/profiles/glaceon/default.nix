@@ -17,4 +17,8 @@
         }
     ];
 
+    programs.steam = {
+        enable = true;
+    };
+
 }

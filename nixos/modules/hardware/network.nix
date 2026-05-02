@@ -20,6 +20,13 @@ with lib;
             networkmanager.wifi.scanRandMacAddress = false;
 
             firewall.enable = true;
+            extraHosts = ''
+            192.168.1.197 jazevedo.dev
+            192.168.1.197 auth.jazevedo.dev
+            192.168.1.197 music.jazevedo.dev
+            192.168.1.197 photos.jazevedo.dev
+            192.168.1.197 notes.jazevedo.dev
+            '';
         };
     };
 }
