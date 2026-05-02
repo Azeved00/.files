@@ -20,6 +20,9 @@ with lib;
             networkmanager.wifi.scanRandMacAddress = false;
 
             firewall.enable = true;
+            extraHosts =
+              ''
+              '';
         };
     };
 }

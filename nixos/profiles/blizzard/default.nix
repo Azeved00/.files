@@ -34,26 +34,29 @@ in
 
     dotfiles.nixos.xserver.enable = true;
     dotfiles.nixos.wayland.enable = false;
-    dotfiles.nixos.docker.enable =true;
+    dotfiles.nixos.docker.enable =false;
 
-    environment.systemPackages = with pkgs; [sops deploy-rs];
+    environment.systemPackages =[];
+    services.kanidm = {
+        package = pkgs.kanidm_1_7;
+        enableClient = true;
+        clientSettings.uri = "https://auth.jazevedo.dev";
+    };
 
 
     specialisation = {
         gaming.configuration = {
             system.nixos.tags = [ "Gaming" ];
+
             programs.gamemode.enable = true;
-            hardware.graphics = {
-                enable = true;
-            };
 
             programs.steam = {
                 enable = true;
                 # Open ports in the firewall for Steam Remote Play
-                remotePlay.openFirewall = true;
+                remotePlay.openFirewall = false;
                 # Open ports in the firewall for Source Dedicated Server
-                dedicatedServer.openFirewall = true; 
-                gamescopeSession.enable = true;
+                dedicatedServer.openFirewall = false; 
+                gamescopeSession.enable = false;
             };
 
             environment.systemPackages = with pkgs; [
@@ -79,7 +82,6 @@ in
 
             dotfiles.nixos.xserver.enable = lib.mkForce false;
             dotfiles.nixos.wayland.enable = lib.mkForce false;
-            services.zerotierone.enable = true;
 
             #networking.firewall.allowedTCPPorts = [22];
         };

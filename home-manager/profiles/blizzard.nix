@@ -56,6 +56,7 @@
                 windows = [
                     {title = "edit";}
                     {title = "switch"; nix_shell = "default";}
+                    {title = "ssh";}
                 ];
             };
             sessions.writting= {
@@ -78,6 +79,18 @@
                     {title = "Graph"; nix_shell = "graph";}
                 ];
             };
+            sessions.acrdt= {
+                path = "$HOME/Dev/investigacao/ACRDT";
+                title = "ACRDT";
+                git = false;
+                windows = [
+                    {title = "Rust"; nix_shell = "dev";}
+                    {title = "Js"; nix_shell = "dev";}
+                    {title = "Python"; nix_shell = "dev";}
+                    {title = "Run"; nix_shell = "run"; pane_count=6; pane_layout="tiled";}
+                    {title = "Logs"; pane_count=6; pane_layout="main-horizontal";}
+                ];
+            };
             sessions.tracker = {
                 path = "$HOME/Dev/tracker";
                 title = "Tracker";
@@ -97,13 +110,11 @@
 
     home.packages = with pkgs; [ 
             pinta
-            krita
             inputs.zen-browser.packages.x86_64-linux.default
-            spotify
             discord
-            zoom-us
+            #zoom-us
             stremio
-            godot
+            teams-for-linux
     ];
 
 
