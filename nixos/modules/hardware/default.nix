@@ -7,4 +7,6 @@ imports = [
     ./cd-autoplay.nix
 ];
 
+hardware.graphics.enable = true;
+
 }

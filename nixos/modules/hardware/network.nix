@@ -15,7 +15,7 @@ with lib;
                 # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
             };
         
-            wireless.enable = lib.mkForce false;
+            wireless.enable = lib.mkForce true;
             networkmanager.enable = true;
             networkmanager.wifi.scanRandMacAddress = false;
 

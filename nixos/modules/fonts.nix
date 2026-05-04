@@ -6,7 +6,7 @@
 
         packages = with pkgs; [
            nerd-fonts.space-mono
-           #nerd-fonts.jetbrains-mono
+           nerd-fonts.jetbrains-mono
            nerd-fonts.dejavu-sans-mono
         ]; 
     };

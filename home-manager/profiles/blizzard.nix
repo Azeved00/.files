@@ -109,11 +109,8 @@
 
 
     home.packages = with pkgs; [ 
-            pinta
             krita
-            discord
             inputs.zen-browser.packages.x86_64-linux.default
-            discord
             #stremio
     ];
 
