@@ -68,8 +68,8 @@ in
                 '')
             ]);
 
-            # some default language servers
             extraPackages = with pkgs; [
+                tree-sitter
                 nil
             ] ++ (if cfg.lsps.lua then [pkgs.lua-language-server] else [])
             ++ (if cfg.lsps.c then [pkgs.ccls] else [])
@@ -78,11 +78,11 @@ in
             ++ (if cfg.lsps.go then [pkgs.gopls] else []);
 
             plugins = with pkgs.vimPlugins; [
-                #{
-                #    plugin = nvim-treesitter.withAllGrammars;
-                #    type = "lua";
-                #    config = builtins.readFile ./treesitter.lua;
-                #}
+                {
+                    plugin = nvim-treesitter;
+                    type = "lua";
+                    config = builtins.readFile ./treesitter.lua;
+                }
                 {
                     plugin = rainbow-delimiters-nvim;
                     type = "lua";
