@@ -51,12 +51,14 @@
             blizzard = mkSystem system ./nixos/profiles/blizzard {};
             #chilly = mkSystem system ./nixos/profiles/chilly {};
 	        glaceon = mkSystem system ./nixos/profiles/glaceon {};		
+	        hail = mkSystem system ./nixos/profiles/hail {};		
         };
 
     	homeConfigurations = {
             blizzard = mkHome system ./home-manager/profiles/blizzard.nix;
             frost = mkHome system ./home-manager/profiles/frost.nix;
 	        glaceon = mkHome system ./home-manager/profiles/glaceon.nix;
+	        co6 = mkHome system ./home-manager/profiles/co6.nix;
         };
 
         templates.dev = {
