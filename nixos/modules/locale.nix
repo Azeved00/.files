@@ -6,7 +6,7 @@ let
 in
 {
     # Set your time zone.
-    time.timeZone = "Europe/London";
+    time.timeZone = "Europe/Brussels";
 
     # Select internationalisation properties.
     i18n = {

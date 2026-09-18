@@ -15,20 +15,16 @@ in
             enable = true;
             enableDefaultConfig = false;
 
-            matchBlocks = {
+            settings = {
                 "github.com" = {
-                    hostname = "github.com";
-                    user="git";
-                    identityFile = "~/.ssh/main";
-                    extraOptions={
-                        AddKeysToAgent = "yes";
-                    };
+                    HostName = "github.com";
+                    User="git";
+                    IdentityFile = "~/.ssh/main";
+                    AddKeysToAgent = "yes";
                 };
                 "*" = {
-                    identityFile = "~/.ssh/main";
-                    extraOptions={
-                        AddKeysToAgent = "yes";
-                    };
+                    IdentityFile = "~/.ssh/main";
+                    AddKeysToAgent = "yes";
                 };
             };
         };
