@@ -27,6 +27,7 @@ in rec {
             system = sys;
         };
         modules = [
+            inputs.sops-nix.nixosModules.sops
             inputs.bright-bit.nixosModules.default
             outputs.nixosModule
             config
@@ -50,6 +51,7 @@ in rec {
             {
                 nixpkgs.config.allowUnfree = true;
             }
+            inputs.sops-nix.homeManagerModules.sops
             inputs.bright-bit.homeManagerModules.default
             inputs.dev-command.homeManagerModules.default
             outputs.homeManagerModule

@@ -1,4 +1,4 @@
-{ pkgs, ...}:
+{ pkgs, config, ...}:
 {
     imports = [
     ];
@@ -14,6 +14,10 @@
         settings = {
             experimental-features = ["nix-command" "flakes"];
         };
+
+      extraOptions = ''
+        !include ${config.sops.templates."nix-github.conf".path}
+      '';
     };
 
 
